@@ -9717,7 +9717,7 @@
       }
     ]
   },
-  "WlrsSnoGenesisRewardPool": {
+  "SnowSnoGenesisRewardPool": {
     "address": "0xe5f8fc77edc96283749764Cd929F49164aEf5fdd",
     "abi": [
       {
@@ -10216,7 +10216,7 @@
       }
     ]
   },
-  "WlrsFoxGenesisRewardPool": {
+  "SnowFoxGenesisRewardPool": {
     "address": "0x63729b14189177Aac2D809c639BD830a7F2D1f84",
     "abi": [
       {
@@ -10715,7 +10715,7 @@
       }
     ]
   },
-  "WlrsSnobondGenesisRewardPool": {
+  "SnowSnobondGenesisRewardPool": {
     "address": "0xA12557cedE66530A0Cd1AA9641b93e173F0eA412",
     "abi": [
       {
@@ -11214,7 +11214,7 @@
       }
     ]
   },
-  "WlrsDibsGenesisRewardPool": {
+  "SnowDibsGenesisRewardPool": {
     "address": "0x46E06Fe073179Ab774Aa1FB7F6C62bF20b601AA3",
     "abi": [
       {
