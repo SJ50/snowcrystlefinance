@@ -1,24 +1,24 @@
 // import { ChainId } from '@pancakeswap-libs/sdk';
-import { ChainId } from '@traderjoe-xyz/sdk';
-// import { ChainId } from '@madmeerkat/sdk';
+// import { ChainId } from '@traderjoe-xyz/sdk';
+import { ChainId } from '@madmeerkat/sdk';
 import { Configuration } from './tomb-finance/config';
 import { BankInfo } from './tomb-finance';
 
 const configurations: { [env: string]: Configuration } = {
   production: {
-    chainId: ChainId.AVALANCHE,
-    networkName: 'Avalanche C Chain',
-    ftmscanUrl: 'https://snowtrace.io/',
-    defaultProvider: 'https://api.avax.network/ext/bc/C/rpc',
+    chainId: ChainId.MAINNET,
+    networkName: 'ganache-cli-cronos-fork',
+    ftmscanUrl: 'https://cronoscan.com/',
+    defaultProvider: 'http://127.0.0.1:9545',
     deployments: require('./tomb-finance/deployments/deployments.mainnet.json'),
     externalTokens: {
-      WAVAX: ['0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7', 18],
-      SNOW: ['0x395908aeb53d33A9B8ac35e148E9805D34A555D3', 18],
-      GLCR: ['0xe6d1aFea0B76C8f51024683DD27FA446dDAF34B6', 18],
-      SBOND: ['0xa8cFe8b4e8632cF551692Ddf78B97Ff4784dF14a', 18],
-      USDC: ['0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664', 6],
+      WAVAX: ['0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23', 18], // CRO
+      SNOW: ['0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87', 18],
+      GLCR: ['0xE7eD6747FaC5360f88a2EFC03E00d25789F69291', 18],
+      SBOND: ['0x602C71e4DAC47a042Ee7f46E0aee17F94A3bA0B6', 18],
+      USDC: ['0x6951b5Bd815043E3F842c1b026b0Fa888Cc2DD85', 6],
       USDT: ['0xc7198437980c041c805A1EDcbA50c1Ce5db95118', 6],
-      WFTM: ['0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7', 18],
+      WFTM: ['0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23', 18],
       SNO: ['0x1fE4869f2C5181b9CD780a7E16194FA2c4C4293D', 18],
       SNOBOND: ['0x8aB4Ac266d8e698b7E39f97Ec17876076680f6f1', 18],
       FOX: ['0xFFffFfFf68A2e13F7B68d2E190E37D804E02E0ad', 18],
@@ -26,8 +26,8 @@ const configurations: { [env: string]: Configuration } = {
       GRAPE: ['0x5541D83EFaD1f281571B343977648B75d95cdAC2', 18],
       JOE: ['0x6e84a6216eA6dACC71eE8E6b0a5B7322EEbC0fDd', 18],
       MIM: ['0x130966628846BFd36ff31a822705796e8cb8C18D', 18],
-      'SNOW-USDC-LP': ['0x82845B52b53c80595bbF78129126bD3E6Fc2C1DF', 18],
-      'GLCR-USDC-LP': ['0x03d15E0451e54Eec95ac5AcB5B0a7ce69638c62A', 18],
+      'SNOW-USDC-LP': ['0x3fc5B92474b78061632Cc2BA590De53278cD2d5f', 18],
+      'GLCR-USDC-LP': ['0xb4C41057E352fD211036C03F2076CE7A9B72B4F2', 18],
       'GRAPE-SNOW-LP': ['0xA3F24b18608606079a0317Cbe6Cda54CED931420', 18],
       'USDC-WAVAX-LP': ['0xA389f9430876455C36478DeEa9769B7Ca4E3DDB1', 18],
       'USDC-JOE-LP': ['0x67926d973cD8eE876aD210fAaf7DFfA99E414aCf', 18],

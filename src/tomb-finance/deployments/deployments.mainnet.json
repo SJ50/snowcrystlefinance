@@ -405,18 +405,23 @@
     ]
   },
   "tomb": {
-    "address": "0x395908aeb53d33A9B8ac35e148E9805D34A555D3",
+    "address": "0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87",
     "abi": [
       {
         "inputs": [
           {
-            "internalType": "uint256",
-            "name": "_taxRate",
-            "type": "uint256"
+            "internalType": "string",
+            "name": "name_",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "symbol_",
+            "type": "string"
           },
           {
             "internalType": "address",
-            "name": "_taxCollectorAddress",
+            "name": "_taxFund",
             "type": "address"
           }
         ],
@@ -490,19 +495,25 @@
         "anonymous": false,
         "inputs": [
           {
-            "indexed": false,
+            "indexed": true,
             "internalType": "address",
-            "name": "oldAddress",
+            "name": "account",
             "type": "address"
           },
           {
             "indexed": false,
             "internalType": "address",
-            "name": "newAddress",
+            "name": "taxFund",
             "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
           }
         ],
-        "name": "TaxOfficeTransferred",
+        "name": "TaxAdded",
         "type": "event"
       },
       {
@@ -532,12 +543,38 @@
       },
       {
         "inputs": [],
-        "name": "INITIAL_LAUNCH_DISTRIBUTION",
+        "name": "INITIAL_DAO_WALLET_DISTRIBUTION",
         "outputs": [
           {
             "internalType": "uint256",
             "name": "",
             "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "INITIAL_GENESIS_POOL_DISTRIBUTION",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "addLiquidityEnabled",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
           }
         ],
         "stateMutability": "view",
@@ -592,19 +629,6 @@
         "type": "function"
       },
       {
-        "inputs": [],
-        "name": "autoCalculateTax",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
         "inputs": [
           {
             "internalType": "address",
@@ -656,7 +680,20 @@
       },
       {
         "inputs": [],
-        "name": "burnThreshold",
+        "name": "burnRate",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "burnRateAbovePeg",
         "outputs": [
           {
             "internalType": "uint256",
@@ -705,17 +742,20 @@
         "type": "function"
       },
       {
-        "inputs": [],
-        "name": "disableAutoCalculateTax",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
         "inputs": [
           {
+            "internalType": "address[]",
+            "name": "_genesisPools",
+            "type": "address[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "_poolsStakes",
+            "type": "uint256[]"
+          },
+          {
             "internalType": "address",
-            "name": "_launcherAddress",
+            "name": "_daoWallet",
             "type": "address"
           }
         ],
@@ -726,39 +766,7 @@
       },
       {
         "inputs": [],
-        "name": "enableAutoCalculateTax",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_address",
-            "type": "address"
-          }
-        ],
-        "name": "excludeAddress",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "name": "excludedAddresses",
+        "name": "enableUpdatePrice",
         "outputs": [
           {
             "internalType": "bool",
@@ -770,12 +778,37 @@
         "type": "function"
       },
       {
-        "inputs": [],
-        "name": "getTaxTiersRatesCount",
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_tokenPrice",
+            "type": "uint256"
+          }
+        ],
+        "name": "getBurnRate",
         "outputs": [
           {
             "internalType": "uint256",
-            "name": "count",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_tokenPrice",
+            "type": "uint256"
+          }
+        ],
+        "name": "getTaxRate",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
             "type": "uint256"
           }
         ],
@@ -784,11 +817,24 @@
       },
       {
         "inputs": [],
-        "name": "getTaxTiersTwapsCount",
+        "name": "getTokenPrice",
         "outputs": [
           {
             "internalType": "uint256",
-            "name": "count",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getTokenUpdatedPrice",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
             "type": "uint256"
           }
         ],
@@ -801,52 +847,10 @@
             "internalType": "contract IERC20",
             "name": "_token",
             "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "_amount",
-            "type": "uint256"
-          },
-          {
-            "internalType": "address",
-            "name": "_to",
-            "type": "address"
           }
         ],
         "name": "governanceRecoverUnsupported",
         "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "tombOracle",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_address",
-            "type": "address"
-          }
-        ],
-        "name": "includeAddress",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
         "stateMutability": "nonpayable",
         "type": "function"
       },
@@ -878,11 +882,30 @@
         "inputs": [
           {
             "internalType": "address",
-            "name": "_address",
+            "name": "_account",
             "type": "address"
           }
         ],
-        "name": "isAddressExcluded",
+        "name": "isExcludedFromFee",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_account",
+            "type": "address"
+          }
+        ],
+        "name": "isExcludedToFee",
         "outputs": [
           {
             "internalType": "bool",
@@ -958,6 +981,19 @@
       },
       {
         "inputs": [],
+        "name": "oracle",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
         "name": "owner",
         "outputs": [
           {
@@ -993,30 +1029,42 @@
         "inputs": [
           {
             "internalType": "uint256",
-            "name": "_burnThreshold",
+            "name": "_burnRate",
             "type": "uint256"
           }
         ],
-        "name": "setBurnThreshold",
-        "outputs": [
+        "name": "setBurnRate",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_burnRateAbovePeg",
+            "type": "uint256"
+          }
+        ],
+        "name": "setBurnRateAbovePeg",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_account",
+            "type": "address"
+          },
           {
             "internalType": "bool",
-            "name": "",
+            "name": "_status",
             "type": "bool"
           }
         ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_tombOracle",
-            "type": "address"
-          }
-        ],
-        "name": "setTombOracle",
+        "name": "setExcludeBothDirectionsFee",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -1025,11 +1073,16 @@
         "inputs": [
           {
             "internalType": "address",
-            "name": "_taxCollectorAddress",
+            "name": "_account",
             "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "_status",
+            "type": "bool"
           }
         ],
-        "name": "setTaxCollectorAddress",
+        "name": "setExcludeFromFee",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -1038,11 +1091,42 @@
         "inputs": [
           {
             "internalType": "address",
-            "name": "_taxOffice",
+            "name": "_account",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "_status",
+            "type": "bool"
+          }
+        ],
+        "name": "setExcludeToFee",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_oracle",
             "type": "address"
           }
         ],
-        "name": "setTaxOffice",
+        "name": "setOracle",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_taxFund",
+            "type": "address"
+          }
+        ],
+        "name": "setTaxFund",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -1063,48 +1147,20 @@
       {
         "inputs": [
           {
-            "internalType": "uint8",
-            "name": "_index",
-            "type": "uint8"
-          },
-          {
             "internalType": "uint256",
-            "name": "_value",
+            "name": "_taxRateAbovePeg",
             "type": "uint256"
           }
         ],
-        "name": "setTaxTiersRate",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
+        "name": "setTaxRateAbovePeg",
+        "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
       },
       {
-        "inputs": [
-          {
-            "internalType": "uint8",
-            "name": "_index",
-            "type": "uint8"
-          },
-          {
-            "internalType": "uint256",
-            "name": "_value",
-            "type": "uint256"
-          }
-        ],
-        "name": "setTaxTiersTwap",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
+        "inputs": [],
+        "name": "switchEnableUpdatePrice",
+        "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
       },
@@ -1123,20 +1179,7 @@
       },
       {
         "inputs": [],
-        "name": "taxCollectorAddress",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "taxOffice",
+        "name": "taxFund",
         "outputs": [
           {
             "internalType": "address",
@@ -1161,14 +1204,8 @@
         "type": "function"
       },
       {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "name": "taxTiersRates",
+        "inputs": [],
+        "name": "taxRateAbovePeg",
         "outputs": [
           {
             "internalType": "uint256",
@@ -1180,14 +1217,15 @@
         "type": "function"
       },
       {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "name": "taxTiersTwaps",
+        "inputs": [],
+        "name": "toggleAddLiquidityEnabled",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "totalBurned",
         "outputs": [
           {
             "internalType": "uint256",
@@ -1201,6 +1239,19 @@
       {
         "inputs": [],
         "name": "totalSupply",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "totalTaxAdded",
         "outputs": [
           {
             "internalType": "uint256",
@@ -1293,10 +1344,20 @@
     ]
   },
   "tShare": {
-    "address": "0xe6d1aFea0B76C8f51024683DD27FA446dDAF34B6",
+    "address": "0xE7eD6747FaC5360f88a2EFC03E00d25789F69291",
     "abi": [
       {
         "inputs": [
+          {
+            "internalType": "string",
+            "name": "name_",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "symbol_",
+            "type": "string"
+          },
           {
             "internalType": "uint256",
             "name": "_startTime",
@@ -1304,17 +1365,12 @@
           },
           {
             "internalType": "address",
-            "name": "_communityFund",
+            "name": "_daoFund",
             "type": "address"
           },
           {
             "internalType": "address",
             "name": "_devFund",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "_team1Fund",
             "type": "address"
           }
         ],
@@ -1438,19 +1494,6 @@
       {
         "inputs": [],
         "name": "FARMING_POOL_REWARD_ALLOCATION",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "TEAM1_FUND_POOL_ALLOCATION",
         "outputs": [
           {
             "internalType": "uint256",
@@ -1856,20 +1899,7 @@
         "inputs": [
           {
             "internalType": "address",
-            "name": "_team1Fund",
-            "type": "address"
-          }
-        ],
-        "name": "setTeam1Fund",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_communityFund",
+            "name": "_daoFund",
             "type": "address"
           }
         ],
@@ -1899,45 +1929,6 @@
             "internalType": "string",
             "name": "",
             "type": "string"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "team1Fund",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "team1FundLastClaimed",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "team1FundRewardRate",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
           }
         ],
         "stateMutability": "view",
@@ -2050,19 +2041,6 @@
       },
       {
         "inputs": [],
-        "name": "unclaimedTeam1Fund",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "_pending",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
         "name": "unclaimedTreasuryFund",
         "outputs": [
           {
@@ -2077,10 +2055,21 @@
     ]
   },
   "tBond": {
-    "address": "0xa8cFe8b4e8632cF551692Ddf78B97Ff4784dF14a",
+    "address": "0x602C71e4DAC47a042Ee7f46E0aee17F94A3bA0B6",
     "abi": [
       {
-        "inputs": [],
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "name_",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "symbol_",
+            "type": "string"
+          }
+        ],
         "stateMutability": "nonpayable",
         "type": "constructor"
       },
@@ -2310,6 +2299,29 @@
       {
         "inputs": [
           {
+            "internalType": "contract IERC20",
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "_to",
+            "type": "address"
+          }
+        ],
+        "name": "governanceRecoverUnsupported",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
             "internalType": "address",
             "name": "spender",
             "type": "address"
@@ -2422,6 +2434,19 @@
             "internalType": "string",
             "name": "",
             "type": "string"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "totalBurned",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
           }
         ],
         "stateMutability": "view",
