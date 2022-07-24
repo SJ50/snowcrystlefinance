@@ -41,7 +41,7 @@ const GenLPCard = () => {
             style={{ width: '400px' }}
             variant="contained"
             component={Link}
-            to={`/farms/SnowUsdcLPWShareRewardPool/`}
+            to={`/farms/SnowUsdcLPGlcrRewardPool/`}
           >
             View
           </Button>

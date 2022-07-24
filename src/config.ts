@@ -144,11 +144,11 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 8,
     closedForStaking: true,
   },
-  SnowUsdtGenesisRewardPoolUsdcLPWShareRewardPool: {
+  SnowUsdtGenesisRewardPoolUsdcLPGlcrRewardPool: {
     name: 'Earn GLCR by SNOW-USDC LP',
     poolId: 0,
     sectionInUI: 2,
-    contract: 'SnowUsdcLPWShareRewardPool',
+    contract: 'SnowUsdcLPGlcrRewardPool',
     depositTokenName: 'SNOW-USDC-LP',
     earnTokenName: 'GLCR',
     finished: false,
@@ -166,7 +166,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 2,
     closedForStaking: false,
   },
-  /*SnowUsdcLPWShareRewardPoolUsdcLPRebate: {
+  /*SnowUsdcLPGlcrRewardPoolUsdcLPRebate: {
     name: 'Bond SNOW-USDC-LP for SNOW',
     poolId: 100,
     sectionInUI: 3,
