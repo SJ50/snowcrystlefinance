@@ -46,7 +46,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
     [stakedTokenPriceInDollars],
   );
 
-  const multiplier = bank.depositTokenName.includes('SNOW') || bank.depositTokenName.includes('WSHARE') ? 10**6 : 1;
+  const multiplier = bank.depositTokenName.includes('SNOW') || bank.depositTokenName.includes('GLCR') ? 10**6 : 1;
   const earnedInDollars = (Number(tokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9)) * multiplier).toFixed(2);
   const { onStake } = useStake(bank);
   const { onZap } = useZap(bank);
@@ -124,7 +124,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
                   </IconButton>
                   <StyledActionSpacer />
                   {
-                    bank.depositTokenName !== 'SNOW-USDC-LP' &&  bank.depositTokenName !== 'WSHARE-USDC-LP'
+                    bank.depositTokenName !== 'SNOW-USDC-LP' &&  bank.depositTokenName !== 'GLCR-USDC-LP'
                       ? null
                       : <IconButton
                           disabled={bank.closedForStaking}

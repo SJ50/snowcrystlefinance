@@ -24,13 +24,13 @@ const useBank = (contractName: ContractName): Bank => {
   if (contractName === 'PegLPNode') {
     return banks.find((bank) => bank.sectionInUI === 4 && bank.depositTokenName === 'SNOW-USDC-LP');
   } else if (contractName === 'ShareLPNode') {
-    return banks.find((bank) => bank.sectionInUI === 4 && bank.depositTokenName === 'WSHARE-USDC-LP');
+    return banks.find((bank) => bank.sectionInUI === 4 && bank.depositTokenName === 'GLCR-USDC-LP');
   }else if (contractName === 'LPSnowNode') {
     return banks.find((bank) => bank.sectionInUI === 4 && bank.depositTokenName === 'GRAPE-SNOW-LP');
   }
 
   if (contractName === 'WShareUsdcLPWShareRewardPool') {
-    return banks.find((bank) => bank.sectionInUI === 2 && bank.depositTokenName === 'WSHARE-USDC-LP');
+    return banks.find((bank) => bank.sectionInUI === 2 && bank.depositTokenName === 'GLCR-USDC-LP');
   } else if (contractName === 'SnowUsdcLPWShareRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 2 && bank.depositTokenName === 'SNOW-USDC-LP');
   } else {

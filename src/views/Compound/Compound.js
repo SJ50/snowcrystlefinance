@@ -74,8 +74,8 @@ const Compound = () => {
           <Grid item xs={12} sm={6}>
             <CompoundCard
               cardData={{
-                title: 'WSHARE-USDC.e LP',
-                tokenSymbol: 'WSHARE-USDC-LP',
+                title: 'GLCR-USDC LP',
+                tokenSymbol: 'GLCR-USDC-LP',
               }}
               buttonProps={{
                 href: 'https://magik.farm/#/avax/vault/joe-wshare-usdc',

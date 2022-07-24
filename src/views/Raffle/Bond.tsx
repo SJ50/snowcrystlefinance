@@ -93,9 +93,9 @@ const Bond: React.FC = () => {
         {!!account ? (
           <>
             <Grid item xs={12} md={12} lg={12} style={{ color: '#000' }}>
-              <h2 style={{ fontSize: '80px', textAlign: 'center' }}>Weekly WSHARE Raffle</h2>
+              <h2 style={{ fontSize: '80px', textAlign: 'center' }}>Weekly GLCR Raffle</h2>
               <p style={{ fontSize: '20px', textAlign: 'center', color: '#000' }}>
-                Every week we'll run a raffle for our community where you have the chance to win WSHARE tokens just by
+                Every week we'll run a raffle for our community where you have the chance to win GLCR tokens just by
                 sending in your freely earned SNOW rewards.<br></br> <br></br> 1 SNOW = 1 entry and there are unlimited
                 entries per address, the more SNOW you send the more chance you have to win. The winner will be chosen
                 at random.
@@ -125,7 +125,7 @@ const Bond: React.FC = () => {
               <Grid item xs={12} sm={12} lg={6}>
                 <Card style={{ color: '#000' }}>
                   <h2 style={{ textAlign: 'center', marginTop: '10px', color: '#000' }}>Raffle Stats</h2>
-                  <p style={{ textAlign: 'center' }}>Win 25 WSHARE this raffle</p>
+                  <p style={{ textAlign: 'center' }}>Win 25 GLCR this raffle</p>
                   <p style={{ textAlign: 'center' }}>SNOW Price: ${grapePrice}</p>
                   <p style={{ textAlign: 'center' }}>Total SNOW Entered: {raffleBals}</p>
                   <p style={{ textAlign: 'center' }}>Your entries: {userBals}</p>

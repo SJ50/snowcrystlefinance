@@ -47,7 +47,7 @@ const Cemetery = () => {
                     gutterBottom
                     style={{ marginTop: '-25px', marginBottom: '35px' }}
                   >
-                    WSHARE Pools
+                    GLCR Pools
                   </Typography>
                   {/* <Alert variant="filled" severity="info" style={{ marginTop: '-25px', marginBottom: '35px' }}>
                     All below pools have ended. Please unstake and stake at{' '}
@@ -62,22 +62,18 @@ const Cemetery = () => {
               </Box>
 
               <div hidden={activeBanks.filter((bank) => bank.sectionInUI === 0).length === 0}>
-                  <Typography variant="h4" gutterBottom style={{marginTop: '20px', color: '5#A381A'}}>
-                    Genesis Pools
-                  </Typography>
-                  {
-                    config.baseLaunchDate.getTime() + 48 * 60 * 60 * 1000 < new Date().getTime()
-                      ? (
-                          <Alert variant="filled" severity="error" >
-                            Genesis pools have ended. Please claim all rewards and remove funds from Genesis pools.
-                          </Alert>
-                        )
-                      : null
-                  }
-                  <Grid container spacing={3} style={{marginTop: '20px'}}>
-                    <GenesisCard />
-                  </Grid>
-                </div>
+                <Typography variant="h4" gutterBottom style={{ marginTop: '20px', color: '5#A381A' }}>
+                  Genesis Pools
+                </Typography>
+                {config.baseLaunchDate.getTime() + 48 * 60 * 60 * 1000 < new Date().getTime() ? (
+                  <Alert variant="filled" severity="error">
+                    Genesis pools have ended. Please claim all rewards and remove funds from Genesis pools.
+                  </Alert>
+                ) : null}
+                <Grid container spacing={3} style={{ marginTop: '20px' }}>
+                  <GenesisCard />
+                </Grid>
+              </div>
             </Container>
           ) : (
             <UnlockWallet />

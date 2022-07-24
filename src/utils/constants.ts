@@ -1,5 +1,5 @@
 export const TOMB_TICKER = 'SNOW';
-export const TSHARE_TICKER = 'WSHARE';
+export const TSHARE_TICKER = 'GLCR';
 export const TBOND_TICKER = 'WBOND';
 export const FTM_TICKER = 'USDC';
 export const WFTM_TICKER = 'USDC';

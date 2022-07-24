@@ -11,7 +11,7 @@ import useStatsForPool from '../../hooks/useStatsForPool';
 
 const CemeteryCard = () => {
   const tombFtmLpStats = useLpStats('SNOW-USDC-LP');
-  const tShareFtmLpStats = useLpStats('WSHARE-USDC-LP');
+  const tShareFtmLpStats = useLpStats('GLCR-USDC-LP');
   // const snoSnoShareLpStats = useLpStats('SNO-SNOSHARE-LP');
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
   const tshareLPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);
@@ -85,13 +85,13 @@ const CemeteryCard = () => {
           >
             <div>
               <Typography variant="h5" component="h2">
-                WSHARE-USDC.e LP
+                GLCR-USDC LP
               </Typography>
-              <TokenSymbol size={60} symbol="WSHARE-USDC-LP" />
+              <TokenSymbol size={60} symbol="GLCR-USDC-LP" />
             </div>
             <div>
               <span style={{ fontSize: '23px' }}>
-                {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} WSHARE /{' '}
+                {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} GLCR /{' '}
                 {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} USDC.e
               </span>
 
@@ -138,14 +138,14 @@ const CemeteryCard = () => {
           >
             <div>
               <Typography variant="h5" component="h2">
-                SNOW-WSHARE-LP
+                SNOW-GLCR-LP
               </Typography>
-              <TokenSymbol symbol="SNOW-WSHARE-LP" size={60} />
+              <TokenSymbol symbol="SNOW-GLCR-LP" size={60} />
             </div>
             <div>
               <span style={{ fontSize: '23px' }}>
                 {snoSnoShareLPStats?.ftmAmount ? snoSnoShareLPStats?.ftmAmount : '-.--'} SNOW /{' '}
-                {snoSnoShareLPStats?.tokenAmount ? snoSnoShareLPStats?.tokenAmount : '-.--'} WSHARE
+                {snoSnoShareLPStats?.tokenAmount ? snoSnoShareLPStats?.tokenAmount : '-.--'} GLCR
               </span>
               <Box>${snoSnoShareLPStats?.priceOfOne ? snoSnoShareLPStats.priceOfOne : '-.--'}</Box>
               <span style={{ fontSize: '12px' }}>

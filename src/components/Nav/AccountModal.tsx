@@ -35,10 +35,10 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
         </StyledBalanceWrapper>
 
         <StyledBalanceWrapper>
-          <TokenSymbol symbol="WSHARE" />
+          <TokenSymbol symbol="GLCR" />
           <StyledBalance>
             <StyledValue>{displayTshareBalance}</StyledValue>
-            <Label text="WSHARE Available" />
+            <Label text="GLCR Available" />
           </StyledBalance>
         </StyledBalanceWrapper>
 

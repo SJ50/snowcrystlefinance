@@ -115,8 +115,8 @@ const CemeteryCard = ({ bank }) => {
             onClick={approve}
           >
             Approve{' '}
-            {bank.depositTokenName === 'WSHARE-USDC-LP'
-              ? 'WSHARE-USDC.e LP'
+            {bank.depositTokenName === 'GLCR-USDC-LP'
+              ? 'GLCR-USDC LP'
               : bank.depositTokenName === 'SNOW-USDC-LP'
               ? 'SNOW-USDC LP'
               : ''}

@@ -129,7 +129,7 @@ const Bank: React.FC = () => {
     pairName = 'TOMB-AVAX pair';
     uniswapUrl = 'https://app.pangolin.exchange/#/add/AVAX/' + tombAddr;
   } else {
-    pairName = 'WSHARE-AVAX pair';
+    pairName = 'GLCR-AVAX pair';
     uniswapUrl = 'https://app.pangolin.exchange/#/add/AVAX/' + tshareAddr;
   }
   return (

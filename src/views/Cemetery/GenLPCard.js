@@ -8,7 +8,7 @@ import useLpStats from '../../hooks/useLpStats';
 
 const GenLPCard = () => {
   const tombFtmLpStats = useLpStats('SNOW-USDC-LP');
-  const tShareFtmLpStats = useLpStats('WSHARE-USDC-LP');
+  const tShareFtmLpStats = useLpStats('GLCR-USDC-LP');
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
   const tshareLPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);
   return (

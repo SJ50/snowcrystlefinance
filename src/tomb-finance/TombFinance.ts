@@ -59,7 +59,7 @@ export class TombFinance {
       this.externalTokens[symbol] = new ERC20(address, provider, symbol, decimal);
     }
     this.TOMB = new ERC20(deployments.tomb.address, provider, 'SNOW');
-    this.TSHARE = new ERC20(deployments.tShare.address, provider, 'WSHARE');
+    this.TSHARE = new ERC20(deployments.tShare.address, provider, 'GLCR');
     this.TBOND = new ERC20(deployments.tBond.address, provider, 'WBOND');
     this.FTM = this.externalTokens['USDC'];
     this.WAVAX = this.externalTokens['WAVAX'];
@@ -469,13 +469,13 @@ export class TombFinance {
     const priceOfOneFtmInDollars = await this.getWFTMPriceFromPancakeswap();
     if (tokenName === 'SNOW') {
       tokenPrice = (await this.getTombStat()).priceInDollars;
-    } if (tokenName === 'WSHARE') {
+    } if (tokenName === 'GLCR') {
       tokenPrice = (await this.getShareStat()).priceInDollars;
     } else if (!tokenName.includes('-LP')) {
       tokenPrice = (await this.getTokenStat(tokenName)).priceInDollars;
     } else if (tokenName === 'SNOW-USDC-LP') {
       tokenPrice = await this.getLPTokenPrice(token, this.TOMB, true);
-    } else if (tokenName === 'WSHARE-USDC-LP') {
+    } else if (tokenName === 'GLCR-USDC-LP') {
       tokenPrice = await this.getLPTokenPrice(token, this.TSHARE, false);
     } else if (tokenName === 'GRAPE-SNOW-LP') {
       tokenPrice = await this.getLPTokenPrice(token, this.TOMB, true);
@@ -574,7 +574,7 @@ export class TombFinance {
     // const stat = isTomb === true ? await this.getTombStat() : await this.getShareStat();
     const stat = await this.getTokenStat(token.symbol);
     const priceOfToken = stat.priceInDollars;
-    const divider = ['SNOW', 'WSHARE', 'USDC', 'USDT'].includes(token.symbol) ? 10**6 : 1;
+    const divider = ['SNOW', 'GLCR', 'USDC', 'USDT'].includes(token.symbol) ? 10**6 : 1;
     const tokenInLP = Number(tokenSupply) / Number(totalSupply) / divider;  // NOTE: hot fix
     const tokenPrice = (Number(priceOfToken) * tokenInLP * 2) //We multiply by 2 since half the price of the lp token is the price of each piece of the pair. So twice gives the total
       .toString();
@@ -589,7 +589,7 @@ export class TombFinance {
         return this.getUsdcStat();
       case 'SNOW':
         return this.getTombStat();
-      case 'WSHARE':
+      case 'GLCR':
         return this.getShareStat();
       case 'DIBS':
         return this.getDibsStat();
@@ -761,7 +761,7 @@ export class TombFinance {
       if (earnTokenName === 'SNOW-USDC-LP' && poolName.includes('Node')) {
         return await pool.getTotalRewards(account);
       }
-      if (earnTokenName === 'WSHARE-USDC-LP' && poolName.includes('Node')) {
+      if (earnTokenName === 'GLCR-USDC-LP' && poolName.includes('Node')) {
         return await pool.getTotalRewards(account);
       }
       if (earnTokenName === 'GRAPE-SNOW-LP' && poolName.includes('Node')) {
@@ -967,7 +967,7 @@ export class TombFinance {
 
   async stakeShareToMasonry(amount: string): Promise<TransactionResponse> {
     if (this.isOldMasonryMember()) {
-      throw new Error("you're using old boardroom. please withdraw and deposit the WSHARE again.");
+      throw new Error("you're using old boardroom. please withdraw and deposit the GLCR again.");
     }
     const Masonry = this.currentMasonry();
     return await Masonry.stake(decimalToBalance(amount));
@@ -1080,7 +1080,7 @@ export class TombFinance {
     if (assetName === 'SNOW') {
       asset = this.TOMB;
       assetUrl = 'https://gateway.pinata.cloud/ipfs/QmVL6cK5iUmkfGhw41s4gCksHn4H4KoF2tnEin2fhbEMmQ';
-    } else if (assetName === 'WSHARE') {
+    } else if (assetName === 'GLCR') {
       asset = this.TSHARE;
       assetUrl = 'https://gateway.pinata.cloud/ipfs/QmSkdqbueZTKDjb2oqKo6bEcn6qenA9Z6iiSNR1omHGVZx';
     } else if (assetName === 'WBOND') {

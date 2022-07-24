@@ -70,7 +70,7 @@ const Home = () => {
   const classes = useStyles();
   const TVL = useTotalValueLocked();
   const tombFtmLpStats = useLpStats('SNOW-USDC-LP');
-  const tShareFtmLpStats = useLpStats('WSHARE-USDC-LP');
+  const tShareFtmLpStats = useLpStats('GLCR-USDC-LP');
   const tombStats = useTombStats();
   const tShareStats = usetShareStats();
   const tBondStats = useBondStats();
@@ -210,10 +210,10 @@ const Home = () => {
                   </StyledBalance>
                 </StyledBalanceWrapper>
                 <StyledBalanceWrapper>
-                  <TokenSymbol symbol="WSHARE" />
+                  <TokenSymbol symbol="GLCR" />
                   <StyledBalance>
                     <StyledValue>{displayTShareBalance}</StyledValue>
-                    <Label text="WSHARE available" variant="noraml" />
+                    <Label text="GLCR available" variant="noraml" />
                     <span style={{ fontSize: '15px', marginLeft: '2%' }}>
                       (${tShareBalanceInDollars ? tShareBalanceInDollars : '-.----'})
                     </span>
@@ -346,13 +346,13 @@ const Home = () => {
         <Grid item xs={12} sm={6}>
           <Card>
             <CardContent align="center">
-              <h2>WSHARE-USDC.e LP</h2>
+              <h2>GLCR-USDC LP</h2>
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
-                <TokenSymbol size={50} symbol="WSHARE-USDC-LP" />
+                <TokenSymbol size={50} symbol="GLCR-USDC-LP" />
               </div>
               <Box mt={2}>
                 <span style={{ fontSize: '26px' }}>
-                  {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} WSHARE /{' '}
+                  {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} GLCR /{' '}
                   {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} USDC.e
                 </span>
               </Box>
@@ -464,9 +464,9 @@ const Home = () => {
           <Card>
             <CardContent style={{ position: 'relative' }}>
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
-                <TokenSymbol symbol="WSHARE" size={50} />
+                <TokenSymbol symbol="GLCR" size={50} />
               </div>
-              <h2 align="center">WSHARE</h2>
+              <h2 align="center">GLCR</h2>
               <p align="center">Current Price</p>
               <Box align="center">
                 <span style={{ fontSize: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
