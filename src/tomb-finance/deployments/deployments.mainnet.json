@@ -9200,7 +9200,7 @@
       }
     ]
   },
-  "WShareRewardPool": {
+  "GlcrRewardPool": {
     "address": "0x752FEacFdA5c3B440Fd6D40ECf338a86b568c2d2",
     "abi": [
       {

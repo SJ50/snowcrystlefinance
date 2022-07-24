@@ -177,7 +177,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 1,
     closedForStaking: false,
   },
-  WShareUsdcJoeLPRebate: {
+  GlcrUsdcJoeLPRebate: {
     name: 'Bond GLCR-USDC-LP for SNOW',
     poolId: 100,
     sectionInUI: 3,

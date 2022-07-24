@@ -291,12 +291,12 @@ export class TombFinance {
    * CirculatingSupply (always equal to total supply for bonds)
    */
   async getShareStat(): Promise<TokenStat> {
-    const { WShareRewardPool } = this.contracts;
+    const { GlcrRewardPool } = this.contracts;
 
     const supply = await this.TSHARE.totalSupply();
 
     const priceInFTM = await this.getTokenPriceFromPancakeswap(this.TSHARE);
-    const tombRewardPoolSupply = await this.TSHARE.balanceOf(WShareRewardPool.address);
+    const tombRewardPoolSupply = await this.TSHARE.balanceOf(GlcrRewardPool.address);
     const tShareCirculatingSupply = supply.sub(tombRewardPoolSupply);
     const priceOfOneFTM = await this.getWFTMPriceFromPancakeswap();
     const priceOfSharesInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(2);
