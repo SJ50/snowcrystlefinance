@@ -9,7 +9,7 @@ const useWithdrawFromMasonry = () => {
   const handleWithdraw = useCallback(
     (amount: string) => {
       handleTransactionReceipt(
-        tombFinance.withdraGlcrFromMasonry(amount),
+        tombFinance.withdrawShareFromMasonry(amount),
         `Withdraw ${amount} GLCR from the boardroom`,
       );
     },
