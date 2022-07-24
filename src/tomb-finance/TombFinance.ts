@@ -327,11 +327,13 @@ export class TombFinance {
 
   async getTombPriceInLastTWAP(): Promise<BigNumber> {
     const { Treasury } = this.contracts;
+    // TODO: update function name after abi change
     return Treasury.getWlrsUpdatedPrice();
   }
 
   async getBondsPurchasable(): Promise<BigNumber> {
     const { Treasury } = this.contracts;
+    // TODO: update function name after abi change
     return Treasury.getBurnableWlrsLeft();
   }
 
@@ -422,6 +424,7 @@ export class TombFinance {
   ) {
     if (earnTokenName === 'SNOW') {
       if (contractName.endsWith('GenesisRewardPool')) {
+        // TODO: update function name after abi change
         const rewardPerSecond = await poolContract.wlrsPerSecond();
         // if (depositTokenName === 'WAVAX') {
         //   return rewardPerSecond.mul(6000).div(11000).div(24);
@@ -504,6 +507,7 @@ export class TombFinance {
    */
   async buyBonds(amount: string | number): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
+    // TODO: update function name after abi change
     const treasuryTombPrice = await Treasury.getWlrsPrice();
     return await Treasury.buyBonds(decimalToBalance(amount), treasuryTombPrice);
   }
@@ -514,6 +518,7 @@ export class TombFinance {
    */
   async redeemBonds(amount: string): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
+    // TODO: update function name after abi change
     const priceForTomb = await Treasury.getWlrsPrice();
     return await Treasury.redeemBonds(decimalToBalance(amount), priceForTomb);
   }
@@ -763,6 +768,7 @@ export class TombFinance {
         return await pool.getTotalRewards(account);
       }
       if (earnTokenName === 'SNOW') {
+        // TODO: update function name after abi change
         return await pool.pendingWLRS(poolId, account);
       } else {
         return await pool.pendingShare(poolId, account);
@@ -1252,6 +1258,7 @@ export class TombFinance {
     const { TShareSwapper } = this.contracts;
     const tshareBalanceBN = await TShareSwapper.getTShareBalance();
     const tbondBalanceBN = await TShareSwapper.getTBondBalance(address);
+    // TODO: update function name after abi change
     // const tombPriceBN = await TShareSwapper.getWlrsPrice();
     // const tsharePriceBN = await TShareSwapper.getTSharePrice();
     const rateTSharePerTombBN = await TShareSwapper.getTShareAmountPerTomb();
