@@ -155,11 +155,11 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 1,
     closedForStaking: false,
   },
-  WShareUsdcLPWShareRewardPool: {
+  GlcrUsdcLPGlcrRewardPool: {
     name: 'Earn GLCR by GLCR-USDC LP',
     poolId: 1,
     sectionInUI: 2,
-    contract: 'WShareUsdcLPWShareRewardPool',
+    contract: 'GlcrUsdcLPGlcrRewardPool',
     depositTokenName: 'GLCR-USDC-LP',
     earnTokenName: 'GLCR',
     finished: false,

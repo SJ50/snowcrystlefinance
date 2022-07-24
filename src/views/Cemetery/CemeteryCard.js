@@ -19,7 +19,7 @@ const CemeteryCard = () => {
   const tombBank = useBank('SnowUsdcLPGlcrRewardPool');
   const tombStatsOnPool = useStatsForPool(tombBank);
 
-  const tShareBank = useBank('WShareUsdcLPWShareRewardPool');
+  const tShareBank = useBank('GlcrUsdcLPGlcrRewardPool');
   const tShareStatsOnPool = useStatsForPool(tShareBank);
 
   // const snoSnoShareLPStats = useMemo(() => (snoSnoShareLpStats ? snoSnoShareLpStats : null), [snoSnoShareLpStats]);
@@ -115,7 +115,7 @@ const CemeteryCard = () => {
               style={{ width: '150px', height: '45px', marginBottom: '5%' }}
               variant="contained"
               component={Link}
-              to={`/farms/WShareUsdcLPWShareRewardPool/`}
+              to={`/farms/GlcrUsdcLPGlcrRewardPool/`}
             >
               Farm
             </Button>
