@@ -24,7 +24,7 @@ const GenLPCard = () => {
           <Box mt={2}></Box>
           <Box mt={2}>
             <span style={{ fontSize: '26px' }}>
-              {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} WLRS /{' '}
+              {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} SNOW /{' '}
               {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} USDC.e
             </span>
           </Box>

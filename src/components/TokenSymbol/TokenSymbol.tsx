@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Graveyard ecosystem logos
-import tombLogo from '../../assets/img/SVG_Icons_and_web_bg/WLRS-Icon-01.svg';
+import tombLogo from '../../assets/img/SVG_Icons_and_web_bg/SNOW-Icon-01.svg';
 import tShareLogo from '../../assets/img/SVG_Icons_and_web_bg/WSHARE-Icon-01.svg';
 import tombLogoPNG from '../../assets/img/sno.png';
 import tShareLogoPNG from '../../assets/img/snoshare.png';
@@ -34,7 +34,7 @@ const logosBySymbol: { [title: string]: string } = {
   WSHARE: tShareLogo,
   WBOND: tBondLogo,
   WFTM: wftmLogo,
-  WLRS: tombLogo,
+  SNOW: tombLogo,
   BOO: booLogo,
   SHIBA: shibaLogo,
   ZOO: zooLogo,
@@ -48,7 +48,7 @@ const logosBySymbol: { [title: string]: string } = {
   USDC: usdcLogoPNG,
   'SNOW-USDC-LP': tombFtmLpLogo,
   'WSHARE-USDC-LP': tshareFtmLpLogo,
-  'GRAPE-WLRS-LP': grapeWlrsLP,
+  'GRAPE-SNOW-LP': grapeWlrsLP,
   'SNO-SNOSHARE-LP': tshareFtmLpLogo,
 };
 
@@ -60,7 +60,7 @@ type LogoProps = {
 const TokenSymbol: React.FC<LogoProps> = ({ symbol, size = 90 }) => {
   if (!logosBySymbol[symbol]) {
     throw new Error(`Invalid Token Logo symbol: ${symbol}`);
-  }if(symbol === 'GRAPE-WLRS-LP'){
+  }if(symbol === 'GRAPE-SNOW-LP'){
     return <img src={logosBySymbol[symbol]} alt={`${symbol} Logo`} width={95} height={60} />;
   }else{
     return (

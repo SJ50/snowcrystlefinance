@@ -92,7 +92,7 @@ const SnowyNode = () => {
               <Card className={classes.gridItem} style={{background: '#161414', borderRadius: '15px', height: '100px' }}>
                 <CardContent style={{textAlign: 'center'}}>
                   <Typography style={{color: '#5686d6'}}>Amount Claimed</Typography>
-                  <Typography>{bank.depositTokenName === 'GRAPE-WLRS-LP' ? (Number(userDetails.total_claims)/1e18).toFixed(3) : (Number(userDetails.total_claims)/1e18).toFixed(10)} </Typography>
+                  <Typography>{bank.depositTokenName === 'GRAPE-SNOW-LP' ? (Number(userDetails.total_claims)/1e18).toFixed(3) : (Number(userDetails.total_claims)/1e18).toFixed(10)} </Typography>
                 </CardContent>
               </Card>
             </Grid>
@@ -142,12 +142,12 @@ const SnowyNode = () => {
                   {<Stake bank={bank} />}
                   </StyledCardWrapper>
                 </StyledCardsWrapper>
-                {bank.depositTokenName === 'GRAPE-WLRS-LP' ?
+                {bank.depositTokenName === 'GRAPE-SNOW-LP' ?
                 <Card style={{borderRadius: '15px', marginTop: '20px'}}>
                   <CardContent style={{background: 'linear-gradient(90deg, #8fbdeb 14%, #a2c8ee 100%)', borderRadius: '15px'}}>
                     <StyledLink href={'https://traderjoexyz.com/pool/0x395908aeb53d33a9b8ac35e148e9805d34a555d3/0x5541d83efad1f281571b343977648b75d95cdac2'} rel="noopener noreferrer" target="_blank">
                       <span style={{color: '#fff'}}>
-                        Provide liquidity for GRAPE-WLRS on Joe
+                        Provide liquidity for GRAPE-SNOW on Joe
                       </span>     
                     </StyledLink>
                   </CardContent>

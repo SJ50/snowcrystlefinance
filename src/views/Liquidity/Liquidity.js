@@ -49,7 +49,7 @@ const ProvideLiquidity = () => {
     }
     if (!isNumeric(e.currentTarget.value)) return;
     setTombAmount(e.currentTarget.value);
-    const quoteFromSpooky = await tombFinance.quoteFromSpooky(e.currentTarget.value, 'WLRS');
+    const quoteFromSpooky = await tombFinance.quoteFromSpooky(e.currentTarget.value, 'SNOW');
     setFtmAmount(quoteFromSpooky);
     setLpTokensAmount(quoteFromSpooky / tombLPStats.ftmAmount);
   };
@@ -66,7 +66,7 @@ const ProvideLiquidity = () => {
     setLpTokensAmount(quoteFromSpooky / tombLPStats.tokenAmount);
   };
   const handleTombSelectMax = async () => {
-    const quoteFromSpooky = await tombFinance.quoteFromSpooky(getDisplayBalance(tombBalance), 'WLRS');
+    const quoteFromSpooky = await tombFinance.quoteFromSpooky(getDisplayBalance(tombBalance), 'SNOW');
     setTombAmount(getDisplayBalance(tombBalance));
     setFtmAmount(quoteFromSpooky);
     setLpTokensAmount(quoteFromSpooky / tombLPStats.ftmAmount);
@@ -107,7 +107,7 @@ const ProvideLiquidity = () => {
                           onChange={handleTombChange}
                           value={tombAmount}
                           max={getDisplayBalance(tombBalance)}
-                          symbol={'WLRS'}
+                          symbol={'SNOW'}
                         ></TokenInput>
                       </Grid>
                       <Grid item xs={12}>

@@ -48,7 +48,7 @@ const Bank: React.FC = () => {
         subtitle={`Deposit ${bank?.depositTokenName === 'USDC' || bank?.depositTokenName === 'USDT' ? bank?.depositTokenName + '.e' : bank?.depositTokenName.replace('USDC', 'USDC.e')} and earn ${bank?.earnTokenName}`}
         title={bank?.name}
       />
-      {bank?.depositTokenName === 'WLRS' && Date.now() < 1646510400000 ? (
+      {bank?.depositTokenName === 'SNOW' && Date.now() < 1646510400000 ? (
         <Alert
           variant="filled"
           severity="info"

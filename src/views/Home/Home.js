@@ -171,7 +171,7 @@ const Home = () => {
                   <TokenSymbol symbol="TOMB" />
                   <StyledBalance>
                     <StyledValue>{displayTombBalance}</StyledValue>
-                    <Label text="WLRS available" variant="noraml" />
+                    <Label text="SNOW available" variant="noraml" />
                     <span style={{ fontSize: '15px', marginLeft: '2%' }}>
                       (${tombBalanceInDollars ? tombBalanceInDollars : '-.----'})
                     </span>
@@ -326,7 +326,7 @@ const Home = () => {
               </div>
               <Box mt={2}>
                 <span style={{ fontSize: '26px' }}>
-                  {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} WLRS /{' '}
+                  {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} SNOW /{' '}
                   {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} USDC.e
                 </span>
               </Box>
@@ -419,7 +419,7 @@ const Home = () => {
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
                 <TokenSymbol symbol="TOMB" size={50} />
               </div>
-              <h2 align="center">WLRS</h2>
+              <h2 align="center">SNOW</h2>
               <p align="center">Current Price</p>
               <Box align="center">
                 <span style={{ fontSize: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

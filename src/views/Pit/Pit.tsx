@@ -41,7 +41,7 @@ const Pit: React.FC = () => {
     async (amount: string) => {
       const tx = await tombFinance.buyBonds(amount);
       addTransaction(tx, {
-        summary: `Buy ${Number(amount).toFixed(2)} WBOND with ${amount} WLRS`,
+        summary: `Buy ${Number(amount).toFixed(2)} WBOND with ${amount} SNOW`,
       });
     },
     [tombFinance, addTransaction],
@@ -71,12 +71,12 @@ const Pit: React.FC = () => {
                 <ExchangeCard
                   action="Purchase"
                   fromToken={tombFinance.TOMB}
-                  fromTokenName="WLRS"
+                  fromTokenName="SNOW"
                   toToken={tombFinance.TBOND}
                   toTokenName="WBOND"
                   priceDesc={
                     !isBondPurchasable
-                      ? 'WLRS is over peg'
+                      ? 'SNOW is over peg'
                       : getDisplayBalance(bondsPurchasable, 18, 4) + ' WBONDs available for purchase'
                   }
                   onExchange={handleBuyBonds}
@@ -85,14 +85,14 @@ const Pit: React.FC = () => {
               </StyledCardWrapper>
               <StyledStatsWrapper>
                 <ExchangeStat
-                  tokenName="WLRS"
+                  tokenName="SNOW"
                   description="Last-Hour TWAP Price"
                   price={getDisplayBalance(cashPrice, 18, 4)}
                 />
                 <Spacer size="md" />
                 <ExchangeStat
                   tokenName="WBOND"
-                  description="Current Price: (WLRS)^2"
+                  description="Current Price: (SNOW)^2"
                   price={Number(bondStat?.tokenInFtm).toFixed(2) || '-'}
                 />
               </StyledStatsWrapper>
@@ -102,11 +102,11 @@ const Pit: React.FC = () => {
                   fromToken={tombFinance.TBOND}
                   fromTokenName="WBOND"
                   toToken={tombFinance.TOMB}
-                  toTokenName="WLRS"
+                  toTokenName="SNOW"
                   priceDesc={`${getDisplayBalance(bondBalance)} WBONDs Available in wallet`}
                   onExchange={handleRedeemBonds}
                   disabled={!bondStat || bondBalance.eq(0) || !isBondRedeemable}
-                  disabledDescription={!isBondRedeemable ? `Enabled when WLRS > ${BOND_REDEEM_PRICE} USDC` : null}
+                  disabledDescription={!isBondRedeemable ? `Enabled when SNOW > ${BOND_REDEEM_PRICE} USDC` : null}
                 />
               </StyledCardWrapper>
             </StyledBond>

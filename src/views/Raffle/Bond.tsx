@@ -80,7 +80,7 @@ const Bond: React.FC = () => {
     async (amount: string) => {
       const tx = await grapeFinance.sendTomb(amount, raffleAddress);
       addTransaction(tx, {
-        summary: `Send ${Number(amount).toFixed(2)} WLRS to the raffle ${amount} `,
+        summary: `Send ${Number(amount).toFixed(2)} SNOW to the raffle ${amount} `,
       });
     },
     [grapeFinance, addTransaction],
@@ -96,8 +96,8 @@ const Bond: React.FC = () => {
               <h2 style={{ fontSize: '80px', textAlign: 'center' }}>Weekly WSHARE Raffle</h2>
               <p style={{ fontSize: '20px', textAlign: 'center', color: '#000' }}>
                 Every week we'll run a raffle for our community where you have the chance to win WSHARE tokens just by
-                sending in your freely earned WLRS rewards.<br></br> <br></br> 1 WLRS = 1 entry and there are unlimited
-                entries per address, the more WLRS you send the more chance you have to win. The winner will be chosen
+                sending in your freely earned SNOW rewards.<br></br> <br></br> 1 SNOW = 1 entry and there are unlimited
+                entries per address, the more SNOW you send the more chance you have to win. The winner will be chosen
                 at random.
               </p>
               <p style={{ fontSize: '20px', textAlign: 'center', color: '#000' }}>Raffle address: {raffleAddress}</p>
@@ -126,8 +126,8 @@ const Bond: React.FC = () => {
                 <Card style={{ color: '#000' }}>
                   <h2 style={{ textAlign: 'center', marginTop: '10px', color: '#000' }}>Raffle Stats</h2>
                   <p style={{ textAlign: 'center' }}>Win 25 WSHARE this raffle</p>
-                  <p style={{ textAlign: 'center' }}>WLRS Price: ${grapePrice}</p>
-                  <p style={{ textAlign: 'center' }}>Total WLRS Entered: {raffleBals}</p>
+                  <p style={{ textAlign: 'center' }}>SNOW Price: ${grapePrice}</p>
+                  <p style={{ textAlign: 'center' }}>Total SNOW Entered: {raffleBals}</p>
                   <p style={{ textAlign: 'center' }}>Your entries: {userBals}</p>
                   <p style={{ textAlign: 'center' }}>Your account: {account}</p>
                 </Card>
@@ -138,12 +138,12 @@ const Bond: React.FC = () => {
                     <ExchangeCard
                       action="Enter Raffle"
                       fromToken={grapeFinance.TOMB}
-                      fromTokenName="WLRS"
+                      fromTokenName="SNOW"
                       toToken={grapeFinance.TBOND}
                       toTokenName="TBOND"
                       priceDesc={
                         Date.now() < endTime && Date.now() > startTime
-                          ? 'Raffle is open! 1 WLRS = 1 Entry'
+                          ? 'Raffle is open! 1 SNOW = 1 Entry'
                           : 'Raffle is currently closed'
                       }
                       disabled={Date.now() < endTime && Date.now() > startTime ? false : true}

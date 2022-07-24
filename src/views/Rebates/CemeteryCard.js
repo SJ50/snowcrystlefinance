@@ -102,7 +102,7 @@ const CemeteryCard = ({ bank }) => {
           <div className={classes.black}>
             Bond&nbsp;{bank.depositTokenName.replace('USDC', 'USDC.e')}
             <br />
-            Earn WLRS
+            Earn SNOW
           </div>
         </Box>
       </CardContent>

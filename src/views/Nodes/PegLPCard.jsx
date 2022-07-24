@@ -36,7 +36,7 @@ const PegLPCard = ({}) => {
             SNOW-USDC LP Node
             </Typography>
             <Typography color="#322f32">
-              Lock your WLRS LP to earn daily yields<br></br>
+              Lock your SNOW LP to earn daily yields<br></br>
               <b>Daily APR:</b> {statsOnPool?.dailyAPR}%<br></br>
               <b>Yearly APR:</b> {statsOnPool?.yearlyAPR}%
             </Typography>

@@ -39,7 +39,7 @@ const CemeteryCard = () => {
             </div>
             <div>
               <span style={{ fontSize: '23px' }}>
-                {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} WLRS /{' '}
+                {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} SNOW /{' '}
                 {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} USDC.e
               </span>
               <Box>${tombLPStats?.priceOfOne ? tombLPStats.priceOfOne : '-.--'}</Box>
@@ -138,13 +138,13 @@ const CemeteryCard = () => {
           >
             <div>
               <Typography variant="h5" component="h2">
-                WLRS-WSHARE-LP
+                SNOW-WSHARE-LP
               </Typography>
-              <TokenSymbol symbol="WLRS-WSHARE-LP" size={60} />
+              <TokenSymbol symbol="SNOW-WSHARE-LP" size={60} />
             </div>
             <div>
               <span style={{ fontSize: '23px' }}>
-                {snoSnoShareLPStats?.ftmAmount ? snoSnoShareLPStats?.ftmAmount : '-.--'} WLRS /{' '}
+                {snoSnoShareLPStats?.ftmAmount ? snoSnoShareLPStats?.ftmAmount : '-.--'} SNOW /{' '}
                 {snoSnoShareLPStats?.tokenAmount ? snoSnoShareLPStats?.tokenAmount : '-.--'} WSHARE
               </span>
               <Box>${snoSnoShareLPStats?.priceOfOne ? snoSnoShareLPStats.priceOfOne : '-.--'}</Box>
@@ -184,7 +184,7 @@ const CemeteryCard = () => {
           >
             <div>
               <Typography variant="h5" component="h2">
-                WLRS
+                SNOW
               </Typography>
               <TokenSymbol symbol="SNO" size={60} />
             </div>
@@ -215,7 +215,7 @@ const CemeteryCard = () => {
               variant="contained"
               href="https://traderjoexyz.com/trade?inputCurrency=0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd&outputCurrency=0x1fE4869f2C5181b9CD780a7E16194FA2c4C4293D"
             >
-              Buy WLRS
+              Buy SNOW
             </Button>
           </CardActions>
         </Card>

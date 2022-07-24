@@ -30,10 +30,10 @@ const GrapeLPCard = ({}) => {
                 justifyContent: 'center',
               }}
             >
-              <TokenSymbol  width={100} height={50} symbol={'GRAPE-WLRS-LP'} />
+              <TokenSymbol  width={100} height={50} symbol={'GRAPE-SNOW-LP'} />
             </Box>
             <Typography variant="h5" component="h2">
-            GRAPE-WLRS LP Node
+            GRAPE-SNOW LP Node
             </Typography>
             <Typography color="#322f32">
               Lock your LP to earn daily yields<br></br>

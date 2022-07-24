@@ -1,4 +1,4 @@
-export const TOMB_TICKER = 'WLRS';
+export const TOMB_TICKER = 'SNOW';
 export const TSHARE_TICKER = 'WSHARE';
 export const TBOND_TICKER = 'WBOND';
 export const FTM_TICKER = 'USDC';

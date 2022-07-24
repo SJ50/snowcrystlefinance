@@ -81,7 +81,7 @@ const Cemetery = () => {
 
   async function updateVesting() {
     if (!window.ethereum) return;
-    const address = tombFinance.myAccount;// (await window.ethereum.request({ method: 'eth_accounts' }))[0];
+    const address = tombFinance.myAccount; // (await window.ethereum.request({ method: 'eth_accounts' }))[0];
     if (!address) return;
 
     const claimable = await rebateStats.RebateTreasury.methods.claimableTomb(address).call();
@@ -116,11 +116,11 @@ const Cemetery = () => {
           {!!account ? (
             <Grid container direction="column" style={{ alignItems: 'center' }} spacing={5}>
               <Grid item>
-                <Typography variant="h3">WLRSDAO</Typography>
+                <Typography variant="h3">SNOWDAO</Typography>
               </Grid>
               <Grid item>
                 <Alert variant="filled" severity="info" icon={false} style={{ textAlign: 'center' }}>
-                  WLRS rewards from bonds are vested for 7 days linearly.
+                  SNOW rewards from bonds are vested for 7 days linearly.
                 </Alert>
               </Grid>
               <Grid item container md={10} spacing={5} style={{ justifyContent: 'center' }}>
@@ -128,7 +128,7 @@ const Cemetery = () => {
                   <Card>
                     <CardContent style={{ display: 'flex', justifyContent: 'space-between' }}>
                       <Typography variant="h5" component="p">
-                        WLRS Price <small>(TWAP)</small>
+                        SNOW Price <small>(TWAP)</small>
                       </Typography>
                       <Typography variant="h6" component="p">
                         {tombPriceInFTM ? tombPriceInFTM : '-.----'} USDC.e
@@ -166,7 +166,7 @@ const Cemetery = () => {
                   <Card>
                     <CardContent align="center">
                       <Typography variant="h5" component="p">
-                        WLRS Vesting
+                        SNOW Vesting
                       </Typography>
                       <Typography variant="h6" component="p">
                         {vested.toFixed(4)} Total Vested
