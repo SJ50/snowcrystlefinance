@@ -112,7 +112,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     closedForStaking: true,
   },
   SnowAvaxGenesisRewardPoolUsdcGenesisRewardPool: {
-    name: 'Earn SNOW by USDC.e',
+    name: 'Earn SNOW by USDC',
     poolId: 0,
     sectionInUI: 0,
     contract: 'SnowUsdcGenesisRewardPool',
@@ -200,7 +200,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     closedForStaking: false,
   },
   UsdcJoeLPRebate: {
-    name: 'Bond USDC.e for SNOW',
+    name: 'Bond USDC for SNOW',
     poolId: 100,
     sectionInUI: 3,
     contract: 'RebateTreasury',

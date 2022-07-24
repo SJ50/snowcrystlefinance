@@ -327,7 +327,7 @@ const Home = () => {
               <Box mt={2}>
                 <span style={{ fontSize: '26px' }}>
                   {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} SNOW /{' '}
-                  {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} USDC.e
+                  {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} USDC
                 </span>
               </Box>
               <Box>${tombLPStats?.priceOfOne ? tombLPStats.priceOfOne : '-.--'}</Box>
@@ -353,7 +353,7 @@ const Home = () => {
               <Box mt={2}>
                 <span style={{ fontSize: '26px' }}>
                   {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} GLCR /{' '}
-                  {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} USDC.e
+                  {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} USDC
                 </span>
               </Box>
               <Box>${tshareLPStats?.priceOfOne ? tshareLPStats.priceOfOne : '-.--'}</Box>
@@ -377,7 +377,7 @@ const Home = () => {
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
                 <TokenSymbol symbol="USDC" size={50} />
               </div>
-              <h2 align="center">USDC.e</h2>
+              <h2 align="center">USDC</h2>
               <p align="center">Current Price</p>
               <Box align="center">
                 <span style={{ fontSize: '30px' }}>${JOEPrice ? JOEPrice : '-.----'}</span>

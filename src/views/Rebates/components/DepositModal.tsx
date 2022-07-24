@@ -66,12 +66,12 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   }
 
   function formatInAmount() {
-    return `Input: ${(+val).toFixed(9)} ${tokenName.replace('USDC', 'USDC.e')} ($${(+val * getAssetPrice(tokenName) * ftmPrice).toFixed(4)})`;
+    return `Input: ${(+val).toFixed(9)} ${tokenName.replace('USDC', 'USDC')} ($${(+val * getAssetPrice(tokenName) * ftmPrice).toFixed(4)})`;
   }
 
   return (
     <Modal>
-      <ModalTitle text={`Bond ${tokenName.replace('USDC', 'USDC.e')}`} />
+      <ModalTitle text={`Bond ${tokenName.replace('USDC', 'USDC')}`} />
       <TokenInput
         value={val}
         onSelectMax={handleSelectMax}

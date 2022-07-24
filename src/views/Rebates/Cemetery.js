@@ -131,7 +131,7 @@ const Cemetery = () => {
                         SNOW Price <small>(TWAP)</small>
                       </Typography>
                       <Typography variant="h6" component="p">
-                        {tombPriceInFTM ? tombPriceInFTM : '-.----'} USDC.e
+                        {tombPriceInFTM ? tombPriceInFTM : '-.----'} USDC
                       </Typography>
                     </CardContent>
                   </Card>

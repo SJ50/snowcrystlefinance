@@ -97,10 +97,10 @@ const CemeteryCard = ({ bank }) => {
             <TokenSymbol size={50} symbol={bank.depositTokenName} />
           </Box>
           {/* <div className={classes.black}>
-            {bank.depositTokenName.replace('USDC', 'USDC.e')}
+            {bank.depositTokenName.replace('USDC', 'USDC')}
           </div> */}
           <div className={classes.black}>
-            Bond&nbsp;{bank.depositTokenName.replace('USDC', 'USDC.e')}
+            Bond&nbsp;{bank.depositTokenName.replace('USDC', 'USDC')}
             <br />
             Earn SNOW
           </div>

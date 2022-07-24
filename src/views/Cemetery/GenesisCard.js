@@ -132,7 +132,7 @@ const GenesisCard = () => {
         <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
-              USDC.e
+              USDC
             </Typography>
             <Box mt={2}>
               <TokenSymbol symbol="USDC" />

@@ -87,7 +87,7 @@ const Stake = ({bank}) => {
                   
                   style={{marginTop: '20px', background: '#5686d6', borderRadius: '15px'}}
                 >
-                  {`Approve ${bank.depositTokenName.replace('USDC', 'USDC.e')}`}
+                  {`Approve ${bank.depositTokenName.replace('USDC', 'USDC')}`}
                 </Button>
               ) : (
                 <IconButton

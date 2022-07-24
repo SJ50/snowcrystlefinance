@@ -40,7 +40,7 @@ const CemeteryCard = () => {
             <div>
               <span style={{ fontSize: '23px' }}>
                 {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} SNOW /{' '}
-                {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} USDC.e
+                {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} USDC
               </span>
               <Box>${tombLPStats?.priceOfOne ? tombLPStats.priceOfOne : '-.--'}</Box>
               <span style={{ fontSize: '12px' }}>
@@ -92,7 +92,7 @@ const CemeteryCard = () => {
             <div>
               <span style={{ fontSize: '23px' }}>
                 {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} GLCR /{' '}
-                {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} USDC.e
+                {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} USDC
               </span>
 
               <Box>${tshareLPStats?.priceOfOne ? tshareLPStats.priceOfOne : '-.--'}</Box>
