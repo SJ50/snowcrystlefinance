@@ -447,7 +447,7 @@ export class TombFinance {
 
       return await poolContract.epocTombPerSecond(0);
     }
-
+    // TODO: update function call after ABI update
     const rewardPerSecond = await poolContract.wSharePerSecond();
     if (depositTokenName.startsWith('SNOW')) {
       return rewardPerSecond.mul(30000).div(50000).mul(3).div(2);

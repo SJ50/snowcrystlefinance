@@ -78,7 +78,7 @@ const Compound = () => {
                 tokenSymbol: 'GLCR-USDC-LP',
               }}
               buttonProps={{
-                href: 'https://magik.farm/#/avax/vault/joe-wshare-usdc',
+                href: 'https://magik.farm/#/avax/vault/joe-glcr-usdc',
               }}
             />
           </Grid>
