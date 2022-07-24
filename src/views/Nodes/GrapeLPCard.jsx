@@ -8,7 +8,7 @@ import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle';
 import useBank from '../../hooks/useBank';
 
 const GrapeLPCard = ({}) => {
-  const tombBank = useBank('LPWlrsNode');
+  const tombBank = useBank('LPSnowNode');
   const statsOnPool = useStatsForPool(tombBank);
     
   return (
@@ -43,7 +43,7 @@ const GrapeLPCard = ({}) => {
           </Box>
         </CardContent>
         <CardActions style={{justifyContent: 'flex-end'}}>
-          <Button className="shinyButtonSecondary" style={{background: '#5686d6', borderRadius: '15px'}} component={Link} to={'/nodes/LPWlrsNode'}>
+          <Button className="shinyButtonSecondary" style={{background: '#5686d6', borderRadius: '15px'}} component={Link} to={'/nodes/LPSnowNode'}>
             Stake
           </Button>
         </CardActions>

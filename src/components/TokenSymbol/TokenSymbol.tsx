@@ -11,7 +11,7 @@ import tombFtmLpLogo from '../../assets/img/SVG_Icons_and_web_bg/SNOW-USDC-LP-01
 import tshareFtmLpLogo from '../../assets/img/SVG_Icons_and_web_bg/SHARE-USDC-LP-01.svg';
 
 import wftmLogo from '../../assets/img/USDC.png';
-import wlrsLogo from '../../assets/img/wlrs-coin.png';
+import SnowLogo from '../../assets/img/Snow-coin.png';
 import booLogo from '../../assets/img/spooky.png';
 import zooLogo from '../../assets/img/zoo_logo.svg';
 import shibaLogo from '../../assets/img/shiba_logo.svg';
@@ -22,7 +22,7 @@ import usdtLogoPNG from '../../assets/img/usdt.png';
 import usdcLogoPNG from '../../assets/img/USDC.png';
 import avaxLogoPNG from '../../assets/img/avax.png';
 import grapeLogoPNG from '../../assets/img/grape.png';
-import grapeWlrsLP from '../../assets/img/grape-wlrs.png';
+import grapeSnowLP from '../../assets/img/grape-Snow.png';
 
 const logosBySymbol: { [title: string]: string } = {
   //Real tokens
@@ -48,7 +48,7 @@ const logosBySymbol: { [title: string]: string } = {
   USDC: usdcLogoPNG,
   'SNOW-USDC-LP': tombFtmLpLogo,
   'WSHARE-USDC-LP': tshareFtmLpLogo,
-  'GRAPE-SNOW-LP': grapeWlrsLP,
+  'GRAPE-SNOW-LP': grapeSnowLP,
   'SNO-SNOSHARE-LP': tshareFtmLpLogo,
 };
 

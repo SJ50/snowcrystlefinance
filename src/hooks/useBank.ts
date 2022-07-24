@@ -4,34 +4,34 @@ import { Bank, ContractName } from '../tomb-finance';
 
 const useBank = (contractName: ContractName): Bank => {
   const { banks } = useContext(BanksContext);
-  if (contractName === 'WlrsSnoGenesisRewardPool') {
+  if (contractName === 'SnowSnoGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'SNO');
-  } else if (contractName === 'WlrsFoxGenesisRewardPool') {
+  } else if (contractName === 'SnowFoxGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'FOX');
-  } else if (contractName === 'WlrsSnobondGenesisRewardPool') {
+  } else if (contractName === 'SnowSnobondGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'SNOBOND');
-  } else if (contractName === 'WlrsDibsGenesisRewardPool') {
+  } else if (contractName === 'SnowDibsGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'DIBS');
-  } else if (contractName === 'WlrsAvaxGenesisRewardPool') {
+  } else if (contractName === 'SnowAvaxGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'WAVAX');
-  } else if (contractName === 'WlrsUsdcGenesisRewardPool') {
+  } else if (contractName === 'SnowUsdcGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'USDC');
-  } else if (contractName === 'WlrsGrapeGenesisRewardPool') {
+  } else if (contractName === 'SnowGrapeGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'GRAPE');
-  } else if (contractName === 'WlrsUsdtGenesisRewardPool') {
+  } else if (contractName === 'SnowUsdtGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'USDT');
   }
   if (contractName === 'PegLPNode') {
     return banks.find((bank) => bank.sectionInUI === 4 && bank.depositTokenName === 'SNOW-USDC-LP');
   } else if (contractName === 'ShareLPNode') {
     return banks.find((bank) => bank.sectionInUI === 4 && bank.depositTokenName === 'WSHARE-USDC-LP');
-  }else if (contractName === 'LPWlrsNode') {
+  }else if (contractName === 'LPSnowNode') {
     return banks.find((bank) => bank.sectionInUI === 4 && bank.depositTokenName === 'GRAPE-SNOW-LP');
   }
 
   if (contractName === 'WShareUsdcLPWShareRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 2 && bank.depositTokenName === 'WSHARE-USDC-LP');
-  } else if (contractName === 'WlrsUsdcLPWShareRewardPool') {
+  } else if (contractName === 'SnowUsdcLPWShareRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 2 && bank.depositTokenName === 'SNOW-USDC-LP');
   } else {
     return null;

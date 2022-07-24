@@ -66,7 +66,7 @@ const Compound = () => {
                 tokenSymbol: 'SNOW-USDC-LP',
               }}
               buttonProps={{
-                href: 'https://magik.farm/#/avax/vault/joe-wlrs-usdc',
+                href: 'https://magik.farm/#/avax/vault/joe-Snow-usdc',
               }}
             />
           </Grid>

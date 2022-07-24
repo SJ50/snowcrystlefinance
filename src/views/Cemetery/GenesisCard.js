@@ -8,7 +8,7 @@ import TokenSymbol from '../../components/TokenSymbol';
 const GenesisCard = () => {
   return (
     <Grid container spacing={3}>
-     {/* <Grid item xs={12} sm={3}>
+      {/* <Grid item xs={12} sm={3}>
         <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
@@ -25,7 +25,7 @@ const GenesisCard = () => {
               style={{ width: '200px', height: '40px', marginBottom: '10%' }}
               variant="contained"
               component={Link}
-              to={`/farms/WlrsSnoGenesisRewardPool/`}
+              to={`/farms/SnowSnoGenesisRewardPool/`}
             >
               Stake
             </Button>
@@ -49,7 +49,7 @@ const GenesisCard = () => {
               style={{ width: '200px', height: '40px', marginBottom: '10%' }}
               variant="contained"
               component={Link}
-              to={`/farms/WlrsFoxGenesisRewardPool/`}
+              to={`/farms/SnowFoxGenesisRewardPool/`}
             >
               Stake
             </Button>
@@ -73,7 +73,7 @@ const GenesisCard = () => {
               style={{ width: '200px', height: '40px', marginBottom: '10%' }}
               variant="contained"
               component={Link}
-              to={`/farms/WlrsSnobondGenesisRewardPool/`}
+              to={`/farms/SnowSnobondGenesisRewardPool/`}
             >
               Stake
             </Button>
@@ -97,7 +97,7 @@ const GenesisCard = () => {
               style={{ width: '200px', height: '40px', marginBottom: '10%' }}
               variant="contained"
               component={Link}
-              to={`/farms/WlrsDibsGenesisRewardPool/`}
+              to={`/farms/SnowDibsGenesisRewardPool/`}
             >
               Stake
             </Button>
@@ -121,7 +121,7 @@ const GenesisCard = () => {
               style={{ width: '200px', height: '40px', marginBottom: '10%' }}
               variant="contained"
               component={Link}
-              to={`/farms/WlrsAvaxGenesisRewardPool/`}
+              to={`/farms/SnowAvaxGenesisRewardPool/`}
             >
               Stake
             </Button>
@@ -132,7 +132,7 @@ const GenesisCard = () => {
         <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
-            USDC.e
+              USDC.e
             </Typography>
             <Box mt={2}>
               <TokenSymbol symbol="USDC" />
@@ -145,7 +145,7 @@ const GenesisCard = () => {
               style={{ width: '200px', height: '40px', marginBottom: '10%' }}
               variant="contained"
               component={Link}
-              to={`/farms/WlrsUsdcGenesisRewardPool/`}
+              to={`/farms/SnowUsdcGenesisRewardPool/`}
             >
               Stake
             </Button>
@@ -156,7 +156,7 @@ const GenesisCard = () => {
         <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
-            GRAPE
+              GRAPE
             </Typography>
             <Box mt={2}>
               <TokenSymbol symbol="GRAPE" />
@@ -169,7 +169,7 @@ const GenesisCard = () => {
               style={{ width: '200px', height: '40px', marginBottom: '10%' }}
               variant="contained"
               component={Link}
-              to={`/farms/WlrsGrapeGenesisRewardPool/`}
+              to={`/farms/SnowGrapeGenesisRewardPool/`}
             >
               Stake
             </Button>
@@ -193,13 +193,13 @@ const GenesisCard = () => {
               style={{ width: '200px', height: '40px', marginBottom: '10%' }}
               variant="contained"
               component={Link}
-              to={`/farms/WlrsUsdtGenesisRewardPool/`}
+              to={`/farms/SnowUsdtGenesisRewardPool/`}
             >
               Stake
             </Button>
           </CardActions>
 </Card>*/}
-</Grid>
+      </Grid>
     </Grid>
   );
 };

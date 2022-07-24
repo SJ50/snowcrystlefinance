@@ -56,99 +56,99 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   finished: will disable the pool on the UI if set to true
   sort: the order of the pool
   */
-  WlrsSnoGenesisRewardPool: {
+  SnowSnoGenesisRewardPool: {
     name: 'Earn SNOW by SNO',
     poolId: 0,
     sectionInUI: 0,
-    contract: 'WlrsSnoGenesisRewardPool',
+    contract: 'SnowSnoGenesisRewardPool',
     depositTokenName: 'SNO',
     earnTokenName: 'SNOW',
     finished: true,
     sort: 1,
     closedForStaking: true,
   },
-  WlrsFoxGenesisRewardPool: {
+  SnowFoxGenesisRewardPool: {
     name: 'Earn SNOW by FOX',
     poolId: 0,
     sectionInUI: 0,
-    contract: 'WlrsFoxGenesisRewardPool',
+    contract: 'SnowFoxGenesisRewardPool',
     depositTokenName: 'FOX',
     earnTokenName: 'SNOW',
     finished: true,
     sort: 2,
     closedForStaking: true,
   },
-  WlrsSnobondGenesisRewardPool: {
+  SnowSnobondGenesisRewardPool: {
     name: 'Earn SNOW by SNOBOND',
     poolId: 0,
     sectionInUI: 0,
-    contract: 'WlrsSnobondGenesisRewardPool',
+    contract: 'SnowSnobondGenesisRewardPool',
     depositTokenName: 'SNOBOND',
     earnTokenName: 'SNOW',
     finished: true,
     sort: 3,
     closedForStaking: true,
   },
-  WlrsDibsGenesisRewardPool: {
+  SnowDibsGenesisRewardPool: {
     name: 'Earn SNOW by DIBS',
     poolId: 0,
     sectionInUI: 0,
-    contract: 'WlrsDibsGenesisRewardPool',
+    contract: 'SnowDibsGenesisRewardPool',
     depositTokenName: 'DIBS',
     earnTokenName: 'SNOW',
     finished: true,
     sort: 4,
     closedForStaking: true,
   },
-  WlrsAvaxGenesisRewardPool: {
+  SnowAvaxGenesisRewardPool: {
     name: 'Earn SNOW by wAVAX',
     poolId: 0,
     sectionInUI: 0,
-    contract: 'WlrsAvaxGenesisRewardPool',
+    contract: 'SnowAvaxGenesisRewardPool',
     depositTokenName: 'WAVAX',
     earnTokenName: 'SNOW',
     finished: false,
     sort: 5,
     closedForStaking: true,
   },
-  WlrsUsdcGenesisRewardPool: {
+  SnowAvaxGenesisRewardPoolUsdcGenesisRewardPool: {
     name: 'Earn SNOW by USDC.e',
     poolId: 0,
     sectionInUI: 0,
-    contract: 'WlrsUsdcGenesisRewardPool',
+    contract: 'SnowUsdcGenesisRewardPool',
     depositTokenName: 'USDC',
     earnTokenName: 'SNOW',
     finished: false,
     sort: 6,
     closedForStaking: true,
   },
-  WlrsGrapeGenesisRewardPool: {
+  SnowUsdcGenesisRewardPoolGrapeGenesisRewardPool: {
     name: 'Earn SNOW by GRAPE',
     poolId: 0,
     sectionInUI: 0,
-    contract: 'WlrsGrapeGenesisRewardPool',
+    contract: 'SnowGrapeGenesisRewardPool',
     depositTokenName: 'GRAPE',
     earnTokenName: 'SNOW',
     finished: false,
     sort: 7,
     closedForStaking: true,
   },
-  WlrsUsdtGenesisRewardPool: {
+  SnowGrapeGenesisRewardPoolUsdtGenesisRewardPool: {
     name: 'Earn SNOW by USDT.e',
     poolId: 0,
     sectionInUI: 0,
-    contract: 'WlrsUsdtGenesisRewardPool',
+    contract: 'SnowUsdtGenesisRewardPool',
     depositTokenName: 'USDT',
     earnTokenName: 'SNOW',
     finished: true,
     sort: 8,
     closedForStaking: true,
   },
-  WlrsUsdcLPWShareRewardPool: {
+  SnowUsdtGenesisRewardPoolUsdcLPWShareRewardPool: {
     name: 'Earn WSHARE by SNOW-USDC LP',
     poolId: 0,
     sectionInUI: 2,
-    contract: 'WlrsUsdcLPWShareRewardPool',
+    contract: 'SnowUsdcLPWShareRewardPool',
     depositTokenName: 'SNOW-USDC-LP',
     earnTokenName: 'WSHARE',
     finished: false,
@@ -166,7 +166,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 2,
     closedForStaking: false,
   },
-  /*WlrsUsdcLPRebate: {
+  /*SnowUsdcLPWShareRewardPoolUsdcLPRebate: {
     name: 'Bond SNOW-USDC-LP for SNOW',
     poolId: 100,
     sectionInUI: 3,
@@ -232,11 +232,11 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 6,
     closedForStaking: false
    },
-   LPWlrsNode: {
+   LPSnowNode: {
     name: 'Generate GRAPE-SNOW LP with Nodes',
     poolId: 0,
     sectionInUI: 4,
-    contract: 'LPWlrsNode',
+    contract: 'LPSnowNode',
     depositTokenName: 'GRAPE-SNOW-LP',
     earnTokenName: 'GRAPE-SNOW-LP',
     finished: false,
