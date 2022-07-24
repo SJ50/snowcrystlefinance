@@ -41,7 +41,7 @@ const Pit: React.FC = () => {
     async (amount: string) => {
       const tx = await tombFinance.buyBonds(amount);
       addTransaction(tx, {
-        summary: `Buy ${Number(amount).toFixed(2)} WBOND with ${amount} SNOW`,
+        summary: `Buy ${Number(amount).toFixed(2)} SBOND with ${amount} SNOW`,
       });
     },
     [tombFinance, addTransaction],
@@ -50,7 +50,7 @@ const Pit: React.FC = () => {
   const handleRedeemBonds = useCallback(
     async (amount: string) => {
       const tx = await tombFinance.redeemBonds(amount);
-      addTransaction(tx, { summary: `Redeem ${amount} WBOND` });
+      addTransaction(tx, { summary: `Redeem ${amount} SBOND` });
     },
     [tombFinance, addTransaction],
   );
@@ -73,11 +73,11 @@ const Pit: React.FC = () => {
                   fromToken={tombFinance.TOMB}
                   fromTokenName="SNOW"
                   toToken={tombFinance.TBOND}
-                  toTokenName="WBOND"
+                  toTokenName="SBOND"
                   priceDesc={
                     !isBondPurchasable
                       ? 'SNOW is over peg'
-                      : getDisplayBalance(bondsPurchasable, 18, 4) + ' WBONDs available for purchase'
+                      : getDisplayBalance(bondsPurchasable, 18, 4) + ' SBONDs available for purchase'
                   }
                   onExchange={handleBuyBonds}
                   disabled={!bondStat || isBondRedeemable}
@@ -91,7 +91,7 @@ const Pit: React.FC = () => {
                 />
                 <Spacer size="md" />
                 <ExchangeStat
-                  tokenName="WBOND"
+                  tokenName="SBOND"
                   description="Current Price: (SNOW)^2"
                   price={Number(bondStat?.tokenInFtm).toFixed(2) || '-'}
                 />
@@ -100,10 +100,10 @@ const Pit: React.FC = () => {
                 <ExchangeCard
                   action="Redeem"
                   fromToken={tombFinance.TBOND}
-                  fromTokenName="WBOND"
+                  fromTokenName="SBOND"
                   toToken={tombFinance.TOMB}
                   toTokenName="SNOW"
-                  priceDesc={`${getDisplayBalance(bondBalance)} WBONDs Available in wallet`}
+                  priceDesc={`${getDisplayBalance(bondBalance)} SBONDs Available in wallet`}
                   onExchange={handleRedeemBonds}
                   disabled={!bondStat || bondBalance.eq(0) || !isBondRedeemable}
                   disabledDescription={!isBondRedeemable ? `Enabled when SNOW > ${BOND_REDEEM_PRICE} USDC` : null}

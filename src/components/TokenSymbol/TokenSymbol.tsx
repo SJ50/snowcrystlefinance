@@ -32,7 +32,7 @@ const logosBySymbol: { [title: string]: string } = {
   TOMBPNG: tombLogoPNG,
   TSHAREPNG: tShareLogoPNG,
   GLCR: tShareLogo,
-  WBOND: tBondLogo,
+  SBOND: tBondLogo,
   WFTM: wftmLogo,
   SNOW: tombLogo,
   BOO: booLogo,

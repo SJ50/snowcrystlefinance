@@ -43,10 +43,10 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
         </StyledBalanceWrapper>
 
         <StyledBalanceWrapper>
-          <TokenSymbol symbol="WBOND" />
+          <TokenSymbol symbol="SBOND" />
           <StyledBalance>
             <StyledValue>{displayTbondBalance}</StyledValue>
-            <Label text="WBOND Available" />
+            <Label text="SBOND Available" />
           </StyledBalance>
         </StyledBalanceWrapper>
       </Balances>

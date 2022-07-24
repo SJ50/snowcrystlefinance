@@ -60,7 +60,7 @@ export class TombFinance {
     }
     this.TOMB = new ERC20(deployments.tomb.address, provider, 'SNOW');
     this.TSHARE = new ERC20(deployments.tShare.address, provider, 'GLCR');
-    this.TBOND = new ERC20(deployments.tBond.address, provider, 'WBOND');
+    this.TBOND = new ERC20(deployments.tBond.address, provider, 'SBOND');
     this.FTM = this.externalTokens['USDC'];
     this.WAVAX = this.externalTokens['WAVAX'];
     this.SNO = this.externalTokens['SNO'];
@@ -1083,7 +1083,7 @@ export class TombFinance {
     } else if (assetName === 'GLCR') {
       asset = this.TSHARE;
       assetUrl = 'https://gateway.pinata.cloud/ipfs/QmSkdqbueZTKDjb2oqKo6bEcn6qenA9Z6iiSNR1omHGVZx';
-    } else if (assetName === 'WBOND') {
+    } else if (assetName === 'SBOND') {
       asset = this.TBOND;
       assetUrl = 'https://gateway.pinata.cloud/ipfs/QmVCNLxo6vRUr3qCaNHJPwVL7jMGBf18FSa65zkeaHSbua';
     }

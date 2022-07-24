@@ -252,10 +252,10 @@ const Home = () => {
                   </StyledBalance>
                 </StyledBalanceWrapper>
                 <StyledBalanceWrapper>
-                  <TokenSymbol symbol="WBOND" />
+                  <TokenSymbol symbol="SBOND" />
                   <StyledBalance>
                     <StyledValue>{displayTBondBalance}</StyledValue>
-                    <Label text="WBOND available" variant="noraml" />
+                    <Label text="SBOND available" variant="noraml" />
                     <span style={{ fontSize: '15px', marginLeft: '2%' }}>
                       (${tBondBalanceInDollars ? tBondBalanceInDollars : '-.----'})
                     </span>
@@ -508,9 +508,9 @@ const Home = () => {
           <Card>
             <CardContent style={{ position: 'relative' }}>
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
-                <TokenSymbol symbol="WBOND" size={50} />
+                <TokenSymbol symbol="SBOND" size={50} />
               </div>
-              <h2 align="center">WBOND</h2>
+              <h2 align="center">SBOND</h2>
               <p align="center">Current Price</p>
               <Box align="center">
                 <span style={{ fontSize: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
