@@ -69,7 +69,7 @@ const Home = () => {
   const matches = useMediaQuery('(min-width:600px)');
   const classes = useStyles();
   const TVL = useTotalValueLocked();
-  const tombFtmLpStats = useLpStats('WLRS-USDC-LP');
+  const tombFtmLpStats = useLpStats('SNOW-USDC-LP');
   const tShareFtmLpStats = useLpStats('WSHARE-USDC-LP');
   const tombStats = useTombStats();
   const tShareStats = usetShareStats();
@@ -322,7 +322,7 @@ const Home = () => {
             <CardContent align="center">
               <h2>SNOW-USDC LP</h2>
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
-                <TokenSymbol size={50} symbol="WLRS-USDC-LP" />
+                <TokenSymbol size={50} symbol="SNOW-USDC-LP" />
               </div>
               <Box mt={2}>
                 <span style={{ fontSize: '26px' }}>

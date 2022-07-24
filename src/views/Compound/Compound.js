@@ -63,7 +63,7 @@ const Compound = () => {
             <CompoundCard
               cardData={{
                 title: 'SNOW-USDC LP',
-                tokenSymbol: 'WLRS-USDC-LP',
+                tokenSymbol: 'SNOW-USDC-LP',
               }}
               buttonProps={{
                 href: 'https://magik.farm/#/avax/vault/joe-wlrs-usdc',

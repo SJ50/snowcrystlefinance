@@ -7,7 +7,7 @@ import TokenSymbol from '../../components/TokenSymbol';
 import useLpStats from '../../hooks/useLpStats';
 
 const GenLPCard = () => {
-  const tombFtmLpStats = useLpStats('WLRS-USDC-LP');
+  const tombFtmLpStats = useLpStats('SNOW-USDC-LP');
   const tShareFtmLpStats = useLpStats('WSHARE-USDC-LP');
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
   const tshareLPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);
@@ -19,7 +19,7 @@ const GenLPCard = () => {
             SNOW-USDC LP
           </Typography>
           <Box mt={2}>
-            <TokenSymbol symbol="WLRS-USDC-LP" />
+            <TokenSymbol symbol="SNOW-USDC-LP" />
           </Box>
           <Box mt={2}></Box>
           <Box mt={2}>

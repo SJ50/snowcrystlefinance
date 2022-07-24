@@ -69,7 +69,7 @@ export class TombFinance {
     this.GRAPE = this.externalTokens['GRAPE'];
 
     // Uniswap V2 Pair
-    this.TOMBWFTM_LP = new Contract(externalTokens['WLRS-USDC-LP'][0], IUniswapV2PairABI, provider);
+    this.TOMBWFTM_LP = new Contract(externalTokens['SNOW-USDC-LP'][0], IUniswapV2PairABI, provider);
 
     this.config = cfg;
     this.provider = provider;
@@ -139,8 +139,8 @@ export class TombFinance {
     let lpToken = this.externalTokens[name];
     let lpTokenSupplyBN = await lpToken.totalSupply();
     let lpTokenSupply = getDisplayBalance(lpTokenSupplyBN, lpToken.decimal, lpToken.decimal / 2);
-    let token0 =  name.startsWith('WLRS') ? this.TOMB : this.TSHARE; // name === 'WLRS-USDC-LP' ? this.TOMB : this.TSHARE;
-    let isTomb = name.startsWith('WLRS'); // name === 'WLRS-USDC-LP';
+    let token0 =  name.startsWith('WLRS') ? this.TOMB : this.TSHARE; // name === 'SNOW-USDC-LP' ? this.TOMB : this.TSHARE;
+    let isTomb = name.startsWith('WLRS'); // name === 'SNOW-USDC-LP';
     let tokenAmountBN = await token0.balanceOf(lpToken.address);
     let tokenAmount = getDisplayBalance(tokenAmountBN, token0.decimal);
 
@@ -470,7 +470,7 @@ export class TombFinance {
       tokenPrice = (await this.getShareStat()).priceInDollars;
     } else if (!tokenName.includes('-LP')) {
       tokenPrice = (await this.getTokenStat(tokenName)).priceInDollars;
-    } else if (tokenName === 'WLRS-USDC-LP') {
+    } else if (tokenName === 'SNOW-USDC-LP') {
       tokenPrice = await this.getLPTokenPrice(token, this.TOMB, true);
     } else if (tokenName === 'WSHARE-USDC-LP') {
       tokenPrice = await this.getLPTokenPrice(token, this.TSHARE, false);
@@ -753,7 +753,7 @@ export class TombFinance {
   ): Promise<BigNumber> {
     const pool = this.contracts[poolName];
     try {
-      if (earnTokenName === 'WLRS-USDC-LP' && poolName.includes('Node')) {
+      if (earnTokenName === 'SNOW-USDC-LP' && poolName.includes('Node')) {
         return await pool.getTotalRewards(account);
       }
       if (earnTokenName === 'WSHARE-USDC-LP' && poolName.includes('Node')) {

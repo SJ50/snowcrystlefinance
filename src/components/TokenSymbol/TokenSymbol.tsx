@@ -7,7 +7,7 @@ import tombLogoPNG from '../../assets/img/sno.png';
 import tShareLogoPNG from '../../assets/img/snoshare.png';
 import tBondLogo from '../../assets/img/SVG_Icons_and_web_bg/Bond icon-01.svg';
 
-import tombFtmLpLogo from '../../assets/img/SVG_Icons_and_web_bg/WLRS-USDC-LP-01.svg';
+import tombFtmLpLogo from '../../assets/img/SVG_Icons_and_web_bg/SNOW-USDC-LP-01.svg';
 import tshareFtmLpLogo from '../../assets/img/SVG_Icons_and_web_bg/SHARE-USDC-LP-01.svg';
 
 import wftmLogo from '../../assets/img/USDC.png';
@@ -46,7 +46,7 @@ const logosBySymbol: { [title: string]: string } = {
   GRAPE: grapeLogoPNG,
   USDT: usdtLogoPNG,
   USDC: usdcLogoPNG,
-  'WLRS-USDC-LP': tombFtmLpLogo,
+  'SNOW-USDC-LP': tombFtmLpLogo,
   'WSHARE-USDC-LP': tshareFtmLpLogo,
   'GRAPE-WLRS-LP': grapeWlrsLP,
   'SNO-SNOSHARE-LP': tshareFtmLpLogo,

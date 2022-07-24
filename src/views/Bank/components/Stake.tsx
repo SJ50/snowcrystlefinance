@@ -124,7 +124,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
                   </IconButton>
                   <StyledActionSpacer />
                   {
-                    bank.depositTokenName !== 'WLRS-USDC-LP' &&  bank.depositTokenName !== 'WSHARE-USDC-LP'
+                    bank.depositTokenName !== 'SNOW-USDC-LP' &&  bank.depositTokenName !== 'WSHARE-USDC-LP'
                       ? null
                       : <IconButton
                           disabled={bank.closedForStaking}

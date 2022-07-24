@@ -10,7 +10,7 @@ import useStatsForPool from '../../hooks/useStatsForPool';
 // import useCashStat from '../../hooks/useCashPriceInEstimatedTWAP.ts';
 
 const CemeteryCard = () => {
-  const tombFtmLpStats = useLpStats('WLRS-USDC-LP');
+  const tombFtmLpStats = useLpStats('SNOW-USDC-LP');
   const tShareFtmLpStats = useLpStats('WSHARE-USDC-LP');
   // const snoSnoShareLpStats = useLpStats('SNO-SNOSHARE-LP');
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
@@ -35,7 +35,7 @@ const CemeteryCard = () => {
               <Typography variant="h5" component="h2">
                 SNOW-USDC LP
               </Typography>
-              <TokenSymbol size={60} symbol="WLRS-USDC-LP" />
+              <TokenSymbol size={60} symbol="SNOW-USDC-LP" />
             </div>
             <div>
               <span style={{ fontSize: '23px' }}>
