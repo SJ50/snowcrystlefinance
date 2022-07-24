@@ -129,15 +129,24 @@ const Home = () => {
 
   const tombBalance = useTokenBalance(tombFinance.TOMB);
   const displayTombBalance = useMemo(() => getDisplayBalance(tombBalance), [tombBalance]);
-  const tombBalanceInDollars = tombPriceInDollars && tombBalance ? (Number(tombPriceInDollars) * tombBalance.div('1000000000000000000').toNumber()).toFixed(2) : null;
+  const tombBalanceInDollars =
+    tombPriceInDollars && tombBalance
+      ? (Number(tombPriceInDollars) * tombBalance.div('1000000000000000000').toNumber()).toFixed(2)
+      : null;
 
   const tShareBalance = useTokenBalance(tombFinance.TSHARE);
   const displayTShareBalance = useMemo(() => getDisplayBalance(tShareBalance), [tShareBalance]);
-  const tShareBalanceInDollars = tSharePriceInDollars && tShareBalance ? (Number(tSharePriceInDollars) * tShareBalance.div('1000000000000000000').toNumber()).toFixed(2) : null;
+  const tShareBalanceInDollars =
+    tSharePriceInDollars && tShareBalance
+      ? (Number(tSharePriceInDollars) * tShareBalance.div('1000000000000000000').toNumber()).toFixed(2)
+      : null;
 
   const tBondBalance = useTokenBalance(tombFinance.TBOND);
   const displayTBondBalance = useMemo(() => getDisplayBalance(tBondBalance), [tBondBalance]);
-  const tBondBalanceInDollars = tBondPriceInDollars && displayTBondBalance ? (Number(tBondPriceInDollars) * tBondBalance.div('1000000000000000000').toNumber()).toFixed(2) : null;
+  const tBondBalanceInDollars =
+    tBondPriceInDollars && displayTBondBalance
+      ? (Number(tBondPriceInDollars) * tBondBalance.div('1000000000000000000').toNumber()).toFixed(2)
+      : null;
 
   const Row = styled.div`
     align-items: center;
@@ -164,7 +173,7 @@ const Home = () => {
                     <StyledValue>{displayTombBalance}</StyledValue>
                     <Label text="WLRS available" variant="noraml" />
                     <span style={{ fontSize: '15px', marginLeft: '2%' }}>
-                      (${tombBalanceInDollars ? tombBalanceInDollars : '-.----'}) 
+                      (${tombBalanceInDollars ? tombBalanceInDollars : '-.----'})
                     </span>
                     <div className={classes.flex}>
                       <Button
@@ -289,7 +298,7 @@ const Home = () => {
             }}
             gutterBottom
           >
-            Welcome to Walrus
+            Welcome to SnowCrystals
           </Typography>
           <Card>
             <CardContent
@@ -324,7 +333,12 @@ const Home = () => {
               <Box>${tombLPStats?.priceOfOne ? tombLPStats.priceOfOne : '-.--'}</Box>
               <span style={{ fontSize: '12px' }}>
                 Liquidity: ${tombLPStats?.totalLiquidity ? tombLPStats.totalLiquidity : '-.--'} <br />
-                Total supply: {tombLPStats?.totalSupply ? (Number(tombLPStats.totalSupply) < 1/10**4 ? (Number(tombLPStats.totalSupply) * 10**6).toFixed(4) + 'µ' : tombLPStats.totalSupply) : '-.--'}
+                Total supply:{' '}
+                {tombLPStats?.totalSupply
+                  ? Number(tombLPStats.totalSupply) < 1 / 10 ** 4
+                    ? (Number(tombLPStats.totalSupply) * 10 ** 6).toFixed(4) + 'µ'
+                    : tombLPStats.totalSupply
+                  : '-.--'}
               </span>
             </CardContent>
           </Card>
@@ -346,7 +360,12 @@ const Home = () => {
               <span style={{ fontSize: '12px' }}>
                 Liquidity: ${tshareLPStats?.totalLiquidity ? tshareLPStats.totalLiquidity : '-.--'}
                 <br />
-                Total supply: {tshareLPStats?.totalSupply ? (Number(tshareLPStats.totalSupply) < 1/10**4 ? (Number(tshareLPStats.totalSupply) * 10**6).toFixed(4) + 'µ' : tshareLPStats.totalSupply) : '-.--'}
+                Total supply:{' '}
+                {tshareLPStats?.totalSupply
+                  ? Number(tshareLPStats.totalSupply) < 1 / 10 ** 4
+                    ? (Number(tshareLPStats.totalSupply) * 10 ** 6).toFixed(4) + 'µ'
+                    : tshareLPStats.totalSupply
+                  : '-.--'}
               </span>
             </CardContent>
           </Card>

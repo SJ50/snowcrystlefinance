@@ -112,7 +112,7 @@ const Nav = () => {
                 style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}
               >
                 <img alt="logo" className={classes.logo} src={logo} />
-                <div style={{ fontWeight: 900 }}>WALRUS</div>
+                <div style={{ fontWeight: 900 }}>SNOWCRYSTALS</div>
               </div>
             </Link>
             <Box style={{ width: 'auto !important', marginLeft: '3%' }}>
@@ -172,7 +172,7 @@ const Nav = () => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap>
-              WALRUS Finance
+              SNOWCRYSTALS Finance
             </Typography>
 
             <Drawer

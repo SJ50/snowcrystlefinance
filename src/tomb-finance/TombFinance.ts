@@ -2,6 +2,8 @@ import axios from 'axios';
 // import { Fetcher, Route, Token } from '@uniswap/sdk';
 import { Fetcher as FetcherSpirit, Token as TokenSpirit } from '@traderjoe-xyz/sdk';
 import { Fetcher, Route, Token } from '@traderjoe-xyz/sdk';
+// import { Fetcher as FetcherSpirit, Token as TokenSpirit } from '@madmeerkat/sdk;
+// import { Fetcher, Route, Token } from '@madmeerkat/sdk';
 // import { Fetcher as FetcherSpirit, Token as TokenSpirit } from 'quickswap-sdk';
 // import { Fetcher, Route, Token } from 'quickswap-sdk';
 import { Configuration } from './config';
