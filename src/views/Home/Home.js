@@ -320,7 +320,7 @@ const Home = () => {
         <Grid item xs={12} sm={6}>
           <Card>
             <CardContent align="center">
-              <h2>WLRS-USDC.e LP</h2>
+              <h2>SNOW-USDC LP</h2>
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
                 <TokenSymbol size={50} symbol="WLRS-USDC-LP" />
               </div>

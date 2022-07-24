@@ -16,7 +16,7 @@ const GenLPCard = () => {
       <Card>
         <CardContent align="center">
           <Typography variant="h5" component="h2">
-            WLRS-USDC.e LP
+            SNOW-USDC LP
           </Typography>
           <Box mt={2}>
             <TokenSymbol symbol="WLRS-USDC-LP" />

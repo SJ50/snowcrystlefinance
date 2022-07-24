@@ -145,7 +145,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     closedForStaking: true,
   },
   WlrsUsdcLPWShareRewardPool: {
-    name: 'Earn WSHARE by WLRS-USDC.e LP',
+    name: 'Earn WSHARE by SNOW-USDC LP',
     poolId: 0,
     sectionInUI: 2,
     contract: 'WlrsUsdcLPWShareRewardPool',

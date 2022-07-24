@@ -33,7 +33,7 @@ const CemeteryCard = () => {
           >
             <div>
               <Typography variant="h5" component="h2">
-                WLRS-USDC.e LP
+                SNOW-USDC LP
               </Typography>
               <TokenSymbol size={60} symbol="WLRS-USDC-LP" />
             </div>
@@ -45,7 +45,13 @@ const CemeteryCard = () => {
               <Box>${tombLPStats?.priceOfOne ? tombLPStats.priceOfOne : '-.--'}</Box>
               <span style={{ fontSize: '12px' }}>
                 Liquidity: ${tombLPStats?.totalLiquidity ? tombLPStats.totalLiquidity : '-.--'} <br />
-                Total supply: {tombLPStats?.totalSupply ? (Number(tombLPStats.totalSupply) < 1/10**4 ? (Number(tombLPStats.totalSupply) * 10**6).toFixed(4) + 'µ' : tombLPStats.totalSupply) : '-.--'} <br />
+                Total supply:{' '}
+                {tombLPStats?.totalSupply
+                  ? Number(tombLPStats.totalSupply) < 1 / 10 ** 4
+                    ? (Number(tombLPStats.totalSupply) * 10 ** 6).toFixed(4) + 'µ'
+                    : tombLPStats.totalSupply
+                  : '-.--'}{' '}
+                <br />
                 APR: {tombStatsOnPool?.yearlyAPR ? tombStatsOnPool?.yearlyAPR : '----.--'}%
               </span>
             </div>
@@ -92,7 +98,13 @@ const CemeteryCard = () => {
               <Box>${tshareLPStats?.priceOfOne ? tshareLPStats.priceOfOne : '-.--'}</Box>
               <span style={{ fontSize: '12px' }}>
                 Liquidity: ${tshareLPStats?.totalLiquidity ? tshareLPStats.totalLiquidity : '-.--'} <br />
-                Total supply: {tshareLPStats?.totalSupply ? (Number(tshareLPStats.totalSupply) < 1/10**4 ? (Number(tshareLPStats.totalSupply) * 10**6).toFixed(4) + 'µ' : tshareLPStats.totalSupply) : '-.--'} <br />
+                Total supply:{' '}
+                {tshareLPStats?.totalSupply
+                  ? Number(tshareLPStats.totalSupply) < 1 / 10 ** 4
+                    ? (Number(tshareLPStats.totalSupply) * 10 ** 6).toFixed(4) + 'µ'
+                    : tshareLPStats.totalSupply
+                  : '-.--'}{' '}
+                <br />
                 APR: {tShareStatsOnPool?.yearlyAPR ? tShareStatsOnPool?.yearlyAPR : '----.--'}%
               </span>
             </div>
