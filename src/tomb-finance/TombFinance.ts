@@ -39,7 +39,7 @@ export class TombFinance {
   TSHARE: ERC20;
   TBOND: ERC20;
   FTM: ERC20;
-  WAVAX: ERC20;
+  WCRO: ERC20;
   WBTC: ERC20;
   WETH: ERC20;
   DIBS: ERC20;
@@ -62,7 +62,7 @@ export class TombFinance {
     this.TSHARE = new ERC20(deployments.tShare.address, provider, 'GLCR');
     this.TBOND = new ERC20(deployments.tBond.address, provider, 'SBOND');
     this.FTM = this.externalTokens['USDC'];
-    this.WAVAX = this.externalTokens['WAVAX'];
+    this.WCRO = this.externalTokens['WCRO'];
     this.WBTC = this.externalTokens['WBTC'];
     this.WETH = this.externalTokens['WETH'];
     this.DIBS = this.externalTokens['DIBS'];
@@ -597,8 +597,8 @@ export class TombFinance {
         return this.getBtcStat();
       // case 'SNOBOND':
       //   return this.getSnoStat();
-      case 'WAVAX':
-        return this.getAvaxStat();
+      case 'WCRO':
+        return this.getCroStat();
       case 'WETH':
         return this.getFoxStat();
       case 'GRAPE':
@@ -629,15 +629,15 @@ export class TombFinance {
   }
 
   async getDibsStat(): Promise<TokenStat> {
-    const {WAVAX} = this.config.externalTokens;
-    const [priceInAvax, priceOfOneAvax] = await Promise.all([
-      this.getTokenPriceFromPancakeswap(this.DIBS, new Token(this.config.chainId, WAVAX[0], WAVAX[1], 'WAVAX')),
-      this.getAvaxPriceFromPancakeswap(),
+    const {WCRO} = this.config.externalTokens;
+    const [priceInCro, priceOfOneCro] = await Promise.all([
+      this.getTokenPriceFromPancakeswap(this.DIBS, new Token(this.config.chainId, WCRO[0], WCRO[1], 'WCRO')),
+      this.getCroPriceFromPancakeswap(),
     ]);
 
-    const priceInDollars = (Number(priceInAvax) * Number(priceOfOneAvax)).toFixed(12);
+    const priceInDollars = (Number(priceInCro) * Number(priceOfOneCro)).toFixed(12);
     return {
-      tokenInFtm: priceInAvax,
+      tokenInFtm: priceInCro,
       priceInDollars,
       totalSupply: '0',
       circulatingSupply: '0',
@@ -710,8 +710,8 @@ export class TombFinance {
     };
   }
 
-  async getAvaxStat(): Promise<TokenStat> {
-    const priceInDollars = await this.getAvaxPriceFromPancakeswap();
+  async getCroStat(): Promise<TokenStat> {
+    const priceInDollars = await this.getCroPriceFromPancakeswap();
     return {
       tokenInFtm: priceInDollars,
       priceInDollars,
@@ -720,14 +720,14 @@ export class TombFinance {
     };
   }
 
-  async getAvaxPriceFromPancakeswap(): Promise<string> {
+  async getCroPriceFromPancakeswap(): Promise<string> {
     const ready = await this.provider.ready;
     if (!ready) return;
-    const {WAVAX, USDC} = this.externalTokens;
+    const {WCRO, USDC} = this.externalTokens;
     try {
-      const busd_eth_lp_pair = this.externalTokens['USDC-WAVAX-LP'];
-      let eth_amount_BN = await WAVAX.balanceOf(busd_eth_lp_pair.address);
-      let eth_amount = Number(getFullDisplayBalance(eth_amount_BN, WAVAX.decimal));
+      const busd_eth_lp_pair = this.externalTokens['USDC-WCRO-LP'];
+      let eth_amount_BN = await WCRO.balanceOf(busd_eth_lp_pair.address);
+      let eth_amount = Number(getFullDisplayBalance(eth_amount_BN, WCRO.decimal));
       let busd_amount_BN = await USDC.balanceOf(busd_eth_lp_pair.address);
       let busd_amount = Number(getFullDisplayBalance(busd_amount_BN, USDC.decimal));
       return (busd_amount / eth_amount).toString();
@@ -739,15 +739,15 @@ export class TombFinance {
   async getMimPriceFromPancakeswap(): Promise<string> {
     const ready = await this.provider.ready;
     if (!ready) return;
-    const avaxPrice = await this.getAvaxPriceFromPancakeswap();
-    const {MIM, WAVAX} = this.externalTokens;
+    const croPrice = await this.getCroPriceFromPancakeswap();
+    const {MIM, WCRO} = this.externalTokens;
     try {
-      const busd_eth_lp_pair = this.externalTokens['MIM-WAVAX-LP'];
-      let eth_amount_BN = await WAVAX.balanceOf(busd_eth_lp_pair.address);
-      let eth_amount = Number(getFullDisplayBalance(eth_amount_BN, WAVAX.decimal));
+      const busd_eth_lp_pair = this.externalTokens['MIM-WCRO-LP'];
+      let eth_amount_BN = await WCRO.balanceOf(busd_eth_lp_pair.address);
+      let eth_amount = Number(getFullDisplayBalance(eth_amount_BN, WCRO.decimal));
       let busd_amount_BN = await MIM.balanceOf(busd_eth_lp_pair.address);
       let busd_amount = Number(getFullDisplayBalance(busd_amount_BN, MIM.decimal));
-      return (busd_amount / eth_amount / Number(avaxPrice)).toString();
+      return (busd_amount / eth_amount / Number(croPrice)).toString();
     } catch (err) {
       console.error(`Failed to fetch token price of ETH: ${err}`);
     }

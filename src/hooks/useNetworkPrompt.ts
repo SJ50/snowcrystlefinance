@@ -19,8 +19,8 @@ const usePromptNetwork = () => {
           chainId: `0x${config.chainId.toString(16)}`,
           chainName: config.networkName,
           nativeCurrency: {
-            name: 'AVAX',
-            symbol: 'avax',
+            name: 'CRO',
+            symbol: 'cro',
             decimals: 18,
           },
           rpcUrls: [config.defaultProvider],

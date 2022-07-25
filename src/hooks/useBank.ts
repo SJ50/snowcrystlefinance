@@ -6,14 +6,14 @@ const useBank = (contractName: ContractName): Bank => {
   const { banks } = useContext(BanksContext);
   if (contractName === 'SnowBtcGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'WBTC');
-  } else if (contractName === 'SnowFoxGenesisRewardPool') {
+  } else if (contractName === 'SnowEthGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'WETH');
   } else if (contractName === 'SnowSnobondGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'SNOBOND');
   } else if (contractName === 'SnowDibsGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'DIBS');
-  } else if (contractName === 'SnowAvaxGenesisRewardPool') {
-    return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'WAVAX');
+  } else if (contractName === 'SnowCroGenesisRewardPool') {
+    return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'WCRO');
   } else if (contractName === 'SnowUsdcGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'USDC');
   } else if (contractName === 'SnowGrapeGenesisRewardPool') {

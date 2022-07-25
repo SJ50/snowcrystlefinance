@@ -20,14 +20,14 @@ import wethLogoPNG from '../../assets/img/weth.png';
 import dibsLogoPNG from '../../assets/img/dibs.png';
 import usdtLogoPNG from '../../assets/img/usdt.png';
 import usdcLogoPNG from '../../assets/img/USDC.png';
-import avaxLogoPNG from '../../assets/img/avax.png';
+import croLogoPNG from '../../assets/img/cro.png';
 import grapeLogoPNG from '../../assets/img/grape.png';
 import grapeSnowLP from '../../assets/img/grape-Snow.png';
 
 const logosBySymbol: { [title: string]: string } = {
   //Real tokens
   //=====================
-  WAVAX: avaxLogoPNG,
+  WCRO: croLogoPNG,
   TOMB: tombLogo,
   // TOMBPNG: tombLogoPNG,
   TSHAREPNG: tShareLogoPNG,

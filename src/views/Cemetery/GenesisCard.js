@@ -12,7 +12,7 @@ const GenesisCard = () => {
         <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
-              WBTC
+              wBTC
             </Typography>
             <Box mt={2}>
               <TokenSymbol symbol="WBTC" />
@@ -36,7 +36,7 @@ const GenesisCard = () => {
         <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
-              WETH
+              wETH
             </Typography>
             <Box mt={2}>
               <TokenSymbol symbol="WETH" />
@@ -49,7 +49,7 @@ const GenesisCard = () => {
               style={{ width: '200px', height: '40px', marginBottom: '10%' }}
               variant="contained"
               component={Link}
-              to={`/farms/SnowFoxGenesisRewardPool/`}
+              to={`/farms/SnowEthGenesisRewardPool/`}
             >
               Stake
             </Button>
@@ -108,10 +108,10 @@ const GenesisCard = () => {
         <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
-              wAVAX
+              wCRO
             </Typography>
             <Box mt={2}>
-              <TokenSymbol symbol="WAVAX" />
+              <TokenSymbol symbol="WCRO" />
             </Box>
           </CardContent>
           <CardActions style={{ justifyContent: 'center' }}>
@@ -121,7 +121,7 @@ const GenesisCard = () => {
               style={{ width: '200px', height: '40px', marginBottom: '10%' }}
               variant="contained"
               component={Link}
-              to={`/farms/SnowAvaxGenesisRewardPool/`}
+              to={`/farms/SnowCroGenesisRewardPool/`}
             >
               Stake
             </Button>

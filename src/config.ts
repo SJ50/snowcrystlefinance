@@ -12,7 +12,7 @@ const configurations: { [env: string]: Configuration } = {
     defaultProvider: 'http://127.0.0.1:9545',
     deployments: require('./tomb-finance/deployments/deployments.mainnet.json'),
     externalTokens: {
-      WAVAX: ['0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23', 18], // CRO
+      WCRO: ['0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23', 18], // CRO
       SNOW: ['0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87', 18],
       GLCR: ['0xE7eD6747FaC5360f88a2EFC03E00d25789F69291', 18],
       SBOND: ['0x602C71e4DAC47a042Ee7f46E0aee17F94A3bA0B6', 18],
@@ -29,10 +29,10 @@ const configurations: { [env: string]: Configuration } = {
       'SNOW-USDC-LP': ['0x3fc5B92474b78061632Cc2BA590De53278cD2d5f', 18],
       'GLCR-USDC-LP': ['0xb4C41057E352fD211036C03F2076CE7A9B72B4F2', 18],
       'GRAPE-SNOW-LP': ['0xA3F24b18608606079a0317Cbe6Cda54CED931420', 18],
-      'USDC-WAVAX-LP': ['0xA389f9430876455C36478DeEa9769B7Ca4E3DDB1', 18],
+      'USDC-WCRO-LP': ['0xA389f9430876455C36478DeEa9769B7Ca4E3DDB1', 18],
       'USDC-JOE-LP': ['0x67926d973cD8eE876aD210fAaf7DFfA99E414aCf', 18],
       'SNO-JOE-LP': ['0xe63b66a8cf7811525cd15dab15f17fb62aa5af2f', 18],
-      'MIM-WAVAX-LP': ['0x781655d802670bbA3c89aeBaaEa59D3182fD755D', 18],
+      'MIM-WCRO-LP': ['0x781655d802670bbA3c89aeBaaEa59D3182fD755D', 18],
     },
     baseLaunchDate: new Date('2022-05-14T18:00:00Z'),
     bondLaunchesAt: new Date('2022-05-15T09:00:00Z'),
@@ -57,7 +57,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   sort: the order of the pool
   */
   SnowBtcGenesisRewardPool: {
-    name: 'Earn SNOW by WBTC',
+    name: 'Earn SNOW by wBTC',
     poolId: 0,
     sectionInUI: 0,
     contract: 'SnowBtcGenesisRewardPool',
@@ -67,11 +67,11 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 1,
     closedForStaking: false,
   },
-  SnowFoxGenesisRewardPool: {
-    name: 'Earn SNOW by WETH',
+  SnowEthGenesisRewardPool: {
+    name: 'Earn SNOW by wETH',
     poolId: 0,
     sectionInUI: 0,
-    contract: 'SnowFoxGenesisRewardPool',
+    contract: 'SnowEthGenesisRewardPool',
     depositTokenName: 'WETH',
     earnTokenName: 'SNOW',
     finished: false,
@@ -100,12 +100,12 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 4,
     closedForStaking: true,
   },
-  SnowAvaxGenesisRewardPool: {
-    name: 'Earn SNOW by wAVAX',
+  SnowCroGenesisRewardPool: {
+    name: 'Earn SNOW by wCRO',
     poolId: 0,
     sectionInUI: 0,
-    contract: 'SnowAvaxGenesisRewardPool',
-    depositTokenName: 'WAVAX',
+    contract: 'SnowCroGenesisRewardPool',
+    depositTokenName: 'WCRO',
     earnTokenName: 'SNOW',
     finished: false,
     sort: 5,
