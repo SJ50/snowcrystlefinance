@@ -74,9 +74,9 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     contract: 'SnowFoxGenesisRewardPool',
     depositTokenName: 'WETH',
     earnTokenName: 'SNOW',
-    finished: true,
+    finished: false,
     sort: 2,
-    closedForStaking: true,
+    closedForStaking: false,
   },
   SnowSnobondGenesisRewardPool: {
     name: 'Earn SNOW by SNOBOND',
