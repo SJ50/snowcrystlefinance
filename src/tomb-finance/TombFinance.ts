@@ -595,8 +595,8 @@ export class TombFinance {
         return this.getDibsStat();
       case 'WBTC':
         return this.getBtcStat();
-      case 'SNOBOND':
-        return this.getSnoStat();
+      // case 'SNOBOND':
+      //   return this.getSnoStat();
       case 'WAVAX':
         return this.getAvaxStat();
       case 'WETH':
@@ -644,27 +644,28 @@ export class TombFinance {
     };
   }
 
-  async getSnoStat(): Promise<TokenStat> {
-    const {JOE} = this.config.externalTokens;
-    const [priceInJoe, priceOfOneJoe] = await Promise.all([
-      this.getTokenPriceFromPancakeswap(this.SNO, new Token(this.config.chainId, JOE[0], JOE[1], 'JOE')),
-      this.getJoePriceFromPancakeswap(),
-    ]);
+  // async getSnoStat(): Promise<TokenStat> {
+  //   const {JOE} = this.config.externalTokens;
+  //   const [priceInJoe, priceOfOneJoe] = await Promise.all([
+  //     this.getTokenPriceFromPancakeswap(this.SNO, new Token(this.config.chainId, JOE[0], JOE[1], 'JOE')),
+  //     this.getJoePriceFromPancakeswap(),
+  //   ]);
 
-    const priceInDollars = (Number(priceInJoe) * Number(priceOfOneJoe)).toFixed(12);
-    return {
-      tokenInFtm: priceInJoe,
-      priceInDollars,
-      totalSupply: '0',
-      circulatingSupply: '0',
-    };
-  }
+  //   const priceInDollars = (Number(priceInJoe) * Number(priceOfOneJoe)).toFixed(12);
+  //   return {
+  //     tokenInFtm: priceInJoe,
+  //     priceInDollars,
+  //     totalSupply: '0',
+  //     circulatingSupply: '0',
+  //   };
+  // }
 
 
   async getBtcStat(): Promise<TokenStat> {
-    const {JOE} = this.config.externalTokens;
+    const {USDC} = this.config.externalTokens;
+    
     const [priceInJoe, priceOfOneJoe] = await Promise.all([
-      this.getTokenPriceFromPancakeswap(this.WBTC, new Token(this.config.chainId, JOE[0], JOE[1], 'JOE')),
+      this.getTokenPriceFromPancakeswap(this.WBTC, new Token(this.config.chainId, USDC[0], USDC[1], 'USDC')),
       this.getJoePriceFromPancakeswap(),
     ]);
 
