@@ -1,7 +1,7 @@
 import axios from 'axios';
 // import { Fetcher, Route, Token } from '@uniswap/sdk';
-import { Fetcher as FetcherSpirit, Token as TokenSpirit } from '@traderjoe-xyz/sdk';
-import { Fetcher, Route, Token } from '@traderjoe-xyz/sdk';
+import { Fetcher as FetcherSpirit, Token as TokenSpirit } from '@madmeerkat/sdk';
+import { Fetcher, Route, Token } from '@madmeerkat/sdk';
 // import { Fetcher as FetcherSpirit, Token as TokenSpirit } from 'quickswap-sdk';
 // import { Fetcher, Route, Token } from 'quickswap-sdk';
 import { Configuration } from './config';
@@ -56,9 +56,9 @@ export class TombFinance {
     for (const [symbol, [address, decimal]] of Object.entries(externalTokens)) {
       this.externalTokens[symbol] = new ERC20(address, provider, symbol, decimal);
     }
-    this.TOMB = new ERC20(deployments.tomb.address, provider, 'WLRS');
-    this.TSHARE = new ERC20(deployments.tShare.address, provider, 'WSHARE');
-    this.TBOND = new ERC20(deployments.tBond.address, provider, 'WBOND');
+    this.TOMB = new ERC20(deployments.tomb.address, provider, 'SNOW');
+    this.TSHARE = new ERC20(deployments.tShare.address, provider, 'GLCR');
+    this.TBOND = new ERC20(deployments.tBond.address, provider, 'SBOND');
     this.FTM = this.externalTokens['USDC'];
     this.WAVAX = this.externalTokens['WAVAX'];
     this.SNO = this.externalTokens['SNO'];
@@ -67,7 +67,7 @@ export class TombFinance {
     this.GRAPE = this.externalTokens['GRAPE'];
 
     // Uniswap V2 Pair
-    this.TOMBWFTM_LP = new Contract(externalTokens['WLRS-USDC-LP'][0], IUniswapV2PairABI, provider);
+    this.TOMBWFTM_LP = new Contract(externalTokens['SNOW-USDC-LP'][0], IUniswapV2PairABI, provider);
 
     this.config = cfg;
     this.provider = provider;
@@ -137,8 +137,8 @@ export class TombFinance {
     let lpToken = this.externalTokens[name];
     let lpTokenSupplyBN = await lpToken.totalSupply();
     let lpTokenSupply = getDisplayBalance(lpTokenSupplyBN, lpToken.decimal, lpToken.decimal / 2);
-    let token0 =  name.startsWith('WLRS') ? this.TOMB : this.TSHARE; // name === 'WLRS-USDC-LP' ? this.TOMB : this.TSHARE;
-    let isTomb = name.startsWith('WLRS'); // name === 'WLRS-USDC-LP';
+    let token0 =  name.startsWith('SNOW') ? this.TOMB : this.TSHARE; // name === 'SNOW-USDC-LP' ? this.TOMB : this.TSHARE;
+    let isTomb = name.startsWith('SNOW'); // name === 'SNOW-USDC-LP';
     let tokenAmountBN = await token0.balanceOf(lpToken.address);
     let tokenAmount = getDisplayBalance(tokenAmountBN, token0.decimal);
 
@@ -378,7 +378,7 @@ export class TombFinance {
     const depositTokenPrice = await this.getDepositTokenPriceInDollars(bank.depositTokenName, depositToken);
     const stakeInPool = (await depositToken.balanceOf(bank.address)).mul(bank.depositTokenName.endsWith('USDC-LP') ? 10**6 : 1);
     const TVL = Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal, depositToken.decimal === 6 ? 3 : 9));
-    const stat = bank.earnTokenName === 'WLRS' ? await this.getTombStat() : await this.getShareStat();
+    const stat = bank.earnTokenName === 'SNOW' ? await this.getTombStat() : await this.getShareStat();
     const tokenPerSecond = await this.getTokenPerSecond(
       bank.earnTokenName,
       bank.contract,
@@ -387,7 +387,7 @@ export class TombFinance {
     );
 
     let tokenPerHour = tokenPerSecond.mul(60).mul(60).mul(3).div(8);
-    if (bank.sectionInUI === 2 && bank.depositTokenName === 'WLRS') {
+    if (bank.sectionInUI === 2 && bank.depositTokenName === 'SNOW') {
       tokenPerHour = tokenPerHour.mul(3).div(5);
     }
     const totalRewardPricePerYear =
@@ -418,7 +418,7 @@ export class TombFinance {
     poolContract: Contract,
     depositTokenName: string,
   ) {
-    if (earnTokenName === 'WLRS') {
+    if (earnTokenName === 'SNOW') {
       if (contractName.endsWith('GenesisRewardPool')) {
         const rewardPerSecond = await poolContract.wlrsPerSecond();
         // if (depositTokenName === 'WAVAX') {
@@ -444,7 +444,7 @@ export class TombFinance {
     }
 
     const rewardPerSecond = await poolContract.wSharePerSecond();
-    if (depositTokenName.startsWith('WLRS')) {
+    if (depositTokenName.startsWith('SNOW')) {
       return rewardPerSecond.mul(30000).div(50000).mul(3).div(2);
     } else {
       return rewardPerSecond.mul(20000).div(50000).mul(3).div(2);
@@ -462,15 +462,15 @@ export class TombFinance {
   async getDepositTokenPriceInDollars(tokenName: string, token: ERC20) {
     let tokenPrice;
     const priceOfOneFtmInDollars = await this.getWFTMPriceFromPancakeswap();
-    if (tokenName === 'WLRS') {
+    if (tokenName === 'SNOW') {
       tokenPrice = (await this.getTombStat()).priceInDollars;
-    } if (tokenName === 'WSHARE') {
+    } if (tokenName === 'GLCR') {
       tokenPrice = (await this.getShareStat()).priceInDollars;
     } else if (!tokenName.includes('-LP')) {
       tokenPrice = (await this.getTokenStat(tokenName)).priceInDollars;
-    } else if (tokenName === 'WLRS-USDC-LP') {
+    } else if (tokenName === 'SNOW-USDC-LP') {
       tokenPrice = await this.getLPTokenPrice(token, this.TOMB, true);
-    } else if (tokenName === 'WSHARE-USDC-LP') {
+    } else if (tokenName === 'GLCR-USDC-LP') {
       tokenPrice = await this.getLPTokenPrice(token, this.TSHARE, false);
     } else if (tokenName === 'GRAPE-WLRS-LP') {
       tokenPrice = await this.getLPTokenPrice(token, this.TOMB, true);
@@ -567,7 +567,7 @@ export class TombFinance {
     // const stat = isTomb === true ? await this.getTombStat() : await this.getShareStat();
     const stat = await this.getTokenStat(token.symbol);
     const priceOfToken = stat.priceInDollars;
-    const divider = ['WLRS', 'WSHARE', 'USDC', 'USDT'].includes(token.symbol) ? 10**6 : 1;
+    const divider = ['SNOW', 'GLCR', 'USDC', 'USDT'].includes(token.symbol) ? 10**6 : 1;
     const tokenInLP = Number(tokenSupply) / Number(totalSupply) / divider;  // NOTE: hot fix
     const tokenPrice = (Number(priceOfToken) * tokenInLP * 2) //We multiply by 2 since half the price of the lp token is the price of each piece of the pair. So twice gives the total
       .toString();
@@ -580,9 +580,9 @@ export class TombFinance {
         return this.getUsdtStat();
       case 'USDC':
         return this.getUsdcStat();
-      case 'WLRS':
+      case 'SNOW':
         return this.getTombStat();
-      case 'WSHARE':
+      case 'GLCR':
         return this.getShareStat();
       case 'DIBS':
         return this.getDibsStat();
@@ -751,17 +751,17 @@ export class TombFinance {
   ): Promise<BigNumber> {
     const pool = this.contracts[poolName];
     try {
-      if (earnTokenName === 'WLRS-USDC-LP' && poolName.includes('Node')) {
+      if (earnTokenName === 'SNOW-USDC-LP' && poolName.includes('Node')) {
         return await pool.getTotalRewards(account);
       }
-      if (earnTokenName === 'WSHARE-USDC-LP' && poolName.includes('Node')) {
+      if (earnTokenName === 'GLCR-USDC-LP' && poolName.includes('Node')) {
         return await pool.getTotalRewards(account);
       }
       if (earnTokenName === 'GRAPE-WLRS-LP' && poolName.includes('Node')) {
         return await pool.getTotalRewards(account);
       }
-      if (earnTokenName === 'WLRS') {
-        return await pool.pendingWLRS(poolId, account);
+      if (earnTokenName === 'SNOW') {
+        return await pool.pendingSNOW(poolId, account);
       } else {
         return await pool.pendingShare(poolId, account);
       }
@@ -959,7 +959,7 @@ export class TombFinance {
 
   async stakeShareToMasonry(amount: string): Promise<TransactionResponse> {
     if (this.isOldMasonryMember()) {
-      throw new Error("you're using old boardroom. please withdraw and deposit the WSHARE again.");
+      throw new Error("you're using old boardroom. please withdraw and deposit the GLCR again.");
     }
     const Masonry = this.currentMasonry();
     return await Masonry.stake(decimalToBalance(amount));
@@ -1069,13 +1069,13 @@ export class TombFinance {
 
     let asset;
     let assetUrl;
-    if (assetName === 'WLRS') {
+    if (assetName === 'SNOW') {
       asset = this.TOMB;
       assetUrl = 'https://gateway.pinata.cloud/ipfs/QmVL6cK5iUmkfGhw41s4gCksHn4H4KoF2tnEin2fhbEMmQ';
-    } else if (assetName === 'WSHARE') {
+    } else if (assetName === 'GLCR') {
       asset = this.TSHARE;
       assetUrl = 'https://gateway.pinata.cloud/ipfs/QmSkdqbueZTKDjb2oqKo6bEcn6qenA9Z6iiSNR1omHGVZx';
-    } else if (assetName === 'WBOND') {
+    } else if (assetName === 'SBOND') {
       asset = this.TBOND;
       assetUrl = 'https://gateway.pinata.cloud/ipfs/QmVCNLxo6vRUr3qCaNHJPwVL7jMGBf18FSa65zkeaHSbua';
     }

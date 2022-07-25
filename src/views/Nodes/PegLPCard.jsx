@@ -30,13 +30,13 @@ const PegLPCard = ({}) => {
                 justifyContent: 'center',
               }}
             >
-              <TokenSymbol size={55} symbol={'WLRS-USDC-LP'} />
+              <TokenSymbol size={55} symbol={'SNOW-USDC-LP'} />
             </Box>
             <Typography variant="h5" component="h2">
-            WLRS-USDC.e LP Node
+            SNOW-USDC LP Node
             </Typography>
             <Typography color="#322f32">
-              Lock your WLRS LP to earn daily yields<br></br>
+              Lock your SNOW LP to earn daily yields<br></br>
               <b>Daily APR:</b> {statsOnPool?.dailyAPR}%<br></br>
               <b>Yearly APR:</b> {statsOnPool?.yearlyAPR}%
             </Typography>

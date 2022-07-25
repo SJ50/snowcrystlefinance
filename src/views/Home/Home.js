@@ -69,8 +69,8 @@ const Home = () => {
   const matches = useMediaQuery('(min-width:600px)');
   const classes = useStyles();
   const TVL = useTotalValueLocked();
-  const tombFtmLpStats = useLpStats('WLRS-USDC-LP');
-  const tShareFtmLpStats = useLpStats('WSHARE-USDC-LP');
+  const tombFtmLpStats = useLpStats('SNOW-USDC-LP');
+  const tShareFtmLpStats = useLpStats('GLCR-USDC-LP');
   const tombStats = useTombStats();
   const tShareStats = usetShareStats();
   const tBondStats = useBondStats();
@@ -88,9 +88,9 @@ const Home = () => {
   // }
 
   const buyTombAddress =
-    'https://traderjoexyz.com/trade?inputCurrency=0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664&outputCurrency=0x395908aeb53d33A9B8ac35e148E9805D34A555D3#/';
+    'https://traderjoexyz.com/trade?inputCurrency=0x6951b5Bd815043E3F842c1b026b0Fa888Cc2DD85&outputCurrency=0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87#/';
   const buyTShareAddress =
-    'https://traderjoexyz.com/trade?inputCurrency=0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664&outputCurrency=0xe6d1aFea0B76C8f51024683DD27FA446dDAF34B6#/';
+    'https://traderjoexyz.com/trade?inputCurrency=0x6951b5Bd815043E3F842c1b026b0Fa888Cc2DD85&outputCurrency=0xE7eD6747FaC5360f88a2EFC03E00d25789F69291#/';
 
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
   const tshareLPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);
@@ -129,15 +129,24 @@ const Home = () => {
 
   const tombBalance = useTokenBalance(tombFinance.TOMB);
   const displayTombBalance = useMemo(() => getDisplayBalance(tombBalance), [tombBalance]);
-  const tombBalanceInDollars = tombPriceInDollars && tombBalance ? (Number(tombPriceInDollars) * tombBalance.div('1000000000000000000').toNumber()).toFixed(2) : null;
+  const tombBalanceInDollars =
+    tombPriceInDollars && tombBalance
+      ? (Number(tombPriceInDollars) * tombBalance.div('1000000000000000000').toNumber()).toFixed(2)
+      : null;
 
   const tShareBalance = useTokenBalance(tombFinance.TSHARE);
   const displayTShareBalance = useMemo(() => getDisplayBalance(tShareBalance), [tShareBalance]);
-  const tShareBalanceInDollars = tSharePriceInDollars && tShareBalance ? (Number(tSharePriceInDollars) * tShareBalance.div('1000000000000000000').toNumber()).toFixed(2) : null;
+  const tShareBalanceInDollars =
+    tSharePriceInDollars && tShareBalance
+      ? (Number(tSharePriceInDollars) * tShareBalance.div('1000000000000000000').toNumber()).toFixed(2)
+      : null;
 
   const tBondBalance = useTokenBalance(tombFinance.TBOND);
   const displayTBondBalance = useMemo(() => getDisplayBalance(tBondBalance), [tBondBalance]);
-  const tBondBalanceInDollars = tBondPriceInDollars && displayTBondBalance ? (Number(tBondPriceInDollars) * tBondBalance.div('1000000000000000000').toNumber()).toFixed(2) : null;
+  const tBondBalanceInDollars =
+    tBondPriceInDollars && displayTBondBalance
+      ? (Number(tBondPriceInDollars) * tBondBalance.div('1000000000000000000').toNumber()).toFixed(2)
+      : null;
 
   const Row = styled.div`
     align-items: center;
@@ -162,9 +171,9 @@ const Home = () => {
                   <TokenSymbol symbol="TOMB" />
                   <StyledBalance>
                     <StyledValue>{displayTombBalance}</StyledValue>
-                    <Label text="WLRS available" variant="noraml" />
+                    <Label text="SNOW available" variant="noraml" />
                     <span style={{ fontSize: '15px', marginLeft: '2%' }}>
-                      (${tombBalanceInDollars ? tombBalanceInDollars : '-.----'}) 
+                      (${tombBalanceInDollars ? tombBalanceInDollars : '-.----'})
                     </span>
                     <div className={classes.flex}>
                       <Button
@@ -180,7 +189,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://dexscreener.com/avalanche/0x82845B52b53c80595bbF78129126bD3E6Fc2C1DF"
+                        href="https://dexscreener.com/avalanche/0x3fc5B92474b78061632Cc2BA590De53278cD2d5f"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -190,7 +199,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://snowtrace.io/address/0x395908aeb53d33A9B8ac35e148E9805D34A555D3#code"
+                        href="https://snowtrace.io/address/0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87#code"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -201,10 +210,10 @@ const Home = () => {
                   </StyledBalance>
                 </StyledBalanceWrapper>
                 <StyledBalanceWrapper>
-                  <TokenSymbol symbol="WSHARE" />
+                  <TokenSymbol symbol="GLCR" />
                   <StyledBalance>
                     <StyledValue>{displayTShareBalance}</StyledValue>
-                    <Label text="WSHARE available" variant="noraml" />
+                    <Label text="GLCR available" variant="noraml" />
                     <span style={{ fontSize: '15px', marginLeft: '2%' }}>
                       (${tShareBalanceInDollars ? tShareBalanceInDollars : '-.----'})
                     </span>
@@ -222,7 +231,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://dexscreener.com/avalanche/0x03d15E0451e54Eec95ac5AcB5B0a7ce69638c62A"
+                        href="https://dexscreener.com/avalanche/0xb4C41057E352fD211036C03F2076CE7A9B72B4F2"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -232,7 +241,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://snowtrace.io/address/0xe6d1aFea0B76C8f51024683DD27FA446dDAF34B6#code"
+                        href="https://snowtrace.io/address/0xE7eD6747FaC5360f88a2EFC03E00d25789F69291#code"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -243,10 +252,10 @@ const Home = () => {
                   </StyledBalance>
                 </StyledBalanceWrapper>
                 <StyledBalanceWrapper>
-                  <TokenSymbol symbol="WBOND" />
+                  <TokenSymbol symbol="SBOND" />
                   <StyledBalance>
                     <StyledValue>{displayTBondBalance}</StyledValue>
-                    <Label text="WBOND available" variant="noraml" />
+                    <Label text="SBOND available" variant="noraml" />
                     <span style={{ fontSize: '15px', marginLeft: '2%' }}>
                       (${tBondBalanceInDollars ? tBondBalanceInDollars : '-.----'})
                     </span>
@@ -263,7 +272,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://snowtrace.io/address/0xa8cFe8b4e8632cF551692Ddf78B97Ff4784dF14a#code"
+                        href="https://snowtrace.io/address/0x602C71e4DAC47a042Ee7f46E0aee17F94A3bA0B6#code"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -289,7 +298,7 @@ const Home = () => {
             }}
             gutterBottom
           >
-            Welcome to Walrus
+            Welcome to SnowCrystals
           </Typography>
           <Card>
             <CardContent
@@ -311,20 +320,25 @@ const Home = () => {
         <Grid item xs={12} sm={6}>
           <Card>
             <CardContent align="center">
-              <h2>WLRS-USDC.e LP</h2>
+              <h2>SNOW-USDC LP</h2>
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
-                <TokenSymbol size={50} symbol="WLRS-USDC-LP" />
+                <TokenSymbol size={50} symbol="SNOW-USDC-LP" />
               </div>
               <Box mt={2}>
                 <span style={{ fontSize: '26px' }}>
-                  {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} WLRS /{' '}
-                  {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} USDC.e
+                  {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} SNOW /{' '}
+                  {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} USDC
                 </span>
               </Box>
               <Box>${tombLPStats?.priceOfOne ? tombLPStats.priceOfOne : '-.--'}</Box>
               <span style={{ fontSize: '12px' }}>
                 Liquidity: ${tombLPStats?.totalLiquidity ? tombLPStats.totalLiquidity : '-.--'} <br />
-                Total supply: {tombLPStats?.totalSupply ? (Number(tombLPStats.totalSupply) < 1/10**4 ? (Number(tombLPStats.totalSupply) * 10**6).toFixed(4) + 'µ' : tombLPStats.totalSupply) : '-.--'}
+                Total supply:{' '}
+                {tombLPStats?.totalSupply
+                  ? Number(tombLPStats.totalSupply) < 1 / 10 ** 4
+                    ? (Number(tombLPStats.totalSupply) * 10 ** 6).toFixed(4) + 'µ'
+                    : tombLPStats.totalSupply
+                  : '-.--'}
               </span>
             </CardContent>
           </Card>
@@ -332,21 +346,26 @@ const Home = () => {
         <Grid item xs={12} sm={6}>
           <Card>
             <CardContent align="center">
-              <h2>WSHARE-USDC.e LP</h2>
+              <h2>GLCR-USDC LP</h2>
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
-                <TokenSymbol size={50} symbol="WSHARE-USDC-LP" />
+                <TokenSymbol size={50} symbol="GLCR-USDC-LP" />
               </div>
               <Box mt={2}>
                 <span style={{ fontSize: '26px' }}>
-                  {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} WSHARE /{' '}
-                  {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} USDC.e
+                  {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} GLCR /{' '}
+                  {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} USDC
                 </span>
               </Box>
               <Box>${tshareLPStats?.priceOfOne ? tshareLPStats.priceOfOne : '-.--'}</Box>
               <span style={{ fontSize: '12px' }}>
                 Liquidity: ${tshareLPStats?.totalLiquidity ? tshareLPStats.totalLiquidity : '-.--'}
                 <br />
-                Total supply: {tshareLPStats?.totalSupply ? (Number(tshareLPStats.totalSupply) < 1/10**4 ? (Number(tshareLPStats.totalSupply) * 10**6).toFixed(4) + 'µ' : tshareLPStats.totalSupply) : '-.--'}
+                Total supply:{' '}
+                {tshareLPStats?.totalSupply
+                  ? Number(tshareLPStats.totalSupply) < 1 / 10 ** 4
+                    ? (Number(tshareLPStats.totalSupply) * 10 ** 6).toFixed(4) + 'µ'
+                    : tshareLPStats.totalSupply
+                  : '-.--'}
               </span>
             </CardContent>
           </Card>
@@ -358,7 +377,7 @@ const Home = () => {
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
                 <TokenSymbol symbol="USDC" size={50} />
               </div>
-              <h2 align="center">USDC.e</h2>
+              <h2 align="center">USDC</h2>
               <p align="center">Current Price</p>
               <Box align="center">
                 <span style={{ fontSize: '30px' }}>${JOEPrice ? JOEPrice : '-.----'}</span>
@@ -383,7 +402,7 @@ const Home = () => {
                 <Button
                   color="primary"
                   target="_blank"
-                  href={'https://traderjoexyz.com/trade?outputCurrency=0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664#/'}
+                  href={'https://traderjoexyz.com/trade?outputCurrency=0x6951b5Bd815043E3F842c1b026b0Fa888Cc2DD85#/'}
                   variant="contained"
                   style={{ marginTop: '10px', borderRadius: '10px', width: '100%' }}
                   className={classes.button}
@@ -400,7 +419,7 @@ const Home = () => {
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
                 <TokenSymbol symbol="TOMB" size={50} />
               </div>
-              <h2 align="center">WLRS</h2>
+              <h2 align="center">SNOW</h2>
               <p align="center">Current Price</p>
               <Box align="center">
                 <span style={{ fontSize: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -445,9 +464,9 @@ const Home = () => {
           <Card>
             <CardContent style={{ position: 'relative' }}>
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
-                <TokenSymbol symbol="WSHARE" size={50} />
+                <TokenSymbol symbol="GLCR" size={50} />
               </div>
-              <h2 align="center">WSHARE</h2>
+              <h2 align="center">GLCR</h2>
               <p align="center">Current Price</p>
               <Box align="center">
                 <span style={{ fontSize: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -489,9 +508,9 @@ const Home = () => {
           <Card>
             <CardContent style={{ position: 'relative' }}>
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
-                <TokenSymbol symbol="WBOND" size={50} />
+                <TokenSymbol symbol="SBOND" size={50} />
               </div>
-              <h2 align="center">WBOND</h2>
+              <h2 align="center">SBOND</h2>
               <p align="center">Current Price</p>
               <Box align="center">
                 <span style={{ fontSize: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

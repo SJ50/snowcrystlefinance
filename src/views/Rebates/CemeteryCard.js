@@ -42,7 +42,9 @@ const CemeteryCard = ({ bank }) => {
         const account = tombFinance.myAccount; //(await window.ethereum.request({ method: 'eth_accounts' }))[0];
         if (!account) return;
 
-        let amountBN = BN(Math.floor(value * 10000 * 10**12).toString()).mul(BN(10).pow(BN(14))).div(BN(10).pow(BN(12)));
+        let amountBN = BN(Math.floor(value * 10000 * 10 ** 12).toString())
+          .mul(BN(10).pow(BN(14)))
+          .div(BN(10).pow(BN(12)));
         if (18 - tombFinance.externalTokens[bank.depositTokenName].decimal > 0) {
           amountBN = amountBN.div(BN(10).pow(BN(18 - tombFinance.externalTokens[bank.depositTokenName].decimal)));
         }
@@ -95,12 +97,12 @@ const CemeteryCard = ({ bank }) => {
             <TokenSymbol size={50} symbol={bank.depositTokenName} />
           </Box>
           {/* <div className={classes.black}>
-            {bank.depositTokenName.replace('USDC', 'USDC.e')}
+            {bank.depositTokenName.replace('USDC', 'USDC')}
           </div> */}
           <div className={classes.black}>
-            Bond&nbsp;{bank.depositTokenName.replace('USDC', 'USDC.e')}
+            Bond&nbsp;{bank.depositTokenName.replace('USDC', 'USDC')}
             <br />
-            Earn WLRS
+            Earn SNOW
           </div>
         </Box>
       </CardContent>
@@ -113,10 +115,10 @@ const CemeteryCard = ({ bank }) => {
             onClick={approve}
           >
             Approve{' '}
-            {bank.depositTokenName === 'WSHARE-USDC-LP'
-              ? 'WSHARE-USDC.e LP'
-              : bank.depositTokenName === 'WLRS-USDC-LP'
-              ? 'WLRS-USDC.e LP'
+            {bank.depositTokenName === 'GLCR-USDC-LP'
+              ? 'GLCR-USDC LP'
+              : bank.depositTokenName === 'SNOW-USDC-LP'
+              ? 'SNOW-USDC LP'
               : ''}
           </Button>
         ) : (

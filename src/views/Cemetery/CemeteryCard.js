@@ -10,8 +10,8 @@ import useStatsForPool from '../../hooks/useStatsForPool';
 // import useCashStat from '../../hooks/useCashPriceInEstimatedTWAP.ts';
 
 const CemeteryCard = () => {
-  const tombFtmLpStats = useLpStats('WLRS-USDC-LP');
-  const tShareFtmLpStats = useLpStats('WSHARE-USDC-LP');
+  const tombFtmLpStats = useLpStats('SNOW-USDC-LP');
+  const tShareFtmLpStats = useLpStats('GLCR-USDC-LP');
   // const snoSnoShareLpStats = useLpStats('SNO-SNOSHARE-LP');
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
   const tshareLPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);
@@ -33,19 +33,25 @@ const CemeteryCard = () => {
           >
             <div>
               <Typography variant="h5" component="h2">
-                WLRS-USDC.e LP
+                SNOW-USDC LP
               </Typography>
-              <TokenSymbol size={60} symbol="WLRS-USDC-LP" />
+              <TokenSymbol size={60} symbol="SNOW-USDC-LP" />
             </div>
             <div>
               <span style={{ fontSize: '23px' }}>
-                {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} WLRS /{' '}
-                {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} USDC.e
+                {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} SNOW /{' '}
+                {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} USDC
               </span>
               <Box>${tombLPStats?.priceOfOne ? tombLPStats.priceOfOne : '-.--'}</Box>
               <span style={{ fontSize: '12px' }}>
                 Liquidity: ${tombLPStats?.totalLiquidity ? tombLPStats.totalLiquidity : '-.--'} <br />
-                Total supply: {tombLPStats?.totalSupply ? (Number(tombLPStats.totalSupply) < 1/10**4 ? (Number(tombLPStats.totalSupply) * 10**6).toFixed(4) + 'µ' : tombLPStats.totalSupply) : '-.--'} <br />
+                Total supply:{' '}
+                {tombLPStats?.totalSupply
+                  ? Number(tombLPStats.totalSupply) < 1 / 10 ** 4
+                    ? (Number(tombLPStats.totalSupply) * 10 ** 6).toFixed(4) + 'µ'
+                    : tombLPStats.totalSupply
+                  : '-.--'}{' '}
+                <br />
                 APR: {tombStatsOnPool?.yearlyAPR ? tombStatsOnPool?.yearlyAPR : '----.--'}%
               </span>
             </div>
@@ -65,7 +71,7 @@ const CemeteryCard = () => {
               target="_blank"
               style={{ width: '150px', height: '45px', marginBottom: '5%' }}
               variant="contained"
-              href="https://traderjoexyz.com/pool/0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664/0x395908aeb53d33A9B8ac35e148E9805D34A555D3#/"
+              href="https://traderjoexyz.com/pool/0x6951b5Bd815043E3F842c1b026b0Fa888Cc2DD85/0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87#/"
             >
               Add Liquidity
             </Button>
@@ -79,20 +85,26 @@ const CemeteryCard = () => {
           >
             <div>
               <Typography variant="h5" component="h2">
-                WSHARE-USDC.e LP
+                GLCR-USDC LP
               </Typography>
-              <TokenSymbol size={60} symbol="WSHARE-USDC-LP" />
+              <TokenSymbol size={60} symbol="GLCR-USDC-LP" />
             </div>
             <div>
               <span style={{ fontSize: '23px' }}>
-                {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} WSHARE /{' '}
-                {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} USDC.e
+                {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} GLCR /{' '}
+                {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} USDC
               </span>
 
               <Box>${tshareLPStats?.priceOfOne ? tshareLPStats.priceOfOne : '-.--'}</Box>
               <span style={{ fontSize: '12px' }}>
                 Liquidity: ${tshareLPStats?.totalLiquidity ? tshareLPStats.totalLiquidity : '-.--'} <br />
-                Total supply: {tshareLPStats?.totalSupply ? (Number(tshareLPStats.totalSupply) < 1/10**4 ? (Number(tshareLPStats.totalSupply) * 10**6).toFixed(4) + 'µ' : tshareLPStats.totalSupply) : '-.--'} <br />
+                Total supply:{' '}
+                {tshareLPStats?.totalSupply
+                  ? Number(tshareLPStats.totalSupply) < 1 / 10 ** 4
+                    ? (Number(tshareLPStats.totalSupply) * 10 ** 6).toFixed(4) + 'µ'
+                    : tshareLPStats.totalSupply
+                  : '-.--'}{' '}
+                <br />
                 APR: {tShareStatsOnPool?.yearlyAPR ? tShareStatsOnPool?.yearlyAPR : '----.--'}%
               </span>
             </div>
@@ -112,7 +124,7 @@ const CemeteryCard = () => {
               target="_blank"
               style={{ width: '150px', height: '45px', marginBottom: '5%' }}
               variant="contained"
-              href="https://traderjoexyz.com/pool/0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664/0xe6d1aFea0B76C8f51024683DD27FA446dDAF34B6#/"
+              href="https://traderjoexyz.com/pool/0x6951b5Bd815043E3F842c1b026b0Fa888Cc2DD85/0xE7eD6747FaC5360f88a2EFC03E00d25789F69291#/"
             >
               Add Liquidity
             </Button>
@@ -126,14 +138,14 @@ const CemeteryCard = () => {
           >
             <div>
               <Typography variant="h5" component="h2">
-                WLRS-WSHARE-LP
+                SNOW-GLCR-LP
               </Typography>
-              <TokenSymbol symbol="WLRS-WSHARE-LP" size={60} />
+              <TokenSymbol symbol="SNOW-GLCR-LP" size={60} />
             </div>
             <div>
               <span style={{ fontSize: '23px' }}>
-                {snoSnoShareLPStats?.ftmAmount ? snoSnoShareLPStats?.ftmAmount : '-.--'} WLRS /{' '}
-                {snoSnoShareLPStats?.tokenAmount ? snoSnoShareLPStats?.tokenAmount : '-.--'} WSHARE
+                {snoSnoShareLPStats?.ftmAmount ? snoSnoShareLPStats?.ftmAmount : '-.--'} SNOW /{' '}
+                {snoSnoShareLPStats?.tokenAmount ? snoSnoShareLPStats?.tokenAmount : '-.--'} GLCR
               </span>
               <Box>${snoSnoShareLPStats?.priceOfOne ? snoSnoShareLPStats.priceOfOne : '-.--'}</Box>
               <span style={{ fontSize: '12px' }}>
@@ -172,7 +184,7 @@ const CemeteryCard = () => {
           >
             <div>
               <Typography variant="h5" component="h2">
-                WLRS
+                SNOW
               </Typography>
               <TokenSymbol symbol="SNO" size={60} />
             </div>
@@ -203,7 +215,7 @@ const CemeteryCard = () => {
               variant="contained"
               href="https://traderjoexyz.com/trade?inputCurrency=0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd&outputCurrency=0x1fE4869f2C5181b9CD780a7E16194FA2c4C4293D"
             >
-              Buy WLRS
+              Buy SNOW
             </Button>
           </CardActions>
         </Card>

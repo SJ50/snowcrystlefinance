@@ -50,7 +50,7 @@ const Footer = () => {
           <Grid item xs={12}>
             <Typography variant="h4" component="div" align="center">
               <Link color="inherit" href="/" style={{ textDecoration: 'none' }}>
-                WALRUS Finance {new Date().getFullYear()}
+                SNOWCRYSTALS Finance {new Date().getFullYear()}
               </Link>
             </Typography>
           </Grid>

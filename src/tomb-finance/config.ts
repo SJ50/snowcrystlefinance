@@ -1,5 +1,5 @@
 import { Deployments } from './deployments';
-import { ChainId } from '@traderjoe-xyz/sdk';
+import { ChainId } from '@madmeerkat/sdk';
 // import { ChainId } from 'quickswap-sdk';
 
 export type Configuration = {

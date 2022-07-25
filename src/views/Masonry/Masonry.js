@@ -90,9 +90,9 @@ const Masonry = () => {
                 >
                   <CardContent align="center">
                     <h3 style={{ textAlign: 'center', color: '#5686d6', fontSize: '18px' }}>
-                      WLRS Price<small> (TWAP)</small>
+                      SNOW Price<small> (TWAP)</small>
                     </h3>
-                    <h2 style={{ fontWeight: 'lighter' }}>{scalingFactor} USDC.e</h2>
+                    <h2 style={{ fontWeight: 'lighter' }}>{scalingFactor} USDC</h2>
                   </CardContent>
                 </Card>
               </Grid>
@@ -123,7 +123,7 @@ const Masonry = () => {
             <Grid container justify="center">
               <Box mt={3} style={{ width: '600px' }}>
                 <Alert variant="filled" severity="info">
-                  Earned WLRS can only be withdrawn after 2 epochs since deposit.
+                  Earned SNOW can only be withdrawn after 2 epochs since deposit.
                 </Alert>
               </Box>
             </Grid>

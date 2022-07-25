@@ -45,10 +45,10 @@ const Bank: React.FC = () => {
     <>
       <PageHeader
         icon="🏦"
-        subtitle={`Deposit ${bank?.depositTokenName === 'USDC' || bank?.depositTokenName === 'USDT' ? bank?.depositTokenName + '.e' : bank?.depositTokenName.replace('USDC', 'USDC.e')} and earn ${bank?.earnTokenName}`}
+        subtitle={`Deposit ${bank?.depositTokenName === 'USDC' || bank?.depositTokenName === 'USDT' ? bank?.depositTokenName : bank?.depositTokenName.replace('USDC', 'USDC')} and earn ${bank?.earnTokenName}`}
         title={bank?.name}
       />
-      {bank?.depositTokenName === 'WLRS' && Date.now() < 1646510400000 ? (
+      {bank?.depositTokenName === 'SNOW' && Date.now() < 1646510400000 ? (
         <Alert
           variant="filled"
           severity="info"
@@ -129,7 +129,7 @@ const Bank: React.FC = () => {
     pairName = 'TOMB-AVAX pair';
     uniswapUrl = 'https://app.pangolin.exchange/#/add/AVAX/' + tombAddr;
   } else {
-    pairName = 'WSHARE-AVAX pair';
+    pairName = 'GLCR-AVAX pair';
     uniswapUrl = 'https://app.pangolin.exchange/#/add/AVAX/' + tshareAddr;
   }
   return (

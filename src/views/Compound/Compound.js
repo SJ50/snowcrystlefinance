@@ -36,9 +36,7 @@ const Compound = () => {
             : {
                 marginLeft: 'auto',
                 marginRight: 'auto',
-                ...(heightBreakpoint
-                  ? { marginTop: '7vh' }
-                  : { marginTop: '10vh' }),
+                ...(heightBreakpoint ? { marginTop: '7vh' } : { marginTop: '10vh' }),
               }),
         }}
       >
@@ -56,16 +54,16 @@ const Compound = () => {
         </h1>
 
         <p style={{ fontWeight: 'lighter', textAlign: 'center' }}>
-          Use <strong>magik.farm</strong> compounding protocol to maximise
-          your farms. Be sure to read their docs to assess risk.
+          Use <strong>magik.farm</strong> compounding protocol to maximise your farms. Be sure to read their docs to
+          assess risk.
         </p>
 
         <Grid item container spacing={3} style={{ marginTop: '2rem' }}>
           <Grid item xs={12} sm={6}>
             <CompoundCard
               cardData={{
-                title: 'WLRS-USDC.e LP',
-                tokenSymbol: 'WLRS-USDC-LP',
+                title: 'SNOW-USDC LP',
+                tokenSymbol: 'SNOW-USDC-LP',
               }}
               buttonProps={{
                 href: 'https://magik.farm/#/avax/vault/joe-wlrs-usdc',
@@ -76,8 +74,8 @@ const Compound = () => {
           <Grid item xs={12} sm={6}>
             <CompoundCard
               cardData={{
-                title: 'WSHARE-USDC.e LP',
-                tokenSymbol: 'WSHARE-USDC-LP',
+                title: 'GLCR-USDC LP',
+                tokenSymbol: 'GLCR-USDC-LP',
               }}
               buttonProps={{
                 href: 'https://magik.farm/#/avax/vault/joe-wshare-usdc',

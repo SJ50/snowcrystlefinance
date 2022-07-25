@@ -62,16 +62,16 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
 
   function formatOutAmount() {
     const outAmount = getOutAmount();
-    return `Receiving: ${outAmount.toFixed(4)} WLRS ($${(outAmount * rebateStats.tombPrice * ftmPrice).toFixed(4)})`;
+    return `Receiving: ${outAmount.toFixed(4)} SNOW ($${(outAmount * rebateStats.tombPrice * ftmPrice).toFixed(4)})`;
   }
 
   function formatInAmount() {
-    return `Input: ${(+val).toFixed(9)} ${tokenName.replace('USDC', 'USDC.e')} ($${(+val * getAssetPrice(tokenName) * ftmPrice).toFixed(4)})`;
+    return `Input: ${(+val).toFixed(9)} ${tokenName.replace('USDC', 'USDC')} ($${(+val * getAssetPrice(tokenName) * ftmPrice).toFixed(4)})`;
   }
 
   return (
     <Modal>
-      <ModalTitle text={`Bond ${tokenName.replace('USDC', 'USDC.e')}`} />
+      <ModalTitle text={`Bond ${tokenName.replace('USDC', 'USDC')}`} />
       <TokenInput
         value={val}
         onSelectMax={handleSelectMax}
@@ -82,7 +82,7 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
       <StyledMaxText style={{ marginTop: '14px', color: 'black' }}>{formatInAmount()}</StyledMaxText>
       <StyledMaxText style={{ color: 'black' }}>{formatOutAmount()}</StyledMaxText>
       <StyledMaxText style={{ color: 'black' }}>
-        {rebateStats.tombAvailable > 0 ? `${rebateStats.tombAvailable.toFixed(4)} WLRS Available` : 'Bond Sold Out'}
+        {rebateStats.tombAvailable > 0 ? `${rebateStats.tombAvailable.toFixed(4)} SNOW Available` : 'Bond Sold Out'}
       </StyledMaxText>
       <ModalActions>
         <Button

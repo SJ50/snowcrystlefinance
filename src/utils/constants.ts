@@ -1,6 +1,6 @@
-export const TOMB_TICKER = 'WLRS';
-export const TSHARE_TICKER = 'WSHARE';
-export const TBOND_TICKER = 'WBOND';
+export const TOMB_TICKER = 'SNOW';
+export const TSHARE_TICKER = 'GLCR';
+export const TBOND_TICKER = 'SBOND';
 export const FTM_TICKER = 'USDC';
 export const WFTM_TICKER = 'USDC';
 export const SPOOKY_ROUTER_ADDR = '0x60aE616a2155Ee3d9A68541Ba4544862310933d4';

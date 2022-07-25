@@ -46,7 +46,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
     [stakedTokenPriceInDollars],
   );
 
-  const multiplier = bank.depositTokenName.includes('WLRS') || bank.depositTokenName.includes('WSHARE') ? 10**6 : 1;
+  const multiplier = bank.depositTokenName.includes('SNOW') || bank.depositTokenName.includes('GLCR') ? 10**6 : 1;
   const earnedInDollars = (Number(tokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9)) * multiplier).toFixed(2);
   const { onStake } = useStake(bank);
   const { onZap } = useZap(bank);
@@ -99,7 +99,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
             <TokenSymbol symbol={bank.depositToken.symbol} size={100} />
             <Value value={'' + (stakedBalanceNumber < 1/10**4 ? (stakedBalanceNumber * 10**6).toFixed(4) + 'µ' : stakedBalanceNumber)} />
             <Label color="#777" text={`≈ $${earnedInDollars}`} />
-            <Label color="#777" text={`${bank.depositTokenName === 'USDC' || bank.depositTokenName === 'USDT' ? bank.depositTokenName + '.e' : bank.depositTokenName.replace('USDC', 'USDC.e')} Staked`} />
+            <Label color="#777" text={`${bank.depositTokenName === 'USDC' || bank.depositTokenName === 'USDT' ? bank.depositTokenName + '.e' : bank.depositTokenName.replace('USDC', 'USDC')} Staked`} />
           </StyledCardHeader>
           <StyledCardActions>
             {approveStatus !== ApprovalState.APPROVED ? (
@@ -114,7 +114,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
                 variant="contained"
                 style={{ marginTop: '65px', borderRadius: '15px', width: '250px' }}
               >
-                {`Approve ${bank.depositTokenName.replace('USDC', 'USDC.e')}`}
+                {`Approve ${bank.depositTokenName.replace('USDC', 'USDC')}`}
               </Button>
             ) : (
               <>
@@ -124,7 +124,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
                   </IconButton>
                   <StyledActionSpacer />
                   {
-                    bank.depositTokenName !== 'WLRS-USDC-LP' &&  bank.depositTokenName !== 'WSHARE-USDC-LP'
+                    bank.depositTokenName !== 'SNOW-USDC-LP' &&  bank.depositTokenName !== 'GLCR-USDC-LP'
                       ? null
                       : <IconButton
                           disabled={bank.closedForStaking}

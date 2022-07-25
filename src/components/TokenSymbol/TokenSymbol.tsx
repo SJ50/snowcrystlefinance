@@ -1,13 +1,13 @@
 import React from 'react';
 
 //Graveyard ecosystem logos
-import tombLogo from '../../assets/img/SVG_Icons_and_web_bg/WLRS-Icon-01.svg';
-import tShareLogo from '../../assets/img/SVG_Icons_and_web_bg/WSHARE-Icon-01.svg';
+import tombLogo from '../../assets/img/SVG_Icons_and_web_bg/SNOW-Icon-01.svg';
+import tShareLogo from '../../assets/img/SVG_Icons_and_web_bg/GLCR-Icon-01.svg';
 import tombLogoPNG from '../../assets/img/sno.png';
 import tShareLogoPNG from '../../assets/img/snoshare.png';
 import tBondLogo from '../../assets/img/SVG_Icons_and_web_bg/Bond icon-01.svg';
 
-import tombFtmLpLogo from '../../assets/img/SVG_Icons_and_web_bg/WLRS-USDC-LP-01.svg';
+import tombFtmLpLogo from '../../assets/img/SVG_Icons_and_web_bg/SNOW-USDC-LP-01.svg';
 import tshareFtmLpLogo from '../../assets/img/SVG_Icons_and_web_bg/SHARE-USDC-LP-01.svg';
 
 import wftmLogo from '../../assets/img/USDC.png';
@@ -31,10 +31,10 @@ const logosBySymbol: { [title: string]: string } = {
   TOMB: tombLogo,
   TOMBPNG: tombLogoPNG,
   TSHAREPNG: tShareLogoPNG,
-  WSHARE: tShareLogo,
-  WBOND: tBondLogo,
+  GLCR: tShareLogo,
+  SBOND: tBondLogo,
   WFTM: wftmLogo,
-  WLRS: tombLogo,
+  SNOW: tombLogo,
   BOO: booLogo,
   SHIBA: shibaLogo,
   ZOO: zooLogo,
@@ -46,8 +46,8 @@ const logosBySymbol: { [title: string]: string } = {
   GRAPE: grapeLogoPNG,
   USDT: usdtLogoPNG,
   USDC: usdcLogoPNG,
-  'WLRS-USDC-LP': tombFtmLpLogo,
-  'WSHARE-USDC-LP': tshareFtmLpLogo,
+  'SNOW-USDC-LP': tombFtmLpLogo,
+  'GLCR-USDC-LP': tshareFtmLpLogo,
   'GRAPE-WLRS-LP': grapeWlrsLP,
   'SNO-SNOSHARE-LP': tshareFtmLpLogo,
 };
