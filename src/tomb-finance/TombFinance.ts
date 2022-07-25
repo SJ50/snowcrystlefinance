@@ -40,7 +40,7 @@ export class TombFinance {
   TBOND: ERC20;
   FTM: ERC20;
   WAVAX: ERC20;
-  SNO: ERC20;
+  WBTC: ERC20;
   FOX: ERC20;
   DIBS: ERC20;
   GRAPE: ERC20;
@@ -63,7 +63,7 @@ export class TombFinance {
     this.TBOND = new ERC20(deployments.tBond.address, provider, 'SBOND');
     this.FTM = this.externalTokens['USDC'];
     this.WAVAX = this.externalTokens['WAVAX'];
-    this.SNO = this.externalTokens['SNO'];
+    this.WBTC = this.externalTokens['WBTC'];
     this.FOX = this.externalTokens['FOX'];
     this.DIBS = this.externalTokens['DIBS'];
     this.GRAPE = this.externalTokens['GRAPE'];
@@ -593,7 +593,8 @@ export class TombFinance {
         return this.getShareStat();
       case 'DIBS':
         return this.getDibsStat();
-      case 'SNO':
+      case 'WBTC':
+        return this.getBtcStat();
       case 'SNOBOND':
         return this.getSnoStat();
       case 'WAVAX':
@@ -647,6 +648,23 @@ export class TombFinance {
     const {JOE} = this.config.externalTokens;
     const [priceInJoe, priceOfOneJoe] = await Promise.all([
       this.getTokenPriceFromPancakeswap(this.SNO, new Token(this.config.chainId, JOE[0], JOE[1], 'JOE')),
+      this.getJoePriceFromPancakeswap(),
+    ]);
+
+    const priceInDollars = (Number(priceInJoe) * Number(priceOfOneJoe)).toFixed(12);
+    return {
+      tokenInFtm: priceInJoe,
+      priceInDollars,
+      totalSupply: '0',
+      circulatingSupply: '0',
+    };
+  }
+
+
+  async getBtcStat(): Promise<TokenStat> {
+    const {JOE} = this.config.externalTokens;
+    const [priceInJoe, priceOfOneJoe] = await Promise.all([
+      this.getTokenPriceFromPancakeswap(this.WBTC, new Token(this.config.chainId, JOE[0], JOE[1], 'JOE')),
       this.getJoePriceFromPancakeswap(),
     ]);
 

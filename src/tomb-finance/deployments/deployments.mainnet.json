@@ -10570,7 +10570,7 @@
       }
     ]
   },
-  "SnowSnoGenesisRewardPool": {
+  "SnowBtcGenesisRewardPool": {
     "address": "0xe5f8fc77edc96283749764Cd929F49164aEf5fdd",
     "abi": [
       {

@@ -19,7 +19,7 @@ const configurations: { [env: string]: Configuration } = {
       USDC: ['0x6951b5Bd815043E3F842c1b026b0Fa888Cc2DD85', 6],
       USDT: ['0xc7198437980c041c805A1EDcbA50c1Ce5db95118', 6],
       WFTM: ['0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23', 18],
-      SNO: ['0x1fE4869f2C5181b9CD780a7E16194FA2c4C4293D', 18],
+      WBTC: ['0x1fE4869f2C5181b9CD780a7E16194FA2c4C4293D', 18],
       SNOBOND: ['0x8aB4Ac266d8e698b7E39f97Ec17876076680f6f1', 18],
       FOX: ['0xFFffFfFf68A2e13F7B68d2E190E37D804E02E0ad', 18],
       DIBS: ['0x5E430F88D1BE82EB3eF92b6fF06125168fD5DCf2', 18],
@@ -56,16 +56,16 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   finished: will disable the pool on the UI if set to true
   sort: the order of the pool
   */
-  SnowSnoGenesisRewardPool: {
-    name: 'Earn SNOW by SNO',
+  SnowBtcGenesisRewardPool: {
+    name: 'Earn SNOW by WBTC',
     poolId: 0,
     sectionInUI: 0,
-    contract: 'SnowSnoGenesisRewardPool',
-    depositTokenName: 'SNO',
+    contract: 'SnowBtcGenesisRewardPool',
+    depositTokenName: 'WBTC',
     earnTokenName: 'SNOW',
-    finished: true,
+    finished: false,
     sort: 1,
-    closedForStaking: true,
+    closedForStaking: false,
   },
   SnowFoxGenesisRewardPool: {
     name: 'Earn SNOW by FOX',

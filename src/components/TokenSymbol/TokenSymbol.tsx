@@ -3,7 +3,7 @@ import React from 'react';
 //Graveyard ecosystem logos
 import tombLogo from '../../assets/img/SVG_Icons_and_web_bg/SNOW-Icon-01.svg';
 import tShareLogo from '../../assets/img/SVG_Icons_and_web_bg/GLCR-Icon-01.svg';
-import tombLogoPNG from '../../assets/img/sno.png';
+import wbtcLogoPNG from '../../assets/img/wbtc.png';
 import tShareLogoPNG from '../../assets/img/snoshare.png';
 import tBondLogo from '../../assets/img/SVG_Icons_and_web_bg/Bond icon-01.svg';
 
@@ -29,7 +29,7 @@ const logosBySymbol: { [title: string]: string } = {
   //=====================
   WAVAX: avaxLogoPNG,
   TOMB: tombLogo,
-  TOMBPNG: tombLogoPNG,
+  // TOMBPNG: tombLogoPNG,
   TSHAREPNG: tShareLogoPNG,
   GLCR: tShareLogo,
   SBOND: tBondLogo,
@@ -38,7 +38,7 @@ const logosBySymbol: { [title: string]: string } = {
   BOO: booLogo,
   SHIBA: shibaLogo,
   ZOO: zooLogo,
-  SNO: tombLogoPNG,
+  WBTC: wbtcLogoPNG,
   SNOSHARE: tShareLogoPNG,
   SNOBOND: snobondLogoPNG,
   FOX: foxLogoPNG,
