@@ -7,7 +7,7 @@ const useBank = (contractName: ContractName): Bank => {
   if (contractName === 'SnowBtcGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'WBTC');
   } else if (contractName === 'SnowFoxGenesisRewardPool') {
-    return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'FOX');
+    return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'WETH');
   } else if (contractName === 'SnowSnobondGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'SNOBOND');
   } else if (contractName === 'SnowDibsGenesisRewardPool') {

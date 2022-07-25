@@ -16,7 +16,7 @@ import booLogo from '../../assets/img/spooky.png';
 import zooLogo from '../../assets/img/zoo_logo.svg';
 import shibaLogo from '../../assets/img/shiba_logo.svg';
 import snobondLogoPNG from '../../assets/img/snobond.png';
-import foxLogoPNG from '../../assets/img/fox.png';
+import wethLogoPNG from '../../assets/img/weth.png';
 import dibsLogoPNG from '../../assets/img/dibs.png';
 import usdtLogoPNG from '../../assets/img/usdt.png';
 import usdcLogoPNG from '../../assets/img/USDC.png';
@@ -41,7 +41,7 @@ const logosBySymbol: { [title: string]: string } = {
   WBTC: wbtcLogoPNG,
   SNOSHARE: tShareLogoPNG,
   SNOBOND: snobondLogoPNG,
-  FOX: foxLogoPNG,
+  WETH: wethLogoPNG,
   DIBS: dibsLogoPNG,
   GRAPE: grapeLogoPNG,
   USDT: usdtLogoPNG,

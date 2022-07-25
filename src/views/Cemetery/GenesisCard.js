@@ -36,10 +36,10 @@ const GenesisCard = () => {
         <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
-              FOX
+              WETH
             </Typography>
             <Box mt={2}>
-              <TokenSymbol symbol="FOX" />
+              <TokenSymbol symbol="WETH" />
             </Box>
           </CardContent>
           <CardActions style={{ justifyContent: 'center' }}>

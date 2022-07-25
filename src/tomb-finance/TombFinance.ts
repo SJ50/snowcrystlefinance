@@ -41,7 +41,7 @@ export class TombFinance {
   FTM: ERC20;
   WAVAX: ERC20;
   WBTC: ERC20;
-  FOX: ERC20;
+  WETH: ERC20;
   DIBS: ERC20;
   GRAPE: ERC20;
 
@@ -64,7 +64,7 @@ export class TombFinance {
     this.FTM = this.externalTokens['USDC'];
     this.WAVAX = this.externalTokens['WAVAX'];
     this.WBTC = this.externalTokens['WBTC'];
-    this.FOX = this.externalTokens['FOX'];
+    this.WETH = this.externalTokens['WETH'];
     this.DIBS = this.externalTokens['DIBS'];
     this.GRAPE = this.externalTokens['GRAPE'];
 
@@ -599,7 +599,7 @@ export class TombFinance {
         return this.getSnoStat();
       case 'WAVAX':
         return this.getAvaxStat();
-      case 'FOX':
+      case 'WETH':
         return this.getFoxStat();
       case 'GRAPE':
         return this.getGrapeStat();
@@ -680,7 +680,7 @@ export class TombFinance {
   async getFoxStat(): Promise<TokenStat> {
     const {JOE} = this.config.externalTokens;
     const [priceInJoe, priceOfOneJoe] = await Promise.all([
-      this.getTokenPriceFromPancakeswap(this.FOX, new Token(this.config.chainId, JOE[0], JOE[1], 'JOE')),
+      this.getTokenPriceFromPancakeswap(this.WETH, new Token(this.config.chainId, JOE[0], JOE[1], 'JOE')),
       this.getJoePriceFromPancakeswap(),
     ]);
 
