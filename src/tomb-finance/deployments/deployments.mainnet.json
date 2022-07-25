@@ -1,6 +1,6 @@
 {
   "SeigniorageOracle": {
-    "address": "0x99654324B6ECAddAc4387DE13300F5B861Fd0cF3",
+    "address": "0x2c15A315610Bfa5248E4CbCbd693320e9D8E03Cc",
     "abi": [
       {
         "inputs": [
@@ -88,6 +88,30 @@
             "internalType": "uint32",
             "name": "",
             "type": "uint32"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_amountIn",
+            "type": "uint256"
+          }
+        ],
+        "name": "consult",
+        "outputs": [
+          {
+            "internalType": "uint144",
+            "name": "amountOut",
+            "type": "uint144"
           }
         ],
         "stateMutability": "view",
@@ -348,37 +372,6 @@
         "type": "function"
       },
       {
-        "inputs": [],
-        "name": "update",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_token",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "_amountIn",
-            "type": "uint256"
-          }
-        ],
-        "name": "consult",
-        "outputs": [
-          {
-            "internalType": "uint144",
-            "name": "amountOut",
-            "type": "uint144"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
         "inputs": [
           {
             "internalType": "address",
@@ -400,6 +393,13 @@
           }
         ],
         "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "update",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
       }
     ]
@@ -2547,7 +2547,7 @@
     ]
   },
   "Treasury": {
-    "address": "0xDb8618e899FD9fa4B8E6DBd1E00BCA89E4DaF9cd",
+    "address": "0x7a3d735ee6873f17Dbdcab1d51B604928dc10d92",
     "abi": [
       {
         "anonymous": false,
@@ -2580,7 +2580,7 @@
           {
             "indexed": false,
             "internalType": "uint256",
-            "name": "wlrsAmount",
+            "name": "snowAmount",
             "type": "uint256"
           },
           {
@@ -2681,7 +2681,7 @@
           {
             "indexed": false,
             "internalType": "uint256",
-            "name": "wlrsAmount",
+            "name": "snowAmount",
             "type": "uint256"
           },
           {
@@ -2828,6 +2828,19 @@
       },
       {
         "inputs": [],
+        "name": "bondtoken",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
         "name": "bootstrapEpochs",
         "outputs": [
           {
@@ -2856,7 +2869,7 @@
         "inputs": [
           {
             "internalType": "uint256",
-            "name": "_wlrsAmount",
+            "name": "_snowAmount",
             "type": "uint256"
           },
           {
@@ -2982,6 +2995,32 @@
       },
       {
         "inputs": [],
+        "name": "expansionFactor",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "fixedExpansion",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
         "name": "getBondDiscountRate",
         "outputs": [
           {
@@ -3008,11 +3047,24 @@
       },
       {
         "inputs": [],
-        "name": "getBurnableWlrsLeft",
+        "name": "getBurnableSnowLeft",
         "outputs": [
           {
             "internalType": "uint256",
-            "name": "_burnableWlrsLeft",
+            "name": "_burnableSnowLeft",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getExpansionPercent",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
             "type": "uint256"
           }
         ],
@@ -3047,7 +3099,7 @@
       },
       {
         "inputs": [],
-        "name": "getWlrsCirculatingSupply",
+        "name": "getSnowCirculatingSupply",
         "outputs": [
           {
             "internalType": "uint256",
@@ -3060,11 +3112,11 @@
       },
       {
         "inputs": [],
-        "name": "getWlrsPrice",
+        "name": "getSnowPrice",
         "outputs": [
           {
             "internalType": "uint256",
-            "name": "wlrsPrice",
+            "name": "snowPrice",
             "type": "uint256"
           }
         ],
@@ -3073,11 +3125,11 @@
       },
       {
         "inputs": [],
-        "name": "getWlrsUpdatedPrice",
+        "name": "getSnowUpdatedPrice",
         "outputs": [
           {
             "internalType": "uint256",
-            "name": "_wlrsPrice",
+            "name": "_snowPrice",
             "type": "uint256"
           }
         ],
@@ -3111,22 +3163,22 @@
         "inputs": [
           {
             "internalType": "address",
-            "name": "_wlrs",
+            "name": "_snow",
             "type": "address"
           },
           {
             "internalType": "address",
-            "name": "_wBond",
+            "name": "_bondtoken",
             "type": "address"
           },
           {
             "internalType": "address",
-            "name": "_wShare",
+            "name": "_sharetoken",
             "type": "address"
           },
           {
             "internalType": "address",
-            "name": "_wlrsOracle",
+            "name": "_snowOracle",
             "type": "address"
           },
           {
@@ -3283,19 +3335,6 @@
       },
       {
         "inputs": [],
-        "name": "multiplier",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
         "name": "nextEpochPoint",
         "outputs": [
           {
@@ -3348,7 +3387,7 @@
       },
       {
         "inputs": [],
-        "name": "previousEpochWlrsPrice",
+        "name": "previousEpochSnowPrice",
         "outputs": [
           {
             "internalType": "uint256",
@@ -3463,6 +3502,25 @@
       {
         "inputs": [
           {
+            "internalType": "uint256",
+            "name": "_value",
+            "type": "uint256"
+          }
+        ],
+        "name": "setExpansionFactor",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
             "internalType": "address",
             "name": "_daoFund",
             "type": "address"
@@ -3485,6 +3543,25 @@
         ],
         "name": "setExtraFunds",
         "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_value",
+            "type": "uint256"
+          }
+        ],
+        "name": "setFixedExpansion",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
         "stateMutability": "nonpayable",
         "type": "function"
       },
@@ -3612,25 +3689,6 @@
       {
         "inputs": [
           {
-            "internalType": "uint256",
-            "name": "_value",
-            "type": "uint256"
-          }
-        ],
-        "name": "setMultiplifier",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
             "internalType": "address",
             "name": "_operator",
             "type": "address"
@@ -3670,6 +3728,32 @@
       {
         "inputs": [
           {
+            "internalType": "address",
+            "name": "_snowOracle",
+            "type": "address"
+          }
+        ],
+        "name": "setSnowOracle",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_snowPriceCeiling",
+            "type": "uint256"
+          }
+        ],
+        "name": "setSnowPriceCeiling",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
             "internalType": "uint8",
             "name": "_index",
             "type": "uint8"
@@ -3692,29 +3776,68 @@
         "type": "function"
       },
       {
-        "inputs": [
+        "inputs": [],
+        "name": "sharetoken",
+        "outputs": [
           {
             "internalType": "address",
-            "name": "_wlrsOracle",
+            "name": "",
             "type": "address"
           }
         ],
-        "name": "setWlrsOracle",
-        "outputs": [],
-        "stateMutability": "nonpayable",
+        "stateMutability": "view",
         "type": "function"
       },
       {
-        "inputs": [
+        "inputs": [],
+        "name": "snow",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "snowOracle",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "snowPriceCeiling",
+        "outputs": [
           {
             "internalType": "uint256",
-            "name": "_wlrsPriceCeiling",
+            "name": "",
             "type": "uint256"
           }
         ],
-        "name": "setWlrsPriceCeiling",
-        "outputs": [],
-        "stateMutability": "nonpayable",
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "snowPriceOne",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       },
       {
@@ -3748,89 +3871,11 @@
         ],
         "stateMutability": "view",
         "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "wBond",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "wShare",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "wlrs",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "wlrsOracle",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "wlrsPriceCeiling",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "wlrsPriceOne",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
       }
     ]
   },
   "Masonry": {
-    "address": "0x38B0b6Ef43c4262659523986D731f9465F871439",
+    "address": "0xb6286fAFd0451320ad6A8143089b216C2152c025",
     "abi": [
       {
         "anonymous": false,
@@ -3857,6 +3902,12 @@
           {
             "indexed": true,
             "internalType": "address",
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
             "name": "user",
             "type": "address"
           },
@@ -3876,6 +3927,12 @@
           {
             "indexed": true,
             "internalType": "address",
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
             "name": "user",
             "type": "address"
           },
@@ -3887,6 +3944,31 @@
           }
         ],
         "name": "RewardPaid",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "user",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "reward",
+            "type": "uint256"
+          }
+        ],
+        "name": "RewardSacrificed",
         "type": "event"
       },
       {
@@ -3930,8 +4012,26 @@
       {
         "inputs": [
           {
+            "internalType": "address",
+            "name": "_token",
+            "type": "address"
+          }
+        ],
+        "name": "addPegToken",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_token",
+            "type": "address"
+          },
+          {
             "internalType": "uint256",
-            "name": "amount",
+            "name": "_amount",
             "type": "uint256"
           }
         ],
@@ -3961,6 +4061,11 @@
       },
       {
         "inputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          },
           {
             "internalType": "uint256",
             "name": "",
@@ -4037,7 +4142,12 @@
         "inputs": [
           {
             "internalType": "address",
-            "name": "member",
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "_member",
             "type": "address"
           }
         ],
@@ -4047,6 +4157,35 @@
             "internalType": "uint256",
             "name": "",
             "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_member",
+            "type": "address"
+          }
+        ],
+        "name": "earnedAllPegTokens",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "_numOfPegTokens",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address[]",
+            "name": "_pegTokenAddresses",
+            "type": "address[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "_earnedPegTokens",
+            "type": "uint256[]"
           }
         ],
         "stateMutability": "view",
@@ -4076,6 +4215,92 @@
         "inputs": [
           {
             "internalType": "address",
+            "name": "_member",
+            "type": "address"
+          }
+        ],
+        "name": "getCollateralForClaimAllPegTokens",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "_numOfPegTokens",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address[]",
+            "name": "_pegTokenAddresses",
+            "type": "address[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "_earnedPegTokens",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "_collateralForPegTokens",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_totalCollateral",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_totalPAYTOKENCollateral",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "_member",
+            "type": "address"
+          }
+        ],
+        "name": "getCollateralForClaimAllPegTokens",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getCollateralPercent",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "_collateralPercent",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
             "name": "member",
             "type": "address"
           }
@@ -4093,11 +4318,106 @@
       },
       {
         "inputs": [],
-        "name": "getWlrsPrice",
+        "name": "getMainTokenverPegTokenPrice",
         "outputs": [
           {
             "internalType": "uint256",
             "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_token",
+            "type": "address"
+          }
+        ],
+        "name": "getPegOriginalTokenOverPegTokenPrice",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_token",
+            "type": "address"
+          }
+        ],
+        "name": "getPegTokenPrice",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_token",
+            "type": "address"
+          }
+        ],
+        "name": "getPegTokenUpdatedPrice",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_member",
+            "type": "address"
+          }
+        ],
+        "name": "getTotalCollateralForClaimAllPegTokens",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "_totalCollateral",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_member",
+            "type": "address"
+          }
+        ],
+        "name": "getTotalPAYTOKENCollateralForClaimAllPegTokens",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "_totalPAYTOKENCollateral",
             "type": "uint256"
           }
         ],
@@ -4131,7 +4451,7 @@
         "inputs": [
           {
             "internalType": "contract IERC20",
-            "name": "_wlrs",
+            "name": "_maintoken",
             "type": "address"
           },
           {
@@ -4140,8 +4460,23 @@
             "type": "address"
           },
           {
+            "internalType": "contract IERC20",
+            "name": "_pegtoken",
+            "type": "address"
+          },
+          {
+            "internalType": "contract IERC20",
+            "name": "_paytoken",
+            "type": "address"
+          },
+          {
             "internalType": "contract ITreasury",
             "name": "_treasury",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "_insuranceFund",
             "type": "address"
           }
         ],
@@ -4165,6 +4500,25 @@
       },
       {
         "inputs": [],
+        "name": "insuranceFund",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_token",
+            "type": "address"
+          }
+        ],
         "name": "latestSnapshotIndex",
         "outputs": [
           {
@@ -4177,7 +4531,64 @@
         "type": "function"
       },
       {
+        "inputs": [],
+        "name": "mainTokenOracle",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "maintoken",
+        "outputs": [
+          {
+            "internalType": "contract IERC20",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "maintokenTokenSupplyTarget",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "maxCollateralPercent",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
         "inputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          },
           {
             "internalType": "address",
             "name": "",
@@ -4195,10 +4606,18 @@
             "internalType": "uint256",
             "name": "rewardEarned",
             "type": "uint256"
-          },
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "minCollateralPercent",
+        "outputs": [
           {
             "internalType": "uint256",
-            "name": "epochTimerStart",
+            "name": "",
             "type": "uint256"
           }
         ],
@@ -4208,6 +4627,19 @@
       {
         "inputs": [],
         "name": "nextEpochPoint",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "numOfPegTokens",
         "outputs": [
           {
             "internalType": "uint256",
@@ -4233,6 +4665,96 @@
       },
       {
         "inputs": [],
+        "name": "paytoken",
+        "outputs": [
+          {
+            "internalType": "contract IERC20",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "paytokenCollateralDiscountPercent",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "name": "pegOriginalTokenOracle",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "pegTokens",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "pegtoken",
+        "outputs": [
+          {
+            "internalType": "contract IERC20",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "reserveFund",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
         "name": "rewardLockupEpochs",
         "outputs": [
           {
@@ -4245,7 +4767,13 @@
         "type": "function"
       },
       {
-        "inputs": [],
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_token",
+            "type": "address"
+          }
+        ],
         "name": "rewardPerShare",
         "outputs": [
           {
@@ -4255,6 +4783,19 @@
           }
         ],
         "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_insuranceFund",
+            "type": "address"
+          }
+        ],
+        "name": "setInsuranceFund",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
       },
       {
@@ -4279,11 +4820,159 @@
         "inputs": [
           {
             "internalType": "address",
+            "name": "_mainTokenOracle",
+            "type": "address"
+          }
+        ],
+        "name": "setMainTokenOracle",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_maintokenTokenSupplyTarget",
+            "type": "uint256"
+          }
+        ],
+        "name": "setMainTokenTokenSupplyTarget",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_maxCollateralPercent",
+            "type": "uint256"
+          }
+        ],
+        "name": "setMaxCollateralPercent",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_minCollateralPercent",
+            "type": "uint256"
+          }
+        ],
+        "name": "setMinCollateralPercent",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
             "name": "_operator",
             "type": "address"
           }
         ],
         "name": "setOperator",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "contract IERC20",
+            "name": "_paytoken",
+            "type": "address"
+          }
+        ],
+        "name": "setPAYTOKEN",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_paytokenCollateralDiscountPercent",
+            "type": "uint256"
+          }
+        ],
+        "name": "setPAYTOKENCollateralDiscountPercent",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "_oracle",
+            "type": "address"
+          }
+        ],
+        "name": "setPegTokenConfig",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_reserveFund",
+            "type": "address"
+          }
+        ],
+        "name": "setReserveFund",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_stakeFee",
+            "type": "uint256"
+          }
+        ],
+        "name": "setStakeFee",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "contract ITreasury",
+            "name": "_treasury",
+            "type": "address"
+          }
+        ],
+        "name": "setTreasury",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_withdrawFee",
+            "type": "uint256"
+          }
+        ],
+        "name": "setWithdrawFee",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -4316,6 +5005,38 @@
       },
       {
         "inputs": [],
+        "name": "stakeFee",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "name": "timers",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
         "name": "totalSupply",
         "outputs": [
           {
@@ -4325,6 +5046,13 @@
           }
         ],
         "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "touchSacrificeReward",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
       },
       {
@@ -4355,7 +5083,7 @@
       },
       {
         "inputs": [],
-        "name": "withdrawLockupEpochs",
+        "name": "withdrawFee",
         "outputs": [
           {
             "internalType": "uint256",
@@ -4368,12 +5096,12 @@
       },
       {
         "inputs": [],
-        "name": "wlrs",
+        "name": "withdrawLockupEpochs",
         "outputs": [
           {
-            "internalType": "contract IERC20",
+            "internalType": "uint256",
             "name": "",
-            "type": "address"
+            "type": "uint256"
           }
         ],
         "stateMutability": "view",
@@ -9226,13 +9954,13 @@
     ]
   },
   "GlcrRewardPool": {
-    "address": "0x752FEacFdA5c3B440Fd6D40ECf338a86b568c2d2",
+    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
     "abi": [
       {
         "inputs": [
           {
             "internalType": "address",
-            "name": "_wShare",
+            "name": "_glcr",
             "type": "address"
           },
           {
@@ -9453,6 +10181,45 @@
         "type": "function"
       },
       {
+        "inputs": [],
+        "name": "getWithdrawFeePercent",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "glcr",
+        "outputs": [
+          {
+            "internalType": "contract IERC20",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "glcrPerSecond",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
         "inputs": [
           {
             "internalType": "contract IERC20",
@@ -9559,7 +10326,7 @@
           },
           {
             "internalType": "uint256",
-            "name": "accWSharePerShare",
+            "name": "accglcrPerShare",
             "type": "uint256"
           },
           {
@@ -9642,6 +10409,74 @@
         "type": "function"
       },
       {
+        "inputs": [
+          {
+            "internalType": "uint8",
+            "name": "_index",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_value",
+            "type": "uint256"
+          }
+        ],
+        "name": "setStakingTiersEntry",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint8",
+            "name": "_index",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_value",
+            "type": "uint256"
+          }
+        ],
+        "name": "setTaxTiersEntry",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bool",
+            "name": "_enableTaxes",
+            "type": "bool"
+          }
+        ],
+        "name": "setTaxesStatus",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "stakingTires",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
         "inputs": [],
         "name": "totalAllocPoint",
         "outputs": [
@@ -9697,32 +10532,6 @@
         "type": "function"
       },
       {
-        "inputs": [],
-        "name": "wShare",
-        "outputs": [
-          {
-            "internalType": "contract IERC20",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "wSharePerSecond",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
         "inputs": [
           {
             "internalType": "uint256",
@@ -9738,6 +10547,25 @@
         "name": "withdraw",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "withdrawTaxTires",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       }
     ]
@@ -13735,13 +14563,13 @@
     ]
   },
   "SnowUsdcLPGlcrRewardPool": {
-    "address": "0x752FEacFdA5c3B440Fd6D40ECf338a86b568c2d2",
+    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
     "abi": [
       {
         "inputs": [
           {
             "internalType": "address",
-            "name": "_wShare",
+            "name": "_glcr",
             "type": "address"
           },
           {
@@ -13962,6 +14790,45 @@
         "type": "function"
       },
       {
+        "inputs": [],
+        "name": "getWithdrawFeePercent",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "glcr",
+        "outputs": [
+          {
+            "internalType": "contract IERC20",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "glcrPerSecond",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
         "inputs": [
           {
             "internalType": "contract IERC20",
@@ -14068,7 +14935,7 @@
           },
           {
             "internalType": "uint256",
-            "name": "accWSharePerShare",
+            "name": "accglcrPerShare",
             "type": "uint256"
           },
           {
@@ -14151,6 +15018,74 @@
         "type": "function"
       },
       {
+        "inputs": [
+          {
+            "internalType": "uint8",
+            "name": "_index",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_value",
+            "type": "uint256"
+          }
+        ],
+        "name": "setStakingTiersEntry",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint8",
+            "name": "_index",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_value",
+            "type": "uint256"
+          }
+        ],
+        "name": "setTaxTiersEntry",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bool",
+            "name": "_enableTaxes",
+            "type": "bool"
+          }
+        ],
+        "name": "setTaxesStatus",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "stakingTires",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
         "inputs": [],
         "name": "totalAllocPoint",
         "outputs": [
@@ -14206,32 +15141,6 @@
         "type": "function"
       },
       {
-        "inputs": [],
-        "name": "wShare",
-        "outputs": [
-          {
-            "internalType": "contract IERC20",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "wSharePerSecond",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
         "inputs": [
           {
             "internalType": "uint256",
@@ -14247,18 +15156,37 @@
         "name": "withdraw",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "withdrawTaxTires",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       }
     ]
   },
   "GlcrUsdcLPGlcrRewardPool": {
-    "address": "0x752FEacFdA5c3B440Fd6D40ECf338a86b568c2d2",
+    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
     "abi": [
       {
         "inputs": [
           {
             "internalType": "address",
-            "name": "_wShare",
+            "name": "_glcr",
             "type": "address"
           },
           {
@@ -14479,6 +15407,45 @@
         "type": "function"
       },
       {
+        "inputs": [],
+        "name": "getWithdrawFeePercent",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "glcr",
+        "outputs": [
+          {
+            "internalType": "contract IERC20",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "glcrPerSecond",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
         "inputs": [
           {
             "internalType": "contract IERC20",
@@ -14585,7 +15552,7 @@
           },
           {
             "internalType": "uint256",
-            "name": "accWSharePerShare",
+            "name": "accglcrPerShare",
             "type": "uint256"
           },
           {
@@ -14668,6 +15635,74 @@
         "type": "function"
       },
       {
+        "inputs": [
+          {
+            "internalType": "uint8",
+            "name": "_index",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_value",
+            "type": "uint256"
+          }
+        ],
+        "name": "setStakingTiersEntry",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint8",
+            "name": "_index",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_value",
+            "type": "uint256"
+          }
+        ],
+        "name": "setTaxTiersEntry",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bool",
+            "name": "_enableTaxes",
+            "type": "bool"
+          }
+        ],
+        "name": "setTaxesStatus",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "stakingTires",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
         "inputs": [],
         "name": "totalAllocPoint",
         "outputs": [
@@ -14723,32 +15758,6 @@
         "type": "function"
       },
       {
-        "inputs": [],
-        "name": "wShare",
-        "outputs": [
-          {
-            "internalType": "contract IERC20",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "wSharePerSecond",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
         "inputs": [
           {
             "internalType": "uint256",
@@ -14764,6 +15773,25 @@
         "name": "withdraw",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "withdrawTaxTires",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       }
     ]
