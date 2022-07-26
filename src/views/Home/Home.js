@@ -88,9 +88,9 @@ const Home = () => {
   // }
 
   const buyTombAddress =
-    'https://traderjoexyz.com/trade?inputCurrency=0xc21223249CA28397B4B6541dfFaEcC539BfF0c59&outputCurrency=0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87#/';
+    'https://traderjoexyz.com/trade?inputCurrency=0xc21223249CA28397B4B6541dfFaEcC539BfF0c59&outputCurrency=0x2c15A315610Bfa5248E4CbCbd693320e9D8E03Cc#/';
   const buyTShareAddress =
-    'https://traderjoexyz.com/trade?inputCurrency=0xc21223249CA28397B4B6541dfFaEcC539BfF0c59&outputCurrency=0xE7eD6747FaC5360f88a2EFC03E00d25789F69291#/';
+    'https://traderjoexyz.com/trade?inputCurrency=0xc21223249CA28397B4B6541dfFaEcC539BfF0c59&outputCurrency=0xe65A7a341978d59d40d30FC23F5014FACB4f575A#/';
 
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
   const tshareLPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);
@@ -189,7 +189,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://dexscreener.com/avalanche/0x3fc5B92474b78061632Cc2BA590De53278cD2d5f"
+                        href="https://dexscreener.com/avalanche/0xBf7eC77E6C02d022F92a55A02e35274474dF2C11"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -199,7 +199,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://snowtrace.io/address/0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87#code"
+                        href="https://snowtrace.io/address/0x2c15A315610Bfa5248E4CbCbd693320e9D8E03Cc#code"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -231,7 +231,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://dexscreener.com/avalanche/0xb4C41057E352fD211036C03F2076CE7A9B72B4F2"
+                        href="https://dexscreener.com/avalanche/0x0E22C16255607ACd3a551Bb3b65943c3Dc483a62"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -241,7 +241,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://snowtrace.io/address/0xE7eD6747FaC5360f88a2EFC03E00d25789F69291#code"
+                        href="https://snowtrace.io/address/0xe65A7a341978d59d40d30FC23F5014FACB4f575A#code"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -272,7 +272,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://snowtrace.io/address/0x602C71e4DAC47a042Ee7f46E0aee17F94A3bA0B6#code"
+                        href="https://snowtrace.io/address/0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b#code"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -390,11 +390,14 @@ const Home = () => {
                   Market Cap:
                   <br />
                   24h Price Change: <br />
+                  &nbsp; <br />
                   &nbsp;
                 </span>
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
                   ${JOEMarketCap} <br />
                   {JOEPriceChange.toFixed(2)}% <br />
+                  &nbsp;
+                  <br />
                   &nbsp;
                 </span>
               </Row>
@@ -437,7 +440,8 @@ const Home = () => {
                   Market Cap:
                   <br />
                   Circulating Supply: <br />
-                  Total Supply:
+                  Total Supply: <br />
+                  Tax:
                 </span>
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
                   ${(tombCirculatingSupply * tombPriceInDollars).toFixed(2)} <br />
@@ -482,11 +486,15 @@ const Home = () => {
                   Market Cap: <br />
                   Circulating Supply: <br />
                   Total Supply:
+                  <br />
+                  &nbsp;
                 </span>
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
                   ${(tShareCirculatingSupply * tSharePriceInDollars).toFixed(2)} <br />
                   {tShareCirculatingSupply} <br />
                   {tShareTotalSupply}
+                  <br />
+                  &nbsp;
                 </span>
               </Row>
               <Box>
@@ -526,11 +534,15 @@ const Home = () => {
                   Market Cap: <br />
                   Circulating Supply: <br />
                   Total Supply:
+                  <br />
+                  &nbsp;
                 </span>
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
                   ${(tBondCirculatingSupply * tBondPriceInDollars).toFixed(2)} <br />
                   {tBondCirculatingSupply} <br />
                   {tBondTotalSupply}
+                  <br />
+                  &nbsp;
                 </span>
               </Row>
               <Box>
