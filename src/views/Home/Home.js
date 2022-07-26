@@ -390,11 +390,14 @@ const Home = () => {
                   Market Cap:
                   <br />
                   24h Price Change: <br />
+                  &nbsp; <br />
                   &nbsp;
                 </span>
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
                   ${JOEMarketCap} <br />
                   {JOEPriceChange.toFixed(2)}% <br />
+                  &nbsp;
+                  <br />
                   &nbsp;
                 </span>
               </Row>
@@ -437,7 +440,8 @@ const Home = () => {
                   Market Cap:
                   <br />
                   Circulating Supply: <br />
-                  Total Supply:
+                  Total Supply: <br />
+                  Tax:
                 </span>
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
                   ${(tombCirculatingSupply * tombPriceInDollars).toFixed(2)} <br />
@@ -482,11 +486,15 @@ const Home = () => {
                   Market Cap: <br />
                   Circulating Supply: <br />
                   Total Supply:
+                  <br />
+                  &nbsp;
                 </span>
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
                   ${(tShareCirculatingSupply * tSharePriceInDollars).toFixed(2)} <br />
                   {tShareCirculatingSupply} <br />
                   {tShareTotalSupply}
+                  <br />
+                  &nbsp;
                 </span>
               </Row>
               <Box>
@@ -526,11 +534,15 @@ const Home = () => {
                   Market Cap: <br />
                   Circulating Supply: <br />
                   Total Supply:
+                  <br />
+                  &nbsp;
                 </span>
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
                   ${(tBondCirculatingSupply * tBondPriceInDollars).toFixed(2)} <br />
                   {tBondCirculatingSupply} <br />
                   {tBondTotalSupply}
+                  <br />
+                  &nbsp;
                 </span>
               </Row>
               <Box>
