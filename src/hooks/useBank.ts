@@ -16,8 +16,8 @@ const useBank = (contractName: ContractName): Bank => {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'WCRO');
   } else if (contractName === 'SnowUsdcGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'USDC');
-  } else if (contractName === 'SnowGrapeGenesisRewardPool') {
-    return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'GRAPE');
+  } else if (contractName === 'SnowDaiGenesisRewardPool') {
+    return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'DAI');
   } else if (contractName === 'SnowUsdtGenesisRewardPool') {
     return banks.find((bank) => bank.sectionInUI === 0 && bank.depositTokenName === 'USDT');
   }

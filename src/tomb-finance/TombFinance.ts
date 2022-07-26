@@ -43,7 +43,7 @@ export class TombFinance {
   WBTC: ERC20;
   WETH: ERC20;
   DIBS: ERC20;
-  GRAPE: ERC20;
+  DAI: ERC20;
 
   constructor(cfg: Configuration) {
     const { deployments, externalTokens } = cfg;
@@ -66,7 +66,7 @@ export class TombFinance {
     this.WBTC = this.externalTokens['WBTC'];
     this.WETH = this.externalTokens['WETH'];
     this.DIBS = this.externalTokens['DIBS'];
-    this.GRAPE = this.externalTokens['GRAPE'];
+    this.DAI = this.externalTokens['DAI'];
 
     // Uniswap V2 Pair
     this.TOMBWFTM_LP = new Contract(externalTokens['SNOW-USDC-LP'][0], IUniswapV2PairABI, provider);
@@ -346,7 +346,7 @@ export class TombFinance {
     if (this.myAccount === undefined) return;
     const depositToken = bank.depositToken;
     const poolContract = this.contracts[bank.contract];
-
+    
     if (bank.sectionInUI === 4) {
         const [depositTokenPrice, points, totalPoints, tierAmount, poolBalance, totalBalance, dripRate, dailyUserDrip] = await Promise.all([
           this.getDepositTokenPriceInDollars(bank.depositTokenName, depositToken),
@@ -381,8 +381,9 @@ export class TombFinance {
     }else{
     const depositTokenPrice = await this.getDepositTokenPriceInDollars(bank.depositTokenName, depositToken);
     const stakeInPool = (await depositToken.balanceOf(bank.address)).mul(bank.depositTokenName.endsWith('USDC-LP') ? 10**6 : 1);
-    const TVL = Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal, depositToken.decimal === 6 ? 3 : 9));
+    const TVL = Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal, depositToken.decimal === 6 ? 3 : 9)); 
     const stat = bank.earnTokenName === 'SNOW' ? await this.getTombStat() : await this.getShareStat();
+    console.log("bank stakeInPool "+ JSON.stringify(stat, null,4) +" "  );
     const tokenPerSecond = await this.getTokenPerSecond(
       bank.earnTokenName,
       bank.contract,
@@ -473,6 +474,7 @@ export class TombFinance {
       tokenPrice = (await this.getShareStat()).priceInDollars;
     } else if (!tokenName.includes('-LP')) {
       tokenPrice = (await this.getTokenStat(tokenName)).priceInDollars;
+      console.log("bank token price stakeInPool "+ tokenPrice +" "+tokenName  );
     } else if (tokenName === 'SNOW-USDC-LP') {
       tokenPrice = await this.getLPTokenPrice(token, this.TOMB, true);
     } else if (tokenName === 'GLCR-USDC-LP') {
@@ -600,9 +602,9 @@ export class TombFinance {
       case 'WCRO':
         return this.getCroStat();
       case 'WETH':
-        return this.getFoxStat();
-      case 'GRAPE':
-        return this.getGrapeStat();
+        return this.getEthStat();
+      case 'DAI':
+        return this.getDaiStat();
       default:
         throw new Error(`Unknown token name: ${tokenName}`);
     }
@@ -619,7 +621,7 @@ export class TombFinance {
   }
 
   async getUsdcStat(): Promise<TokenStat> {
-    const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=usd-coin-avalanche-bridged-usdc-e');
+    const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=usd-coin');
     return {
       tokenInFtm: data[0].current_price,
       priceInDollars: data[0].current_price,
@@ -645,15 +647,15 @@ export class TombFinance {
   }
 
   // async getSnoStat(): Promise<TokenStat> {
-  //   const {JOE} = this.config.externalTokens;
-  //   const [priceInJoe, priceOfOneJoe] = await Promise.all([
-  //     this.getTokenPriceFromPancakeswap(this.SNO, new Token(this.config.chainId, JOE[0], JOE[1], 'JOE')),
-  //     this.getJoePriceFromPancakeswap(),
+  //   const {MMF} = this.config.externalTokens;
+  //   const [priceInMmf, priceOfOneMmf] = await Promise.all([
+  //     this.getTokenPriceFromPancakeswap(this.SNO, new Token(this.config.chainId, MMF[0], MMF[1], 'MMF')),
+  //     this.getMmfPriceFromPancakeswap(),
   //   ]);
 
-  //   const priceInDollars = (Number(priceInJoe) * Number(priceOfOneJoe)).toFixed(12);
+  //   const priceInDollars = (Number(priceInMmf) * Number(priceOfOneMmf)).toFixed(12);
   //   return {
-  //     tokenInFtm: priceInJoe,
+  //     tokenInFtm: priceInMmf,
   //     priceInDollars,
   //     totalSupply: '0',
   //     circulatingSupply: '0',
@@ -662,53 +664,65 @@ export class TombFinance {
 
 
   async getBtcStat(): Promise<TokenStat> {
-    const {USDC} = this.config.externalTokens;
-    
-    const [priceInJoe, priceOfOneJoe] = await Promise.all([
-      this.getTokenPriceFromPancakeswap(this.WBTC, new Token(this.config.chainId, USDC[0], USDC[1], 'USDC')),
-      this.getJoePriceFromPancakeswap(),
-    ]);
-
-    const priceInDollars = (Number(priceInJoe) * Number(priceOfOneJoe)).toFixed(12);
+    const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin');
     return {
-      tokenInFtm: priceInJoe,
-      priceInDollars,
+      tokenInFtm: data[0].current_price,
+      priceInDollars: data[0].current_price,
       totalSupply: '0',
       circulatingSupply: '0',
     };
   }
 
-  async getFoxStat(): Promise<TokenStat> {
-    const {JOE} = this.config.externalTokens;
-    const [priceInJoe, priceOfOneJoe] = await Promise.all([
-      this.getTokenPriceFromPancakeswap(this.WETH, new Token(this.config.chainId, JOE[0], JOE[1], 'JOE')),
-      this.getJoePriceFromPancakeswap(),
-    ]);
-
-    const priceInDollars = (Number(priceInJoe) * Number(priceOfOneJoe)).toFixed(12);
+  async getEthStat(): Promise<TokenStat> {
+    const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=ethereum');
     return {
-      tokenInFtm: priceInJoe,
-      priceInDollars,
+      tokenInFtm: data[0].current_price,
+      priceInDollars: data[0].current_price,
       totalSupply: '0',
       circulatingSupply: '0',
     };
   }
-
-  async getGrapeStat(): Promise<TokenStat> {
-    const {MIM} = this.config.externalTokens;
-    const [priceInMim, priceOfOneMim] = await Promise.all([
-      this.getTokenPriceFromPancakeswap(this.GRAPE, new Token(this.config.chainId, MIM[0], MIM[1], 'MIM')),
-      this.getMimPriceFromPancakeswap(),
-    ]);
-
-    const priceInDollars = (Number(priceInMim) * Number(priceOfOneMim)).toFixed(12);
+ 
+  async getDaiStat(): Promise<TokenStat> {
+    const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=dai');
     return {
-      tokenInFtm: priceInMim,
-      priceInDollars,
+      tokenInFtm: data[0].current_price,
+      priceInDollars: data[0].current_price,
       totalSupply: '0',
       circulatingSupply: '0',
     };
   }
+  // async getFoxStat(): Promise<TokenStat> {
+  //   const {MMF} = this.config.externalTokens;
+  //   const [priceInMmf, priceOfOneMmf] = await Promise.all([
+  //     this.getTokenPriceFromPancakeswap(this.FOX, new Token(this.config.chainId, MMF[0], MMF[1], 'MMF')),
+  //     this.getMmfPriceFromPancakeswap(),
+  //   ]);
+
+  //   const priceInDollars = (Number(priceInMmf) * Number(priceOfOneMmf)).toFixed(12);
+  //   return {
+  //     tokenInFtm: priceInMmf,
+  //     priceInDollars,
+  //     totalSupply: '0',
+  //     circulatingSupply: '0',
+  //   };
+  // }
+
+  // async getGrapeStat(): Promise<TokenStat> {
+  //   const {MIM} = this.config.externalTokens;
+  //   const [priceInMim, priceOfOneMim] = await Promise.all([
+  //     this.getTokenPriceFromPancakeswap(this.GRAPE, new Token(this.config.chainId, MIM[0], MIM[1], 'MIM')),
+  //     this.getMimPriceFromPancakeswap(),
+  //   ]);
+
+  //   const priceInDollars = (Number(priceInMim) * Number(priceOfOneMim)).toFixed(12);
+  //   return {
+  //     tokenInFtm: priceInMim,
+  //     priceInDollars,
+  //     totalSupply: '0',
+  //     circulatingSupply: '0',
+  //   };
+  // }
 
   async getCroStat(): Promise<TokenStat> {
     const priceInDollars = await this.getCroPriceFromPancakeswap();
@@ -753,14 +767,14 @@ export class TombFinance {
     }
   }
 
-  async getJoePriceFromPancakeswap(): Promise<string> {
+  async getMmfPriceFromPancakeswap(): Promise<string> {
     const ready = await this.provider.ready;
     if (!ready) return;
-    const {JOE, USDC} = this.externalTokens;
+    const {MMF, USDC} = this.externalTokens;
     try {
-      const busd_eth_lp_pair = this.externalTokens['USDC-JOE-LP'];
-      let eth_amount_BN = await JOE.balanceOf(busd_eth_lp_pair.address);
-      let eth_amount = Number(getFullDisplayBalance(eth_amount_BN, JOE.decimal));
+      const busd_eth_lp_pair = this.externalTokens['USDC-MMF-LP'];
+      let eth_amount_BN = await MMF.balanceOf(busd_eth_lp_pair.address);
+      let eth_amount = Number(getFullDisplayBalance(eth_amount_BN, MMF.decimal));
       let busd_amount_BN = await USDC.balanceOf(busd_eth_lp_pair.address);
       let busd_amount = Number(getFullDisplayBalance(busd_amount_BN, USDC.decimal));
       return (busd_amount / eth_amount).toString();

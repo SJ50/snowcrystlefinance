@@ -8,6 +8,54 @@ import TokenSymbol from '../../components/TokenSymbol';
 const GenesisCard = () => {
   return (
     <Grid container spacing={3}>
+      {/* <Grid item xs={12} sm={3}>
+        <Card>
+          <CardContent align="center">
+            <Typography variant="h5" component="h2">
+              SNOBOND
+            </Typography>
+            <Box mt={2}>
+              <TokenSymbol symbol="SNOBOND" />
+            </Box>
+          </CardContent>
+          <CardActions style={{ justifyContent: 'center' }}>
+            <Button
+              color="primary"
+              size="small"
+              style={{ width: '200px', height: '40px', marginBottom: '10%' }}
+              variant="contained"
+              component={Link}
+              to={`/farms/SnowSnobondGenesisRewardPool/`}
+            >
+              Stake
+            </Button>
+          </CardActions>
+        </Card>
+      </Grid>
+      <Grid item xs={12} sm={3}>
+        <Card>
+          <CardContent align="center">
+            <Typography variant="h5" component="h2">
+              DIBS
+            </Typography>
+            <Box mt={2}>
+              <TokenSymbol symbol="DIBS" />
+            </Box>
+          </CardContent>
+          <CardActions style={{ justifyContent: 'center' }}>
+            <Button
+              color="primary"
+              size="small"
+              style={{ width: '200px', height: '40px', marginBottom: '10%' }}
+              variant="contained"
+              component={Link}
+              to={`/farms/SnowDibsGenesisRewardPool/`}
+            >
+              Stake
+            </Button>
+          </CardActions>
+        </Card>
+      </Grid> */}
       <Grid item xs={12} sm={3}>
         <Card>
           <CardContent align="center">
@@ -56,54 +104,7 @@ const GenesisCard = () => {
           </CardActions>
         </Card>
       </Grid>
-      <Grid item xs={12} sm={3}>
-        <Card>
-          <CardContent align="center">
-            <Typography variant="h5" component="h2">
-              SNOBOND
-            </Typography>
-            <Box mt={2}>
-              <TokenSymbol symbol="SNOBOND" />
-            </Box>
-          </CardContent>
-          <CardActions style={{ justifyContent: 'center' }}>
-            <Button
-              color="primary"
-              size="small"
-              style={{ width: '200px', height: '40px', marginBottom: '10%' }}
-              variant="contained"
-              component={Link}
-              to={`/farms/SnowSnobondGenesisRewardPool/`}
-            >
-              Stake
-            </Button>
-          </CardActions>
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={3}>
-        <Card>
-          <CardContent align="center">
-            <Typography variant="h5" component="h2">
-              DIBS
-            </Typography>
-            <Box mt={2}>
-              <TokenSymbol symbol="DIBS" />
-            </Box>
-          </CardContent>
-          <CardActions style={{ justifyContent: 'center' }}>
-            <Button
-              color="primary"
-              size="small"
-              style={{ width: '200px', height: '40px', marginBottom: '10%' }}
-              variant="contained"
-              component={Link}
-              to={`/farms/SnowDibsGenesisRewardPool/`}
-            >
-              Stake
-            </Button>
-          </CardActions>
-        </Card>
-      </Grid>
+
       <Grid item xs={12} sm={3}>
         <Card>
           <CardContent align="center">
@@ -156,10 +157,10 @@ const GenesisCard = () => {
         <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
-              GRAPE
+              DAI
             </Typography>
             <Box mt={2}>
-              <TokenSymbol symbol="GRAPE" />
+              <TokenSymbol symbol="DAI" />
             </Box>
           </CardContent>
           <CardActions style={{ justifyContent: 'center' }}>
@@ -169,7 +170,7 @@ const GenesisCard = () => {
               style={{ width: '200px', height: '40px', marginBottom: '10%' }}
               variant="contained"
               component={Link}
-              to={`/farms/SnowGrapeGenesisRewardPool/`}
+              to={`/farms/SnowDaiGenesisRewardPool/`}
             >
               Stake
             </Button>
@@ -177,10 +178,10 @@ const GenesisCard = () => {
         </Card>
       </Grid>
       <Grid item xs={12} sm={3}>
-        {/*<Card>
+        <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
-              USDT.e
+              USDT
             </Typography>
             <Box mt={2}>
               <TokenSymbol symbol="USDT" />
@@ -198,7 +199,7 @@ const GenesisCard = () => {
               Stake
             </Button>
           </CardActions>
-</Card>*/}
+        </Card>
       </Grid>
     </Grid>
   );

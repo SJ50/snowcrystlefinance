@@ -14530,19 +14530,34 @@
     ]
   },
   "SnowUsdcGenesisRewardPool": {
-    "address": "0x577f280fa81F1Ac597A4Ccd83Ecff30458EC4f0e",
+    "address": "0x26f15335BB1C6a4C0B660eDd694a0555A9F1cce3",
     "abi": [
       {
         "inputs": [
           {
             "internalType": "address",
-            "name": "_wlrs",
+            "name": "_snow",
             "type": "address"
           },
           {
             "internalType": "uint256",
             "name": "_poolStartTime",
             "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "_daoFund",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_depositFee",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "_depositToken",
+            "type": "address"
           }
         ],
         "stateMutability": "nonpayable",
@@ -14684,6 +14699,19 @@
         "type": "function"
       },
       {
+        "inputs": [],
+        "name": "daoFund",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
         "inputs": [
           {
             "internalType": "uint256",
@@ -14699,6 +14727,19 @@
         "name": "deposit",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "depositFee",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       },
       {
@@ -14807,7 +14848,7 @@
             "type": "address"
           }
         ],
-        "name": "pendingWLRS",
+        "name": "pendingSNOW",
         "outputs": [
           {
             "internalType": "uint256",
@@ -14858,7 +14899,7 @@
           },
           {
             "internalType": "uint256",
-            "name": "accWlrsPerShare",
+            "name": "accSnowPerShare",
             "type": "uint256"
           },
           {
@@ -14925,6 +14966,32 @@
         "name": "setOperator",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "snow",
+        "outputs": [
+          {
+            "internalType": "contract IERC20",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "snowPerSecond",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       },
       {
@@ -14999,36 +15066,10 @@
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "wlrs",
-        "outputs": [
-          {
-            "internalType": "contract IERC20",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "wlrsPerSecond",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
       }
     ]
   },
-  "SnowGrapeGenesisRewardPool": {
+  "SnowDaiGenesisRewardPool": {
     "address": "0x62c9B756Ab5619E7982b46014ee49aab428C50dB",
     "abi": [
       {
@@ -15528,19 +15569,34 @@
     ]
   },
   "SnowUsdtGenesisRewardPool": {
-    "address": "0xD699D2c3f6D154758267Cac69Ce5d634355B43D0",
+    "address": "0xed00238F9A0F7b4d93842033cdF56cCB32C781c2",
     "abi": [
       {
         "inputs": [
           {
             "internalType": "address",
-            "name": "_wlrs",
+            "name": "_snow",
             "type": "address"
           },
           {
             "internalType": "uint256",
             "name": "_poolStartTime",
             "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "_daoFund",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_depositFee",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "_depositToken",
+            "type": "address"
           }
         ],
         "stateMutability": "nonpayable",
@@ -15682,6 +15738,19 @@
         "type": "function"
       },
       {
+        "inputs": [],
+        "name": "daoFund",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
         "inputs": [
           {
             "internalType": "uint256",
@@ -15697,6 +15766,19 @@
         "name": "deposit",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "depositFee",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       },
       {
@@ -15805,7 +15887,7 @@
             "type": "address"
           }
         ],
-        "name": "pendingWLRS",
+        "name": "pendingSNOW",
         "outputs": [
           {
             "internalType": "uint256",
@@ -15856,7 +15938,7 @@
           },
           {
             "internalType": "uint256",
-            "name": "accWlrsPerShare",
+            "name": "accSnowPerShare",
             "type": "uint256"
           },
           {
@@ -15923,6 +16005,32 @@
         "name": "setOperator",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "snow",
+        "outputs": [
+          {
+            "internalType": "contract IERC20",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "snowPerSecond",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       },
       {
@@ -15996,32 +16104,6 @@
         "name": "withdraw",
         "outputs": [],
         "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "wlrs",
-        "outputs": [
-          {
-            "internalType": "contract IERC20",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "wlrsPerSecond",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
         "type": "function"
       }
     ]

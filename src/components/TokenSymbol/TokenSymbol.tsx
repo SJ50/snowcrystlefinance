@@ -21,7 +21,7 @@ import dibsLogoPNG from '../../assets/img/dibs.png';
 import usdtLogoPNG from '../../assets/img/usdt.png';
 import usdcLogoPNG from '../../assets/img/USDC.png';
 import croLogoPNG from '../../assets/img/cro.png';
-import grapeLogoPNG from '../../assets/img/grape.png';
+import daiLogoPNG from '../../assets/img/dai.png';
 import grapeSnowLP from '../../assets/img/grape-Snow.png';
 
 const logosBySymbol: { [title: string]: string } = {
@@ -43,7 +43,7 @@ const logosBySymbol: { [title: string]: string } = {
   SNOBOND: snobondLogoPNG,
   WETH: wethLogoPNG,
   DIBS: dibsLogoPNG,
-  GRAPE: grapeLogoPNG,
+  DAI: daiLogoPNG,
   USDT: usdtLogoPNG,
   USDC: usdcLogoPNG,
   'SNOW-USDC-LP': tombFtmLpLogo,
