@@ -1,6 +1,6 @@
 {
   "tomb": {
-    "address": "0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87",
+    "address": "0x2c15A315610Bfa5248E4CbCbd693320e9D8E03Cc",
     "abi": [
       {
         "inputs": [
@@ -939,7 +939,7 @@
     ]
   },
   "tBond": {
-    "address": "0x602C71e4DAC47a042Ee7f46E0aee17F94A3bA0B6",
+    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
     "abi": [
       {
         "inputs": [
@@ -1431,7 +1431,7 @@
     ]
   },
   "tShare": {
-    "address": "0xE7eD6747FaC5360f88a2EFC03E00d25789F69291",
+    "address": "0xe65A7a341978d59d40d30FC23F5014FACB4f575A",
     "abi": [
       {
         "inputs": [
@@ -2142,7 +2142,7 @@
     ]
   },
   "Masonry": {
-    "address": "0xb6286fAFd0451320ad6A8143089b216C2152c025",
+    "address": "0xD22363efee93190f82b52FCD62B7Dbcb920eF658",
     "abi": [
       {
         "anonymous": false,
@@ -3377,7 +3377,7 @@
     ]
   },
   "Treasury": {
-    "address": "0x7a3d735ee6873f17Dbdcab1d51B604928dc10d92",
+    "address": "0x4D1B781ce59B8C184F63B99D39d6719A522f46B5",
     "abi": [
       {
         "anonymous": false,
@@ -4705,7 +4705,7 @@
     ]
   },
   "SeigniorageOracle": {
-    "address": "0x2c15A315610Bfa5248E4CbCbd693320e9D8E03Cc",
+    "address": "0xf9C8Cf55f2E520B08d869df7bc76aa3d3ddDF913",
     "abi": [
       {
         "inputs": [
@@ -8978,7 +8978,7 @@
     ]
   },
   "SpookyRouter": {
-    "address": "0x145677FC4d9b8F19B5D56d1820c48e0443049a30",
+    "address": "0xc4e4DdB7a71fCF9Bb7356461Ca75124aA9910653",
     "abi": [
       {
         "inputs": [
@@ -10061,7 +10061,7 @@
     ]
   },
   "GlcrRewardPool": {
-    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
+    "address": "0x654f70d8442EA18904FA1AD79114f7250F7E9336",
     "abi": [
       {
         "inputs": [
@@ -10678,7 +10678,7 @@
     ]
   },
   "SnowUsdcLPGlcrRewardPool": {
-    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
+    "address": "0x654f70d8442EA18904FA1AD79114f7250F7E9336",
     "abi": [
       {
         "inputs": [
@@ -11295,7 +11295,7 @@
     ]
   },
   "GlcrUsdcLPGlcrRewardPool": {
-    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
+    "address": "0x654f70d8442EA18904FA1AD79114f7250F7E9336",
     "abi": [
       {
         "inputs": [
@@ -14530,7 +14530,7 @@
     ]
   },
   "SnowUsdcGenesisRewardPool": {
-    "address": "0x26f15335BB1C6a4C0B660eDd694a0555A9F1cce3",
+    "address": "0xA95916C3D979400C7443961330b3092510a229Ba",
     "abi": [
       {
         "inputs": [
@@ -15070,19 +15070,34 @@
     ]
   },
   "SnowDaiGenesisRewardPool": {
-    "address": "0x62c9B756Ab5619E7982b46014ee49aab428C50dB",
+    "address": "0xDae02e4fE488952cFB8c95177154D188647a0146",
     "abi": [
       {
         "inputs": [
           {
             "internalType": "address",
-            "name": "_wlrs",
+            "name": "_snow",
             "type": "address"
           },
           {
             "internalType": "uint256",
             "name": "_poolStartTime",
             "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "_daoFund",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_depositFee",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "_depositToken",
+            "type": "address"
           }
         ],
         "stateMutability": "nonpayable",
@@ -15224,6 +15239,19 @@
         "type": "function"
       },
       {
+        "inputs": [],
+        "name": "daoFund",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
         "inputs": [
           {
             "internalType": "uint256",
@@ -15239,6 +15267,19 @@
         "name": "deposit",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "depositFee",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       },
       {
@@ -15347,7 +15388,7 @@
             "type": "address"
           }
         ],
-        "name": "pendingWLRS",
+        "name": "pendingSNOW",
         "outputs": [
           {
             "internalType": "uint256",
@@ -15398,7 +15439,7 @@
           },
           {
             "internalType": "uint256",
-            "name": "accWlrsPerShare",
+            "name": "accSnowPerShare",
             "type": "uint256"
           },
           {
@@ -15465,6 +15506,32 @@
         "name": "setOperator",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "snow",
+        "outputs": [
+          {
+            "internalType": "contract IERC20",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "snowPerSecond",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       },
       {
@@ -15538,32 +15605,6 @@
         "name": "withdraw",
         "outputs": [],
         "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "wlrs",
-        "outputs": [
-          {
-            "internalType": "contract IERC20",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "wlrsPerSecond",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
         "type": "function"
       }
     ]
