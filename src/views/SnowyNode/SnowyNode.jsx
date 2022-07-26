@@ -145,7 +145,7 @@ const SnowyNode = () => {
                 {bank.depositTokenName === 'GRAPE-SNOW-LP' ?
                 <Card style={{borderRadius: '15px', marginTop: '20px'}}>
                   <CardContent style={{background: 'linear-gradient(90deg, #8fbdeb 14%, #a2c8ee 100%)', borderRadius: '15px'}}>
-                    <StyledLink href={'https://traderjoexyz.com/pool/0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87/0x5541d83efad1f281571b343977648b75d95cdac2'} rel="noopener noreferrer" target="_blank">
+                    <StyledLink href={'https://traderjoexyz.com/pool/0x2c15A315610Bfa5248E4CbCbd693320e9D8E03Cc/0x5541d83efad1f281571b343977648b75d95cdac2'} rel="noopener noreferrer" target="_blank">
                       <span style={{color: '#fff'}}>
                         Provide liquidity for GRAPE-SNOW on Joe
                       </span>     
