@@ -380,13 +380,13 @@ const ERC20ABI = [
 
 const web3 = new Web3('https://api.avax.network/ext/bc/C/rpc');
 const RebateTreasury = new web3.eth.Contract(RebateTreasuryABI, '0x242668533415aAe767Dc2144D451cda3F997ba09');
-const Threeomb = new web3.eth.Contract(ERC20ABI, '0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87');
+const Threeomb = new web3.eth.Contract(ERC20ABI, '0x944D7e385F08074C1536C8f03382a5F9b16009C0');
 
 const assetList = [
-  '0x3fc5B92474b78061632Cc2BA590De53278cD2d5f', // SNOW-USDC-PL
-  '0xb4C41057E352fD211036C03F2076CE7A9B72B4F2', // GLCR-USDC-PL
-  '0x6951b5Bd815043E3F842c1b026b0Fa888Cc2DD85', // USDC
-  '0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23', // CRO
+  '0xB63E20a3f301bB6e9A00970b185Da72Ff3987718', // SNOW-USDC-PL
+  '0x96CD9c5AdbCe091C77548fb71c24d2aa8B8A78d9', // GLCR-USDC-PL
+  '0xf1852356be8aD76dAAD31acEB55018Dd87961109', // USDC
+  '0x6a3173618859C7cd40fAF6921b5E9eB6A76f1fD4', // CRO
 ];
 
 function useRebateTreasury() {

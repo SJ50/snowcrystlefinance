@@ -1049,8 +1049,9 @@ export class TombFinance {
     const { Masonry, Treasury } = this.contracts;
     const nextEpochTimestamp = await Masonry.nextEpochPoint(); //in unix timestamp
     const currentEpoch = await Masonry.epoch();
-    const mason = await Masonry.members(this.myAccount);
-    const startTimeEpoch = mason.epochTimerStart;
+    console.log("br claim reward "+ currentEpoch);
+    const mason = await Masonry.members(this.TOMB,this.myAccount);
+    const startTimeEpoch = Masonry.timers(this.myAccount);
     const period = await Treasury.PERIOD();
     const periodInHours = period / 60 / 60; // 6 hours, period is displayed in seconds which is 21600
     const rewardLockupEpochs = await Masonry.rewardLockupEpochs();
@@ -1082,7 +1083,7 @@ export class TombFinance {
     const { Masonry, Treasury } = this.contracts;
     const nextEpochTimestamp = await Masonry.nextEpochPoint();
     const currentEpoch = await Masonry.epoch();
-    const mason = await Masonry.members(this.myAccount);
+    const mason = await Masonry.members(this.TOMB,this.myAccount);
     const startTimeEpoch = mason.epochTimerStart;
     const period = await Treasury.PERIOD();
     const PeriodInHours = period / 60 / 60;
