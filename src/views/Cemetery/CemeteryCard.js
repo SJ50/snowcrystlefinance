@@ -71,7 +71,7 @@ const CemeteryCard = () => {
               target="_blank"
               style={{ width: '150px', height: '45px', marginBottom: '5%' }}
               variant="contained"
-              href="https://traderjoexyz.com/pool/0xc21223249CA28397B4B6541dfFaEcC539BfF0c59/0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87#/"
+              href="https://traderjoexyz.com/pool/0xc21223249CA28397B4B6541dfFaEcC539BfF0c59/0x2c15A315610Bfa5248E4CbCbd693320e9D8E03Cc#/"
             >
               Add Liquidity
             </Button>
@@ -124,7 +124,7 @@ const CemeteryCard = () => {
               target="_blank"
               style={{ width: '150px', height: '45px', marginBottom: '5%' }}
               variant="contained"
-              href="https://traderjoexyz.com/pool/0xc21223249CA28397B4B6541dfFaEcC539BfF0c59/0xE7eD6747FaC5360f88a2EFC03E00d25789F69291#/"
+              href="https://traderjoexyz.com/pool/0xc21223249CA28397B4B6541dfFaEcC539BfF0c59/0xe65A7a341978d59d40d30FC23F5014FACB4f575A#/"
             >
               Add Liquidity
             </Button>
