@@ -1,6 +1,6 @@
 {
   "tomb": {
-    "address": "0x2c15A315610Bfa5248E4CbCbd693320e9D8E03Cc",
+    "address": "0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87",
     "abi": [
       {
         "inputs": [
@@ -939,7 +939,7 @@
     ]
   },
   "tBond": {
-    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
+    "address": "0x602C71e4DAC47a042Ee7f46E0aee17F94A3bA0B6",
     "abi": [
       {
         "inputs": [
@@ -1431,7 +1431,7 @@
     ]
   },
   "tShare": {
-    "address": "0xe65A7a341978d59d40d30FC23F5014FACB4f575A",
+    "address": "0xE7eD6747FaC5360f88a2EFC03E00d25789F69291",
     "abi": [
       {
         "inputs": [
@@ -2142,7 +2142,7 @@
     ]
   },
   "Masonry": {
-    "address": "0xD22363efee93190f82b52FCD62B7Dbcb920eF658",
+    "address": "0xb6286fAFd0451320ad6A8143089b216C2152c025",
     "abi": [
       {
         "anonymous": false,
@@ -2169,12 +2169,6 @@
           {
             "indexed": true,
             "internalType": "address",
-            "name": "token",
-            "type": "address"
-          },
-          {
-            "indexed": true,
-            "internalType": "address",
             "name": "user",
             "type": "address"
           },
@@ -2191,12 +2185,6 @@
       {
         "anonymous": false,
         "inputs": [
-          {
-            "indexed": true,
-            "internalType": "address",
-            "name": "token",
-            "type": "address"
-          },
           {
             "indexed": true,
             "internalType": "address",
@@ -2279,26 +2267,8 @@
       {
         "inputs": [
           {
-            "internalType": "address",
-            "name": "_token",
-            "type": "address"
-          }
-        ],
-        "name": "addPegToken",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_token",
-            "type": "address"
-          },
-          {
             "internalType": "uint256",
-            "name": "_amount",
+            "name": "amount",
             "type": "uint256"
           }
         ],
@@ -2328,11 +2298,6 @@
       },
       {
         "inputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          },
           {
             "internalType": "uint256",
             "name": "",
@@ -2409,12 +2374,7 @@
         "inputs": [
           {
             "internalType": "address",
-            "name": "_token",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "_member",
+            "name": "member",
             "type": "address"
           }
         ],
@@ -2424,35 +2384,6 @@
             "internalType": "uint256",
             "name": "",
             "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_member",
-            "type": "address"
-          }
-        ],
-        "name": "earnedAllPegTokens",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "_numOfPegTokens",
-            "type": "uint256"
-          },
-          {
-            "internalType": "address[]",
-            "name": "_pegTokenAddresses",
-            "type": "address[]"
-          },
-          {
-            "internalType": "uint256[]",
-            "name": "_earnedPegTokens",
-            "type": "uint256[]"
           }
         ],
         "stateMutability": "view",
@@ -2482,92 +2413,6 @@
         "inputs": [
           {
             "internalType": "address",
-            "name": "_member",
-            "type": "address"
-          }
-        ],
-        "name": "getCollateralForClaimAllPegTokens",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "_numOfPegTokens",
-            "type": "uint256"
-          },
-          {
-            "internalType": "address[]",
-            "name": "_pegTokenAddresses",
-            "type": "address[]"
-          },
-          {
-            "internalType": "uint256[]",
-            "name": "_earnedPegTokens",
-            "type": "uint256[]"
-          },
-          {
-            "internalType": "uint256[]",
-            "name": "_collateralForPegTokens",
-            "type": "uint256[]"
-          },
-          {
-            "internalType": "uint256",
-            "name": "_totalCollateral",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "_totalPAYTOKENCollateral",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_token",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "_member",
-            "type": "address"
-          }
-        ],
-        "name": "getCollateralForClaimAllPegTokens",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "getCollateralPercent",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "_collateralPercent",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "token",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
             "name": "member",
             "type": "address"
           }
@@ -2585,106 +2430,11 @@
       },
       {
         "inputs": [],
-        "name": "getMainTokenverPegTokenPrice",
+        "name": "getSnowPrice",
         "outputs": [
           {
             "internalType": "uint256",
             "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_token",
-            "type": "address"
-          }
-        ],
-        "name": "getPegOriginalTokenOverPegTokenPrice",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_token",
-            "type": "address"
-          }
-        ],
-        "name": "getPegTokenPrice",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_token",
-            "type": "address"
-          }
-        ],
-        "name": "getPegTokenUpdatedPrice",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_member",
-            "type": "address"
-          }
-        ],
-        "name": "getTotalCollateralForClaimAllPegTokens",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "_totalCollateral",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_member",
-            "type": "address"
-          }
-        ],
-        "name": "getTotalPAYTOKENCollateralForClaimAllPegTokens",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "_totalPAYTOKENCollateral",
             "type": "uint256"
           }
         ],
@@ -2718,7 +2468,7 @@
         "inputs": [
           {
             "internalType": "contract IERC20",
-            "name": "_maintoken",
+            "name": "_snow",
             "type": "address"
           },
           {
@@ -2727,23 +2477,8 @@
             "type": "address"
           },
           {
-            "internalType": "contract IERC20",
-            "name": "_pegtoken",
-            "type": "address"
-          },
-          {
-            "internalType": "contract IERC20",
-            "name": "_paytoken",
-            "type": "address"
-          },
-          {
             "internalType": "contract ITreasury",
             "name": "_treasury",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "_insuranceFund",
             "type": "address"
           }
         ],
@@ -2767,25 +2502,6 @@
       },
       {
         "inputs": [],
-        "name": "insuranceFund",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_token",
-            "type": "address"
-          }
-        ],
         "name": "latestSnapshotIndex",
         "outputs": [
           {
@@ -2798,64 +2514,7 @@
         "type": "function"
       },
       {
-        "inputs": [],
-        "name": "mainTokenOracle",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "maintoken",
-        "outputs": [
-          {
-            "internalType": "contract IERC20",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "maintokenTokenSupplyTarget",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "maxCollateralPercent",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
         "inputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          },
           {
             "internalType": "address",
             "name": "",
@@ -2873,18 +2532,10 @@
             "internalType": "uint256",
             "name": "rewardEarned",
             "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "minCollateralPercent",
-        "outputs": [
+          },
           {
             "internalType": "uint256",
-            "name": "",
+            "name": "epochTimerStart",
             "type": "uint256"
           }
         ],
@@ -2894,19 +2545,6 @@
       {
         "inputs": [],
         "name": "nextEpochPoint",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "numOfPegTokens",
         "outputs": [
           {
             "internalType": "uint256",
@@ -2932,96 +2570,6 @@
       },
       {
         "inputs": [],
-        "name": "paytoken",
-        "outputs": [
-          {
-            "internalType": "contract IERC20",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "paytokenCollateralDiscountPercent",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "name": "pegOriginalTokenOracle",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "name": "pegTokens",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "pegtoken",
-        "outputs": [
-          {
-            "internalType": "contract IERC20",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "reserveFund",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
         "name": "rewardLockupEpochs",
         "outputs": [
           {
@@ -3034,13 +2582,7 @@
         "type": "function"
       },
       {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_token",
-            "type": "address"
-          }
-        ],
+        "inputs": [],
         "name": "rewardPerShare",
         "outputs": [
           {
@@ -3050,19 +2592,6 @@
           }
         ],
         "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_insuranceFund",
-            "type": "address"
-          }
-        ],
-        "name": "setInsuranceFund",
-        "outputs": [],
-        "stateMutability": "nonpayable",
         "type": "function"
       },
       {
@@ -3087,58 +2616,6 @@
         "inputs": [
           {
             "internalType": "address",
-            "name": "_mainTokenOracle",
-            "type": "address"
-          }
-        ],
-        "name": "setMainTokenOracle",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "_maintokenTokenSupplyTarget",
-            "type": "uint256"
-          }
-        ],
-        "name": "setMainTokenTokenSupplyTarget",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "_maxCollateralPercent",
-            "type": "uint256"
-          }
-        ],
-        "name": "setMaxCollateralPercent",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "_minCollateralPercent",
-            "type": "uint256"
-          }
-        ],
-        "name": "setMinCollateralPercent",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
             "name": "_operator",
             "type": "address"
           }
@@ -3149,104 +2626,21 @@
         "type": "function"
       },
       {
-        "inputs": [
+        "inputs": [],
+        "name": "share",
+        "outputs": [
           {
             "internalType": "contract IERC20",
-            "name": "_paytoken",
+            "name": "",
             "type": "address"
           }
         ],
-        "name": "setPAYTOKEN",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "_paytokenCollateralDiscountPercent",
-            "type": "uint256"
-          }
-        ],
-        "name": "setPAYTOKENCollateralDiscountPercent",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_token",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "_oracle",
-            "type": "address"
-          }
-        ],
-        "name": "setPegTokenConfig",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "_reserveFund",
-            "type": "address"
-          }
-        ],
-        "name": "setReserveFund",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "_stakeFee",
-            "type": "uint256"
-          }
-        ],
-        "name": "setStakeFee",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "contract ITreasury",
-            "name": "_treasury",
-            "type": "address"
-          }
-        ],
-        "name": "setTreasury",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "_withdrawFee",
-            "type": "uint256"
-          }
-        ],
-        "name": "setWithdrawFee",
-        "outputs": [],
-        "stateMutability": "nonpayable",
+        "stateMutability": "view",
         "type": "function"
       },
       {
         "inputs": [],
-        "name": "share",
+        "name": "snow",
         "outputs": [
           {
             "internalType": "contract IERC20",
@@ -3272,38 +2666,6 @@
       },
       {
         "inputs": [],
-        "name": "stakeFee",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "name": "timers",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
         "name": "totalSupply",
         "outputs": [
           {
@@ -3313,13 +2675,6 @@
           }
         ],
         "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "touchSacrificeReward",
-        "outputs": [],
-        "stateMutability": "nonpayable",
         "type": "function"
       },
       {
@@ -3350,19 +2705,6 @@
       },
       {
         "inputs": [],
-        "name": "withdrawFee",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
         "name": "withdrawLockupEpochs",
         "outputs": [
           {
@@ -3377,7 +2719,7 @@
     ]
   },
   "Treasury": {
-    "address": "0x4D1B781ce59B8C184F63B99D39d6719A522f46B5",
+    "address": "0x7a3d735ee6873f17Dbdcab1d51B604928dc10d92",
     "abi": [
       {
         "anonymous": false,
@@ -4705,7 +4047,7 @@
     ]
   },
   "SeigniorageOracle": {
-    "address": "0xf9C8Cf55f2E520B08d869df7bc76aa3d3ddDF913",
+    "address": "0x2c15A315610Bfa5248E4CbCbd693320e9D8E03Cc",
     "abi": [
       {
         "inputs": [
@@ -10061,7 +9403,7 @@
     ]
   },
   "GlcrRewardPool": {
-    "address": "0x654f70d8442EA18904FA1AD79114f7250F7E9336",
+    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
     "abi": [
       {
         "inputs": [
@@ -10678,7 +10020,7 @@
     ]
   },
   "SnowUsdcLPGlcrRewardPool": {
-    "address": "0x654f70d8442EA18904FA1AD79114f7250F7E9336",
+    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
     "abi": [
       {
         "inputs": [
@@ -11295,7 +10637,7 @@
     ]
   },
   "GlcrUsdcLPGlcrRewardPool": {
-    "address": "0x654f70d8442EA18904FA1AD79114f7250F7E9336",
+    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
     "abi": [
       {
         "inputs": [

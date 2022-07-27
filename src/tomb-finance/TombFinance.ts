@@ -948,15 +948,15 @@ export class TombFinance {
 
   async getMasonryAPR() {
     const Masonry = this.currentMasonry();
+ 
     const latestSnapshotIndex = await Masonry.latestSnapshotIndex();
     const lastHistory = await Masonry.boardroomHistory(latestSnapshotIndex);
-
     const lastRewardsReceived = lastHistory[1];
-
-    const TSHAREPrice = (await this.getShareStat()).priceInDollars;
+     
+    const TSHAREPrice = (await this.getShareStat()).priceInDollars; 
     const TOMBPrice = (await this.getTombStat()).priceInDollars;
-    const epochRewardsPerShare = lastRewardsReceived / 1e18;
-
+    const epochRewardsPerShare = lastRewardsReceived / 1e18; 
+    
     //Mgod formula
     const amountOfRewardsPerDay = epochRewardsPerShare * Number(TOMBPrice) * 4;
     const masonrytShareBalanceOf = await this.TSHARE.balanceOf(Masonry.address);
@@ -1036,7 +1036,6 @@ export class TombFinance {
     const nextEpochTimestamp: BigNumber = await Treasury.nextEpochPoint();
     const nextAllocation = new Date(nextEpochTimestamp.mul(1000).toNumber());
     const prevAllocation = new Date(Date.now());
-
     return { from: prevAllocation, to: nextAllocation };
   }
   /**
