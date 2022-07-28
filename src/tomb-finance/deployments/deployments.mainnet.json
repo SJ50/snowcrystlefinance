@@ -16053,7 +16053,7 @@
     ]
   },
   "ShareLPNode": {
-    "address": "0x1DaeE24Fbb54493283F500796734a131E9e09ACD",
+    "address": "0x30375B532345B01cB8c2AD12541b09E9Aa53A93d",
     "abi": [
       {
         "inputs": [
@@ -16870,7 +16870,7 @@
     ]
   },
   "PegLPNode": {
-    "address": "0xEe5d6fC6033e5B612F284ff816CBa6B615675D7f",
+    "address": "0x30375B532345B01cB8c2AD12541b09E9Aa53A93d",
     "abi": [
       {
         "inputs": [
