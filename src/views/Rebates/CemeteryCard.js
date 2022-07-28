@@ -24,12 +24,12 @@ const CemeteryCard = ({ bank }) => {
   const { onBond } = useRebates();
   const tombFinance = useTombFinance();
   const classes = useStyles();
-
+  console.log('rebate' + bank.depositTokenName);
   const rebateStats = useRebateTreasury();
 
   const [approveStatus, approve] = useApprove(
     tombFinance.externalTokens[bank.depositTokenName],
-    '0x242668533415aAe767Dc2144D451cda3F997ba09',
+    '0x741e3E1f81041c62C2A97d0b6E567AcaB09A6232',
   );
 
   const tokenBalance = useTokenBalance(tombFinance.externalTokens[bank.depositTokenName]);

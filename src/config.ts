@@ -193,7 +193,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     poolId: 100,
     sectionInUI: 3,
     contract: 'RebateTreasury',
-    depositTokenName: 'WAVAX',
+    depositTokenName: 'WCRO',
     earnTokenName: 'SNOW',
     finished: false,
     sort: 3,
