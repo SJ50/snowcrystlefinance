@@ -58,7 +58,7 @@ const Harvest: React.FC = () => {
                 Claim Reward
               </Button>
             </StyledCardActions>
-            <Button
+            {/* <Button
               disabled={stakedBalance.eq(0) || (!canWithdraw && !canClaimReward)}
               onClick={onRedeem}
               color="primary"
@@ -66,7 +66,7 @@ const Harvest: React.FC = () => {
               style={{ borderRadius: '15px', width: '250px', marginTop: '10px' }}
             >
               Claim and Withdraw
-            </Button>
+            </Button> */}
           </StyledCardContentInner>
         </CardContent>
       </Card>

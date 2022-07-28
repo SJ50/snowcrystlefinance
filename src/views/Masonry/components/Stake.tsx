@@ -91,7 +91,7 @@ const Stake: React.FC = () => {
                   disabled={approveStatus !== ApprovalState.NOT_APPROVED}
                   variant="contained"
                   color="primary"
-                  style={{ marginTop: '65px' }}
+                  style={{ marginTop: '20px' }}
                   onClick={approve}
                 >
                   Approve GLCR
@@ -143,7 +143,7 @@ const StyledCardActions = styled.div`
 const StyledCardActions2 = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 48px;
+  margin-top: 0px;
   width: 100%;
 `;
 

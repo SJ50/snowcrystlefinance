@@ -24,10 +24,10 @@ const SnoNodes = () => {
       <Switch>
         <Route exact path={path}>
           <h2 style={{fontSize: '80px', textAlign: 'center'}}>NODES</h2>
-          <Grid container spacing={3} style={{marginTop: '20px'}}>
+          <Grid container spacing={3} style={{marginTop: '20px'}} alignItems="center" justify="center">
             <FoxCard />
             <SnoCard />   
-            <GrapeLPCard />     
+            {/* <GrapeLPCard />      */}
           </Grid>
         </Route>
         <Route path={`${path}/:bankId`}>

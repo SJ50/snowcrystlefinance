@@ -120,13 +120,20 @@ const Masonry = () => {
               </Grid>
             </Grid>
 
-            <Grid container justify="center">
+            {/* <Grid container justify="center">
               <Box mt={3} style={{ width: '600px' }}>
                 <Alert variant="filled" severity="info">
-                  Earned SNOW can only be withdrawn after 2 epochs since deposit.
+                  Earned SNOW can only be claim after 4 epochs since deposit and last claimed.
+                </Alert>
+                <Alert variant="filled" severity="info">
+                  Deposited GLCR can only be withdraw after 8 epochs since last deposit or last SNOW claim. Widrawing
+                  GLCR will burn all earned SNOW.
+                </Alert>
+                <Alert variant="filled" severity="info">
+                  Withdrawing GLCR will burn all earned SNOW.
                 </Alert>
               </Box>
-            </Grid>
+            </Grid> */}
 
             <Box mt={4}>
               <StyledBoardroom>
