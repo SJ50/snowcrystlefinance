@@ -88,9 +88,9 @@ const Home = () => {
   // }
 
   const buyTombAddress =
-    'https://traderjoexyz.com/trade?inputCurrency=0xc21223249CA28397B4B6541dfFaEcC539BfF0c59&outputCurrency=0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87#/';
+    'https://mm.finance/swap?inputCurrency=0x6951b5Bd815043E3F842c1b026b0Fa888Cc2DD85&outputCurrency=0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87#/';
   const buyTShareAddress =
-    'https://traderjoexyz.com/trade?inputCurrency=0xc21223249CA28397B4B6541dfFaEcC539BfF0c59&outputCurrency=0xE7eD6747FaC5360f88a2EFC03E00d25789F69291#/';
+    'https://mm.finance/swap?inputCurrency=0x6951b5Bd815043E3F842c1b026b0Fa888Cc2DD85&outputCurrency=0xE7eD6747FaC5360f88a2EFC03E00d25789F69291#/';
 
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
   const tshareLPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);
@@ -405,7 +405,7 @@ const Home = () => {
                 <Button
                   color="primary"
                   target="_blank"
-                  href={'https://traderjoexyz.com/trade?outputCurrency=0xc21223249CA28397B4B6541dfFaEcC539BfF0c59#/'}
+                  href={'https://mm.finance/swap?outputCurrency=0x6951b5Bd815043E3F842c1b026b0Fa888Cc2DD85#/'}
                   variant="contained"
                   style={{ marginTop: '10px', borderRadius: '10px', width: '100%' }}
                   className={classes.button}
