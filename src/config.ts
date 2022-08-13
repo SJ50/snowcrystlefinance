@@ -6,17 +6,17 @@ import { BankInfo } from './tomb-finance';
 
 const configurations: { [env: string]: Configuration } = {
   production: {
-    chainId: ChainId.MAINNET,
-    networkName: 'ganache-cli-cronos-fork',
-    ftmscanUrl: 'https://cronoscan.com/',
-    defaultProvider: 'http://127.0.0.1:9545',
+    chainId: ChainId.TESTNET,
+    networkName: 'cronos-testnet',
+    ftmscanUrl: 'https://testnet.cronoscan.com/',
+    defaultProvider: 'https://evm-t3.cronos.org',
     deployments: require('./tomb-finance/deployments/deployments.mainnet.json'),
     externalTokens: {
       WCRO: ['0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23', 18], // CRO
-      SNOW: ['0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87', 18],
-      SBOND: ['0x602C71e4DAC47a042Ee7f46E0aee17F94A3bA0B6', 18],
-      GLCR: ['0xE7eD6747FaC5360f88a2EFC03E00d25789F69291', 18],
-      USDC: ['0x6951b5Bd815043E3F842c1b026b0Fa888Cc2DD85', 6],
+      SNOW: ['0xcD1467604E446BBfcB7ee14428E1b6dAfB56B0F0', 18],
+      SBOND: ['0xeBdD49874F4dab257917212b47598D41A7103595', 18],
+      GLCR: ['0xD0b2464b35Ce302493afab20650fce5fe6f47C96', 18],
+      USDC: ['0x39D8fa99c9964D456b9fbD5e059e63442F314121', 6],
       USDT: ['0x66e428c3f67a68878562e79A0234c1F83c208770', 6],
       WFTM: ['0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23', 18],
       WBTC: ['0x062E66477Faf219F25D27dCED647BF57C3107d52', 18],
@@ -26,8 +26,8 @@ const configurations: { [env: string]: Configuration } = {
       DAI: ['0xF2001B145b43032AAF5Ee2884e456CCd805F677D', 18],
       MMF: ['0x97749c9B61F878a880DfE312d2594AE07AEd7656', 18],
       MIM: ['0x130966628846BFd36ff31a822705796e8cb8C18D', 18],
-      'SNOW-USDC-LP': ['0x3fc5B92474b78061632Cc2BA590De53278cD2d5f', 18],
-      'GLCR-USDC-LP': ['0xb4C41057E352fD211036C03F2076CE7A9B72B4F2', 18],
+      'SNOW-USDC-LP': ['0xC31c472eB181108c8dD1fDb773251922e7e09ef3', 18],
+      'GLCR-USDC-LP': ['0x6e09aCA4257fA9b46DE337C6976ab999fA3344CD', 18],
       'GRAPE-SNOW-LP': ['0xA3F24b18608606079a0317Cbe6Cda54CED931420', 18],
       'USDC-WCRO-LP': ['0xa68466208F1A3Eb21650320D2520ee8eBA5ba623', 18],
       'USDC-MMF-LP': ['0x722f19bd9A1E5bA97b3020c6028c279d27E4293C', 18],

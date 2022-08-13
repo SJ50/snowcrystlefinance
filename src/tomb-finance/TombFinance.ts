@@ -121,7 +121,7 @@ export class TombFinance {
 
     const tombCirculatingSupply = supply.sub(25000);
     const priceOfTombInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(18);
-
+    
     return {
       tokenInFtm: priceInFTM,
       priceInDollars: priceOfTombInDollars,
@@ -383,7 +383,6 @@ export class TombFinance {
     const stakeInPool = (await depositToken.balanceOf(bank.address)).mul(bank.depositTokenName.endsWith('USDC-LP') ? 10**6 : 1);
     const TVL = Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal, depositToken.decimal === 6 ? 3 : 9)); 
     const stat = bank.earnTokenName === 'SNOW' ? await this.getTombStat() : await this.getShareStat();
-    console.log("bank stakeInPool "+ JSON.stringify(stat, null,4) +" "  );
     const tokenPerSecond = await this.getTokenPerSecond(
       bank.earnTokenName,
       bank.contract,
@@ -474,7 +473,6 @@ export class TombFinance {
       tokenPrice = (await this.getShareStat()).priceInDollars;
     } else if (!tokenName.includes('-LP')) {
       tokenPrice = (await this.getTokenStat(tokenName)).priceInDollars;
-      console.log("bank token price stakeInPool "+ tokenPrice +" "+tokenName  );
     } else if (tokenName === 'SNOW-USDC-LP') {
       tokenPrice = await this.getLPTokenPrice(token, this.TOMB, true);
     } else if (tokenName === 'GLCR-USDC-LP') {
@@ -888,6 +886,7 @@ export class TombFinance {
     if (!ready) return;
     const { chainId } = this.config;
     const { USDC } = this.config.externalTokens;
+
 
     const wftm = baseToken || new Token(chainId, USDC[0], USDC[1]);
     const token = new Token(chainId, tokenContract.address, tokenContract.decimal, tokenContract.symbol);

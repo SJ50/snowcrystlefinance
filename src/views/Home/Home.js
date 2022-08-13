@@ -88,9 +88,9 @@ const Home = () => {
   // }
 
   const buyTombAddress =
-    'https://mm.finance/swap?inputCurrency=0x6951b5Bd815043E3F842c1b026b0Fa888Cc2DD85&outputCurrency=0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87#/';
+    'https://mm.finance/swap?inputCurrency=0x39D8fa99c9964D456b9fbD5e059e63442F314121&outputCurrency=0xcD1467604E446BBfcB7ee14428E1b6dAfB56B0F0#/';
   const buyTShareAddress =
-    'https://mm.finance/swap?inputCurrency=0x6951b5Bd815043E3F842c1b026b0Fa888Cc2DD85&outputCurrency=0xE7eD6747FaC5360f88a2EFC03E00d25789F69291#/';
+    'https://mm.finance/swap?inputCurrency=0x39D8fa99c9964D456b9fbD5e059e63442F314121&outputCurrency=0xD0b2464b35Ce302493afab20650fce5fe6f47C96#/';
 
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
   const tshareLPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);
@@ -189,7 +189,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://dexscreener.com/avalanche/0x3fc5B92474b78061632Cc2BA590De53278cD2d5f"
+                        href="https://dexscreener.com/avalanche/0xC31c472eB181108c8dD1fDb773251922e7e09ef3"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -199,7 +199,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://snowtrace.io/address/0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87#code"
+                        href="https://snowtrace.io/address/0xcD1467604E446BBfcB7ee14428E1b6dAfB56B0F0#code"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -231,7 +231,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://dexscreener.com/avalanche/0xb4C41057E352fD211036C03F2076CE7A9B72B4F2"
+                        href="https://dexscreener.com/avalanche/0x6e09aCA4257fA9b46DE337C6976ab999fA3344CD"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -241,7 +241,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://snowtrace.io/address/0xE7eD6747FaC5360f88a2EFC03E00d25789F69291#code"
+                        href="https://snowtrace.io/address/0xD0b2464b35Ce302493afab20650fce5fe6f47C96#code"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -272,7 +272,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://snowtrace.io/address/0x602C71e4DAC47a042Ee7f46E0aee17F94A3bA0B6#code"
+                        href="https://snowtrace.io/address/0xeBdD49874F4dab257917212b47598D41A7103595#code"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -405,7 +405,7 @@ const Home = () => {
                 <Button
                   color="primary"
                   target="_blank"
-                  href={'https://mm.finance/swap?outputCurrency=0x6951b5Bd815043E3F842c1b026b0Fa888Cc2DD85#/'}
+                  href={'https://mm.finance/swap?outputCurrency=0x39D8fa99c9964D456b9fbD5e059e63442F314121#/'}
                   variant="contained"
                   style={{ marginTop: '10px', borderRadius: '10px', width: '100%' }}
                   className={classes.button}

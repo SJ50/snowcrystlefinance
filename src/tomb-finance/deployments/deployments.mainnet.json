@@ -1,6 +1,6 @@
 {
   "tomb": {
-    "address": "0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87",
+    "address": "0xcD1467604E446BBfcB7ee14428E1b6dAfB56B0F0",
     "abi": [
       {
         "inputs": [
@@ -939,7 +939,7 @@
     ]
   },
   "tBond": {
-    "address": "0x602C71e4DAC47a042Ee7f46E0aee17F94A3bA0B6",
+    "address": "0xeBdD49874F4dab257917212b47598D41A7103595",
     "abi": [
       {
         "inputs": [
@@ -1431,7 +1431,7 @@
     ]
   },
   "tShare": {
-    "address": "0xE7eD6747FaC5360f88a2EFC03E00d25789F69291",
+    "address": "0xD0b2464b35Ce302493afab20650fce5fe6f47C96",
     "abi": [
       {
         "inputs": [
@@ -2142,7 +2142,7 @@
     ]
   },
   "Masonry": {
-    "address": "0xb6286fAFd0451320ad6A8143089b216C2152c025",
+    "address": "0xCF13919B328fFC085AD1242c36E35Ae781d240B1",
     "abi": [
       {
         "anonymous": false,
@@ -2719,7 +2719,7 @@
     ]
   },
   "Treasury": {
-    "address": "0x7a3d735ee6873f17Dbdcab1d51B604928dc10d92",
+    "address": "0x520B35197E6b987316C9A04B3206964816955D10",
     "abi": [
       {
         "anonymous": false,
@@ -4047,7 +4047,7 @@
     ]
   },
   "SeigniorageOracle": {
-    "address": "0x2c15A315610Bfa5248E4CbCbd693320e9D8E03Cc",
+    "address": "0xE279790180026Af8586Dd6Cbb945e2f6e7c408a1",
     "abi": [
       {
         "inputs": [
@@ -7373,7 +7373,7 @@
     ]
   },
   "zapper": {
-    "address": "0xD537bF4b795b7D07Bd5F4bAf7017e3ce8360B1DE",
+    "address": "0x36522229BD5C39056707b6D55761491072Ca827B",
     "abi": [
       {
         "inputs": [
@@ -9403,7 +9403,7 @@
     ]
   },
   "GlcrRewardPool": {
-    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
+    "address": "0xDF4DeE9b41f22c9b6844a74E212354D439A9dAEA",
     "abi": [
       {
         "inputs": [
@@ -10020,7 +10020,7 @@
     ]
   },
   "SnowUsdcLPGlcrRewardPool": {
-    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
+    "address": "0xDF4DeE9b41f22c9b6844a74E212354D439A9dAEA",
     "abi": [
       {
         "inputs": [
@@ -10637,7 +10637,7 @@
     ]
   },
   "GlcrUsdcLPGlcrRewardPool": {
-    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
+    "address": "0xDF4DeE9b41f22c9b6844a74E212354D439A9dAEA",
     "abi": [
       {
         "inputs": [
@@ -11254,7 +11254,7 @@
     ]
   },
   "SnowBtcGenesisRewardPool": {
-    "address": "0xc830Ad2FDfCC2f368fE5DeC93b1Dc72ecABb3691",
+    "address": "0xc6049f7AAb61d7c8ce90dD6f2c6A7Bf25E7f47A3",
     "abi": [
       {
         "inputs": [
@@ -11794,7 +11794,7 @@
     ]
   },
   "SnowEthGenesisRewardPool": {
-    "address": "0x34b97ffa01dc0DC959c5f1176273D0de3be914C1",
+    "address": "0x58Ee9Aff4fC5B5ef0cFAEb94F0b4161F8224d913",
     "abi": [
       {
         "inputs": [
@@ -13332,7 +13332,7 @@
     ]
   },
   "SnowCroGenesisRewardPool": {
-    "address": "0x4D1B781ce59B8C184F63B99D39d6719A522f46B5",
+    "address": "0xDF08d4686a6528ebA734992e3E0bE83275648f45",
     "abi": [
       {
         "inputs": [
@@ -13872,7 +13872,7 @@
     ]
   },
   "SnowUsdcGenesisRewardPool": {
-    "address": "0xA95916C3D979400C7443961330b3092510a229Ba",
+    "address": "0x655a71f9F2F69E6847eceFB34878119F7F96749d",
     "abi": [
       {
         "inputs": [
@@ -14412,7 +14412,7 @@
     ]
   },
   "SnowDaiGenesisRewardPool": {
-    "address": "0x724Ca58E1e6e64BFB1E15d7Eec0fe1E5f581c7bD",
+    "address": "0x894c25374e918Ee8d6Ee3b1312265Bd884008FD6",
     "abi": [
       {
         "inputs": [
@@ -14952,7 +14952,7 @@
     ]
   },
   "SnowUsdtGenesisRewardPool": {
-    "address": "0x82c83b7f88aef2eD99d4869D547b6ED28e69C8df",
+    "address": "0xe2A193a33F013b5D29734635B7E3D2b01DB8b8ba",
     "abi": [
       {
         "inputs": [
@@ -16053,7 +16053,7 @@
     ]
   },
   "PegLPNode": {
-    "address": "0xe65A7a341978d59d40d30FC23F5014FACB4f575A",
+    "address": "0x0953F8662378BCe817a925150C5D43d7c9996819",
     "abi": [
       {
         "inputs": [
@@ -16870,7 +16870,7 @@
     ]
   },
   "ShareLPNode": {
-    "address": "0x30375B532345B01cB8c2AD12541b09E9Aa53A93d",
+    "address": "0xabA542AcDB3392aa3161Aa84cC0aB6673d850F54",
     "abi": [
       {
         "inputs": [

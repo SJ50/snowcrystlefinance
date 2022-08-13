@@ -13,7 +13,8 @@ RUN apk update && apk upgrade && \
 # install app dependencies
 COPY package.json ./
 COPY yarn.lock ./
-RUN yarn install --immutable --immutable-cache --check-cache --silent
+# RUN yarn install --immutable --immutable-cache --check-cache --silent
+RUN yarn 
 RUN yarn add react-scripts@3.4.1 -g --silent
 # add app
 COPY . ./
