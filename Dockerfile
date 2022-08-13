@@ -13,12 +13,18 @@ RUN apk update && apk upgrade && \
 # install app dependencies
 COPY package.json ./
 COPY yarn.lock ./
-# RUN yarn install --immutable --immutable-cache --check-cache --silent
-RUN yarn 
+RUN yarn install --immutable --immutable-cache --check-cache --silent --network-timeout 500000
+
 RUN yarn add react-scripts@3.4.1 -g --silent
+
 # add app
 COPY . ./
+
 # run build
-RUN npm run build
+RUN yarn run build
+
+# expose port
+expose 3000
+
 # start app
 CMD ["npm","start"]
