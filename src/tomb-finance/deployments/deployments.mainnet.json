@@ -7373,7 +7373,7 @@
     ]
   },
   "zapper": {
-    "address": "0xD2Dc5688cF8E060392E0061b57A30Ba6961327D7",
+    "address": "0xD537bF4b795b7D07Bd5F4bAf7017e3ce8360B1DE",
     "abi": [
       {
         "inputs": [
@@ -9403,7 +9403,7 @@
     ]
   },
   "GlcrRewardPool": {
-    "address": "0xDae02e4fE488952cFB8c95177154D188647a0146",
+    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
     "abi": [
       {
         "inputs": [
@@ -10020,7 +10020,7 @@
     ]
   },
   "SnowUsdcLPGlcrRewardPool": {
-    "address": "0xDae02e4fE488952cFB8c95177154D188647a0146",
+    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
     "abi": [
       {
         "inputs": [
@@ -10637,7 +10637,7 @@
     ]
   },
   "GlcrUsdcLPGlcrRewardPool": {
-    "address": "0xDae02e4fE488952cFB8c95177154D188647a0146",
+    "address": "0xe692Cf21B12e0B2717C4bF647F9768Fa58861c8b",
     "abi": [
       {
         "inputs": [
@@ -15492,7 +15492,7 @@
     ]
   },
   "RebateTreasury": {
-    "address": "0x741e3E1f81041c62C2A97d0b6E567AcaB09A6232",
+    "address": "0x70bC6D873D110Da59a9c49E7485a27B0F605E5db",
     "abi": [
       {
         "inputs": [
@@ -16052,8 +16052,8 @@
       }
     ]
   },
-  "ShareLPNode": {
-    "address": "0xBcb61491F1859f53438918F1A5aFCA542Af9D397",
+  "PegLPNode": {
+    "address": "0xe65A7a341978d59d40d30FC23F5014FACB4f575A",
     "abi": [
       {
         "inputs": [
@@ -16869,8 +16869,8 @@
       }
     ]
   },
-  "PegLPNode": {
-    "address": "0xdCF93F11ef216cEC9C07fd31dD801c9b2b39Afb4",
+  "ShareLPNode": {
+    "address": "0x30375B532345B01cB8c2AD12541b09E9Aa53A93d",
     "abi": [
       {
         "inputs": [

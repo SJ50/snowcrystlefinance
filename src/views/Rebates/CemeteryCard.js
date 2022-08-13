@@ -29,7 +29,7 @@ const CemeteryCard = ({ bank }) => {
 
   const [approveStatus, approve] = useApprove(
     tombFinance.externalTokens[bank.depositTokenName],
-    '0x741e3E1f81041c62C2A97d0b6E567AcaB09A6232',
+    '0x70bC6D873D110Da59a9c49E7485a27B0F605E5db',
   );
 
   const tokenBalance = useTokenBalance(tombFinance.externalTokens[bank.depositTokenName]);

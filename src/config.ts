@@ -239,9 +239,9 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     contract: 'LPSnowNode',
     depositTokenName: 'GRAPE-SNOW-LP',
     earnTokenName: 'GRAPE-SNOW-LP',
-    finished: false,
+    finished: true,
     sort: 2,
-    closedForStaking: false,
+    closedForStaking: true,
   }
 };
 

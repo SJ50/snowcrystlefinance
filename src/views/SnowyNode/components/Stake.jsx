@@ -26,7 +26,6 @@ import TokenSymbol from '../../../components/TokenSymbol';
 const Stake = ({bank}) => {
   const [approveStatus, approve] = useApprove(bank.depositToken, bank.address);
 
-
   const tokenBalance = useTokenBalance(bank.depositToken);
   const nodePrice = useNodePrice(bank.contract, bank.poolId, bank.sectionInUI);
   const stakedBalance = useStakedBalance(bank.contract, bank.poolId);
