@@ -6,4 +6,3 @@ Dockerfile.prod
 snowcrystals_finance.tar
 snowcrystals_finance_testnet.tar
 
-!node_modules/@madmeerkat

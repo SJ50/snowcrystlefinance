@@ -19,6 +19,8 @@ RUN yarn add react-scripts@3.4.1 -g --silent
 
 # add app
 COPY . ./
+RUN rm -r node_modules/@madmeerkat && \
+    mv @madmeerkat node_modules
 
 # run build
 RUN yarn run build
