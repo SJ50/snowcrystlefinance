@@ -3114,7 +3114,7 @@
 
 "@madmeerkat/sdk@^2.4.3":
   version "2.4.3"
-  resolved "http://nexus.utility.syd.au.priv/nexus/repository/npm-group/@madmeerkat/sdk/-/sdk-2.4.3.tgz#a50c0a0d0d4a2cf812d189096f48a70dc485b242"
+  resolved "https://registry.yarnpkg.com/@madmeerkat/sdk/-/sdk-2.4.3.tgz#a50c0a0d0d4a2cf812d189096f48a70dc485b242"
   integrity sha512-4vHJN0Gs7BiHh7lPRkFwGYVg8mbi15NDCAOEihZS7dmp5R40LAeJAL3rQxI8mzmLDEhetlGBejnGtBGLv95lzA==
   dependencies:
     "@pancakeswap-libs/pancake-swap-core" "^0.1.0"
