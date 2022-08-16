@@ -12,18 +12,18 @@ const configurations: { [env: string]: Configuration } = {
     defaultProvider: 'https://evm-t3.cronos.org',
     deployments: require('./tomb-finance/deployments/deployments.mainnet.json'),
     externalTokens: {
-      WCRO: ['0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23', 18], // CRO
+      WCRO: ['0x6a3173618859C7cd40fAF6921b5E9eB6A76f1fD4', 18], // CRO
       SNOW: ['0xcD1467604E446BBfcB7ee14428E1b6dAfB56B0F0', 18],
       SBOND: ['0xeBdD49874F4dab257917212b47598D41A7103595', 18],
       GLCR: ['0xD0b2464b35Ce302493afab20650fce5fe6f47C96', 18],
       USDC: ['0x39D8fa99c9964D456b9fbD5e059e63442F314121', 6],
-      USDT: ['0x66e428c3f67a68878562e79A0234c1F83c208770', 6],
-      WFTM: ['0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23', 18],
-      WBTC: ['0x062E66477Faf219F25D27dCED647BF57C3107d52', 18],
+      USDT: ['0x39D8fa99c9964D456b9fbD5e059e63442F314121', 6],
+      WFTM: ['0x6a3173618859C7cd40fAF6921b5E9eB6A76f1fD4', 18],
+      WBTC: ['0x6a3173618859C7cd40fAF6921b5E9eB6A76f1fD4', 18],
       SNOBOND: ['0x8aB4Ac266d8e698b7E39f97Ec17876076680f6f1', 18],
-      WETH: ['0xe44Fd7fCb2b1581822D0c862B68222998a0c299a', 18],
+      WETH: ['0x6a3173618859C7cd40fAF6921b5E9eB6A76f1fD4', 18],
       DIBS: ['0x5E430F88D1BE82EB3eF92b6fF06125168fD5DCf2', 18],
-      DAI: ['0xF2001B145b43032AAF5Ee2884e456CCd805F677D', 18],
+      DAI: ['0x39D8fa99c9964D456b9fbD5e059e63442F314121', 18],
       MMF: ['0x97749c9B61F878a880DfE312d2594AE07AEd7656', 18],
       MIM: ['0x130966628846BFd36ff31a822705796e8cb8C18D', 18],
       'SNOW-USDC-LP': ['0xC31c472eB181108c8dD1fDb773251922e7e09ef3', 18],
@@ -78,28 +78,28 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 2,
     closedForStaking: false,
   },
-  SnowSnobondGenesisRewardPool: {
-    name: 'Earn SNOW by SNOBOND',
-    poolId: 0,
-    sectionInUI: 0,
-    contract: 'SnowSnobondGenesisRewardPool',
-    depositTokenName: 'SNOBOND',
-    earnTokenName: 'SNOW',
-    finished: true,
-    sort: 3,
-    closedForStaking: true,
-  },
-  SnowDibsGenesisRewardPool: {
-    name: 'Earn SNOW by DIBS',
-    poolId: 0,
-    sectionInUI: 0,
-    contract: 'SnowDibsGenesisRewardPool',
-    depositTokenName: 'DIBS',
-    earnTokenName: 'SNOW',
-    finished: true,
-    sort: 4,
-    closedForStaking: true,
-  },
+  // SnowSnobondGenesisRewardPool: {
+  //   name: 'Earn SNOW by SNOBOND',
+  //   poolId: 0,
+  //   sectionInUI: 0,
+  //   contract: 'SnowSnobondGenesisRewardPool',
+  //   depositTokenName: 'SNOBOND',
+  //   earnTokenName: 'SNOW',
+  //   finished: true,
+  //   sort: 3,
+  //   closedForStaking: true,
+  // },
+  // SnowDibsGenesisRewardPool: {
+  //   name: 'Earn SNOW by DIBS',
+  //   poolId: 0,
+  //   sectionInUI: 0,
+  //   contract: 'SnowDibsGenesisRewardPool',
+  //   depositTokenName: 'DIBS',
+  //   earnTokenName: 'SNOW',
+  //   finished: true,
+  //   sort: 4,
+  //   closedForStaking: true,
+  // },
   SnowCroGenesisRewardPool: {
     name: 'Earn SNOW by wCRO',
     poolId: 0,
@@ -188,8 +188,8 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 2,
     closedForStaking: false,
   },*/
-  AvaxJoeLPRebate: {
-    name: 'Bond AVAX for SNOW',
+  CroRebate: {
+    name: 'Bond CRO for SNOW',
     poolId: 100,
     sectionInUI: 3,
     contract: 'RebateTreasury',
@@ -199,7 +199,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 3,
     closedForStaking: false,
   },
-  UsdcJoeLPRebate: {
+  UsdcRebate: {
     name: 'Bond USDC for SNOW',
     poolId: 100,
     sectionInUI: 3,
@@ -232,17 +232,17 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 6,
     closedForStaking: false
    },
-   LPSnowNode: {
-    name: 'Generate GRAPE-SNOW LP with Nodes',
-    poolId: 0,
-    sectionInUI: 4,
-    contract: 'LPSnowNode',
-    depositTokenName: 'GRAPE-SNOW-LP',
-    earnTokenName: 'GRAPE-SNOW-LP',
-    finished: true,
-    sort: 2,
-    closedForStaking: true,
-  }
+  //  LPSnowNode: {
+  //   name: 'Generate GRAPE-SNOW LP with Nodes',
+  //   poolId: 0,
+  //   sectionInUI: 4,
+  //   contract: 'LPSnowNode',
+  //   depositTokenName: 'GRAPE-SNOW-LP',
+  //   earnTokenName: 'GRAPE-SNOW-LP',
+  //   finished: true,
+  //   sort: 2,
+  //   closedForStaking: true,
+  // }
 };
 
 export default configurations[/*process.env.NODE_ENV || */'production'];

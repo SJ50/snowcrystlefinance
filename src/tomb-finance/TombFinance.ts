@@ -526,8 +526,9 @@ export class TombFinance {
   async getTotalValueLocked(): Promise<Number> {
     let totalValue = 0;
     for (const bankInfo of Object.values(bankDefinitions)) {
-      const pool = this.contracts[bankInfo.contract];
-      const token = this.externalTokens[bankInfo.depositTokenName];
+      
+      const pool = this.contracts[bankInfo.contract]; // SnowUsdcLPGlcrRewardPool
+      const token = this.externalTokens[bankInfo.depositTokenName]; // SNOW-USDC-LP
       // const tokenPrice = await this.getDepositTokenPriceInDollars(bankInfo.depositTokenName, token);
       // const tokenAmountInPool = await token.balanceOf(pool.address);
 
@@ -535,14 +536,14 @@ export class TombFinance {
         this.getDepositTokenPriceInDollars(bankInfo.depositTokenName, token),
         token.balanceOf(pool.address)
       ]);
-
-      const value = Number(getDisplayBalance(tokenAmountInPool, token.decimal, 6)) * Number(tokenPrice);
+      console.log("debug "+ JSON.stringify(bankInfo, null,4));
+      const value = Number(getDisplayBalance(tokenAmountInPool, token.decimal,token.decimal === 6 ? 3 : 9)) * Number(tokenPrice);
       let poolValue = Number.isNaN(value) ? 0 : value;
       if (bankInfo.depositTokenName.endsWith('-USDC-LP')) {
         poolValue = poolValue * 10**6;
       }
-
       totalValue += poolValue;
+
     }
 
     // const TSHAREPrice = (await this.getShareStat()).priceInDollars;
