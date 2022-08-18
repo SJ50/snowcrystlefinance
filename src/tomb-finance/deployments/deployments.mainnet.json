@@ -1,6 +1,6 @@
 {
   "tomb": {
-    "address": "0xcD1467604E446BBfcB7ee14428E1b6dAfB56B0F0",
+    "address": "0xE0B078b36D4203f0080D52A7a3b48e10F2f38203",
     "abi": [
       {
         "inputs": [
@@ -939,7 +939,7 @@
     ]
   },
   "tBond": {
-    "address": "0xeBdD49874F4dab257917212b47598D41A7103595",
+    "address": "0xE426f672Bd21D72Ba127D075cE2c4f01eF6f76D7",
     "abi": [
       {
         "inputs": [
@@ -1431,7 +1431,7 @@
     ]
   },
   "tShare": {
-    "address": "0xD0b2464b35Ce302493afab20650fce5fe6f47C96",
+    "address": "0x79e576DA7B5359DbA5Aa08d8db6AA62394f80553",
     "abi": [
       {
         "inputs": [
@@ -2142,7 +2142,7 @@
     ]
   },
   "Masonry": {
-    "address": "0xCF13919B328fFC085AD1242c36E35Ae781d240B1",
+    "address": "0xE91C9892755aa72ebf66b0bBa51867F1Aa4a3E8C",
     "abi": [
       {
         "anonymous": false,
@@ -2719,7 +2719,7 @@
     ]
   },
   "Treasury": {
-    "address": "0x520B35197E6b987316C9A04B3206964816955D10",
+    "address": "0x7567C0d24b4ee40d5c4480617cB1A94Ac4c478c1",
     "abi": [
       {
         "anonymous": false,
@@ -4047,7 +4047,7 @@
     ]
   },
   "SeigniorageOracle": {
-    "address": "0xE279790180026Af8586Dd6Cbb945e2f6e7c408a1",
+    "address": "0x4bBD99ad5a030E5e3744976A06F6b1562c192f37",
     "abi": [
       {
         "inputs": [
@@ -7373,7 +7373,7 @@
     ]
   },
   "zapper": {
-    "address": "0x36522229BD5C39056707b6D55761491072Ca827B",
+    "address": "0xD2D2140DCF0bBE7561Bdc545925Eeb9E35abB3eF",
     "abi": [
       {
         "inputs": [
@@ -9403,7 +9403,7 @@
     ]
   },
   "GlcrRewardPool": {
-    "address": "0xDF4DeE9b41f22c9b6844a74E212354D439A9dAEA",
+    "address": "0xeDdb6Bb5bA9d22bAA2feb12A6FeD045c25433037",
     "abi": [
       {
         "inputs": [
@@ -10020,7 +10020,7 @@
     ]
   },
   "SnowUsdcLPGlcrRewardPool": {
-    "address": "0xDF4DeE9b41f22c9b6844a74E212354D439A9dAEA",
+    "address": "0xeDdb6Bb5bA9d22bAA2feb12A6FeD045c25433037",
     "abi": [
       {
         "inputs": [
@@ -10637,7 +10637,7 @@
     ]
   },
   "GlcrUsdcLPGlcrRewardPool": {
-    "address": "0xDF4DeE9b41f22c9b6844a74E212354D439A9dAEA",
+    "address": "0xeDdb6Bb5bA9d22bAA2feb12A6FeD045c25433037",
     "abi": [
       {
         "inputs": [
@@ -11254,7 +11254,7 @@
     ]
   },
   "SnowBtcGenesisRewardPool": {
-    "address": "0xc6049f7AAb61d7c8ce90dD6f2c6A7Bf25E7f47A3",
+    "address": "0x0b634dF72AbF2B36e03246FA5B0A4d55a4404498",
     "abi": [
       {
         "inputs": [
@@ -11794,7 +11794,7 @@
     ]
   },
   "SnowEthGenesisRewardPool": {
-    "address": "0x58Ee9Aff4fC5B5ef0cFAEb94F0b4161F8224d913",
+    "address": "0x8038d3CDB8658F929635388cB842620BC7dD4CBB",
     "abi": [
       {
         "inputs": [
@@ -12334,7 +12334,7 @@
     ]
   },
   "SnowCroGenesisRewardPool": {
-    "address": "0xDF08d4686a6528ebA734992e3E0bE83275648f45",
+    "address": "0xadC86dD9d83e01064Ae321eA74f2f97aED57da9C",
     "abi": [
       {
         "inputs": [
@@ -12874,7 +12874,7 @@
     ]
   },
   "SnowUsdcGenesisRewardPool": {
-    "address": "0x655a71f9F2F69E6847eceFB34878119F7F96749d",
+    "address": "0x16D57F2D41607e7Fe6B482953F10a2ad90F00Ac8",
     "abi": [
       {
         "inputs": [
@@ -13414,7 +13414,7 @@
     ]
   },
   "SnowDaiGenesisRewardPool": {
-    "address": "0x894c25374e918Ee8d6Ee3b1312265Bd884008FD6",
+    "address": "0x9b12045c4692c9572DC1Bc1420993C149b7e92F8",
     "abi": [
       {
         "inputs": [
@@ -13954,7 +13954,7 @@
     ]
   },
   "SnowUsdtGenesisRewardPool": {
-    "address": "0xe2A193a33F013b5D29734635B7E3D2b01DB8b8ba",
+    "address": "0xDFe70fb60FFAa41E954b2Ec4188c8bE9caCed295",
     "abi": [
       {
         "inputs": [
@@ -14494,7 +14494,7 @@
     ]
   },
   "RebateTreasury": {
-    "address": "0x70bC6D873D110Da59a9c49E7485a27B0F605E5db",
+    "address": "0x4AAB2253545770B8a168D48ddb8E08721AB83B87",
     "abi": [
       {
         "inputs": [
@@ -15055,7 +15055,7 @@
     ]
   },
   "PegLPNode": {
-    "address": "0x0953F8662378BCe817a925150C5D43d7c9996819",
+    "address": "0xcF232Bf99C7d6c3abC292E2861979AC18B5f5Efb",
     "abi": [
       {
         "inputs": [
@@ -15872,7 +15872,7 @@
     ]
   },
   "ShareLPNode": {
-    "address": "0xabA542AcDB3392aa3161Aa84cC0aB6673d850F54",
+    "address": "0xf82EC156EE84Ec7961007984F57ab5cE9BbEddf8",
     "abi": [
       {
         "inputs": [
