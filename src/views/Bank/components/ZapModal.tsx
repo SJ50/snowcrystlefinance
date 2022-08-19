@@ -131,7 +131,7 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
             approveZapperStatus !== ApprovalState.APPROVED ? approveZapper() : onConfirm(zappingToken, tokenName, val)
           }
         >
-          {approveZapperStatus !== ApprovalState.APPROVED ? 'Approve' : "Let's go"}
+          {approveZapperStatus !== ApprovalState.APPROVED ? 'Approve' : "Zap"}
         </Button>
       </ModalActions>
 
