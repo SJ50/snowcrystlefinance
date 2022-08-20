@@ -379,12 +379,12 @@ const ERC20ABI = [
 ];
 
 const web3 = new Web3('https://evm-t3.cronos.org');
-const RebateTreasury = new web3.eth.Contract(RebateTreasuryABI, '0x4AAB2253545770B8a168D48ddb8E08721AB83B87');
-const Threeomb = new web3.eth.Contract(ERC20ABI, '0xE0B078b36D4203f0080D52A7a3b48e10F2f38203');
+const RebateTreasury = new web3.eth.Contract(RebateTreasuryABI, '0xcf9ad4815Ba88fd4f8aF29Ddd92bEAfD0e1c3d5B');
+const Threeomb = new web3.eth.Contract(ERC20ABI, '0x4fdB5872AeaB05bB1ad574c4EC9196Cd7162FE30');
 
 const assetList = [
-  '0xc921265f76a662cDa289f0e2C2615ac493B262A9', // SNOW-USDC-PL
-  '0xE9BCf02CDf63fF0794889487868B093711487FC7', // GLCR-USDC-PL
+  '0xAEB669993330A39fAeA5B188b22354894c9b65ee', // SNOW-USDC-PL
+  '0xf7c9b3d033222B948d0FE9dd8CE61F84ba43387a', // GLCR-USDC-PL
   '0x39D8fa99c9964D456b9fbD5e059e63442F314121', // USDC
   '0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23', // CRO
 ];

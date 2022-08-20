@@ -88,9 +88,9 @@ const Home = () => {
   // }
 
   const buyTombAddress =
-    'https://mm.finance/swap?inputCurrency=0x39D8fa99c9964D456b9fbD5e059e63442F314121&outputCurrency=0xE0B078b36D4203f0080D52A7a3b48e10F2f38203#/';
+    'https://mm.finance/swap?inputCurrency=0x39D8fa99c9964D456b9fbD5e059e63442F314121&outputCurrency=0x4fdB5872AeaB05bB1ad574c4EC9196Cd7162FE30#/';
   const buyTShareAddress =
-    'https://mm.finance/swap?inputCurrency=0x39D8fa99c9964D456b9fbD5e059e63442F314121&outputCurrency=0x79e576DA7B5359DbA5Aa08d8db6AA62394f80553#/';
+    'https://mm.finance/swap?inputCurrency=0x39D8fa99c9964D456b9fbD5e059e63442F314121&outputCurrency=0x4B0503872cB545C542956564bEC0b87633b514e4#/';
 
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
   const tshareLPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);
@@ -189,7 +189,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://dexscreener.com/avalanche/0xc921265f76a662cDa289f0e2C2615ac493B262A9"
+                        href="https://dexscreener.com/avalanche/0xAEB669993330A39fAeA5B188b22354894c9b65ee"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -199,7 +199,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://testnet.cronoscan.com/address/0xE0B078b36D4203f0080D52A7a3b48e10F2f38203#code"
+                        href="https://testnet.cronoscan.com/address/0x4fdB5872AeaB05bB1ad574c4EC9196Cd7162FE30#code"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -231,7 +231,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://dexscreener.com/avalanche/0xE9BCf02CDf63fF0794889487868B093711487FC7"
+                        href="https://dexscreener.com/avalanche/0xf7c9b3d033222B948d0FE9dd8CE61F84ba43387a"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -241,7 +241,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://testnet.cronoscan.com/address/0x79e576DA7B5359DbA5Aa08d8db6AA62394f80553#code"
+                        href="https://testnet.cronoscan.com/address/0x4B0503872cB545C542956564bEC0b87633b514e4#code"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -272,7 +272,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://testnet.cronoscan.com/address/0xE426f672Bd21D72Ba127D075cE2c4f01eF6f76D7#code"
+                        href="https://testnet.cronoscan.com/address/0x09c948011656BC6801960DAb81a4cB53fa438925#code"
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
