@@ -64,7 +64,7 @@ const Bank: React.FC = () => {
         ? (
             <Alert variant="filled" severity="info" style={{ marginTop: '-25px', marginBottom: '35px' }}>
               Unstaking now will incur a tax. To read about how much refer to our{' '}
-              <a style={{ color: '#fff' }} href="https://docs.frozenwalrus.finance/protocol-information/taxes">
+              <a style={{ color: '#fff' }} href="https://docs.snowcrystals.finance/protocol-information/taxes">
               documentation.
               </a>
             </Alert>

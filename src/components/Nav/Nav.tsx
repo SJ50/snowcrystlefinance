@@ -134,11 +134,11 @@ const Nav = () => {
               <Link color="textPrimary" to="/nodes" className={classes.link}>
                 Nodes
               </Link>
-              <Link color="textPrimary" to="/compound" className={classes.link}>
+              {/* <Link color="textPrimary" to="/compound" className={classes.link}>
                 Compound
-              </Link>
+              </Link> */}
               <a
-                href="https://docs.frozenwalrus.finance/welcome"
+                href="https://docs.snowcrystals.finance/welcome"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={classes.link}
@@ -222,7 +222,7 @@ const Nav = () => {
                 <Link color="textPrimary" to="/compound" className={classes.link}>
                   <div style={{ margin: '4px 20px' }}>Compound</div>
                 </Link>
-                <a href="https://docs.frozenwalrus.finance/welcome" target="_blank" className={classes.link}>
+                <a href="https://docs.snowcrystals.finance/welcome" target="_blank" className={classes.link}>
                   <div style={{ margin: '4px 20px' }}>Docs</div>
                 </a>
                 <ListItem style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

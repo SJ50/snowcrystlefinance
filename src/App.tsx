@@ -26,7 +26,7 @@ const Pit = lazy(() => import('./views/Pit'));
 // const Liquidity = lazy(() => import('./views/Liquidity'));
 const Rebates = lazy(() => import('./views/Rebates'));
 // const Raffle = lazy(() => import('./views/Raffle'));
-const Compound = lazy(() => import('./views/Compound'));
+// const Compound = lazy(() => import('./views/Compound'));
 const Nodes = lazy(() => import('./views/Nodes'))
 
 const NoMatch = () => (
@@ -70,16 +70,16 @@ const App: React.FC = () => {
             </Route>
             {/* <Route path="/sbs">
               <SBS />
-            </Route>
-            <Route path="/regulations">
+            </Route> */}
+            {/* <Route path="/regulations">
               <Regulations />
-            </Route>
-            <Route path="/liquidity">
+            </Route> */}
+            {/* <Route path="/liquidity">
               <Liquidity />
             </Route> */}
-            <Route path="/compound">
+            {/* <Route path="/compound">
               <Compound />
-            </Route>
+            </Route> */}
             <Route path="*">
               <NoMatch />
             </Route>
