@@ -4,6 +4,7 @@ import { Container, Grid, Typography, Link } from '@material-ui/core';
 
 import TwitterImage from '../../assets/img/twitter.svg';
 import DiscordImage from '../../assets/img/discord.svg';
+import TelegramImage from '../../assets/img/telegram.svg';
 import MediumImage from '../../assets/img/medium.svg';
 
 const useStyles = makeStyles((theme) => ({
@@ -56,24 +57,27 @@ const Footer = () => {
           </Grid>
           <Grid item xs={12} style={{ textAlign: 'center', marginTop: '10px' }}>
             <a
-              href="https://twitter.com/WalrusFinance"
+              href="https://twitter.com/SnowcrystalsFin"
               rel="noopener noreferrer"
               target="_blank"
               className={classes.link}
             >
               <img alt="twitter" src={TwitterImage} className={classes.img} />
             </a>
-            <a href="https://discord.gg/qZDuUBnxsT" rel="noopener noreferrer" target="_blank" className={classes.link}>
-              <img alt="discord" src={DiscordImage} className={classes.img} />
+            <a href="https://t.me/+TmQos-dWjMplYjNl" rel="noopener noreferrer" target="_blank" className={classes.link}>
+              <img alt="telegram" src={TelegramImage} className={classes.img} />
             </a>
-            <a
+            {/* <a href="https://discord.gg/qZDuUBnxsT" rel="noopener noreferrer" target="_blank" className={classes.link}>
+              <img alt="discord" src={DiscordImage} className={classes.img} />
+            </a> */}
+            {/* <a
               href="https://medium.com/@frozenwalrusfinance"
               rel="noopener noreferrer"
               target="_blank"
               className={classes.link}
             >
               <img alt="discord" src={MediumImage} className={classes.img} />
-            </a>
+            </a> */}
           </Grid>
         </Grid>
       </Container>
