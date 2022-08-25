@@ -334,7 +334,7 @@ export class TombFinance {
   async getBondsPurchasable(): Promise<BigNumber> {
     const { Treasury } = this.contracts;
     // TODO: update function name after abi change
-    return Treasury.getBurnableSnowLeftt();
+    return Treasury.getBurnableSnowLeft();
   }
 
   /**
