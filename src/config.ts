@@ -13,17 +13,17 @@ const configurations: { [env: string]: Configuration } = {
     deployments: require('./tomb-finance/deployments/deployments.mainnet.json'),
     externalTokens: {
       WCRO: ['0x6a3173618859C7cd40fAF6921b5E9eB6A76f1fD4', 18], 
-      SNOW: ['0x4fdB5872AeaB05bB1ad574c4EC9196Cd7162FE30', 18],
-      SBOND: ['0x09c948011656BC6801960DAb81a4cB53fa438925', 18],
-      GLCR: ['0x4B0503872cB545C542956564bEC0b87633b514e4', 18],
+      SNOW: ['0x72a5Cdd48908AE4E3cb07AC379aB238004251dCa', 18],
+      SBOND: ['0x37cd1678C86A190BF4e41a4005Cf0662E6AAA688', 18],
+      GLCR: ['0x2cC136019AF0c7e855459B3929D17707820a410B', 18],
       USDC: ['0x39D8fa99c9964D456b9fbD5e059e63442F314121', 6],
-      USDT: ['0x39D8fa99c9964D456b9fbD5e059e63442F314121', 6],
+      USDT: ['0xf1852356be8aD76dAAD31acEB55018Dd87961109', 18],
       WFTM: ['0x6a3173618859C7cd40fAF6921b5E9eB6A76f1fD4', 18],
-      WBTC: ['0x6a3173618859C7cd40fAF6921b5E9eB6A76f1fD4', 18],
-      WETH: ['0x6a3173618859C7cd40fAF6921b5E9eB6A76f1fD4', 18],
-      DAI: ['0x39D8fa99c9964D456b9fbD5e059e63442F314121', 18],
-      'SNOW-USDC-LP': ['0xAEB669993330A39fAeA5B188b22354894c9b65ee', 18],
-      'GLCR-USDC-LP': ['0xf7c9b3d033222B948d0FE9dd8CE61F84ba43387a', 18]
+      WBTC: ['0xB5294e29A6e4CbFbb269a6240313b593190ef544', 18],
+      WETH: ['0x1e8B3db284ef89E19Bc8edb7A0c5246be288a824', 18],
+      DAI: ['0x4b23dfd7e925b543E4354A5D4eA8AD47699e6f12', 6],
+      'SNOW-USDC-LP': ['0xE2A1207be9E08E212d0EFe0Fc628A4367361A065', 18],
+      'GLCR-USDC-LP': ['0x549fa6e6c0F23D42B34403E586c614c52360b4A9', 18]
     },
     baseLaunchDate: new Date('2022-05-14T18:00:00Z'),
     bondLaunchesAt: new Date('2022-05-15T09:00:00Z'),
@@ -60,7 +60,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   },
   SnowEthGenesisRewardPool: {
     name: 'Earn SNOW by wETH',
-    poolId: 0,
+    poolId: 1,
     sectionInUI: 0,
     contract: 'SnowEthGenesisRewardPool',
     depositTokenName: 'WETH',
@@ -71,7 +71,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   },
   SnowCroGenesisRewardPool: {
     name: 'Earn SNOW by wCRO',
-    poolId: 0,
+    poolId: 2,
     sectionInUI: 0,
     contract: 'SnowCroGenesisRewardPool',
     depositTokenName: 'WCRO',
@@ -82,7 +82,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   },
   SnowUsdcGenesisRewardPool: {
     name: 'Earn SNOW by USDC',
-    poolId: 0,
+    poolId: 3,
     sectionInUI: 0,
     contract: 'SnowUsdcGenesisRewardPool',
     depositTokenName: 'USDC',
@@ -93,7 +93,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   },
   SnowDAIGenesisRewardPool: {
     name: 'Earn SNOW by DAI',
-    poolId: 0,
+    poolId: 4,
     sectionInUI: 0,
     contract: 'SnowDaiGenesisRewardPool',
     depositTokenName: 'DAI',
@@ -104,7 +104,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   },
   SnowUsdtGenesisRewardPool: {
     name: 'Earn SNOW by USDT',
-    poolId: 0,
+    poolId: 5,
     sectionInUI: 0,
     contract: 'SnowUsdtGenesisRewardPool',
     depositTokenName: 'USDT',

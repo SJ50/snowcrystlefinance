@@ -536,7 +536,7 @@ export class TombFinance {
         this.getDepositTokenPriceInDollars(bankInfo.depositTokenName, token),
         token.balanceOf(pool.address)
       ]);
-      console.log("debug "+ JSON.stringify(bankInfo, null,4));
+      // console.log("debug "+ JSON.stringify(bankInfo, null,4));
       const value = Number(getDisplayBalance(tokenAmountInPool, token.decimal,token.decimal === 6 ? 3 : 9)) * Number(tokenPrice);
       let poolValue = Number.isNaN(value) ? 0 : value;
       if (bankInfo.depositTokenName.endsWith('-USDC-LP')) {
