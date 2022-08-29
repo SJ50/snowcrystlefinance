@@ -47,9 +47,20 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   finished: will disable the pool on the UI if set to true
   sort: the order of the pool
   */
+  SnowUsdcGenesisRewardPool: {
+    name: 'Earn SNOW by USDC',
+    poolId: 0,
+    sectionInUI: 0,
+    contract: 'SnowUsdcGenesisRewardPool',
+    depositTokenName: 'USDC',
+    earnTokenName: 'SNOW',
+    finished: false,
+    sort: 6,
+    closedForStaking: false,
+  },
   SnowBtcGenesisRewardPool: {
     name: 'Earn SNOW by wBTC',
-    poolId: 0,
+    poolId: 1,
     sectionInUI: 0,
     contract: 'SnowBtcGenesisRewardPool',
     depositTokenName: 'WBTC',
@@ -60,7 +71,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   },
   SnowEthGenesisRewardPool: {
     name: 'Earn SNOW by wETH',
-    poolId: 1,
+    poolId: 2,
     sectionInUI: 0,
     contract: 'SnowEthGenesisRewardPool',
     depositTokenName: 'WETH',
@@ -71,24 +82,13 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   },
   SnowCroGenesisRewardPool: {
     name: 'Earn SNOW by wCRO',
-    poolId: 2,
+    poolId: 3,
     sectionInUI: 0,
     contract: 'SnowCroGenesisRewardPool',
     depositTokenName: 'WCRO',
     earnTokenName: 'SNOW',
     finished: false,
     sort: 5,
-    closedForStaking: false,
-  },
-  SnowUsdcGenesisRewardPool: {
-    name: 'Earn SNOW by USDC',
-    poolId: 3,
-    sectionInUI: 0,
-    contract: 'SnowUsdcGenesisRewardPool',
-    depositTokenName: 'USDC',
-    earnTokenName: 'SNOW',
-    finished: false,
-    sort: 6,
     closedForStaking: false,
   },
   SnowDAIGenesisRewardPool: {
