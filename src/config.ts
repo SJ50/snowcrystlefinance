@@ -55,7 +55,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     depositTokenName: 'USDC',
     earnTokenName: 'SNOW',
     finished: false,
-    sort: 6,
+    sort: 1,
     closedForStaking: false,
   },
   SnowBtcGenesisRewardPool: {
@@ -66,7 +66,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     depositTokenName: 'WBTC',
     earnTokenName: 'SNOW',
     finished: false,
-    sort: 1,
+    sort: 2,
     closedForStaking: false,
   },
   SnowEthGenesisRewardPool: {
@@ -77,7 +77,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     depositTokenName: 'WETH',
     earnTokenName: 'SNOW',
     finished: false,
-    sort: 2,
+    sort: 3,
     closedForStaking: false,
   },
   SnowCroGenesisRewardPool: {
@@ -88,7 +88,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     depositTokenName: 'WCRO',
     earnTokenName: 'SNOW',
     finished: false,
-    sort: 5,
+    sort: 4,
     closedForStaking: false,
   },
   SnowDAIGenesisRewardPool: {
@@ -99,7 +99,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     depositTokenName: 'DAI',
     earnTokenName: 'SNOW',
     finished: false,
-    sort: 7,
+    sort: 5,
     closedForStaking: false,
   },
   SnowUsdtGenesisRewardPool: {
@@ -110,7 +110,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     depositTokenName: 'USDT',
     earnTokenName: 'SNOW',
     finished: false,
-    sort: 8,
+    sort: 6,
     closedForStaking: false,
   },
   SnowUsdcLPGlcrRewardPool: {
