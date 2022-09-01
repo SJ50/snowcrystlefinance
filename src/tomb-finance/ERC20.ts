@@ -26,6 +26,18 @@ class ERC20 {
     return this.contract.estimateGas;
   }
 
+  burnRate(): Promise<BigNumber> {
+    return this.contract.burnRate();
+  }
+
+  taxRate(): Promise<BigNumber> {
+    return this.contract.taxRate();
+  }
+
+  totalBurned(): Promise<BigNumber> {
+    return this.contract.totalBurned();
+  }
+
   totalSupply(): Promise<BigNumber> {
     return this.contract.totalSupply();
   }
@@ -160,6 +172,45 @@ const ABI = [
         internalType: 'uint8',
         name: '',
         type: 'uint8',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'taxRate',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'burnRate',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'totalBurned',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
       },
     ],
     stateMutability: 'view',

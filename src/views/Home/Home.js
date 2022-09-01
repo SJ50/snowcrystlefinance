@@ -101,6 +101,10 @@ const Home = () => {
   const tombPriceInFTM = useMemo(() => (tombStats ? Number(tombStats.tokenInFtm).toFixed(4) : null), [tombStats]);
   const tombCirculatingSupply = useMemo(() => (tombStats ? String(tombStats.circulatingSupply) : null), [tombStats]);
   const tombTotalSupply = useMemo(() => (tombStats ? String(tombStats.totalSupply) : null), [tombStats]);
+  const tombTotalBurned = useMemo(() => (tombStats ? String(tombStats.totalBurned) : null), [tombStats]);
+  const tombTax = useMemo(() => (tombStats ? Number(tombStats.totalTax).toFixed(2) : null), [tombStats]);
+  // const tombBurnedPercentage = tombTotalBurned.div(tombCirculatingSupply.add(tombTotalBurned));
+  const tombBurnedPercentage = (tombTotalBurned / (tombCirculatingSupply + tombTotalBurned)).toFixed(2);
 
   const tSharePriceInDollars = useMemo(
     () => (tShareStats ? Number(tShareStats.priceInDollars).toFixed(2) : null),
@@ -308,11 +312,11 @@ const Home = () => {
                 <h1>Total Value Locked</h1>
                 <CountUp style={{ fontSize: '40px' }} end={TVL} separator="," prefix="$" />
               </div>
-              <img
+              {/* <img
                 src={`${tvl}`}
                 alt="tvl"
                 style={!matches ? { width: 80, height: 80 } : { width: 128, height: 128 }}
-              />
+              /> */}
             </CardContent>
           </Card>
         </Grid>
@@ -371,7 +375,7 @@ const Home = () => {
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={3}>
+        {/* <Grid item xs={12} sm={3}>
           <Card>
             <CardContent style={{ position: 'relative' }}>
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
@@ -415,8 +419,8 @@ const Home = () => {
               </Box>
             </CardContent>
           </Card>
-        </Grid>
-        <Grid item xs={12} sm={3}>
+        </Grid> */}
+        <Grid item xs={12} sm={4}>
           <Card>
             <CardContent style={{ position: 'relative' }}>
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
@@ -440,13 +444,15 @@ const Home = () => {
                   Market Cap:
                   <br />
                   Circulating Supply: <br />
-                  Total Supply: <br />
+                  Total Burned: <br />
                   Tax:
                 </span>
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
                   ${(tombCirculatingSupply * tombPriceInDollars).toFixed(2)} <br />
                   {tombCirculatingSupply} <br />
-                  {tombTotalSupply}
+                  {tombTotalBurned} ({tombBurnedPercentage}%)
+                  <br />
+                  {tombTax}%
                 </span>
               </Row>
               <Box>
@@ -464,7 +470,7 @@ const Home = () => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={4}>
           <Card>
             <CardContent style={{ position: 'relative' }}>
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
@@ -512,7 +518,7 @@ const Home = () => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={4}>
           <Card>
             <CardContent style={{ position: 'relative' }}>
               <div style={{ position: 'absolute', right: 5, top: 5 }}>

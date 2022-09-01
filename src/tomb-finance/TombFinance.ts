@@ -113,12 +113,16 @@ export class TombFinance {
   async getTombStat(): Promise<TokenStat> {
     // const { TombFtmRewardPool, TombFtmLpTombRewardPool, TombFtmLpTombRewardPoolOld } = this.contracts;
 
-    const [supply, priceInFTM, priceOfOneFTM] = await Promise.all([
+    const [supply, priceInFTM, priceOfOneFTM, burned, taxRate, burnRate] = await Promise.all([
       this.TOMB.totalSupply(),
       this.getTokenPriceFromPancakeswap(this.TOMB),
       this.getWFTMPriceFromPancakeswap(),
+      this.TOMB.totalBurned(),
+      this.TOMB.taxRate(),
+        this.TOMB.burnRate(),
     ]);
-
+    console.log("debug " + await Promise.all([this.TOMB.burnRate()]));
+    // console.log("debug "+ JSON.stringify(this.TOMB.totalSupply(), null,4));
     const tombCirculatingSupply = supply.sub(25000);
     const priceOfTombInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(18);
     
@@ -127,6 +131,9 @@ export class TombFinance {
       priceInDollars: priceOfTombInDollars,
       totalSupply: getDisplayBalance(supply, this.TOMB.decimal, 0),
       circulatingSupply: getDisplayBalance(tombCirculatingSupply, this.TOMB.decimal, 0),
+      totalBurned: getDisplayBalance(burned, this.TOMB.decimal, 0),
+      // totalBurned: '0',
+      totalTax: getDisplayBalance(taxRate.add(burnRate), 2, 0), 
     };
   }
 
@@ -210,6 +217,8 @@ export class TombFinance {
       priceInDollars: total.toString(),
       totalSupply: getDisplayBalance(balOfRaffle, 18, 0),
       circulatingSupply: raffleAddress.toString(),
+       totalBurned: '0',
+totalTax: '0',
     };
   }
 
@@ -280,6 +289,8 @@ export class TombFinance {
       priceInDollars: priceOfTBondInDollars,
       totalSupply: supply,
       circulatingSupply: supply,
+        totalBurned: '0',
+totalTax: '0',
     };
   }
 
@@ -306,6 +317,8 @@ export class TombFinance {
       priceInDollars: priceOfSharesInDollars,
       totalSupply: getDisplayBalance(supply, this.TSHARE.decimal, 0),
       circulatingSupply: getDisplayBalance(tShareCirculatingSupply, this.TSHARE.decimal, 0),
+        totalBurned: '0',
+totalTax: '0',
     };
   }
 
@@ -322,6 +335,8 @@ export class TombFinance {
       priceInDollars: getDisplayBalance(expectedPrice),
       totalSupply: getDisplayBalance(supply, this.TOMB.decimal, 0),
       circulatingSupply: getDisplayBalance(tombCirculatingSupply, this.TOMB.decimal, 0),
+        totalBurned: '0',
+totalTax: '0',
     };
   }
 
@@ -616,6 +631,8 @@ export class TombFinance {
       priceInDollars: data[0].current_price,
       totalSupply: '0',
       circulatingSupply: '0',
+        totalBurned: '0',
+totalTax: '0',
     };
   }
 
@@ -626,6 +643,8 @@ export class TombFinance {
       priceInDollars: data[0].current_price,
       totalSupply: '0',
       circulatingSupply: '0',
+        totalBurned: '0',
+totalTax: '0',
     };
   }
 
@@ -642,6 +661,8 @@ export class TombFinance {
       priceInDollars,
       totalSupply: '0',
       circulatingSupply: '0',
+        totalBurned: '0',
+totalTax: '0',
     };
   }
 
@@ -669,6 +690,8 @@ export class TombFinance {
       priceInDollars: data[0].current_price,
       totalSupply: '0',
       circulatingSupply: '0',
+        totalBurned: '0',
+totalTax: '0',
     };
   }
 
@@ -679,6 +702,8 @@ export class TombFinance {
       priceInDollars: data[0].current_price,
       totalSupply: '0',
       circulatingSupply: '0',
+        totalBurned: '0',
+totalTax: '0',
     };
   }
  
@@ -689,6 +714,8 @@ export class TombFinance {
       priceInDollars: data[0].current_price,
       totalSupply: '0',
       circulatingSupply: '0',
+        totalBurned: '0',
+totalTax: '0',
     };
   }
   // async getFoxStat(): Promise<TokenStat> {
@@ -730,6 +757,8 @@ export class TombFinance {
       priceInDollars,
       totalSupply: '0',
       circulatingSupply: '0',
+        totalBurned: '0',
+totalTax: '0',
     };
   }
 

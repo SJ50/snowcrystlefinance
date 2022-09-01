@@ -33,6 +33,8 @@ export type TokenStat = {
   priceInDollars: string;
   totalSupply: string;
   circulatingSupply: string;
+  totalBurned: string;
+  totalTax: string;
 };
 
 export type LPStat = {
