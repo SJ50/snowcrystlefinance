@@ -198,17 +198,25 @@ const Home = () => {
               </Box>
 
               <Ols>
-                <Lis>$SNOW is pegged to $USDC with BURN and BONUS REWARD mechanisam.</Lis>
-                <Lis>Ownership of $SNOW and $SBOND renounced, only Treasury can mint $SNOW and $SBOND</Lis>
-                <Lis>48 hr Genesis Pool starts on 19th Sep 2022 12 AM UTC.</Lis>
-                <Lis>BoardRoom will open on 20th Sep 2022 6 PM UTC.</Lis>
-                <Lis>First 28 EPOCH are bootstrap with the expansion rate of 4%.</Lis>
-                <Lis>$SNOW BURN and BONUS REWARD starts before the end of 1st Epoch.</Lis>
                 <Lis>
-                  based on $SNOW TWAP price, BONUS REWARD will destribute to SNOW-USDC Node and SBOND Farm Pool (will be
-                  added later).
+                  $SNOW is pegged to $USDC with <b>BURN and BONUS REWARD</b> mechanisam.
                 </Lis>
-                <Lis>Buy 10% discounted GLCR from Rebates using USDC or SNOW-USDC LP.</Lis>
+                <Lis>Ownership of $SNOW and $SBOND renounced, only Treasury can mint $SNOW and $SBOND</Lis>
+                <Lis>
+                  48 hr Genesis Pool starts on <b>19th Sep 2022 12 AM UTC.</b>
+                </Lis>
+                <Lis>
+                  BoardRoom will open on <b>20th Sep 2022 6 PM UTC.</b>
+                </Lis>
+                <Lis>First 28 EPOCH are bootstrap with the expansion rate of 4%.</Lis>
+                <Lis>
+                  $SNOW BURN and BONUS REWARD starts <b>21th Sep 2022 12 AM UTC.</b>
+                </Lis>
+                <Lis>
+                  Based on $SNOW TWAP price, BONUS REWARD will destribute to SNOW-USDC Node and SBOND Farm Pool (will be
+                  added in future).
+                </Lis>
+                <Lis>Buy 10% discounted $GLCR using Rebates with $USDC or SNOW-USDC LP.</Lis>
               </Ols>
 
               {/* <Balances>
