@@ -201,7 +201,9 @@ const Home = () => {
                 <Lis>
                   $SNOW is pegged to $USDC with <b>BURN and BONUS REWARD</b> mechanisam.
                 </Lis>
-                <Lis>Ownership of $SNOW and $SBOND renounced, only Treasury can mint $SNOW and $SBOND</Lis>
+                <Lis>
+                  <b>Ownership of $SNOW and $SBOND renounced</b>, only Treasury can mint $SNOW and $SBOND
+                </Lis>
                 <Lis>
                   48 hr Genesis Pool starts on <b>19th Sep 2022 12 AM UTC.</b>
                 </Lis>
@@ -213,10 +215,12 @@ const Home = () => {
                   $SNOW BURN and BONUS REWARD starts <b>21th Sep 2022 12 AM UTC.</b>
                 </Lis>
                 <Lis>
-                  Based on $SNOW TWAP price, BONUS REWARD will destribute to SNOW-USDC Node and SBOND Farm Pool (will be
-                  added in future).
+                  Based on $SNOW TWAP price, BONUS REWARD will destribute to SNOW-USDC Node and $GLCR Farm Pool using
+                  $SBOND (will be added in future).
                 </Lis>
-                <Lis>Buy 10% discounted $GLCR using Rebates with $USDC or SNOW-USDC LP.</Lis>
+                <Lis>
+                  Buy <b>10% discounted</b> $GLCR using Rebates with $USDC or SNOW-USDC LP.
+                </Lis>
               </Ols>
 
               {/* <Balances>
