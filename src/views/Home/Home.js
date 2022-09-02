@@ -203,7 +203,7 @@ const Home = () => {
                 <Lis>48 hr Genesis Pool starts on 19th Sep 2022 12 AM UTC.</Lis>
                 <Lis>BoardRoom will open on 20th Sep 2022 6 PM UTC.</Lis>
                 <Lis>First 28 EPOCH are bootstrap with the expansion rate of 4%.</Lis>
-                <Lis>BURN and BONUS REWARD starts before the end of 1st Epoch.</Lis>
+                <Lis>$SNOW BURN and BONUS REWARD starts before the end of 1st Epoch.</Lis>
                 <Lis>
                   based on $SNOW TWAP price, BONUS REWARD will destribute to SNOW-USDC Node and SBOND Farm Pool (will be
                   added later).
