@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexWrap: 'wrap',
   },
+
   '@media only screen and (max-width: 850px)': {
     tokenButton: {
       width: '40% !important',
@@ -91,6 +92,13 @@ const Home = () => {
     'https://mm.finance/swap?inputCurrency=0x39D8fa99c9964D456b9fbD5e059e63442F314121&outputCurrency=0x72a5Cdd48908AE4E3cb07AC379aB238004251dCa#/';
   const buyTShareAddress =
     'https://mm.finance/swap?inputCurrency=0x39D8fa99c9964D456b9fbD5e059e63442F314121&outputCurrency=0x2cC136019AF0c7e855459B3929D17707820a410B#/';
+
+  const tombChart = 'https://dexscreener.com/avalanche/0xE2A1207be9E08E212d0EFe0Fc628A4367361A065';
+  const tshareChart = 'https://dexscreener.com/avalanche/0x549fa6e6c0F23D42B34403E586c614c52360b4A9';
+
+  const tombContract = 'https://testnet.cronoscan.com/address/0x72a5Cdd48908AE4E3cb07AC379aB238004251dCa#code';
+  const tshareContract = 'https://testnet.cronoscan.com/address/0x2cC136019AF0c7e855459B3929D17707820a410B#code';
+  const tbondContract = 'https://testnet.cronoscan.com/address/0x37cd1678C86A190BF4e41a4005Cf0662E6AAA688#code';
 
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
   const tshareLPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);
@@ -160,6 +168,24 @@ const Home = () => {
     margin-bottom: 8px;
   `;
 
+  const Ols = styled.ol`
+    counter-reset: item;
+    list-style-type: none;
+    *list-style-type: decimal;
+    margin-left: -40px;
+    margin-top: -10px;
+  `;
+
+  const Lis = styled.li`
+    & {
+      font-size: 16px;
+    }
+    &:before {
+      content: '#' counter(item, decimal) '.  ';
+      counter-increment: item;
+    }
+  `;
+
   return (
     <Page>
       <BackgroundImage />
@@ -168,9 +194,24 @@ const Home = () => {
           <Card>
             <CardContent style={{ position: 'relative' }}>
               <Box p={4}>
-                <h1 style={{ textAlign: 'center' }}>My balance</h1>
+                <h1 style={{ textAlign: 'center' }}>SNOWCRYSTALS NEWS</h1>
               </Box>
-              <Balances>
+
+              <Ols>
+                <Lis>$SNOW is pegged to $USDC with BURN and BONUS REWARD mechanisam.</Lis>
+                <Lis>Ownership of $SNOW and $SBOND renounced, only Treasury can mint $SNOW and $SBOND</Lis>
+                <Lis>48 hr Genesis Pool starts on 19th Sep 2022 12 AM UTC.</Lis>
+                <Lis>BoardRoom will open on 20th Sep 2022 6 PM UTC.</Lis>
+                <Lis>First 28 EPOCH are bootstrap with the expansion rate of 4%.</Lis>
+                <Lis>BURN and BONUS REWARD starts before the end of 1st Epoch.</Lis>
+                <Lis>
+                  based on $SNOW TWAP price, BONUS REWARD will destribute to SNOW-USDC Node and SBOND Farm Pool (will be
+                  added later).
+                </Lis>
+                <Lis>Buy 10% discounted GLCR from Rebates using USDC or SNOW-USDC LP.</Lis>
+              </Ols>
+
+              {/* <Balances>
                 <StyledBalanceWrapper>
                   <TokenSymbol symbol="TOMB" />
                   <StyledBalance>
@@ -193,7 +234,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://dexscreener.com/avalanche/0xE2A1207be9E08E212d0EFe0Fc628A4367361A065"
+                        href={tombChart}
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -203,7 +244,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://testnet.cronoscan.com/address/0x72a5Cdd48908AE4E3cb07AC379aB238004251dCa#code"
+                        href={tombContract}
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -235,7 +276,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://dexscreener.com/avalanche/0x549fa6e6c0F23D42B34403E586c614c52360b4A9"
+                        href={tshareChart}
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -245,7 +286,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://testnet.cronoscan.com/address/0x2cC136019AF0c7e855459B3929D17707820a410B#code"
+                        href={tshareContract}
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -276,7 +317,7 @@ const Home = () => {
                       <Button
                         color="primary"
                         target="_blank"
-                        href="https://testnet.cronoscan.com/address/0x37cd1678C86A190BF4e41a4005Cf0662E6AAA688#code"
+                        href={tbondContract}
                         variant="contained"
                         style={{ marginTop: '10px', borderRadius: '10px', width: '27%', marginRight: '5%' }}
                         className={classes.tokenButton}
@@ -286,7 +327,7 @@ const Home = () => {
                     </div>
                   </StyledBalance>
                 </StyledBalanceWrapper>
-              </Balances>
+              </Balances> */}
             </CardContent>
           </Card>
         </Grid>
@@ -302,7 +343,7 @@ const Home = () => {
             }}
             gutterBottom
           >
-            Welcome to SnowCrystals
+            WELCOME TO SNOWCRYSTALS
           </Typography>
           <Card>
             <CardContent
@@ -310,67 +351,13 @@ const Home = () => {
             >
               <div>
                 <h1>Total Value Locked</h1>
-                <CountUp style={{ fontSize: '40px' }} end={TVL} separator="," prefix="$" />
+                <CountUp style={{ fontSize: '50px' }} end={TVL} separator="," prefix="$" />
               </div>
               {/* <img
                 src={`${tvl}`}
                 alt="tvl"
                 style={!matches ? { width: 80, height: 80 } : { width: 128, height: 128 }}
               /> */}
-            </CardContent>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12} sm={6}>
-          <Card>
-            <CardContent align="center">
-              <h2>SNOW-USDC LP</h2>
-              <div style={{ position: 'absolute', right: 5, top: 5 }}>
-                <TokenSymbol size={50} symbol="SNOW-USDC-LP" />
-              </div>
-              <Box mt={2}>
-                <span style={{ fontSize: '26px' }}>
-                  {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} SNOW /{' '}
-                  {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} USDC
-                </span>
-              </Box>
-              <Box>${tombLPStats?.priceOfOne ? tombLPStats.priceOfOne : '-.--'}</Box>
-              <span style={{ fontSize: '12px' }}>
-                Liquidity: ${tombLPStats?.totalLiquidity ? tombLPStats.totalLiquidity : '-.--'} <br />
-                Total supply:{' '}
-                {tombLPStats?.totalSupply
-                  ? Number(tombLPStats.totalSupply) < 1 / 10 ** 4
-                    ? (Number(tombLPStats.totalSupply) * 10 ** 6).toFixed(4) + 'µ'
-                    : tombLPStats.totalSupply
-                  : '-.--'}
-              </span>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Card>
-            <CardContent align="center">
-              <h2>GLCR-USDC LP</h2>
-              <div style={{ position: 'absolute', right: 5, top: 5 }}>
-                <TokenSymbol size={50} symbol="GLCR-USDC-LP" />
-              </div>
-              <Box mt={2}>
-                <span style={{ fontSize: '26px' }}>
-                  {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} GLCR /{' '}
-                  {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} USDC
-                </span>
-              </Box>
-              <Box>${tshareLPStats?.priceOfOne ? tshareLPStats.priceOfOne : '-.--'}</Box>
-              <span style={{ fontSize: '12px' }}>
-                Liquidity: ${tshareLPStats?.totalLiquidity ? tshareLPStats.totalLiquidity : '-.--'}
-                <br />
-                Total supply:{' '}
-                {tshareLPStats?.totalSupply
-                  ? Number(tshareLPStats.totalSupply) < 1 / 10 ** 4
-                    ? (Number(tshareLPStats.totalSupply) * 10 ** 6).toFixed(4) + 'µ'
-                    : tshareLPStats.totalSupply
-                  : '-.--'}
-              </span>
             </CardContent>
           </Card>
         </Grid>
@@ -456,16 +443,40 @@ const Home = () => {
                 </span>
               </Row>
               <Box>
-                <Button
-                  color="primary"
-                  target="_blank"
-                  href={buyTombAddress}
-                  variant="contained"
-                  style={{ marginTop: '10px', borderRadius: '10px', width: '100%' }}
-                  className={classes.button}
-                >
-                  Purchase
-                </Button>
+                <Row>
+                  <Button
+                    color="primary"
+                    target="_blank"
+                    href={buyTombAddress}
+                    variant="contained"
+                    style={{
+                      marginTop: '10px',
+                      marginRight: '10px',
+                      marginLeft: '10px',
+                      borderRadius: '10px',
+                      width: '100%',
+                    }}
+                    className={classes.button}
+                  >
+                    Purchase
+                  </Button>
+                  <Button
+                    color="primary"
+                    target="_blank"
+                    href={tombChart}
+                    variant="contained"
+                    style={{
+                      marginTop: '10px',
+                      marginRight: '10px',
+                      marginLeft: '10px',
+                      borderRadius: '10px',
+                      width: '100%',
+                    }}
+                    className={classes.button}
+                  >
+                    Chart
+                  </Button>
+                </Row>
               </Box>
             </CardContent>
           </Card>
@@ -504,16 +515,40 @@ const Home = () => {
                 </span>
               </Row>
               <Box>
-                <Button
-                  color="primary"
-                  target="_blank"
-                  href={buyTShareAddress}
-                  variant="contained"
-                  style={{ marginTop: '10px', borderRadius: '10px', width: '100%' }}
-                  className={classes.button}
-                >
-                  Purchase
-                </Button>
+                <Row>
+                  <Button
+                    color="primary"
+                    target="_blank"
+                    href={buyTShareAddress}
+                    variant="contained"
+                    style={{
+                      marginTop: '10px',
+                      marginRight: '10px',
+                      marginLeft: '10px',
+                      borderRadius: '10px',
+                      width: '100%',
+                    }}
+                    className={classes.button}
+                  >
+                    Purchase
+                  </Button>
+                  <Button
+                    color="primary"
+                    target="_blank"
+                    href={tshareChart}
+                    variant="contained"
+                    style={{
+                      marginTop: '10px',
+                      marginRight: '10px',
+                      marginLeft: '10px',
+                      borderRadius: '10px',
+                      width: '100%',
+                    }}
+                    className={classes.button}
+                  >
+                    Chart
+                  </Button>
+                </Row>
               </Box>
             </CardContent>
           </Card>
@@ -552,17 +587,78 @@ const Home = () => {
                 </span>
               </Row>
               <Box>
-                <Button
-                  color="primary"
-                  target="_blank"
-                  href="/bonds"
-                  variant="contained"
-                  style={{ marginTop: '10px', borderRadius: '10px', width: '100%' }}
-                  className={classes.button}
-                >
-                  Bond
-                </Button>
+                <Row>
+                  <Button
+                    color="primary"
+                    target="_blank"
+                    href="/bonds"
+                    variant="contained"
+                    style={{
+                      marginTop: '10px',
+                      marginRight: '10px',
+                      marginLeft: '10px',
+                      borderRadius: '10px',
+                      width: '100%',
+                    }}
+                    className={classes.button}
+                  >
+                    Bond
+                  </Button>
+                </Row>
               </Box>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Card>
+            <CardContent align="center">
+              <h2>SNOW-USDC LP</h2>
+              <div style={{ position: 'absolute', right: 5, top: 5 }}>
+                <TokenSymbol size={50} symbol="SNOW-USDC-LP" />
+              </div>
+              <Box mt={2}>
+                <span style={{ fontSize: '26px' }}>
+                  {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} SNOW /{' '}
+                  {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} USDC
+                </span>
+              </Box>
+              <Box>${tombLPStats?.priceOfOne ? tombLPStats.priceOfOne : '-.--'}</Box>
+              <span style={{ fontSize: '12px' }}>
+                Liquidity: ${tombLPStats?.totalLiquidity ? tombLPStats.totalLiquidity : '-.--'} <br />
+                Total supply:{' '}
+                {tombLPStats?.totalSupply
+                  ? Number(tombLPStats.totalSupply) < 1 / 10 ** 4
+                    ? (Number(tombLPStats.totalSupply) * 10 ** 6).toFixed(4) + 'µ'
+                    : tombLPStats.totalSupply
+                  : '-.--'}
+              </span>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Card>
+            <CardContent align="center">
+              <h2>GLCR-USDC LP</h2>
+              <div style={{ position: 'absolute', right: 5, top: 5 }}>
+                <TokenSymbol size={50} symbol="GLCR-USDC-LP" />
+              </div>
+              <Box mt={2}>
+                <span style={{ fontSize: '26px' }}>
+                  {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} GLCR /{' '}
+                  {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} USDC
+                </span>
+              </Box>
+              <Box>${tshareLPStats?.priceOfOne ? tshareLPStats.priceOfOne : '-.--'}</Box>
+              <span style={{ fontSize: '12px' }}>
+                Liquidity: ${tshareLPStats?.totalLiquidity ? tshareLPStats.totalLiquidity : '-.--'}
+                <br />
+                Total supply:{' '}
+                {tshareLPStats?.totalSupply
+                  ? Number(tshareLPStats.totalSupply) < 1 / 10 ** 4
+                    ? (Number(tshareLPStats.totalSupply) * 10 ** 6).toFixed(4) + 'µ'
+                    : tshareLPStats.totalSupply
+                  : '-.--'}
+              </span>
             </CardContent>
           </Card>
         </Grid>
