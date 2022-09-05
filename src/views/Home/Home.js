@@ -169,20 +169,33 @@ const Home = () => {
   `;
 
   const Ols = styled.ol`
-    counter-reset: item;
-    list-style-type: none;
-    *list-style-type: decimal;
-    margin-left: -40px;
-    margin-top: -10px;
+    list-style: none;
+    margin: -30px 0 0 0;
   `;
 
   const Lis = styled.li`
     & {
       font-size: 16px;
+      counter-increment: step-counter;
+      position: relative;
+      margin: 10px 0 0 0;
     }
     &:before {
-      content: '#' counter(item, decimal) '.  ';
-      counter-increment: item;
+      content: counter(step-counter);
+      display: inline-block;
+      position: absolute;
+      top: -1px;
+      /* Adjust < -number | number+ > */
+      left: -32px;
+      width: 1.25rem;
+      height: 1.25rem;
+      line-height: 1.25rem;
+      background-color: rgb(0, 200, 200);
+      color: white;
+      font-weight: bold;
+      font-size: 0.8rem;
+      text-align: center;
+      border-radius: 15px;
     }
   `;
 
@@ -195,7 +208,6 @@ const Home = () => {
             <CardContent style={{ position: 'relative' }}>
               <Box p={4}>
                 <h1 style={{ textAlign: 'center' }}>SNOWCRYSTALS NEWS</h1>
-                <div>Next evolution of </div>
               </Box>
 
               <Ols>
