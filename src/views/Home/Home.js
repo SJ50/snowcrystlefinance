@@ -195,6 +195,7 @@ const Home = () => {
             <CardContent style={{ position: 'relative' }}>
               <Box p={4}>
                 <h1 style={{ textAlign: 'center' }}>SNOWCRYSTALS NEWS</h1>
+                <div>Next evolution of </div>
               </Box>
 
               <Ols>
@@ -211,9 +212,7 @@ const Home = () => {
                   BoardRoom will open on <b>20th Sep 2022 6 PM UTC.</b>
                 </Lis>
                 <Lis>First 28 EPOCH are bootstrap with the expansion rate of 4%.</Lis>
-                <Lis>
-                  $SNOW BURN and BONUS REWARD starts <b>21th Sep 2022 12 AM UTC.</b>
-                </Lis>
+
                 <Lis>
                   Based on $SNOW TWAP price, BONUS REWARD will destribute to SNOW-USDC Node and $GLCR Farm Pool using
                   $SBOND (will be added in future).
