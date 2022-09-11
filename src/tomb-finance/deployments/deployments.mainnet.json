@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "snow": {
+=======
+  "tomb": {
+>>>>>>> 35377a6cdd224ed599011e1bcd551f9985df41c1
     "address": "0x4eeA14405B658EaDBD981f2540691F1b9F86aB48",
     "abi": [
       {
@@ -785,7 +789,11 @@
       }
     ]
   },
+<<<<<<< HEAD
   "sBond": {
+=======
+  "tBond": {
+>>>>>>> 35377a6cdd224ed599011e1bcd551f9985df41c1
     "address": "0xb23d88891C8d977Ee717cEeb21F41A2Aa1c7Fea1",
     "abi": [
       {
@@ -1277,7 +1285,11 @@
       }
     ]
   },
+<<<<<<< HEAD
   "glcr": {
+=======
+  "tShare": {
+>>>>>>> 35377a6cdd224ed599011e1bcd551f9985df41c1
     "address": "0x3522270A766657096ba25B7e3251b57aEB1d4dB1",
     "abi": [
       {
@@ -7687,7 +7699,7 @@
     ]
   },
   "TaxOffice": {
-    "address": "0xC65B7291f08F65EDF7bd53DEF361f918396187CB",
+    "address": "0x6152dE41256974D5bFfBD39145CF8e7053D60Af9",
     "abi": [
       {
         "anonymous": false,
@@ -9866,7 +9878,11 @@
       }
     ]
   },
+<<<<<<< HEAD
   "SnowUsdcLPGlcrRewardPool": {
+=======
+  "GlcrRewardPool": {
+>>>>>>> 35377a6cdd224ed599011e1bcd551f9985df41c1
     "address": "0x0a626C54FC2F0593f90207b43856104e5A2B79CD",
     "abi": [
       {
@@ -10483,7 +10499,11 @@
       }
     ]
   },
+<<<<<<< HEAD
   "GlcrUsdcLPGlcrRewardPool": {
+=======
+  "SnowUsdcLPGlcrRewardPool": {
+>>>>>>> 35377a6cdd224ed599011e1bcd551f9985df41c1
     "address": "0x0a626C54FC2F0593f90207b43856104e5A2B79CD",
     "abi": [
       {
@@ -11100,8 +11120,13 @@
       }
     ]
   },
+<<<<<<< HEAD
   "GenesisRewardPool": {
     "address": "0x02787201691DE6973D12ce5CdD46Bd305808c6B3",
+=======
+  "GlcrUsdcLPGlcrRewardPool": {
+    "address": "0x0a626C54FC2F0593f90207b43856104e5A2B79CD",
+>>>>>>> 35377a6cdd224ed599011e1bcd551f9985df41c1
     "abi": [
       {
         "inputs": [
