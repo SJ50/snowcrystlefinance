@@ -58,9 +58,9 @@ export class TombFinance {
     for (const [symbol, [address, decimal]] of Object.entries(externalTokens)) {
       this.externalTokens[symbol] = new ERC20(address, provider, symbol, decimal);
     }
-    this.TOMB = new ERC20(deployments.tomb.address, provider, 'SNOW');
-    this.TSHARE = new ERC20(deployments.tShare.address, provider, 'GLCR');
-    this.TBOND = new ERC20(deployments.tBond.address, provider, 'SBOND');
+    this.TOMB = new ERC20(deployments.snow.address, provider, 'SNOW');
+    this.TSHARE = new ERC20(deployments.glcr.address, provider, 'GLCR');
+    this.TBOND = new ERC20(deployments.sBond.address, provider, 'SBOND');
     this.FTM = this.externalTokens['USDC'];
     this.WCRO = this.externalTokens['WCRO'];
     this.WBTC = this.externalTokens['WBTC'];
@@ -112,18 +112,21 @@ export class TombFinance {
 
   async getTombStat(): Promise<TokenStat> {
     // const { TombFtmRewardPool, TombFtmLpTombRewardPool, TombFtmLpTombRewardPoolOld } = this.contracts;
-
-    const [supply, priceInFTM, priceOfOneFTM, burned, taxRate, burnRate] = await Promise.all([
+    const { GenesisRewardPool } = this.contracts;
+    const [supply, priceInFTM, priceOfOneFTM, burned, taxRate, genesisPoolTOMBBalance] = await Promise.all([
       this.TOMB.totalSupply(),
       this.getTokenPriceFromPancakeswap(this.TOMB),
       this.getWFTMPriceFromPancakeswap(),
       this.TOMB.totalBurned(),
       this.TOMB.taxRate(),
-        this.TOMB.burnRate(),
+      this.TOMB.balanceOf(GenesisRewardPool.address)   
     ]);
-    console.log("debug " + await Promise.all([this.TOMB.burnRate()]));
+    
+    // console.log("debug " + await Promise.all([this.TOMB.totalSupply()]));
+    
+    // console.log("debug " + Number(await Promise.all([this.TOMB.balanceOf(GenesisRewardPool.address)])).toFixed(18));
     // console.log("debug "+ JSON.stringify(this.TOMB.totalSupply(), null,4));
-    const tombCirculatingSupply = supply.sub(25000);
+    const tombCirculatingSupply = supply.sub(genesisPoolTOMBBalance);
     const priceOfTombInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(18);
     
     return {
@@ -132,8 +135,7 @@ export class TombFinance {
       totalSupply: getDisplayBalance(supply, this.TOMB.decimal, 0),
       circulatingSupply: getDisplayBalance(tombCirculatingSupply, this.TOMB.decimal, 0),
       totalBurned: getDisplayBalance(burned, this.TOMB.decimal, 0),
-      // totalBurned: '0',
-      totalTax: getDisplayBalance(taxRate.add(burnRate), 2, 0), 
+      totalTax: getDisplayBalance(taxRate, 2, 0), 
     };
   }
 
