@@ -107,17 +107,12 @@ const Home = () => {
     [tombStats],
   );
   const tombPriceInFTM = useMemo(() => (tombStats ? Number(tombStats.tokenInFtm).toFixed(4) : null), [tombStats]);
-  const tombCirculatingSupply = useMemo(() => (tombStats ? String(tombStats.circulatingSupply) : null), [tombStats]);
-  const tombTotalSupply = useMemo(() => (tombStats ? String(tombStats.totalSupply) : null), [tombStats]);
-  const tombTotalBurned = useMemo(() => (tombStats ? String(tombStats.totalBurned) : null), [tombStats]);
+  const tombCirculatingSupply = useMemo(() => (tombStats ? Number(tombStats.circulatingSupply) : null), [tombStats]);
+  const tombTotalSupply = useMemo(() => (tombStats ? Number(tombStats.totalSupply) : null), [tombStats]);
+  const tombTotalBurned = useMemo(() => (tombStats ? Number(tombStats.totalBurned) : null), [tombStats]);
   const tombTax = useMemo(() => (tombStats ? Number(tombStats.totalTax).toFixed(2) : null), [tombStats]);
-  // const tombBurnedPercentage = tombTotalBurned.div(tombCirculatingSupply.add(tombTotalBurned));
-  // const calculateTombBurnedPercentage = (tombTotalBurned / (tombCirculatingSupply + tombTotalBurned)).toFixed(2);
   const tombBurnedPercentage = useMemo(
-    () =>
-      tombTotalBurned / (tombCirculatingSupply + tombTotalBurned)
-        ? (tombTotalBurned / (tombCirculatingSupply + tombTotalBurned)).toFixed(2)
-        : null,
+    () => (tombStats ? Number((tombTotalBurned * 100) / (tombCirculatingSupply + tombTotalBurned)).toFixed(2) : null),
     [tombStats],
   );
 
@@ -130,11 +125,11 @@ const Home = () => {
     [tShareStats],
   );
   const tShareCirculatingSupply = useMemo(
-    () => (tShareStats ? String(tShareStats.circulatingSupply) : null),
+    () => (tShareStats ? Number(tShareStats.circulatingSupply) : null),
     [tShareStats],
   );
-  const tShareTotalSupply = useMemo(() => (tShareStats ? String(tShareStats.totalSupply) : null), [tShareStats]);
-  const tShareTax = useMemo(() => (tShareStats ? String(tShareStats.totalTax) : null), [tShareStats]);
+  const tShareTotalSupply = useMemo(() => (tShareStats ? Number(tShareStats.totalSupply) : null), [tShareStats]);
+  const tShareTax = useMemo(() => (tShareStats ? Number(tShareStats.totalTax) : null), [tShareStats]);
 
   const tBondPriceInDollars = useMemo(
     () => (tBondStats ? Number(tBondStats.priceInDollars).toFixed(2) : null),
@@ -142,10 +137,10 @@ const Home = () => {
   );
   const tBondPriceInFTM = useMemo(() => (tBondStats ? Number(tBondStats.tokenInFtm).toFixed(4) : null), [tBondStats]);
   const tBondCirculatingSupply = useMemo(
-    () => (tBondStats ? String(tBondStats.circulatingSupply) : null),
+    () => (tBondStats ? Number(tBondStats.circulatingSupply) : null),
     [tBondStats],
   );
-  const tBondTotalSupply = useMemo(() => (tBondStats ? String(tBondStats.totalSupply) : null), [tBondStats]);
+  const tBondTotalSupply = useMemo(() => (tBondStats ? Number(tBondStats.totalSupply) : null), [tBondStats]);
 
   const tombBalance = useTokenBalance(tombFinance.TOMB);
   const displayTombBalance = useMemo(() => getDisplayBalance(tombBalance), [tombBalance]);
@@ -469,7 +464,7 @@ const Home = () => {
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
                   ${(tombCirculatingSupply * tombPriceInDollars).toFixed(2)} <br />
                   {tombCirculatingSupply} <br />
-                  {tombTotalBurned} {tombBurnedPercentage ? '(' + tombBurnedPercentage + '%)' : ''}
+                  {tombTotalBurned ? tombTotalBurned + ' (' + tombBurnedPercentage + '%)' : ''}
                   <br />
                   {tombTax ? tombTax + '%' : ''} <br />
                   &nbsp;
