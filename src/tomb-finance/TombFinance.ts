@@ -113,6 +113,8 @@ export class TombFinance {
   async getTombStat(): Promise<TokenStat> {
     // const { TombFtmRewardPool, TombFtmLpTombRewardPool, TombFtmLpTombRewardPoolOld } = this.contracts;
     const { GenesisRewardPool } = this.contracts;
+
+    // console.log("debug " + Number(this.TOMB.balanceOf(GenesisRewardPool.address) ));
     const [supply, priceInFTM, priceOfOneFTM, burned, taxRate, genesisPoolTOMBBalance] = await Promise.all([
       this.TOMB.totalSupply(),
       this.getTokenPriceFromPancakeswap(this.TOMB),
@@ -122,7 +124,7 @@ export class TombFinance {
       this.TOMB.balanceOf(GenesisRewardPool.address)   
     ]);
     
-    // console.log("debug " + await Promise.all([this.TOMB.totalSupply()]));
+    // console.log("debug " + genesisPoolTOMBBalance );
     
     // console.log("debug " + Number(await Promise.all([this.TOMB.balanceOf(GenesisRewardPool.address)])).toFixed(18));
     // console.log("debug "+ JSON.stringify(this.TOMB.totalSupply(), null,4));
@@ -219,8 +221,8 @@ export class TombFinance {
       priceInDollars: total.toString(),
       totalSupply: getDisplayBalance(balOfRaffle, 18, 0),
       circulatingSupply: raffleAddress.toString(),
-       totalBurned: '0',
-totalTax: '0',
+      totalBurned: '0',
+      totalTax: '0',
     };
   }
 
@@ -291,8 +293,8 @@ totalTax: '0',
       priceInDollars: priceOfTBondInDollars,
       totalSupply: supply,
       circulatingSupply: supply,
-        totalBurned: '0',
-totalTax: '0',
+      totalBurned: '0',
+      totalTax: '0',
     };
   }
 
@@ -313,14 +315,15 @@ totalTax: '0',
     const tShareCirculatingSupply = supply.sub(tombRewardPoolSupply);
     const priceOfOneFTM = await this.getWFTMPriceFromPancakeswap();
     const priceOfSharesInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(2);
+    const taxRate = await this.TSHARE.taxRate();
 
     return {
       tokenInFtm: priceInFTM,
       priceInDollars: priceOfSharesInDollars,
       totalSupply: getDisplayBalance(supply, this.TSHARE.decimal, 0),
       circulatingSupply: getDisplayBalance(tShareCirculatingSupply, this.TSHARE.decimal, 0),
-        totalBurned: '0',
-totalTax: '0',
+      totalBurned: '0',
+      totalTax: getDisplayBalance(taxRate, 2, 0), 
     };
   }
 

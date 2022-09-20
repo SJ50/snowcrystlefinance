@@ -112,7 +112,14 @@ const Home = () => {
   const tombTotalBurned = useMemo(() => (tombStats ? String(tombStats.totalBurned) : null), [tombStats]);
   const tombTax = useMemo(() => (tombStats ? Number(tombStats.totalTax).toFixed(2) : null), [tombStats]);
   // const tombBurnedPercentage = tombTotalBurned.div(tombCirculatingSupply.add(tombTotalBurned));
-  const tombBurnedPercentage = (tombTotalBurned / (tombCirculatingSupply + tombTotalBurned)).toFixed(2);
+  // const calculateTombBurnedPercentage = (tombTotalBurned / (tombCirculatingSupply + tombTotalBurned)).toFixed(2);
+  const tombBurnedPercentage = useMemo(
+    () =>
+      tombTotalBurned / (tombCirculatingSupply + tombTotalBurned)
+        ? (tombTotalBurned / (tombCirculatingSupply + tombTotalBurned)).toFixed(2)
+        : null,
+    [tombStats],
+  );
 
   const tSharePriceInDollars = useMemo(
     () => (tShareStats ? Number(tShareStats.priceInDollars).toFixed(2) : null),
@@ -127,6 +134,7 @@ const Home = () => {
     [tShareStats],
   );
   const tShareTotalSupply = useMemo(() => (tShareStats ? String(tShareStats.totalSupply) : null), [tShareStats]);
+  const tShareTax = useMemo(() => (tShareStats ? String(tShareStats.totalTax) : null), [tShareStats]);
 
   const tBondPriceInDollars = useMemo(
     () => (tBondStats ? Number(tBondStats.priceInDollars).toFixed(2) : null),
@@ -460,9 +468,9 @@ const Home = () => {
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
                   ${(tombCirculatingSupply * tombPriceInDollars).toFixed(2)} <br />
                   {tombCirculatingSupply} <br />
-                  {tombTotalBurned} ({tombBurnedPercentage}%)
+                  {tombTotalBurned} {tombBurnedPercentage ? '(' + tombBurnedPercentage + '%)' : ''}
                   <br />
-                  {tombTax}%
+                  {tombTax ? tombTax + '%' : ''}
                 </span>
               </Row>
               <Box>
@@ -527,14 +535,14 @@ const Home = () => {
                   Circulating Supply: <br />
                   Total Supply:
                   <br />
-                  &nbsp;
+                  Tax: &nbsp;
                 </span>
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
                   ${(tShareCirculatingSupply * tSharePriceInDollars).toFixed(2)} <br />
                   {tShareCirculatingSupply} <br />
                   {tShareTotalSupply}
                   <br />
-                  &nbsp;
+                  {tShareTax ? tShareTax + '%' : ''} &nbsp;
                 </span>
               </Row>
               <Box>
