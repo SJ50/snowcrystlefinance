@@ -442,13 +442,21 @@ const Home = () => {
               <h2 align="center">SNOW</h2>
               <p align="center">Current Price</p>
               <Box align="center">
-                <span style={{ fontSize: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span
+                  style={{
+                    fontSize: '30px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontWeight: 'bold',
+                  }}
+                >
                   {tombPriceInFTM ? tombPriceInFTM : '-.----'}{' '}
                   <img alt="logo" style={{ width: '30px', marginLeft: '6px' }} src={AvaxLogo} />
                 </span>
               </Box>
               <Box align="center" marginBottom={3}>
-                <span style={{ fontSize: '16px', alignContent: 'flex-start' }}>
+                <span style={{ fontSize: '16px', alignContent: 'flex-start', fontWeight: 'bold' }}>
                   ${tombPriceInDollars ? tombPriceInDollars : '-.--'}
                 </span>
               </Box>
@@ -461,7 +469,7 @@ const Home = () => {
                   Sell Tax: <br />
                   &nbsp;
                 </span>
-                <span style={{ fontSize: '14px', textAlign: 'right' }}>
+                <span style={{ fontSize: '14px', textAlign: 'right', fontWeight: 'bold' }}>
                   ${(tombCirculatingSupply * tombPriceInDollars).toFixed(2)} <br />
                   {tombCirculatingSupply} <br />
                   {tombTotalBurned ? tombTotalBurned + ' (' + tombBurnedPercentage + '%)' : ''}
@@ -518,13 +526,23 @@ const Home = () => {
               <h2 align="center">GLCR</h2>
               <p align="center">Current Price</p>
               <Box align="center">
-                <span style={{ fontSize: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span
+                  style={{
+                    fontSize: '30px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontWeight: 'bold',
+                  }}
+                >
                   {tSharePriceInFTM ? tSharePriceInFTM : '-.----'}{' '}
                   <img alt="logo" style={{ width: '30px', marginLeft: '6px' }} src={AvaxLogo} />
                 </span>
               </Box>
               <Box align="center" marginBottom={3}>
-                <span style={{ fontSize: '16px' }}>${tSharePriceInDollars ? tSharePriceInDollars : '-.--'}</span>
+                <span style={{ fontSize: '16px', fontWeight: 'bold' }}>
+                  ${tSharePriceInDollars ? tSharePriceInDollars : '-.--'}
+                </span>
               </Box>
               <Row>
                 <span style={{ fontSize: '14px' }}>
@@ -535,7 +553,7 @@ const Home = () => {
                   Sell Tax: <br />
                   &nbsp;
                 </span>
-                <span style={{ fontSize: '14px', textAlign: 'right' }}>
+                <span style={{ fontSize: '14px', textAlign: 'right', fontWeight: 'bold' }}>
                   ${(tShareCirculatingSupply * tSharePriceInDollars).toFixed(2)} <br />
                   {tShareCirculatingSupply} <br />
                   {tShareTotalSupply}
@@ -592,13 +610,23 @@ const Home = () => {
               <h2 align="center">SBOND</h2>
               <p align="center">Current Price</p>
               <Box align="center">
-                <span style={{ fontSize: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span
+                  style={{
+                    fontSize: '30px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontWeight: 'bold',
+                  }}
+                >
                   {tBondPriceInFTM ? tBondPriceInFTM : '-.----'}{' '}
                   <img alt="logo" style={{ width: '30px', marginLeft: '6px' }} src={AvaxLogo} />
                 </span>
               </Box>
               <Box align="center" marginBottom={3}>
-                <span style={{ fontSize: '16px' }}>${tBondPriceInDollars ? tBondPriceInDollars : '-.--'}</span>
+                <span style={{ fontSize: '16px', fontWeight: 'bold' }}>
+                  ${tBondPriceInDollars ? tBondPriceInDollars : '-.--'}
+                </span>
               </Box>
               <Row>
                 <span style={{ fontSize: '14px' }}>
@@ -609,7 +637,7 @@ const Home = () => {
                   <br />
                   &nbsp;
                 </span>
-                <span style={{ fontSize: '14px', textAlign: 'right' }}>
+                <span style={{ fontSize: '14px', textAlign: 'right', fontWeight: 'bold' }}>
                   ${(tBondCirculatingSupply * tBondPriceInDollars).toFixed(2)} <br />
                   {tBondCirculatingSupply} <br />
                   {tBondTotalSupply}
