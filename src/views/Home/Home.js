@@ -458,7 +458,7 @@ const Home = () => {
                   <br />
                   Circulating Supply: <br />
                   Total Burned: <br />
-                  Tax: <br />
+                  Sell Tax: <br />
                   &nbsp;
                 </span>
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
@@ -532,7 +532,7 @@ const Home = () => {
                   Circulating Supply: <br />
                   Total Supply:
                   <br />
-                  Tax: <br />
+                  Sell Tax: <br />
                   &nbsp;
                 </span>
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
