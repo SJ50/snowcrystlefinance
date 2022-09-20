@@ -463,14 +463,16 @@ const Home = () => {
                   <br />
                   Circulating Supply: <br />
                   Total Burned: <br />
-                  Tax:
+                  Tax: <br />
+                  &nbsp;
                 </span>
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
                   ${(tombCirculatingSupply * tombPriceInDollars).toFixed(2)} <br />
                   {tombCirculatingSupply} <br />
                   {tombTotalBurned} {tombBurnedPercentage ? '(' + tombBurnedPercentage + '%)' : ''}
                   <br />
-                  {tombTax ? tombTax + '%' : ''}
+                  {tombTax ? tombTax + '%' : ''} <br />
+                  &nbsp;
                 </span>
               </Row>
               <Box>
@@ -535,14 +537,16 @@ const Home = () => {
                   Circulating Supply: <br />
                   Total Supply:
                   <br />
-                  Tax: &nbsp;
+                  Tax: <br />
+                  &nbsp;
                 </span>
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
                   ${(tShareCirculatingSupply * tSharePriceInDollars).toFixed(2)} <br />
                   {tShareCirculatingSupply} <br />
                   {tShareTotalSupply}
                   <br />
-                  {tShareTax ? tShareTax + '%' : ''} &nbsp;
+                  {tShareTax ? tShareTax + '%' : ''} <br />
+                  &nbsp;
                 </span>
               </Row>
               <Box>
@@ -607,12 +611,14 @@ const Home = () => {
                   Circulating Supply: <br />
                   Total Supply:
                   <br />
+                  <br />
                   &nbsp;
                 </span>
                 <span style={{ fontSize: '14px', textAlign: 'right' }}>
                   ${(tBondCirculatingSupply * tBondPriceInDollars).toFixed(2)} <br />
                   {tBondCirculatingSupply} <br />
                   {tBondTotalSupply}
+                  <br />
                   <br />
                   &nbsp;
                 </span>
