@@ -743,34 +743,34 @@ const Home = () => {
   );
 };
 
-const StyledValue = styled.div`
-  //color: ${(props) => props.theme.color.grey[300]};
-  font-size: 30px;
-  font-weight: 700;
-`;
+// const StyledValue = styled.div`
+//   //color: ${(props) => props.theme.color.grey[300]};
+//   font-size: 30px;
+//   font-weight: 700;
+// `;
 
-const StyledBalance = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-`;
+// const StyledBalance = styled.div`
+//   align-items: center;
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   margin-left: 2.5%;
+//   margin-right: 2.5%;
+// `;
 
-const Balances = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-`;
+// const Balances = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   margin-left: 2.5%;
+//   margin-right: 2.5%;
+// `;
 
-const StyledBalanceWrapper = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  margin: 1%;
-`;
+// const StyledBalanceWrapper = styled.div`
+//   align-items: center;
+//   display: flex;
+//   flex-direction: row;
+//   margin: 1%;
+// `;
 
 export default Home;
