@@ -66,6 +66,45 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const Row = styled.div`
+  align-items: center;
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  margin-bottom: 8px;
+`;
+
+const Ols = styled.ol`
+  list-style: none;
+  margin: -30px 0 0 0;
+`;
+
+const Lis = styled.li`
+  & {
+    font-size: 16px;
+    counter-increment: step-counter;
+    position: relative;
+    margin: 10px 0 0 0;
+  }
+  &:before {
+    content: counter(step-counter);
+    display: inline-block;
+    position: absolute;
+    top: -1px;
+    /* Adjust < -number | number+ > */
+    left: -32px;
+    width: 1.25rem;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    background-color: rgb(0, 200, 200);
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-align: center;
+    border-radius: 15px;
+  }
+`;
+
 const Home = () => {
   const matches = useMediaQuery('(min-width:600px)');
   const classes = useStyles();
@@ -162,45 +201,6 @@ const Home = () => {
     tBondPriceInDollars && displayTBondBalance
       ? (Number(tBondPriceInDollars) * tBondBalance.div('1000000000000000000').toNumber()).toFixed(2)
       : null;
-
-  const Row = styled.div`
-    align-items: center;
-    display: flex;
-    font-size: 16px;
-    justify-content: space-between;
-    margin-bottom: 8px;
-  `;
-
-  const Ols = styled.ol`
-    list-style: none;
-    margin: -30px 0 0 0;
-  `;
-
-  const Lis = styled.li`
-    & {
-      font-size: 16px;
-      counter-increment: step-counter;
-      position: relative;
-      margin: 10px 0 0 0;
-    }
-    &:before {
-      content: counter(step-counter);
-      display: inline-block;
-      position: absolute;
-      top: -1px;
-      /* Adjust < -number | number+ > */
-      left: -32px;
-      width: 1.25rem;
-      height: 1.25rem;
-      line-height: 1.25rem;
-      background-color: rgb(0, 200, 200);
-      color: white;
-      font-weight: bold;
-      font-size: 0.8rem;
-      text-align: center;
-      border-radius: 15px;
-    }
-  `;
 
   return (
     <Page>
