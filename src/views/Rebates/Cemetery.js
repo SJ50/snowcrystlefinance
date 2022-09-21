@@ -120,7 +120,7 @@ const Cemetery = () => {
               </Grid>
               <Grid item>
                 <Alert variant="filled" severity="info" icon={false} style={{ textAlign: 'center' }}>
-                  SNOW rewards from bonds are vested for 7 days linearly.
+                  SNOW rewards from bonds are vested for 24 hour linearly.
                 </Alert>
               </Grid>
               <Grid item container md={10} spacing={5} style={{ justifyContent: 'center' }}>
