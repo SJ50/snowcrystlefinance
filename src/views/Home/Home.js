@@ -205,8 +205,8 @@ const Home = () => {
   return (
     <Page>
       <BackgroundImage />
-      <Grid container spacing={3}>
-        <Grid item sm={12} md={6}>
+      <Grid container spacing={6} justify="center">
+        <Grid item xs={12} sm={6}>
           <Card>
             <CardContent style={{ position: 'relative' }}>
               <Box p={4}>
@@ -358,7 +358,7 @@ const Home = () => {
           </Card>
         </Grid>
 
-        <Grid item sm={12} md={6} container direction="column" style={{ justifyContent: 'space-between' }}>
+        <Grid item xs={12} sm={6} container direction="column" style={{ justifyContent: 'space-between' }}>
           <Typography
             variant="h1"
             style={{
