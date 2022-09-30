@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import Web3 from 'web3';
 // import { Fetcher, Route, Token } from '@uniswap/sdk';
 // import { Fetcher as FetcherSpirit, Token as TokenSpirit } from '@traderjoe-xyz/sdk';
 // import { Fetcher, Route, Token } from '@traderjoe-xyz/sdk';
@@ -7,7 +9,7 @@ import { Fetcher, Route, Token } from '@madmeerkat/sdk';
 // import { Fetcher as FetcherSpirit, Token as TokenSpirit } from 'quickswap-sdk';
 // import { Fetcher, Route, Token } from 'quickswap-sdk';
 import { Configuration } from './config';
-import { ContractName, TokenStat, AllocationTime, LPStat, Bank, PoolStats, TShareSwapperStat } from './types';
+import { ContractName, TokenStat, AllocationTime, LPStat, Bank, PoolStats, TShareSwapperStat, RebateSnowStat, RebateGlcrStat, RebateSnowAccountStat,RebateGlcrAccountStat } from './types';
 import { BigNumber, Contract, ethers, EventFilter } from 'ethers';
 import { decimalToBalance } from './ether-utils';
 import { TransactionResponse } from '@ethersproject/providers';
@@ -35,6 +37,7 @@ export class TombFinance {
   masonryVersionOfUser?: string;
 
   TOMBWFTM_LP: Contract;
+  TSHAREWFTM_LP: Contract;
   TOMB: ERC20;
   TSHARE: ERC20;
   TBOND: ERC20;
@@ -70,7 +73,7 @@ export class TombFinance {
 
     // Uniswap V2 Pair
     this.TOMBWFTM_LP = new Contract(externalTokens['SNOW-USDC-LP'][0], IUniswapV2PairABI, provider);
-
+    this.TSHAREWFTM_LP = new Contract(externalTokens['GLCR-USDC-LP'][0], IUniswapV2PairABI, provider);
     this.config = cfg;
     this.provider = provider;
   }
@@ -1348,4 +1351,272 @@ totalTax: '0',
     const { RebateTreasury } = this.contracts;
     return await RebateTreasury.claimRewards();
   }
+
+  // * DAO SNOW rebate * //
+  
+  async rebatesDaoSnowBond(token: string, amount: string): Promise<TransactionResponse> {
+    const {DaoSnowRebateTreasury} = this.contracts; 
+    return await DaoSnowRebateTreasury.bond(token,amount);
+  }
+
+  async rebatesDaoSnowClaim(): Promise<TransactionResponse> {
+    const { DaoSnowRebateTreasury } = this.contracts;
+    return await DaoSnowRebateTreasury.claimRewards();
+  }
+
+  async rebatesDaoSnowRebateStat(): Promise<RebateSnowStat> {
+    const { DaoSnowRebateTreasury } = this.contracts;
+    const assetList = [
+      // this.TOMBWFTM_LP.address, // SNOW-USDC-LP
+      // this.TSHAREWFTM_LP.address, // GLCR-USDC-LP
+      this.FTM.address, // USDC
+      // this.WCRO.address, // CRO
+    ];
+    const [bondVesting, bondPremium, totalSnowAvailable, totalVested, treasuryTombPrice, assetParams, assetPrices] = await Promise.all([
+      DaoSnowRebateTreasury.bondVesting(),
+      DaoSnowRebateTreasury.getBondPremium(DaoSnowRebateTreasury.USDC()),
+      this.TOMB.balanceOf(DaoSnowRebateTreasury.address),
+      DaoSnowRebateTreasury.totalVested(),
+      DaoSnowRebateTreasury.getSnowPrice(),
+      Promise.all(assetList.map((asset) => DaoSnowRebateTreasury.assets(asset))),
+      Promise.all(assetList.map((asset) => DaoSnowRebateTreasury.getTokenPrice(asset)))  
+    ]);
+    const snowAvailable = totalSnowAvailable.sub(totalVested);
+    const premium = bondPremium.sub(1e12)
+    const assets=[];
+    
+    for (let a = 0; a < assetList.length; a++) {
+      assets.push({
+        token: assetList[a],
+        params: {
+          multiplier: assetParams[a].multiplier,
+          isLP: assetParams[a].isLP,
+        },
+        price: getDisplayBalance(assetPrices[a], this.TOMB.decimal, 0)
+      });
+    }
+    
+    return {
+      treasuryAddress: DaoSnowRebateTreasury.address,
+      snowPrice: treasuryTombPrice,
+      bondVesting: getDisplayBalance(bondVesting, 0,0),
+      bondPremium: getDisplayBalance(premium, 12,2),
+      snowAvailable: String(snowAvailable),
+      assets: assets,
+    };
+  }
+
+  async rebatesDaoSnowRebateAccountStat( account = this.myAccount): Promise<RebateSnowAccountStat> {
+    const { DaoSnowRebateTreasury } = this.contracts;
+    const [claimbleSnow, vesting] = await Promise.all([
+      DaoSnowRebateTreasury.claimableSnow(account),
+      DaoSnowRebateTreasury.vesting(account)
+    ]);
+    const vested = (vesting.amount).sub(vesting.claimed)
+    return {
+      claimableSnow: claimbleSnow,
+      vested: String(vested)
+    };
+  }
+
+  // * DAO GLCR rebate * //
+
+  async rebatesDaoGlcrBond(token: string, amount: string): Promise<TransactionResponse> {
+    const {DaoGlcrRebateTreasury} = this.contracts; 
+    return await DaoGlcrRebateTreasury.bond(token,amount);
+  }
+
+  async rebatesDaoGlcrClaim(): Promise<TransactionResponse> {
+    const { DaoGlcrRebateTreasury } = this.contracts;
+    return await DaoGlcrRebateTreasury.claimRewards();
+  }
+
+  async rebatesDaoGlcrRebateStat(): Promise<RebateGlcrStat> {
+    const { DaoGlcrRebateTreasury } = this.contracts;
+    const assetList = [
+      // this.TOMBWFTM_LP.address, // SNOW-USDC-LP
+      // this.TSHAREWFTM_LP.address, // GLCR-USDC-LP
+      this.FTM.address, // USDC
+      // this.WCRO.address, // CRO
+    ];
+    const [bondVesting, bondPremium, totalGlcrAvailable, totalVested, treasuryTombPrice, assetParams, assetPrices] = await Promise.all([
+      DaoGlcrRebateTreasury.bondVesting(),
+      DaoGlcrRebateTreasury.getBondPremium(DaoGlcrRebateTreasury.USDC()),
+      this.TSHARE.balanceOf(DaoGlcrRebateTreasury.address),
+      DaoGlcrRebateTreasury.totalVested(),
+      DaoGlcrRebateTreasury.getGlcrPrice(),
+      Promise.all(assetList.map((asset) => DaoGlcrRebateTreasury.assets(asset))),
+      Promise.all(assetList.map((asset) => DaoGlcrRebateTreasury.getTokenPrice(asset)))  
+    ]);
+    const glcrAvailable = totalGlcrAvailable.sub(totalVested);
+    const premium = bondPremium.sub(1e12)
+    const assets=[];
+    
+    for (let a = 0; a < assetList.length; a++) {
+      assets.push({
+        token: assetList[a],
+        params: {
+          multiplier: assetParams[a].multiplier,
+          isLP: assetParams[a].isLP,
+        },
+        price: getDisplayBalance(assetPrices[a], this.TSHARE.decimal, 0)
+      });
+    }
+    return {
+      treasuryAddress: DaoGlcrRebateTreasury.address,
+      glcrPrice: treasuryTombPrice,
+      bondVesting: getDisplayBalance(bondVesting, 0,0),
+      bondPremium: getDisplayBalance(premium, 12,2),
+      glcrAvailable: String(glcrAvailable),
+      assets: assets,
+    };
+  }
+
+  async rebatesDaoGlcrRebateAccountStat( account = this.myAccount): Promise<RebateGlcrAccountStat> {
+    const { DaoGlcrRebateTreasury } = this.contracts;
+    const [claimbleGlcr, vesting] = await Promise.all([
+      DaoGlcrRebateTreasury.claimableGlcr(account),
+      DaoGlcrRebateTreasury.vesting(account)
+    ]);
+    const vested = (vesting.amount).sub(vesting.claimed)
+    return {
+      claimableGlcr: claimbleGlcr,
+      vested: String(vested)
+    };
+  }
+
+  // * DEV SNOW rebate * //
+  
+  async rebatesDevSnowBond(token: string, amount: string): Promise<TransactionResponse> {
+    const {DevSnowRebateTreasury} = this.contracts; 
+    return await DevSnowRebateTreasury.bond(token,amount);
+  }
+
+  async rebatesDevSnowClaim(): Promise<TransactionResponse> {
+    const { DevSnowRebateTreasury } = this.contracts;
+    return await DevSnowRebateTreasury.claimRewards();
+  }
+
+  async rebatesDevSnowRebateStat(): Promise<RebateSnowStat> {
+    const { DevSnowRebateTreasury } = this.contracts;
+    const assetList = [
+      // this.TOMBWFTM_LP.address, // SNOW-USDC-LP
+      // this.TSHAREWFTM_LP.address, // GLCR-USDC-LP
+      this.FTM.address, // USDC
+      // this.WCRO.address, // CRO
+    ];
+    const [bondVesting, bondPremium, totalSnowAvailable, totalVested, treasuryTombPrice, assetParams, assetPrices] = await Promise.all([
+      DevSnowRebateTreasury.bondVesting(),
+      DevSnowRebateTreasury.getBondPremium(DevSnowRebateTreasury.USDC()),
+      this.TOMB.balanceOf(DevSnowRebateTreasury.address),
+      DevSnowRebateTreasury.totalVested(),
+      DevSnowRebateTreasury.getSnowPrice(),
+      Promise.all(assetList.map((asset) => DevSnowRebateTreasury.assets(asset))),
+      Promise.all(assetList.map((asset) => DevSnowRebateTreasury.getTokenPrice(asset)))  
+    ]);
+    const snowAvailable = totalSnowAvailable.sub(totalVested);
+    const premium = bondPremium.sub(1e12)
+    const assets=[];
+    
+    for (let a = 0; a < assetList.length; a++) {
+      assets.push({
+        token: assetList[a],
+        params: {
+          multiplier: assetParams[a].multiplier,
+          isLP: assetParams[a].isLP,
+        },
+        price: getDisplayBalance(assetPrices[a], this.TOMB.decimal, 0)
+      });
+    }
+    
+    return {
+      treasuryAddress: DevSnowRebateTreasury.address,
+      snowPrice: treasuryTombPrice,
+      bondVesting: getDisplayBalance(bondVesting, 0,0),
+      bondPremium: getDisplayBalance(premium, 12,2),
+      snowAvailable: String(snowAvailable),
+      assets: assets,
+    };
+  }
+
+  async rebatesDevSnowRebateAccountStat( account = this.myAccount): Promise<RebateSnowAccountStat> {
+    const { DevSnowRebateTreasury } = this.contracts;
+    const [claimbleSnow, vesting] = await Promise.all([
+      DevSnowRebateTreasury.claimableSnow(account),
+      DevSnowRebateTreasury.vesting(account)
+    ]);
+    const vested = (vesting.amount).sub(vesting.claimed)
+    return {
+      claimableSnow: claimbleSnow,
+      vested: String(vested)
+    };
+  }
+
+  // * DEV GLCR rebate * //
+
+  async rebatesDevGlcrBond(token: string, amount: string): Promise<TransactionResponse> {
+    const {DevGlcrRebateTreasury} = this.contracts; 
+    return await DevGlcrRebateTreasury.bond(token,amount);
+  }
+
+  async rebatesDevGlcrClaim(): Promise<TransactionResponse> {
+    const { DevGlcrRebateTreasury } = this.contracts;
+    return await DevGlcrRebateTreasury.claimRewards();
+  }
+
+  async rebatesDevGlcrRebateStat(): Promise<RebateGlcrStat> {
+    const { DevGlcrRebateTreasury } = this.contracts;
+    const assetList = [
+      // this.TOMBWFTM_LP.address, // SNOW-USDC-LP
+      // this.TSHAREWFTM_LP.address, // GLCR-USDC-LP
+      this.FTM.address, // USDC
+      // this.WCRO.address, // CRO
+    ];
+    const [bondVesting, bondPremium, totalGlcrAvailable, totalVested, treasuryTombPrice, assetParams, assetPrices] = await Promise.all([
+      DevGlcrRebateTreasury.bondVesting(),
+      DevGlcrRebateTreasury.getBondPremium(DevGlcrRebateTreasury.USDC()),
+      this.TSHARE.balanceOf(DevGlcrRebateTreasury.address),
+      DevGlcrRebateTreasury.totalVested(),
+      DevGlcrRebateTreasury.getGlcrPrice(),
+      Promise.all(assetList.map((asset) => DevGlcrRebateTreasury.assets(asset))),
+      Promise.all(assetList.map((asset) => DevGlcrRebateTreasury.getTokenPrice(asset)))  
+    ]);
+    const glcrAvailable = totalGlcrAvailable.sub(totalVested);
+    const premium = bondPremium.sub(1e12)
+    const assets=[];
+    
+    for (let a = 0; a < assetList.length; a++) {
+      assets.push({
+        token: assetList[a],
+        params: {
+          multiplier: assetParams[a].multiplier,
+          isLP: assetParams[a].isLP,
+        },
+        price: getDisplayBalance(assetPrices[a], this.TSHARE.decimal, 0)
+      });
+    }
+    
+    return {
+      treasuryAddress: DevGlcrRebateTreasury.address,
+      glcrPrice: treasuryTombPrice,
+      bondVesting: getDisplayBalance(bondVesting, 0,0),
+      bondPremium: getDisplayBalance(premium, 12,2),
+      glcrAvailable: String(glcrAvailable),
+      assets: assets,
+    };
+  }
+
+  async rebatesDevGlcrRebateAccountStat( account = this.myAccount): Promise<RebateGlcrAccountStat> {
+    const { DevGlcrRebateTreasury } = this.contracts;
+    const [claimbleGlcr, vesting] = await Promise.all([
+      DevGlcrRebateTreasury.claimableGlcr(account),
+      DevGlcrRebateTreasury.vesting(account)
+    ]);
+    const vested = (vesting.amount).sub(vesting.claimed)
+    return {
+      claimableGlcr: claimbleGlcr,
+      vested: String(vested)
+    };
+  }
+
 }

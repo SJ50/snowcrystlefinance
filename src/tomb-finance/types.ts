@@ -57,3 +57,45 @@ export type TShareSwapperStat = {
   // tsharePrice: string;
   rateTSharePerTomb: string;
 };
+
+export type RebateSnowStat = {
+  treasuryAddress: string;
+  snowPrice: string;
+  bondVesting: string;
+  bondPremium: string;
+  snowAvailable: string;
+  assets: {
+    token: string;
+    params: {
+        multiplier: number;
+        isLP: boolean;
+    };
+    price: string;
+  }[];
+};
+
+export type RebateGlcrStat = {
+  treasuryAddress: string;
+  glcrPrice: string;
+  bondVesting: string;
+  bondPremium: string;
+  glcrAvailable: string;
+  assets: {
+    token: string;
+    params: {
+        multiplier: number;
+        isLP: boolean;
+    };
+    price: string;
+  }[];
+};
+
+export type RebateSnowAccountStat = {
+  claimableSnow: string;
+  vested: string;
+}
+
+export type RebateGlcrAccountStat = {
+  claimableGlcr: string;
+  vested: string;
+}

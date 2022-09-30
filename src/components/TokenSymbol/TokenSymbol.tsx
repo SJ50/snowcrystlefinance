@@ -23,6 +23,7 @@ import usdcLogoPNG from '../../assets/img/USDC.png';
 import croLogoPNG from '../../assets/img/cro.png';
 import daiLogoPNG from '../../assets/img/dai.png';
 import grapeSnowLP from '../../assets/img/grape-Snow.png';
+import rightArrow from '../../assets/img/arrow.png';
 
 const logosBySymbol: { [title: string]: string } = {
   //Real tokens
@@ -50,6 +51,7 @@ const logosBySymbol: { [title: string]: string } = {
   'GLCR-USDC-LP': tshareFtmLpLogo,
   'GRAPE-SNOW-LP': grapeSnowLP,
   'SNO-SNOSHARE-LP': tshareFtmLpLogo,
+  RIGHTARROW: rightArrow,
 };
 
 type LogoProps = {
