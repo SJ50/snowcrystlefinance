@@ -95,7 +95,7 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
 
       <StyledActionSpacer />
       <InputLabel style={{ color: 'black', marginBottom: '8px' }} id="label" 
-      // htmlFor='select'
+      htmlFor='select'
       >
         Select asset to zap with
       </InputLabel>
