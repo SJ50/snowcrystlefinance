@@ -101,7 +101,7 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
       </StyledMaxText>
       <ModalActions>
         <Button
-          color={getOutAmount() < devSnowRebateSnowAvailable ? 'secondary' : 'primary'}
+          color={'primary'}
           variant="contained"
           disabled={getOutAmount() >= devSnowRebateSnowAvailable}
           onClick={() => onConfirm(+val)}

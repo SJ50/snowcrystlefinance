@@ -460,6 +460,16 @@ const Home = () => {
                   ${tombPriceInDollars ? tombPriceInDollars : '-.--'}
                 </span>
               </Box>
+              {/* <Button
+                onClick={() => {
+                  gemFinance.watchAssetInMetamask('SNOW');
+                }}
+                style={{ position: 'absolute', top: '10px', right: '10px', border: '1px grey solid' }}
+              >
+                {' '}
+                <b>+</b>&nbsp;&nbsp;
+                <img alt="metamask fox" style={{ width: '20px', filter: 'grayscale(100%)' }} src={MetamaskFox} />
+              </Button> */}
               <Row>
                 <span style={{ fontSize: '14px' }}>
                   Market Cap:
