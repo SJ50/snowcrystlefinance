@@ -91,33 +91,16 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
 
   return (
     <Modal>
-      <ModalTitle text={`Zap in ${tokenName.replace('USDC', 'USDC')}`} />
+      <ModalTitle text={`Add Liquidity`} />
 
       <StyledActionSpacer />
-      <InputLabel style={{ color: 'black', marginBottom: '8px' }} id="label" htmlFor="select">
-        Select asset to zap with
-      </InputLabel>
-      <Select
-        native
-        onChange={handleChangeAsset}
-        style={{ color: 'black', borderBottom: '1px solid rgba(0, 0, 0, 0.15)' }}
-        labelId="label"
-        id="select"
-        value={zappingToken}
-      >
-        {/* <option aria-label="None" value="" /> */}
-        <option value={FTM_TICKER}>{FTM_TICKER} (Tax free)</option>
-        {/* <option value={tokenName.replace('-LP', '')}>
-          {tokenName.replace('-LP', '')} (Tax free)
-        </option> */}
-        <option value={tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}>
-          {tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}
-        </option>
-        {/* <StyledMenuItem value={FTM_TICKER}>{FTM_TICKER}</StyledMenuItem>
-        <StyledMenuItem value={tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}>{tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}</StyledMenuItem> */}
-        {/* Tomb as an input for zapping will be disabled due to issues occuring with the Gatekeeper system */}
-        {/* <StyledMenuItem value={TOMB_TICKER}>TOMB</StyledMenuItem> */}
-      </Select>
+      <TokenInput
+        onSelectMax={handleSelectMax}
+        onChange={handleChange}
+        value={val}
+        max={zappingTokenBalance}
+        symbol={zappingToken}
+      />
       <StyledActionSpacer />
 
       <TokenInput
