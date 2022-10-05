@@ -104,8 +104,8 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
       >
         {/* <option aria-label="None" value="" /> */}
         <option value={FTM_TICKER}>{FTM_TICKER} (Tax free)</option>
-        <option value={30}>
-          {FTM_TICKER}-{tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER} (Tax free)
+        <option value={tokenName.replace('-LP', '')}>
+          {tokenName.replace('-LP', '')} (Tax free)
         </option>
         <option value={tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}>
           {tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}
