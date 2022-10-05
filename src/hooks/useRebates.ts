@@ -8,23 +8,14 @@ const useRebates = () => {
 
   const handleBond = useCallback(
     (token: string, amount: string) => {
-      handleTransactionReceipt(
-        tombFinance.rebatesBond(token, amount),
-        `Bond ${Number(amount) / 10**18}.`,
-      );
+      handleTransactionReceipt(tombFinance.rebatesBond(token, amount), `Bond ${Number(amount) / 10 ** 18}.`);
     },
     [tombFinance, handleTransactionReceipt],
   );
 
-  const handleClaim = useCallback(
-    () => {
-      handleTransactionReceipt(
-        tombFinance.rebatesClaim(),
-        `Claim Reward.`,
-      );
-    },
-    [tombFinance, handleTransactionReceipt],
-  );
+  const handleClaim = useCallback(() => {
+    handleTransactionReceipt(tombFinance.rebatesClaim(), `Claim Reward.`);
+  }, [tombFinance, handleTransactionReceipt]);
 
   return { onBond: handleBond, onClaim: handleClaim };
 };

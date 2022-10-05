@@ -46,8 +46,12 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
     [stakedTokenPriceInDollars],
   );
 
-  const multiplier = bank.depositTokenName.includes('SNOW') || bank.depositTokenName.includes('GLCR') ? 10**6 : 1;
-  const earnedInDollars = (Number(tokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9)) * multiplier).toFixed(2);
+  const multiplier = bank.depositTokenName.includes('SNOW') || bank.depositTokenName.includes('GLCR') ? 10 ** 6 : 1;
+  const earnedInDollars = (
+    Number(tokenPriceInDollars) *
+    Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9)) *
+    multiplier
+  ).toFixed(2);
   const { onStake } = useStake(bank);
   const { onZap } = useZap(bank);
   const { onWithdraw } = useWithdraw(bank);
@@ -90,16 +94,32 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
     />,
   );
 
-  const stakedBalanceNumber = Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9));
+  const stakedBalanceNumber = Number(
+    getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9),
+  );
   return (
     <Card>
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
             <TokenSymbol symbol={bank.depositToken.symbol} size={100} />
-            <Value value={'' + (stakedBalanceNumber < 1/10**4 ? (stakedBalanceNumber * 10**6).toFixed(4) + 'µ' : stakedBalanceNumber)} />
+            <Value
+              value={
+                '' +
+                (stakedBalanceNumber < 1 / 10 ** 4
+                  ? (stakedBalanceNumber * 10 ** 6).toFixed(4) + 'µ'
+                  : stakedBalanceNumber)
+              }
+            />
             <Label color="#777" text={`≈ $${earnedInDollars}`} />
-            <Label color="#777" text={`${bank.depositTokenName === 'USDC' || bank.depositTokenName === 'USDT' ? bank.depositTokenName : bank.depositTokenName.replace('USDC', 'USDC')} Staked`} />
+            <Label
+              color="#777"
+              text={`${
+                bank.depositTokenName === 'USDC' || bank.depositTokenName === 'USDT'
+                  ? bank.depositTokenName
+                  : bank.depositTokenName.replace('USDC', 'USDC')
+              } Staked`}
+            />
           </StyledCardHeader>
           <StyledCardActions>
             {approveStatus !== ApprovalState.APPROVED ? (
@@ -123,16 +143,14 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
                     <RemoveIcon />
                   </IconButton>
                   <StyledActionSpacer />
-                  {
-                    bank.depositTokenName !== 'SNOW-USDC-LP' &&  bank.depositTokenName !== 'GLCR-USDC-LP'
-                      ? null
-                      : <IconButton
-                          disabled={bank.closedForStaking}
-                          onClick={() => (bank.closedForStaking ? null : onPresentZap())}
-                        >
-                          <FlashOnIcon style={{color: '#ccc'}} />
-                        </IconButton>
-                  }
+                  {bank.depositTokenName !== 'SNOW-USDC-LP' && bank.depositTokenName !== 'GLCR-USDC-LP' ? null : (
+                    <IconButton
+                      disabled={bank.closedForStaking}
+                      onClick={() => (bank.closedForStaking ? null : onPresentZap())}
+                    >
+                      <FlashOnIcon style={{ color: '#ccc' }} />
+                    </IconButton>
+                  )}
                   <StyledActionSpacer />
                   <IconButton
                     disabled={bank.closedForStaking}

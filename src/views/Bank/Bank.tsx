@@ -45,7 +45,11 @@ const Bank: React.FC = () => {
     <>
       <PageHeader
         icon="🏦"
-        subtitle={`Deposit ${bank?.depositTokenName === 'USDC' || bank?.depositTokenName === 'USDT' ? bank?.depositTokenName  : bank?.depositTokenName.replace('USDC', 'USDC')} and earn ${bank?.earnTokenName}`}
+        subtitle={`Deposit ${
+          bank?.depositTokenName === 'USDC' || bank?.depositTokenName === 'USDT'
+            ? bank?.depositTokenName
+            : bank?.depositTokenName.replace('USDC', 'USDC')
+        } and earn ${bank?.earnTokenName}`}
         title={bank?.name}
       />
       {bank?.depositTokenName === 'SNOW' && Date.now() < 1646510400000 ? (
@@ -59,7 +63,7 @@ const Bank: React.FC = () => {
       ) : (
         <></>
       )}
-     {/* {
+      {/* {
         bank?.depositTokenName.endsWith('-USDC-LP')
         ? (
             <Alert variant="filled" severity="info" style={{ marginTop: '-25px', marginBottom: '35px' }}>

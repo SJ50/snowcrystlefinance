@@ -28,15 +28,18 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   const tombFinance = useTombFinance();
   const daoSnowRebatesStats = useDaoSnowRebatesStats();
   const daoSnowRebatePriceInUSDC = useMemo(
-    () => (daoSnowRebatesStats ? Number(getFullDisplayBalance(BigNumber.from(daoSnowRebatesStats.snowPrice),18)) : 0),
+    () => (daoSnowRebatesStats ? Number(getFullDisplayBalance(BigNumber.from(daoSnowRebatesStats.snowPrice), 18)) : 0),
     [daoSnowRebatesStats],
   );
   const daoSnowRebateBondPremium = useMemo(
-    () => (daoSnowRebatesStats ? (Number(daoSnowRebatesStats.bondPremium) * 100) : 0),
+    () => (daoSnowRebatesStats ? Number(daoSnowRebatesStats.bondPremium) * 100 : 0),
     [daoSnowRebatesStats],
   );
   const daoSnowRebateSnowAvailable = useMemo(
-    () => (daoSnowRebatesStats ? Number(getDisplayBalance(BigNumber.from(daoSnowRebatesStats.snowAvailable),18)).toFixed(4) : 0),
+    () =>
+      daoSnowRebatesStats
+        ? Number(getDisplayBalance(BigNumber.from(daoSnowRebatesStats.snowAvailable), 18)).toFixed(4)
+        : 0,
     [daoSnowRebatesStats],
   );
   const { price: ftmPrice, marketCap: ftmMarketCap, priceChange: ftmPriceChange } = useFantomPrice();
@@ -60,7 +63,7 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
     () => (daoSnowRebatesStats ? daoSnowRebatesStats.assets : null),
     [daoSnowRebatesStats],
   );
-  
+
   function getAssetPrice(token: String) {
     const address = tombFinance.externalTokens[tokenName].address;
     const assetPrice = daoSnowRebateAsset ? daoSnowRebateAsset.find((a: any) => a.token === address).price : 0;
@@ -68,10 +71,8 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   }
 
   function getOutAmount() {
-    const toBondPrice = Number(getAssetPrice(tokenName)); 
-    const outAmount =
-      (+val * toBondPrice *
-        (1 + daoSnowRebateBondPremium / 100))/daoSnowRebatePriceInUSDC;
+    const toBondPrice = Number(getAssetPrice(tokenName));
+    const outAmount = (+val * toBondPrice * (1 + daoSnowRebateBondPremium / 100)) / daoSnowRebatePriceInUSDC;
     return outAmount;
   }
 
@@ -81,7 +82,11 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   }
 
   function formatInAmount() {
-    return `Input: ${(+val).toFixed(9)} ${tokenName.replace('USDC', 'USDC')} ($${(+val * Number(getAssetPrice(tokenName)) * ftmPrice).toFixed(4)})`;
+    return `Input: ${(+val).toFixed(9)} ${tokenName.replace('USDC', 'USDC')} ($${(
+      +val *
+      Number(getAssetPrice(tokenName)) *
+      ftmPrice
+    ).toFixed(4)})`;
   }
 
   return (

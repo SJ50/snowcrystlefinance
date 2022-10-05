@@ -8,23 +8,14 @@ const useDaoGlcrRebates = () => {
 
   const handleBond = useCallback(
     (token: string, amount: string) => {
-      handleTransactionReceipt(
-        tombFinance.rebatesDaoGlcrBond(token, amount),
-        `Bond ${Number(amount) / 10**18}.`,
-      );
+      handleTransactionReceipt(tombFinance.rebatesDaoGlcrBond(token, amount), `Bond ${Number(amount) / 10 ** 18}.`);
     },
     [tombFinance, handleTransactionReceipt],
   );
 
-  const handleClaim = useCallback(
-    () => {
-      handleTransactionReceipt(
-        tombFinance.rebatesDaoGlcrClaim(),
-        `Claim Reward.`,
-      );
-    },
-    [tombFinance, handleTransactionReceipt],
-  );
+  const handleClaim = useCallback(() => {
+    handleTransactionReceipt(tombFinance.rebatesDaoGlcrClaim(), `Claim Reward.`);
+  }, [tombFinance, handleTransactionReceipt]);
 
   return { onBond: handleBond, onClaim: handleClaim };
 };

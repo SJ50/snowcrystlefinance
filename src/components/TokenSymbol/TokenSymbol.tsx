@@ -62,20 +62,24 @@ type LogoProps = {
 const TokenSymbol: React.FC<LogoProps> = ({ symbol, size = 90 }) => {
   if (!logosBySymbol[symbol]) {
     throw new Error(`Invalid Token Logo symbol: ${symbol}`);
-  }if(symbol === 'GRAPE-SNOW-LP'){
+  }
+  if (symbol === 'GRAPE-SNOW-LP') {
     return <img src={logosBySymbol[symbol]} alt={`${symbol} Logo`} width={95} height={60} />;
-  }else{
+  } else {
     return (
       <img
         src={logosBySymbol[symbol]}
         alt={`${symbol} Logo`}
         width={size}
         height={size}
-        style={{ /*borderRadius: '50%'*/ }}
+        style={
+          {
+            /*borderRadius: '50%'*/
+          }
+        }
       />
     );
   }
-  
 };
 
 export default TokenSymbol;

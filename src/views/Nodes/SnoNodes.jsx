@@ -1,6 +1,6 @@
-import {Grid} from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import React from 'react';
-import {Route, Switch, useRouteMatch} from 'react-router-dom';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import Page from '../../components/Page';
 import SnoNode from '../SnowyNode';
 import SnoCard from './ShareLPCard';
@@ -17,16 +17,16 @@ const BackgroundImage = createGlobalStyle`
 `;
 
 const SnoNodes = () => {
-  const {path} = useRouteMatch();
+  const { path } = useRouteMatch();
   return (
     <Page>
-         <BackgroundImage />
+      <BackgroundImage />
       <Switch>
         <Route exact path={path}>
-          <h2 style={{fontSize: '80px', textAlign: 'center'}}>NODES</h2>
-          <Grid container spacing={3} style={{marginTop: '20px'}} alignItems="center" justify="center">
+          <h2 style={{ fontSize: '80px', textAlign: 'center' }}>NODES</h2>
+          <Grid container spacing={3} style={{ marginTop: '20px' }} alignItems="center" justify="center">
             <FoxCard />
-            <SnoCard />   
+            <SnoCard />
             {/* <GrapeLPCard />      */}
           </Grid>
         </Route>

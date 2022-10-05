@@ -1,1 +1,1 @@
-export {default} from './SnowyNode';
+export { default } from './SnowyNode';

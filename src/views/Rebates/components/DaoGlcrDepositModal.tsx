@@ -28,15 +28,18 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   const tombFinance = useTombFinance();
   const daoGlcrRebatesStats = useDaoGlcrRebatesStats();
   const daoGlcrRebatePriceInUSDC = useMemo(
-    () => (daoGlcrRebatesStats ? Number(getFullDisplayBalance(BigNumber.from(daoGlcrRebatesStats.glcrPrice),18)) : 0),
+    () => (daoGlcrRebatesStats ? Number(getFullDisplayBalance(BigNumber.from(daoGlcrRebatesStats.glcrPrice), 18)) : 0),
     [daoGlcrRebatesStats],
   );
   const daoGlcrRebateBondPremium = useMemo(
-    () => (daoGlcrRebatesStats ? (Number(daoGlcrRebatesStats.bondPremium) * 100) : 0),
+    () => (daoGlcrRebatesStats ? Number(daoGlcrRebatesStats.bondPremium) * 100 : 0),
     [daoGlcrRebatesStats],
   );
   const daoGlcrRebateGlcrAvailable = useMemo(
-    () => (daoGlcrRebatesStats ? Number(getDisplayBalance(BigNumber.from(daoGlcrRebatesStats.glcrAvailable),18)).toFixed(4) : 0),
+    () =>
+      daoGlcrRebatesStats
+        ? Number(getDisplayBalance(BigNumber.from(daoGlcrRebatesStats.glcrAvailable), 18)).toFixed(4)
+        : 0,
     [daoGlcrRebatesStats],
   );
   const { price: ftmPrice, marketCap: ftmMarketCap, priceChange: ftmPriceChange } = useFantomPrice();
@@ -60,7 +63,7 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
     () => (daoGlcrRebatesStats ? daoGlcrRebatesStats.assets : null),
     [daoGlcrRebatesStats],
   );
-  
+
   function getAssetPrice(token: String) {
     const address = tombFinance.externalTokens[tokenName].address;
     const assetPrice = daoGlcrRebateAsset ? daoGlcrRebateAsset.find((a: any) => a.token === address).price : 0;
@@ -68,10 +71,8 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   }
 
   function getOutAmount() {
-    const toBondPrice = Number(getAssetPrice(tokenName)); 
-    const outAmount =
-      (+val * toBondPrice *
-        (1 + daoGlcrRebateBondPremium / 100))/daoGlcrRebatePriceInUSDC;
+    const toBondPrice = Number(getAssetPrice(tokenName));
+    const outAmount = (+val * toBondPrice * (1 + daoGlcrRebateBondPremium / 100)) / daoGlcrRebatePriceInUSDC;
     return outAmount;
   }
 
@@ -81,7 +82,11 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   }
 
   function formatInAmount() {
-    return `Input: ${(+val).toFixed(9)} ${tokenName.replace('USDC', 'USDC')} ($${(+val * Number(getAssetPrice(tokenName)) * ftmPrice).toFixed(4)})`;
+    return `Input: ${(+val).toFixed(9)} ${tokenName.replace('USDC', 'USDC')} ($${(
+      +val *
+      Number(getAssetPrice(tokenName)) *
+      ftmPrice
+    ).toFixed(4)})`;
   }
 
   return (
@@ -101,7 +106,6 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
       </StyledMaxText>
       <ModalActions>
         <Button
-        
           color={'primary'}
           variant="contained"
           disabled={getOutAmount() >= daoGlcrRebateGlcrAvailable}

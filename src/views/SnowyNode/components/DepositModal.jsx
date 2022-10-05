@@ -14,7 +14,7 @@ import { BigNumber as BigNumberJS } from 'bignumber.js';
 import useNodeText from '../../../hooks/useNodeText';
 import useNodePrice from '../../../hooks/useNodePrice';
 import { Bank } from '../../../tomb-finance';
-import {AddIcon, RemoveIcon} from '../../../components/icons';
+import { AddIcon, RemoveIcon } from '../../../components/icons';
 import IconButton from '../../../components/IconButton';
 
 const DepositModal = ({ bank, max, decimals, onConfirm, onDismiss, tokenName = '' }) => {
@@ -31,10 +31,10 @@ const DepositModal = ({ bank, max, decimals, onConfirm, onDismiss, tokenName = '
     window.addEventListener('resize', handleWindowSizeChange);
     return () => {
       window.removeEventListener('resize', handleWindowSizeChange);
-    }
+    };
   }, []);
 
-  const isMobile = width <= 768
+  const isMobile = width <= 768;
   const numNodes = isMobile ? [1, 2, 3] : [1, 2, 3, 4, 5, 6];
 
   const fullBalance = useMemo(() => {
@@ -54,19 +54,18 @@ const DepositModal = ({ bank, max, decimals, onConfirm, onDismiss, tokenName = '
 
   const handleAmountChange = (event) => {
     setAmount(parseInt(event.currentTarget.value));
-  }
+  };
 
   const increaseAmount = () => {
     setAmount(amount + 1);
-  }
+  };
 
   const decreaseAmount = () => {
     setAmount(amount - 1);
-  }
+  };
 
   return (
     <Modal>
-     
       <ModalTitle text={bank.sectionInUI !== 4 ? `Deposit ${tokenName}` : `Purchase ${getNodeText(bank.poolId)}s`} />
       {/* {node && <div style={{ display: 'flex' }}>
         <div style={{ margin: 'auto auto' }}>{' '}</div>
@@ -74,28 +73,34 @@ const DepositModal = ({ bank, max, decimals, onConfirm, onDismiss, tokenName = '
         <div style={{ margin: 'auto auto' }}>{' '}</div>
       </div>
       } */}
-      {bank.sectionInUI !== 4 ? <><TokenInput
-        value={val}
-        onSelectMax={handleSelectMax}
-        onChange={handleChange}
-        max={fullBalance}
-        symbol={tokenName}
-      />
-        <ModalActions>
-          {/* <Button color="secondary" variant="outlined" onClick={onDismiss}>Cancel</Button> */}
-          <Button className="shinyButtonSecondary" onClick={() => onConfirm(val)}>
-            Confirm
-          </Button>
-        </ModalActions></>
-        :
+      {bank.sectionInUI !== 4 ? (
+        <>
+          <TokenInput
+            value={val}
+            onSelectMax={handleSelectMax}
+            onChange={handleChange}
+            max={fullBalance}
+            symbol={tokenName}
+          />
+          <ModalActions>
+            {/* <Button color="secondary" variant="outlined" onClick={onDismiss}>Cancel</Button> */}
+            <Button className="shinyButtonSecondary" onClick={() => onConfirm(val)}>
+              Confirm
+            </Button>
+          </ModalActions>
+        </>
+      ) : (
         <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-      
           <input type="number" value={amount} onChange={handleAmountChange} min="1" max="100" />
-          <Button style={{background: '#5686d6', borderRadius: '15px'}} className="shinyButtonSecondary" onClick={() => onConfirm(amount)}>
+          <Button
+            style={{ background: '#5686d6', borderRadius: '15px' }}
+            className="shinyButtonSecondary"
+            onClick={() => onConfirm(amount)}
+          >
             Confirm
           </Button>
         </div>
-      }
+      )}
     </Modal>
   );
 };

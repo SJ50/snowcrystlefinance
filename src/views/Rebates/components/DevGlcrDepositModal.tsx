@@ -28,15 +28,18 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   const tombFinance = useTombFinance();
   const devGlcrRebatesStats = useDevGlcrRebatesStats();
   const devGlcrRebatePriceInUSDC = useMemo(
-    () => (devGlcrRebatesStats ? Number(getFullDisplayBalance(BigNumber.from(devGlcrRebatesStats.glcrPrice),18)) : 0),
+    () => (devGlcrRebatesStats ? Number(getFullDisplayBalance(BigNumber.from(devGlcrRebatesStats.glcrPrice), 18)) : 0),
     [devGlcrRebatesStats],
   );
   const devGlcrRebateBondPremium = useMemo(
-    () => (devGlcrRebatesStats ? (Number(devGlcrRebatesStats.bondPremium) * 100) : 0),
+    () => (devGlcrRebatesStats ? Number(devGlcrRebatesStats.bondPremium) * 100 : 0),
     [devGlcrRebatesStats],
   );
   const devGlcrRebateGlcrAvailable = useMemo(
-    () => (devGlcrRebatesStats ? Number(getDisplayBalance(BigNumber.from(devGlcrRebatesStats.glcrAvailable),18)).toFixed(4) : 0),
+    () =>
+      devGlcrRebatesStats
+        ? Number(getDisplayBalance(BigNumber.from(devGlcrRebatesStats.glcrAvailable), 18)).toFixed(4)
+        : 0,
     [devGlcrRebatesStats],
   );
   const { price: ftmPrice, marketCap: ftmMarketCap, priceChange: ftmPriceChange } = useFantomPrice();
@@ -60,7 +63,7 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
     () => (devGlcrRebatesStats ? devGlcrRebatesStats.assets : null),
     [devGlcrRebatesStats],
   );
-  
+
   function getAssetPrice(token: String) {
     const address = tombFinance.externalTokens[tokenName].address;
     const assetPrice = devGlcrRebateAsset ? devGlcrRebateAsset.find((a: any) => a.token === address).price : 0;
@@ -68,10 +71,8 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   }
 
   function getOutAmount() {
-    const toBondPrice = Number(getAssetPrice(tokenName)); 
-    const outAmount =
-      (+val * toBondPrice *
-        (1 + devGlcrRebateBondPremium / 100))/devGlcrRebatePriceInUSDC;
+    const toBondPrice = Number(getAssetPrice(tokenName));
+    const outAmount = (+val * toBondPrice * (1 + devGlcrRebateBondPremium / 100)) / devGlcrRebatePriceInUSDC;
     return outAmount;
   }
 
@@ -81,7 +82,11 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   }
 
   function formatInAmount() {
-    return `Input: ${(+val).toFixed(9)} ${tokenName.replace('USDC', 'USDC')} ($${(+val * Number(getAssetPrice(tokenName)) * ftmPrice).toFixed(4)})`;
+    return `Input: ${(+val).toFixed(9)} ${tokenName.replace('USDC', 'USDC')} ($${(
+      +val *
+      Number(getAssetPrice(tokenName)) *
+      ftmPrice
+    ).toFixed(4)})`;
   }
 
   return (

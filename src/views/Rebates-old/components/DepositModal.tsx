@@ -66,7 +66,11 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   }
 
   function formatInAmount() {
-    return `Input: ${(+val).toFixed(9)} ${tokenName.replace('USDC', 'USDC')} ($${(+val * getAssetPrice(tokenName) * ftmPrice).toFixed(4)})`;
+    return `Input: ${(+val).toFixed(9)} ${tokenName.replace('USDC', 'USDC')} ($${(
+      +val *
+      getAssetPrice(tokenName) *
+      ftmPrice
+    ).toFixed(4)})`;
   }
 
   return (

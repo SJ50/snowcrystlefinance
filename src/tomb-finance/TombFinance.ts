@@ -9,7 +9,19 @@ import { Fetcher, Route, Token } from '@madmeerkat/sdk';
 // import { Fetcher as FetcherSpirit, Token as TokenSpirit } from 'quickswap-sdk';
 // import { Fetcher, Route, Token } from 'quickswap-sdk';
 import { Configuration } from './config';
-import { ContractName, TokenStat, AllocationTime, LPStat, Bank, PoolStats, TShareSwapperStat, RebateSnowStat, RebateGlcrStat, RebateSnowAccountStat,RebateGlcrAccountStat } from './types';
+import {
+  ContractName,
+  TokenStat,
+  AllocationTime,
+  LPStat,
+  Bank,
+  PoolStats,
+  TShareSwapperStat,
+  RebateSnowStat,
+  RebateGlcrStat,
+  RebateSnowAccountStat,
+  RebateGlcrAccountStat,
+} from './types';
 import { BigNumber, Contract, ethers, EventFilter } from 'ethers';
 import { decimalToBalance } from './ether-utils';
 import { TransactionResponse } from '@ethersproject/providers';
@@ -124,23 +136,23 @@ export class TombFinance {
       this.getWFTMPriceFromPancakeswap(),
       this.TOMB.totalBurned(),
       this.TOMB.taxRate(),
-      this.TOMB.balanceOf(GenesisRewardPool.address)   
+      this.TOMB.balanceOf(GenesisRewardPool.address),
     ]);
-    
+
     // console.log("debug " + genesisPoolTOMBBalance );
-    
+
     // console.log("debug " + Number(await Promise.all([this.TOMB.balanceOf(GenesisRewardPool.address)])).toFixed(18));
     // console.log("debug "+ JSON.stringify(this.TOMB.totalSupply(), null,4));
     const tombCirculatingSupply = supply.sub(genesisPoolTOMBBalance);
     const priceOfTombInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(18);
-    
+
     return {
       tokenInFtm: priceInFTM,
       priceInDollars: priceOfTombInDollars,
       totalSupply: getDisplayBalance(supply, this.TOMB.decimal, 0),
       circulatingSupply: getDisplayBalance(tombCirculatingSupply, this.TOMB.decimal, 0),
       totalBurned: getDisplayBalance(burned, this.TOMB.decimal, 0),
-      totalTax: getDisplayBalance(taxRate, 2, 0), 
+      totalTax: getDisplayBalance(taxRate, 2, 0),
     };
   }
 
@@ -153,18 +165,18 @@ export class TombFinance {
     let lpToken = this.externalTokens[name];
     let lpTokenSupplyBN = await lpToken.totalSupply();
     let lpTokenSupply = getDisplayBalance(lpTokenSupplyBN, lpToken.decimal, lpToken.decimal / 2);
-    let token0 =  name.startsWith('SNOW') ? this.TOMB : this.TSHARE; // name === 'SNOW-USDC-LP' ? this.TOMB : this.TSHARE;
+    let token0 = name.startsWith('SNOW') ? this.TOMB : this.TSHARE; // name === 'SNOW-USDC-LP' ? this.TOMB : this.TSHARE;
     let isTomb = name.startsWith('SNOW'); // name === 'SNOW-USDC-LP';
     let tokenAmountBN = await token0.balanceOf(lpToken.address);
     let tokenAmount = getDisplayBalance(tokenAmountBN, token0.decimal);
 
     let ftmAmountBN = await this.FTM.balanceOf(lpToken.address);
     let ftmAmount = getDisplayBalance(ftmAmountBN, this.FTM.decimal);
-    let tokenAmountInOneLP = Number(tokenAmount) / Number(lpTokenSupply) / 10**6;
-    let ftmAmountInOneLP = Number(ftmAmount) / Number(lpTokenSupply) / 10**6;
+    let tokenAmountInOneLP = Number(tokenAmount) / Number(lpTokenSupply) / 10 ** 6;
+    let ftmAmountInOneLP = Number(ftmAmount) / Number(lpTokenSupply) / 10 ** 6;
     let lpTokenPrice = await this.getLPTokenPrice(lpToken, token0, isTomb);
     let lpTokenPriceFixed = Number(lpTokenPrice).toFixed(2).toString();
-    let liquidity = (Number(lpTokenSupply) * Number(lpTokenPrice) * 10**6).toFixed(2).toString();
+    let liquidity = (Number(lpTokenSupply) * Number(lpTokenPrice) * 10 ** 6).toFixed(2).toString();
 
     // if (name === 'SNO-SNOSHARE-LP') {
     //   ftmAmountBN = await this.TOMB.balanceOf(lpToken.address);
@@ -249,9 +261,7 @@ export class TombFinance {
   async compound(poolName: ContractName, poolId: Number, sectionInUI: Number): Promise<TransactionResponse> {
     const pool = this.contracts[poolName];
     //By passing 0 as the amount, we are asking the contract to only redeem the reward and not the currently staked token
-    return sectionInUI !== 4
-    ? await pool.withdraw(poolId, 0)
-    : await pool.compound();
+    return sectionInUI !== 4 ? await pool.withdraw(poolId, 0) : await pool.compound();
   }
 
   async claimedBalanceNode(poolName: ContractName, account = this.myAccount): Promise<BigNumber> {
@@ -326,13 +336,16 @@ export class TombFinance {
       totalSupply: getDisplayBalance(supply, this.TSHARE.decimal, 0),
       circulatingSupply: getDisplayBalance(tShareCirculatingSupply, this.TSHARE.decimal, 0),
       totalBurned: '0',
-      totalTax: getDisplayBalance(taxRate, 2, 0), 
+      totalTax: getDisplayBalance(taxRate, 2, 0),
     };
   }
 
   async getTombStatInEstimatedTWAP(): Promise<TokenStat> {
     const { SeigniorageOracle, TombFtmRewardPool } = this.contracts;
-    const expectedPrice = (await SeigniorageOracle.twap(this.TOMB.address, ethers.utils.parseEther('1')))/*.mul(10**12)*/;
+    const expectedPrice = await SeigniorageOracle.twap(
+      this.TOMB.address,
+      ethers.utils.parseEther('1'),
+    ); /*.mul(10**12)*/
 
     const supply = await this.TOMB.totalSupply();
     const tombRewardPoolSupply = await this.TOMB.balanceOf(TombFtmRewardPool.address);
@@ -343,8 +356,8 @@ export class TombFinance {
       priceInDollars: getDisplayBalance(expectedPrice),
       totalSupply: getDisplayBalance(supply, this.TOMB.decimal, 0),
       circulatingSupply: getDisplayBalance(tombCirculatingSupply, this.TOMB.decimal, 0),
-        totalBurned: '0',
-totalTax: '0',
+      totalBurned: '0',
+      totalTax: '0',
     };
   }
 
@@ -369,9 +382,10 @@ totalTax: '0',
     if (this.myAccount === undefined) return;
     const depositToken = bank.depositToken;
     const poolContract = this.contracts[bank.contract];
-    
+
     if (bank.sectionInUI === 4) {
-        const [depositTokenPrice, points, totalPoints, tierAmount, poolBalance, totalBalance, dripRate, dailyUserDrip] = await Promise.all([
+      const [depositTokenPrice, points, totalPoints, tierAmount, poolBalance, totalBalance, dripRate, dailyUserDrip] =
+        await Promise.all([
           this.getDepositTokenPriceInDollars(bank.depositTokenName, depositToken),
           poolContract.tierAllocPoints(bank.poolId),
           poolContract.totalAllocPoints(),
@@ -381,56 +395,60 @@ totalTax: '0',
           poolContract.dripRate(),
           poolContract.getDayDripEstimate(this.myAccount),
         ]);
-        const stakeAmount = Number(tierAmount)/1e18
-        
-        const dailyDrip = totalPoints && +totalPoints > 0 
-          ? (poolBalance.mul(BigNumber.from(86400)).mul(points).div(totalPoints).div(dripRate))/1e18
+      const stakeAmount = Number(tierAmount) / 1e18;
+
+      const dailyDrip =
+        totalPoints && +totalPoints > 0
+          ? poolBalance.mul(BigNumber.from(86400)).mul(points).div(totalPoints).div(dripRate) / 1e18
           : 0;
-        const dailyDripAPR = (Number(dailyDrip) / stakeAmount) * 100;
-        const yearlyDripAPR = (Number(dailyDrip) * 365 / stakeAmount) * 100;
-        const dailyDripUser = Number(getDisplayBalance(dailyUserDrip));
-        const yearlyDripUser = Number(dailyDripUser) * 365;
+      const dailyDripAPR = (Number(dailyDrip) / stakeAmount) * 100;
+      const yearlyDripAPR = ((Number(dailyDrip) * 365) / stakeAmount) * 100;
+      const dailyDripUser = Number(getDisplayBalance(dailyUserDrip));
+      const yearlyDripUser = Number(dailyDripUser) * 365;
 
-        const TVL = Number(depositTokenPrice) * Number(totalBalance)/1e12;
+      const TVL = (Number(depositTokenPrice) * Number(totalBalance)) / 1e12;
 
-        return {
-          userDailyBurst: dailyDripUser.toFixed(2).toString(),
-          userYearlyBurst: yearlyDripUser.toFixed(2).toString(),
-          dailyAPR: dailyDripAPR.toFixed(2).toString(),
-          yearlyAPR: yearlyDripAPR.toFixed(2).toString(),
-          TVL: TVL.toFixed(2).toString(),
-        };
-      
-    }else{
-    const depositTokenPrice = await this.getDepositTokenPriceInDollars(bank.depositTokenName, depositToken);
-    const stakeInPool = (await depositToken.balanceOf(bank.address)).mul(bank.depositTokenName.endsWith('USDC-LP') ? 10**6 : 1);
-    const TVL = Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal, depositToken.decimal === 6 ? 3 : 9)); 
-    const stat = bank.earnTokenName === 'SNOW' ? await this.getTombStat() : await this.getShareStat();
-    const tokenPerSecond = await this.getTokenPerSecond(
-      bank.earnTokenName,
-      bank.contract,
-      poolContract,
-      bank.depositTokenName,
-    );
+      return {
+        userDailyBurst: dailyDripUser.toFixed(2).toString(),
+        userYearlyBurst: yearlyDripUser.toFixed(2).toString(),
+        dailyAPR: dailyDripAPR.toFixed(2).toString(),
+        yearlyAPR: yearlyDripAPR.toFixed(2).toString(),
+        TVL: TVL.toFixed(2).toString(),
+      };
+    } else {
+      const depositTokenPrice = await this.getDepositTokenPriceInDollars(bank.depositTokenName, depositToken);
+      const stakeInPool = (await depositToken.balanceOf(bank.address)).mul(
+        bank.depositTokenName.endsWith('USDC-LP') ? 10 ** 6 : 1,
+      );
+      const TVL =
+        Number(depositTokenPrice) *
+        Number(getDisplayBalance(stakeInPool, depositToken.decimal, depositToken.decimal === 6 ? 3 : 9));
+      const stat = bank.earnTokenName === 'SNOW' ? await this.getTombStat() : await this.getShareStat();
+      const tokenPerSecond = await this.getTokenPerSecond(
+        bank.earnTokenName,
+        bank.contract,
+        poolContract,
+        bank.depositTokenName,
+      );
 
-    let tokenPerHour = tokenPerSecond.mul(60).mul(60).mul(3).div(8);
-    if (bank.sectionInUI === 2 && bank.depositTokenName === 'SNOW') {
-      tokenPerHour = tokenPerHour.mul(3).div(5);
+      let tokenPerHour = tokenPerSecond.mul(60).mul(60).mul(3).div(8);
+      if (bank.sectionInUI === 2 && bank.depositTokenName === 'SNOW') {
+        tokenPerHour = tokenPerHour.mul(3).div(5);
+      }
+      const totalRewardPricePerYear =
+        Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerHour.mul(24).mul(365)));
+      const totalRewardPricePerDay = Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerHour.mul(24)));
+      const totalStakingTokenInPool =
+        Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal));
+      const dailyAPR = (totalRewardPricePerDay / totalStakingTokenInPool) * 100;
+      const yearlyAPR = (totalRewardPricePerYear / totalStakingTokenInPool) * 100;
+      return {
+        dailyAPR: dailyAPR.toFixed(2).toString(),
+        yearlyAPR: yearlyAPR.toFixed(2).toString(),
+        TVL: TVL.toFixed(2).toString(),
+      };
     }
-    const totalRewardPricePerYear =
-      Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerHour.mul(24).mul(365)));
-    const totalRewardPricePerDay = Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerHour.mul(24)));
-    const totalStakingTokenInPool =
-      Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal));
-    const dailyAPR = (totalRewardPricePerDay / totalStakingTokenInPool) * 100;
-    const yearlyAPR = (totalRewardPricePerYear / totalStakingTokenInPool) * 100;
-    return {
-      dailyAPR: dailyAPR.toFixed(2).toString(),
-      yearlyAPR: yearlyAPR.toFixed(2).toString(),
-      TVL: TVL.toFixed(2).toString(),
-    };
   }
-}
 
   /**
    * Method to return the amount of tokens the pool yields per second
@@ -458,7 +476,7 @@ totalTax: '0',
         // } else if (depositTokenName === 'SHIBA') {
         //   return rewardPerSecond.mul(1500).div(11000).div(24);
         // }
-        return rewardPerSecond/*.div(24)*/;
+        return rewardPerSecond /*.div(24)*/;
       }
 
       const poolStartTime = await poolContract.poolStartTime();
@@ -492,7 +510,8 @@ totalTax: '0',
     const priceOfOneFtmInDollars = await this.getWFTMPriceFromPancakeswap();
     if (tokenName === 'SNOW') {
       tokenPrice = (await this.getTombStat()).priceInDollars;
-    } if (tokenName === 'GLCR') {
+    }
+    if (tokenName === 'GLCR') {
       tokenPrice = (await this.getShareStat()).priceInDollars;
     } else if (!tokenName.includes('-LP')) {
       tokenPrice = (await this.getTokenStat(tokenName)).priceInDollars;
@@ -502,7 +521,7 @@ totalTax: '0',
       tokenPrice = await this.getLPTokenPrice(token, this.TSHARE, false);
     } else if (tokenName === 'GRAPE-SNOW-LP') {
       tokenPrice = await this.getLPTokenPrice(token, this.TOMB, true);
-    }else {
+    } else {
       tokenPrice = await this.getTokenPriceFromPancakeswap(token);
       tokenPrice = (Number(tokenPrice) * Number(priceOfOneFtmInDollars)).toString();
     }
@@ -549,7 +568,6 @@ totalTax: '0',
   async getTotalValueLocked(): Promise<Number> {
     let totalValue = 0;
     for (const bankInfo of Object.values(bankDefinitions)) {
-      
       const pool = this.contracts[bankInfo.contract]; // SnowUsdcLPGlcrRewardPool
       const token = this.externalTokens[bankInfo.depositTokenName]; // SNOW-USDC-LP
       // const tokenPrice = await this.getDepositTokenPriceInDollars(bankInfo.depositTokenName, token);
@@ -557,16 +575,16 @@ totalTax: '0',
 
       const [tokenPrice, tokenAmountInPool] = await Promise.all([
         this.getDepositTokenPriceInDollars(bankInfo.depositTokenName, token),
-        token.balanceOf(pool.address)
+        token.balanceOf(pool.address),
       ]);
       // console.log("debug "+ JSON.stringify(bankInfo, null,4));
-      const value = Number(getDisplayBalance(tokenAmountInPool, token.decimal,token.decimal === 6 ? 3 : 9)) * Number(tokenPrice);
+      const value =
+        Number(getDisplayBalance(tokenAmountInPool, token.decimal, token.decimal === 6 ? 3 : 9)) * Number(tokenPrice);
       let poolValue = Number.isNaN(value) ? 0 : value;
       if (bankInfo.depositTokenName.endsWith('-USDC-LP')) {
-        poolValue = poolValue * 10**6;
+        poolValue = poolValue * 10 ** 6;
       }
       totalValue += poolValue;
-
     }
 
     // const TSHAREPrice = (await this.getShareStat()).priceInDollars;
@@ -574,7 +592,7 @@ totalTax: '0',
 
     const [shareStat, masonrytShareBalanceOf] = await Promise.all([
       this.getShareStat(),
-      this.TSHARE.balanceOf(this.currentMasonry().address)
+      this.TSHARE.balanceOf(this.currentMasonry().address),
     ]);
 
     const TSHAREPrice = shareStat.priceInDollars;
@@ -598,15 +616,15 @@ totalTax: '0',
     // const stat = isTomb === true ? await this.getTombStat() : await this.getShareStat();
     const stat = await this.getTokenStat(token.symbol);
     const priceOfToken = stat.priceInDollars;
-    const divider = ['SNOW', 'GLCR', 'USDC', 'USDT'].includes(token.symbol) ? 10**6 : 1;
-    const tokenInLP = Number(tokenSupply) / Number(totalSupply) / divider;  // NOTE: hot fix
+    const divider = ['SNOW', 'GLCR', 'USDC', 'USDT'].includes(token.symbol) ? 10 ** 6 : 1;
+    const tokenInLP = Number(tokenSupply) / Number(totalSupply) / divider; // NOTE: hot fix
     const tokenPrice = (Number(priceOfToken) * tokenInLP * 2) //We multiply by 2 since half the price of the lp token is the price of each piece of the pair. So twice gives the total
       .toString();
     return tokenPrice;
   }
 
   async getTokenStat(tokenName: string): Promise<TokenStat> {
-    switch(tokenName) {
+    switch (tokenName) {
       case 'USDT':
         return this.getUsdtStat();
       case 'USDC':
@@ -633,14 +651,16 @@ totalTax: '0',
   }
 
   async getUsdtStat(): Promise<TokenStat> {
-    const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=tether-avalanche-bridged-usdt-e');
+    const { data } = await axios(
+      'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=tether-avalanche-bridged-usdt-e',
+    );
     return {
       tokenInFtm: data[0].current_price,
       priceInDollars: data[0].current_price,
       totalSupply: '0',
       circulatingSupply: '0',
-        totalBurned: '0',
-totalTax: '0',
+      totalBurned: '0',
+      totalTax: '0',
     };
   }
 
@@ -651,13 +671,13 @@ totalTax: '0',
       priceInDollars: data[0].current_price,
       totalSupply: '0',
       circulatingSupply: '0',
-        totalBurned: '0',
-totalTax: '0',
+      totalBurned: '0',
+      totalTax: '0',
     };
   }
 
   async getDibsStat(): Promise<TokenStat> {
-    const {WCRO} = this.config.externalTokens;
+    const { WCRO } = this.config.externalTokens;
     const [priceInCro, priceOfOneCro] = await Promise.all([
       this.getTokenPriceFromPancakeswap(this.DIBS, new Token(this.config.chainId, WCRO[0], WCRO[1], 'WCRO')),
       this.getCroPriceFromPancakeswap(),
@@ -669,8 +689,8 @@ totalTax: '0',
       priceInDollars,
       totalSupply: '0',
       circulatingSupply: '0',
-        totalBurned: '0',
-totalTax: '0',
+      totalBurned: '0',
+      totalTax: '0',
     };
   }
 
@@ -690,7 +710,6 @@ totalTax: '0',
   //   };
   // }
 
-
   async getBtcStat(): Promise<TokenStat> {
     const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin');
     return {
@@ -698,8 +717,8 @@ totalTax: '0',
       priceInDollars: data[0].current_price,
       totalSupply: '0',
       circulatingSupply: '0',
-        totalBurned: '0',
-totalTax: '0',
+      totalBurned: '0',
+      totalTax: '0',
     };
   }
 
@@ -710,11 +729,11 @@ totalTax: '0',
       priceInDollars: data[0].current_price,
       totalSupply: '0',
       circulatingSupply: '0',
-        totalBurned: '0',
-totalTax: '0',
+      totalBurned: '0',
+      totalTax: '0',
     };
   }
- 
+
   async getDaiStat(): Promise<TokenStat> {
     const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=dai');
     return {
@@ -722,8 +741,8 @@ totalTax: '0',
       priceInDollars: data[0].current_price,
       totalSupply: '0',
       circulatingSupply: '0',
-        totalBurned: '0',
-totalTax: '0',
+      totalBurned: '0',
+      totalTax: '0',
     };
   }
   // async getFoxStat(): Promise<TokenStat> {
@@ -765,15 +784,15 @@ totalTax: '0',
       priceInDollars,
       totalSupply: '0',
       circulatingSupply: '0',
-        totalBurned: '0',
-totalTax: '0',
+      totalBurned: '0',
+      totalTax: '0',
     };
   }
 
   async getCroPriceFromPancakeswap(): Promise<string> {
     const ready = await this.provider.ready;
     if (!ready) return;
-    const {WCRO, USDC} = this.externalTokens;
+    const { WCRO, USDC } = this.externalTokens;
     try {
       const busd_eth_lp_pair = this.externalTokens['USDC-WCRO-LP'];
       let eth_amount_BN = await WCRO.balanceOf(busd_eth_lp_pair.address);
@@ -790,7 +809,7 @@ totalTax: '0',
     const ready = await this.provider.ready;
     if (!ready) return;
     const croPrice = await this.getCroPriceFromPancakeswap();
-    const {MIM, WCRO} = this.externalTokens;
+    const { MIM, WCRO } = this.externalTokens;
     try {
       const busd_eth_lp_pair = this.externalTokens['MIM-WCRO-LP'];
       let eth_amount_BN = await WCRO.balanceOf(busd_eth_lp_pair.address);
@@ -806,7 +825,7 @@ totalTax: '0',
   async getMmfPriceFromPancakeswap(): Promise<string> {
     const ready = await this.provider.ready;
     if (!ready) return;
-    const {MMF, USDC} = this.externalTokens;
+    const { MMF, USDC } = this.externalTokens;
     try {
       const busd_eth_lp_pair = this.externalTokens['USDC-MMF-LP'];
       let eth_amount_BN = await MMF.balanceOf(busd_eth_lp_pair.address);
@@ -865,12 +884,15 @@ totalTax: '0',
    * @param amount Number of tokens with decimals applied. (e.g. 1.45 DAI * 10^18)
    * @returns {string} Transaction hash
    */
-   async stake(poolName: ContractName, poolId: Number, sectionInUI: Number, amount: BigNumber): Promise<TransactionResponse> {
+  async stake(
+    poolName: ContractName,
+    poolId: Number,
+    sectionInUI: Number,
+    amount: BigNumber,
+  ): Promise<TransactionResponse> {
     const pool = this.contracts[poolName];
 
-    return sectionInUI !== 4 
-      ? await pool.deposit(poolId, amount)
-      : await pool.create(poolId, amount);
+    return sectionInUI !== 4 ? await pool.deposit(poolId, amount) : await pool.create(poolId, amount);
   }
 
   /**
@@ -887,12 +909,10 @@ totalTax: '0',
   /**
    * Transfers earned token reward from given pool to my account.
    */
-   async harvest(poolName: ContractName, poolId: Number, sectionInUI: Number): Promise<TransactionResponse> {
+  async harvest(poolName: ContractName, poolId: Number, sectionInUI: Number): Promise<TransactionResponse> {
     const pool = this.contracts[poolName];
     //By passing 0 as the amount, we are asking the contract to only redeem the reward and not the currently staked token
-    return sectionInUI !== 4
-    ? await pool.withdraw(poolId, 0)
-    : await pool.claim();
+    return sectionInUI !== 4 ? await pool.withdraw(poolId, 0) : await pool.claim();
   }
 
   /**
@@ -924,7 +944,6 @@ totalTax: '0',
     if (!ready) return;
     const { chainId } = this.config;
     const { USDC } = this.config.externalTokens;
-
 
     const wftm = baseToken || new Token(chainId, USDC[0], USDC[1]);
     const token = new Token(chainId, tokenContract.address, tokenContract.decimal, tokenContract.symbol);
@@ -985,15 +1004,15 @@ totalTax: '0',
 
   async getMasonryAPR() {
     const Masonry = this.currentMasonry();
- 
+
     const latestSnapshotIndex = await Masonry.latestSnapshotIndex();
     const lastHistory = await Masonry.boardroomHistory(latestSnapshotIndex);
     const lastRewardsReceived = lastHistory[1];
-     
-    const TSHAREPrice = (await this.getShareStat()).priceInDollars; 
+
+    const TSHAREPrice = (await this.getShareStat()).priceInDollars;
     const TOMBPrice = (await this.getTombStat()).priceInDollars;
-    const epochRewardsPerShare = lastRewardsReceived / 1e18; 
-    
+    const epochRewardsPerShare = lastRewardsReceived / 1e18;
+
     //Mgod formula
     const amountOfRewardsPerDay = epochRewardsPerShare * Number(TOMBPrice) * 4;
     const masonrytShareBalanceOf = await this.TSHARE.balanceOf(Masonry.address);
@@ -1275,18 +1294,18 @@ totalTax: '0',
     const lpToken = this.externalTokens[lpName];
     let estimate;
     if (parseFloat(amount) === 0) {
-      return [0,0];
+      return [0, 0];
     }
     /*if (tokenName === FTM_TICKER) {
       estimate = await zapper.estimateZapIn(lpToken.address, SPOOKY_ROUTER_ADDR, parseUnits(amount, 18));
     } else {*/
-      const token = tokenName === TOMB_TICKER ? this.TOMB : tokenName === TSHARE_TICKER ? this.TSHARE : this.FTM;
-      estimate = await zapper.estimateZapInToken(
-        token.address,
-        lpToken.address,
-        SPOOKY_ROUTER_ADDR,
-        parseUnits(amount, 18),
-      );
+    const token = tokenName === TOMB_TICKER ? this.TOMB : tokenName === TSHARE_TICKER ? this.TSHARE : this.FTM;
+    estimate = await zapper.estimateZapInToken(
+      token.address,
+      lpToken.address,
+      SPOOKY_ROUTER_ADDR,
+      parseUnits(amount, 18),
+    );
     /*}*/
     return [estimate[0] / 1e18, estimate[1] / 1e18];
   }
@@ -1299,14 +1318,21 @@ totalTax: '0',
       };
       return await zapper.zapIn(lpToken.address, SPOOKY_ROUTER_ADDR, this.myAccount, overrides);
     } else {*/
-      const token = tokenName === TOMB_TICKER ? this.TOMB : (tokenName === TSHARE_TICKER ? this.TSHARE : tokenName === FTM_TICKER ? this.FTM : null);
-      return await zapper.zapInToken(
-        token.address,
-        parseUnits(amount, token.decimal),
-        lpToken.address,
-        SPOOKY_ROUTER_ADDR,
-        this.myAccount,
-      );
+    const token =
+      tokenName === TOMB_TICKER
+        ? this.TOMB
+        : tokenName === TSHARE_TICKER
+        ? this.TSHARE
+        : tokenName === FTM_TICKER
+        ? this.FTM
+        : null;
+    return await zapper.zapInToken(
+      token.address,
+      parseUnits(amount, token.decimal),
+      lpToken.address,
+      SPOOKY_ROUTER_ADDR,
+      this.myAccount,
+    );
     /*}*/
   }
   async swapTBondToTShare(tbondAmount: BigNumber): Promise<TransactionResponse> {
@@ -1353,10 +1379,10 @@ totalTax: '0',
   }
 
   // * DAO SNOW rebate * //
-  
+
   async rebatesDaoSnowBond(token: string, amount: string): Promise<TransactionResponse> {
-    const {DaoSnowRebateTreasury} = this.contracts; 
-    return await DaoSnowRebateTreasury.bond(token,amount);
+    const { DaoSnowRebateTreasury } = this.contracts;
+    return await DaoSnowRebateTreasury.bond(token, amount);
   }
 
   async rebatesDaoSnowClaim(): Promise<TransactionResponse> {
@@ -1372,19 +1398,20 @@ totalTax: '0',
       this.FTM.address, // USDC
       // this.WCRO.address, // CRO
     ];
-    const [bondVesting, bondPremium, totalSnowAvailable, totalVested, treasuryTombPrice, assetParams, assetPrices] = await Promise.all([
-      DaoSnowRebateTreasury.bondVesting(),
-      DaoSnowRebateTreasury.getBondPremium(DaoSnowRebateTreasury.USDC()),
-      this.TOMB.balanceOf(DaoSnowRebateTreasury.address),
-      DaoSnowRebateTreasury.totalVested(),
-      DaoSnowRebateTreasury.getSnowPrice(),
-      Promise.all(assetList.map((asset) => DaoSnowRebateTreasury.assets(asset))),
-      Promise.all(assetList.map((asset) => DaoSnowRebateTreasury.getTokenPrice(asset)))  
-    ]);
+    const [bondVesting, bondPremium, totalSnowAvailable, totalVested, treasuryTombPrice, assetParams, assetPrices] =
+      await Promise.all([
+        DaoSnowRebateTreasury.bondVesting(),
+        DaoSnowRebateTreasury.getBondPremium(DaoSnowRebateTreasury.USDC()),
+        this.TOMB.balanceOf(DaoSnowRebateTreasury.address),
+        DaoSnowRebateTreasury.totalVested(),
+        DaoSnowRebateTreasury.getSnowPrice(),
+        Promise.all(assetList.map((asset) => DaoSnowRebateTreasury.assets(asset))),
+        Promise.all(assetList.map((asset) => DaoSnowRebateTreasury.getTokenPrice(asset))),
+      ]);
     const snowAvailable = totalSnowAvailable.sub(totalVested);
-    const premium = bondPremium.sub(1e12)
-    const assets=[];
-    
+    const premium = bondPremium.sub(1e12);
+    const assets = [];
+
     for (let a = 0; a < assetList.length; a++) {
       assets.push({
         token: assetList[a],
@@ -1392,38 +1419,38 @@ totalTax: '0',
           multiplier: assetParams[a].multiplier,
           isLP: assetParams[a].isLP,
         },
-        price: getDisplayBalance(assetPrices[a], this.TOMB.decimal, 0)
+        price: getDisplayBalance(assetPrices[a], this.TOMB.decimal, 0),
       });
     }
-    
+
     return {
       treasuryAddress: DaoSnowRebateTreasury.address,
       snowPrice: treasuryTombPrice,
-      bondVesting: getDisplayBalance(bondVesting, 0,0),
-      bondPremium: getDisplayBalance(premium, 12,2),
+      bondVesting: getDisplayBalance(bondVesting, 0, 0),
+      bondPremium: getDisplayBalance(premium, 12, 2),
       snowAvailable: String(snowAvailable),
       assets: assets,
     };
   }
 
-  async rebatesDaoSnowRebateAccountStat( account = this.myAccount): Promise<RebateSnowAccountStat> {
+  async rebatesDaoSnowRebateAccountStat(account = this.myAccount): Promise<RebateSnowAccountStat> {
     const { DaoSnowRebateTreasury } = this.contracts;
     const [claimbleSnow, vesting] = await Promise.all([
       DaoSnowRebateTreasury.claimableSnow(account),
-      DaoSnowRebateTreasury.vesting(account)
+      DaoSnowRebateTreasury.vesting(account),
     ]);
-    const vested = (vesting.amount).sub(vesting.claimed)
+    const vested = vesting.amount.sub(vesting.claimed);
     return {
       claimableSnow: claimbleSnow,
-      vested: String(vested)
+      vested: String(vested),
     };
   }
 
   // * DAO GLCR rebate * //
 
   async rebatesDaoGlcrBond(token: string, amount: string): Promise<TransactionResponse> {
-    const {DaoGlcrRebateTreasury} = this.contracts; 
-    return await DaoGlcrRebateTreasury.bond(token,amount);
+    const { DaoGlcrRebateTreasury } = this.contracts;
+    return await DaoGlcrRebateTreasury.bond(token, amount);
   }
 
   async rebatesDaoGlcrClaim(): Promise<TransactionResponse> {
@@ -1439,19 +1466,20 @@ totalTax: '0',
       this.FTM.address, // USDC
       // this.WCRO.address, // CRO
     ];
-    const [bondVesting, bondPremium, totalGlcrAvailable, totalVested, treasuryTombPrice, assetParams, assetPrices] = await Promise.all([
-      DaoGlcrRebateTreasury.bondVesting(),
-      DaoGlcrRebateTreasury.getBondPremium(DaoGlcrRebateTreasury.USDC()),
-      this.TSHARE.balanceOf(DaoGlcrRebateTreasury.address),
-      DaoGlcrRebateTreasury.totalVested(),
-      DaoGlcrRebateTreasury.getGlcrPrice(),
-      Promise.all(assetList.map((asset) => DaoGlcrRebateTreasury.assets(asset))),
-      Promise.all(assetList.map((asset) => DaoGlcrRebateTreasury.getTokenPrice(asset)))  
-    ]);
+    const [bondVesting, bondPremium, totalGlcrAvailable, totalVested, treasuryTombPrice, assetParams, assetPrices] =
+      await Promise.all([
+        DaoGlcrRebateTreasury.bondVesting(),
+        DaoGlcrRebateTreasury.getBondPremium(DaoGlcrRebateTreasury.USDC()),
+        this.TSHARE.balanceOf(DaoGlcrRebateTreasury.address),
+        DaoGlcrRebateTreasury.totalVested(),
+        DaoGlcrRebateTreasury.getGlcrPrice(),
+        Promise.all(assetList.map((asset) => DaoGlcrRebateTreasury.assets(asset))),
+        Promise.all(assetList.map((asset) => DaoGlcrRebateTreasury.getTokenPrice(asset))),
+      ]);
     const glcrAvailable = totalGlcrAvailable.sub(totalVested);
-    const premium = bondPremium.sub(1e12)
-    const assets=[];
-    
+    const premium = bondPremium.sub(1e12);
+    const assets = [];
+
     for (let a = 0; a < assetList.length; a++) {
       assets.push({
         token: assetList[a],
@@ -1459,37 +1487,37 @@ totalTax: '0',
           multiplier: assetParams[a].multiplier,
           isLP: assetParams[a].isLP,
         },
-        price: getDisplayBalance(assetPrices[a], this.TSHARE.decimal, 0)
+        price: getDisplayBalance(assetPrices[a], this.TSHARE.decimal, 0),
       });
     }
     return {
       treasuryAddress: DaoGlcrRebateTreasury.address,
       glcrPrice: treasuryTombPrice,
-      bondVesting: getDisplayBalance(bondVesting, 0,0),
-      bondPremium: getDisplayBalance(premium, 12,2),
+      bondVesting: getDisplayBalance(bondVesting, 0, 0),
+      bondPremium: getDisplayBalance(premium, 12, 2),
       glcrAvailable: String(glcrAvailable),
       assets: assets,
     };
   }
 
-  async rebatesDaoGlcrRebateAccountStat( account = this.myAccount): Promise<RebateGlcrAccountStat> {
+  async rebatesDaoGlcrRebateAccountStat(account = this.myAccount): Promise<RebateGlcrAccountStat> {
     const { DaoGlcrRebateTreasury } = this.contracts;
     const [claimbleGlcr, vesting] = await Promise.all([
       DaoGlcrRebateTreasury.claimableGlcr(account),
-      DaoGlcrRebateTreasury.vesting(account)
+      DaoGlcrRebateTreasury.vesting(account),
     ]);
-    const vested = (vesting.amount).sub(vesting.claimed)
+    const vested = vesting.amount.sub(vesting.claimed);
     return {
       claimableGlcr: claimbleGlcr,
-      vested: String(vested)
+      vested: String(vested),
     };
   }
 
   // * DEV SNOW rebate * //
-  
+
   async rebatesDevSnowBond(token: string, amount: string): Promise<TransactionResponse> {
-    const {DevSnowRebateTreasury} = this.contracts; 
-    return await DevSnowRebateTreasury.bond(token,amount);
+    const { DevSnowRebateTreasury } = this.contracts;
+    return await DevSnowRebateTreasury.bond(token, amount);
   }
 
   async rebatesDevSnowClaim(): Promise<TransactionResponse> {
@@ -1505,19 +1533,20 @@ totalTax: '0',
       this.FTM.address, // USDC
       // this.WCRO.address, // CRO
     ];
-    const [bondVesting, bondPremium, totalSnowAvailable, totalVested, treasuryTombPrice, assetParams, assetPrices] = await Promise.all([
-      DevSnowRebateTreasury.bondVesting(),
-      DevSnowRebateTreasury.getBondPremium(DevSnowRebateTreasury.USDC()),
-      this.TOMB.balanceOf(DevSnowRebateTreasury.address),
-      DevSnowRebateTreasury.totalVested(),
-      DevSnowRebateTreasury.getSnowPrice(),
-      Promise.all(assetList.map((asset) => DevSnowRebateTreasury.assets(asset))),
-      Promise.all(assetList.map((asset) => DevSnowRebateTreasury.getTokenPrice(asset)))  
-    ]);
+    const [bondVesting, bondPremium, totalSnowAvailable, totalVested, treasuryTombPrice, assetParams, assetPrices] =
+      await Promise.all([
+        DevSnowRebateTreasury.bondVesting(),
+        DevSnowRebateTreasury.getBondPremium(DevSnowRebateTreasury.USDC()),
+        this.TOMB.balanceOf(DevSnowRebateTreasury.address),
+        DevSnowRebateTreasury.totalVested(),
+        DevSnowRebateTreasury.getSnowPrice(),
+        Promise.all(assetList.map((asset) => DevSnowRebateTreasury.assets(asset))),
+        Promise.all(assetList.map((asset) => DevSnowRebateTreasury.getTokenPrice(asset))),
+      ]);
     const snowAvailable = totalSnowAvailable.sub(totalVested);
-    const premium = bondPremium.sub(1e12)
-    const assets=[];
-    
+    const premium = bondPremium.sub(1e12);
+    const assets = [];
+
     for (let a = 0; a < assetList.length; a++) {
       assets.push({
         token: assetList[a],
@@ -1525,38 +1554,38 @@ totalTax: '0',
           multiplier: assetParams[a].multiplier,
           isLP: assetParams[a].isLP,
         },
-        price: getDisplayBalance(assetPrices[a], this.TOMB.decimal, 0)
+        price: getDisplayBalance(assetPrices[a], this.TOMB.decimal, 0),
       });
     }
-    
+
     return {
       treasuryAddress: DevSnowRebateTreasury.address,
       snowPrice: treasuryTombPrice,
-      bondVesting: getDisplayBalance(bondVesting, 0,0),
-      bondPremium: getDisplayBalance(premium, 12,2),
+      bondVesting: getDisplayBalance(bondVesting, 0, 0),
+      bondPremium: getDisplayBalance(premium, 12, 2),
       snowAvailable: String(snowAvailable),
       assets: assets,
     };
   }
 
-  async rebatesDevSnowRebateAccountStat( account = this.myAccount): Promise<RebateSnowAccountStat> {
+  async rebatesDevSnowRebateAccountStat(account = this.myAccount): Promise<RebateSnowAccountStat> {
     const { DevSnowRebateTreasury } = this.contracts;
     const [claimbleSnow, vesting] = await Promise.all([
       DevSnowRebateTreasury.claimableSnow(account),
-      DevSnowRebateTreasury.vesting(account)
+      DevSnowRebateTreasury.vesting(account),
     ]);
-    const vested = (vesting.amount).sub(vesting.claimed)
+    const vested = vesting.amount.sub(vesting.claimed);
     return {
       claimableSnow: claimbleSnow,
-      vested: String(vested)
+      vested: String(vested),
     };
   }
 
   // * DEV GLCR rebate * //
 
   async rebatesDevGlcrBond(token: string, amount: string): Promise<TransactionResponse> {
-    const {DevGlcrRebateTreasury} = this.contracts; 
-    return await DevGlcrRebateTreasury.bond(token,amount);
+    const { DevGlcrRebateTreasury } = this.contracts;
+    return await DevGlcrRebateTreasury.bond(token, amount);
   }
 
   async rebatesDevGlcrClaim(): Promise<TransactionResponse> {
@@ -1572,19 +1601,20 @@ totalTax: '0',
       this.FTM.address, // USDC
       // this.WCRO.address, // CRO
     ];
-    const [bondVesting, bondPremium, totalGlcrAvailable, totalVested, treasuryTombPrice, assetParams, assetPrices] = await Promise.all([
-      DevGlcrRebateTreasury.bondVesting(),
-      DevGlcrRebateTreasury.getBondPremium(DevGlcrRebateTreasury.USDC()),
-      this.TSHARE.balanceOf(DevGlcrRebateTreasury.address),
-      DevGlcrRebateTreasury.totalVested(),
-      DevGlcrRebateTreasury.getGlcrPrice(),
-      Promise.all(assetList.map((asset) => DevGlcrRebateTreasury.assets(asset))),
-      Promise.all(assetList.map((asset) => DevGlcrRebateTreasury.getTokenPrice(asset)))  
-    ]);
+    const [bondVesting, bondPremium, totalGlcrAvailable, totalVested, treasuryTombPrice, assetParams, assetPrices] =
+      await Promise.all([
+        DevGlcrRebateTreasury.bondVesting(),
+        DevGlcrRebateTreasury.getBondPremium(DevGlcrRebateTreasury.USDC()),
+        this.TSHARE.balanceOf(DevGlcrRebateTreasury.address),
+        DevGlcrRebateTreasury.totalVested(),
+        DevGlcrRebateTreasury.getGlcrPrice(),
+        Promise.all(assetList.map((asset) => DevGlcrRebateTreasury.assets(asset))),
+        Promise.all(assetList.map((asset) => DevGlcrRebateTreasury.getTokenPrice(asset))),
+      ]);
     const glcrAvailable = totalGlcrAvailable.sub(totalVested);
-    const premium = bondPremium.sub(1e12)
-    const assets=[];
-    
+    const premium = bondPremium.sub(1e12);
+    const assets = [];
+
     for (let a = 0; a < assetList.length; a++) {
       assets.push({
         token: assetList[a],
@@ -1592,31 +1622,30 @@ totalTax: '0',
           multiplier: assetParams[a].multiplier,
           isLP: assetParams[a].isLP,
         },
-        price: getDisplayBalance(assetPrices[a], this.TSHARE.decimal, 0)
+        price: getDisplayBalance(assetPrices[a], this.TSHARE.decimal, 0),
       });
     }
-    
+
     return {
       treasuryAddress: DevGlcrRebateTreasury.address,
       glcrPrice: treasuryTombPrice,
-      bondVesting: getDisplayBalance(bondVesting, 0,0),
-      bondPremium: getDisplayBalance(premium, 12,2),
+      bondVesting: getDisplayBalance(bondVesting, 0, 0),
+      bondPremium: getDisplayBalance(premium, 12, 2),
       glcrAvailable: String(glcrAvailable),
       assets: assets,
     };
   }
 
-  async rebatesDevGlcrRebateAccountStat( account = this.myAccount): Promise<RebateGlcrAccountStat> {
+  async rebatesDevGlcrRebateAccountStat(account = this.myAccount): Promise<RebateGlcrAccountStat> {
     const { DevGlcrRebateTreasury } = this.contracts;
     const [claimbleGlcr, vesting] = await Promise.all([
       DevGlcrRebateTreasury.claimableGlcr(account),
-      DevGlcrRebateTreasury.vesting(account)
+      DevGlcrRebateTreasury.vesting(account),
     ]);
-    const vested = (vesting.amount).sub(vesting.claimed)
+    const vested = vesting.amount.sub(vesting.claimed);
     return {
       claimableGlcr: claimbleGlcr,
-      vested: String(vested)
+      vested: String(vested),
     };
   }
-
 }

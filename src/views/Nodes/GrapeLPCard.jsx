@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
-import {Box, Button, Card, CardActions, CardContent, Typography, Grid} from '@material-ui/core';
-import {useParams} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Box, Button, Card, CardActions, CardContent, Typography, Grid } from '@material-ui/core';
+import { useParams } from 'react-router-dom';
 import TokenSymbol from '../../components/TokenSymbol';
 import useStatsForPool from '../../hooks/useStatsForPool';
 import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle';
@@ -10,12 +10,12 @@ import useBank from '../../hooks/useBank';
 const GrapeLPCard = ({}) => {
   const tombBank = useBank('LPSnowNode');
   const statsOnPool = useStatsForPool(tombBank);
-    
+
   return (
     <Grid item xs={12} md={4} lg={4}>
-      <Card style={{background: 'linear-gradient(90deg, #8fbdeb 14%, #a2c8ee 100%)', borderRadius: '15px'}}>
+      <Card style={{ background: 'linear-gradient(90deg, #8fbdeb 14%, #a2c8ee 100%)', borderRadius: '15px' }}>
         <CardContent>
-          <Box style={{position: 'relative'}}>
+          <Box style={{ position: 'relative' }}>
             <Box
               style={{
                 position: 'absolute',
@@ -30,10 +30,10 @@ const GrapeLPCard = ({}) => {
                 justifyContent: 'center',
               }}
             >
-              <TokenSymbol  width={100} height={50} symbol={'GRAPE-SNOW-LP'} />
+              <TokenSymbol width={100} height={50} symbol={'GRAPE-SNOW-LP'} />
             </Box>
             <Typography variant="h5" component="h2">
-            GRAPE-SNOW LP Node
+              GRAPE-SNOW LP Node
             </Typography>
             <Typography color="#322f32">
               Lock your LP to earn daily yields<br></br>
@@ -42,8 +42,13 @@ const GrapeLPCard = ({}) => {
             </Typography>
           </Box>
         </CardContent>
-        <CardActions style={{justifyContent: 'flex-end'}}>
-          <Button className="shinyButtonSecondary" style={{background: '#5686d6', borderRadius: '15px'}} component={Link} to={'/nodes/LPSnowNode'}>
+        <CardActions style={{ justifyContent: 'flex-end' }}>
+          <Button
+            className="shinyButtonSecondary"
+            style={{ background: '#5686d6', borderRadius: '15px' }}
+            component={Link}
+            to={'/nodes/LPSnowNode'}
+          >
             Stake
           </Button>
         </CardActions>

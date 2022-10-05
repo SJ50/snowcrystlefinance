@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-#      - master
+      #      - master
       - feature/design
 
 jobs:
@@ -14,10 +14,10 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "polar-oasis-91864"
-          heroku_email: "vova.lunev@devhouse.pro"
+          heroku_app_name: 'polar-oasis-91864'
+          heroku_email: 'vova.lunev@devhouse.pro'
           usedocker: true
-          docker_heroku_process_type: "web"
+          docker_heroku_process_type: 'web'
           docker_build_args: |
             NODE_ENV
         env:

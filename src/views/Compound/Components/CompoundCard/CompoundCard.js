@@ -49,11 +49,7 @@ const CompoundCard = ({ cardData, buttonProps }) => {
         {title}
       </h2>
 
-      <TokenSymbol
-        symbol={tokenSymbol}
-        width={tokenWidth}
-        height={tokenHeight}
-      />
+      <TokenSymbol symbol={tokenSymbol} width={tokenWidth} height={tokenHeight} />
 
       <p
         style={{
@@ -67,11 +63,7 @@ const CompoundCard = ({ cardData, buttonProps }) => {
         This compounding is hosted on <strong>magik.farm</strong>
       </p>
 
-      <img
-        src={MagicLogo}
-        alt="invest cow"
-        style={{ width: 60 }}
-      />
+      <img src={MagicLogo} alt="invest cow" style={{ width: 60 }} />
 
       <StyledButton target="_blank" rel="noreferrer noopener" href={href}>
         Invest

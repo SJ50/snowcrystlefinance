@@ -67,8 +67,8 @@ export type RebateSnowStat = {
   assets: {
     token: string;
     params: {
-        multiplier: number;
-        isLP: boolean;
+      multiplier: number;
+      isLP: boolean;
     };
     price: string;
   }[];
@@ -83,8 +83,8 @@ export type RebateGlcrStat = {
   assets: {
     token: string;
     params: {
-        multiplier: number;
-        isLP: boolean;
+      multiplier: number;
+      isLP: boolean;
     };
     price: string;
   }[];
@@ -93,9 +93,9 @@ export type RebateGlcrStat = {
 export type RebateSnowAccountStat = {
   claimableSnow: string;
   vested: string;
-}
+};
 
 export type RebateGlcrAccountStat = {
   claimableGlcr: string;
   vested: string;
-}
+};

@@ -21,7 +21,7 @@ const useBank = (contractName: ContractName): Bank => {
     return banks.find((bank) => bank.sectionInUI === 4 && bank.depositTokenName === 'SNOW-USDC-LP');
   } else if (contractName === 'ShareLPNode') {
     return banks.find((bank) => bank.sectionInUI === 4 && bank.depositTokenName === 'GLCR-USDC-LP');
-  }else if (contractName === 'LPSnowNode') {
+  } else if (contractName === 'LPSnowNode') {
     return banks.find((bank) => bank.sectionInUI === 4 && bank.depositTokenName === 'GRAPE-SNOW-LP');
   }
 

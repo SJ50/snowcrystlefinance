@@ -1,7 +1,7 @@
-import {useCallback} from 'react';
+import { useCallback } from 'react';
 import useGrapeFinance from './useTombFinance';
 import useHandleTransactionReceipt from './useHandleTransactionReceipt';
-import {Bank} from '../tomb-finance';
+import { Bank } from '../tomb-finance';
 
 const useCompound = (bank: Bank) => {
   const grapeFinance = useGrapeFinance();
@@ -14,7 +14,7 @@ const useCompound = (bank: Bank) => {
     );
   }, [bank, grapeFinance, handleTransactionReceipt]);
 
-  return {onCompound: handleReward};
+  return { onCompound: handleReward };
 };
 
 export default useCompound;

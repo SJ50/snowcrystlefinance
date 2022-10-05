@@ -8,23 +8,14 @@ const useDaoSnowRebates = () => {
 
   const handleBond = useCallback(
     (token: string, amount: string) => {
-      handleTransactionReceipt(
-        tombFinance.rebatesDaoSnowBond(token, amount),
-        `Bond ${Number(amount) / 10**18}.`,
-      );
+      handleTransactionReceipt(tombFinance.rebatesDaoSnowBond(token, amount), `Bond ${Number(amount) / 10 ** 18}.`);
     },
     [tombFinance, handleTransactionReceipt],
   );
 
-  const handleClaim = useCallback(
-    () => {
-      handleTransactionReceipt(
-        tombFinance.rebatesDaoSnowClaim(),
-        `Claim Reward.`,
-      );
-    },
-    [tombFinance, handleTransactionReceipt],
-  );
+  const handleClaim = useCallback(() => {
+    handleTransactionReceipt(tombFinance.rebatesDaoSnowClaim(), `Claim Reward.`);
+  }, [tombFinance, handleTransactionReceipt]);
 
   return { onBond: handleBond, onClaim: handleClaim };
 };

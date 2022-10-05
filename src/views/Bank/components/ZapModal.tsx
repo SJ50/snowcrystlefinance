@@ -8,7 +8,6 @@ import ModalTitle from '../../../components/ModalTitle';
 import TokenInput from '../../../components/TokenInput';
 import styled from 'styled-components';
 
-
 import { getDisplayBalance } from '../../../utils/formatBalance';
 import Label from '../../../components/Label';
 import useLpStats from '../../../hooks/useLpStats';
@@ -86,31 +85,31 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
     const estimateZap = await tombFinance.estimateZapIn(zappingToken, tokenName, String(zappingTokenBalance));
     setEstimate({ token0: estimateZap[0].toString(), token1: estimateZap[1].toString() });
   };
- 
-
 
   return (
     <Modal>
       <ModalTitle text={`Zap in ${tokenName.replace('USDC', 'USDC')}`} />
 
       <StyledActionSpacer />
-      <InputLabel style={{ color: 'black', marginBottom: '8px' }} id="label" 
-      htmlFor='select'
-      >
+      <InputLabel style={{ color: 'black', marginBottom: '8px' }} id="label" htmlFor="select">
         Select asset to zap with
       </InputLabel>
       <Select
         native
         onChange={handleChangeAsset}
-        style={{ color: 'black', borderBottom: '1px solid rgba(0, 0, 0, 0.15)', }}
+        style={{ color: 'black', borderBottom: '1px solid rgba(0, 0, 0, 0.15)' }}
         labelId="label"
         id="select"
         value={zappingToken}
       >
         {/* <option aria-label="None" value="" /> */}
-          <option value={FTM_TICKER}>{FTM_TICKER} (Tax free)</option>
-          <option value={30}>{FTM_TICKER}-{tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER} (Tax free)</option>
-          <option value={tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}>{tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}</option>
+        <option value={FTM_TICKER}>{FTM_TICKER} (Tax free)</option>
+        <option value={30}>
+          {FTM_TICKER}-{tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER} (Tax free)
+        </option>
+        <option value={tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}>
+          {tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}
+        </option>
         {/* <StyledMenuItem value={FTM_TICKER}>{FTM_TICKER}</StyledMenuItem>
         <StyledMenuItem value={tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}>{tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}</StyledMenuItem> */}
         {/* Tomb as an input for zapping will be disabled due to issues occuring with the Gatekeeper system */}
@@ -125,7 +124,7 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
         max={zappingTokenBalance}
         symbol={zappingToken}
       />
-      <Label text="Zap Estimations" color='black' />
+      <Label text="Zap Estimations" color="black" />
       <StyledDescriptionText>
         {' '}
         {tokenName}: {Number(estimate.token1) / Number(ftmAmountPerLP)}
@@ -143,7 +142,7 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
             approveZapperStatus !== ApprovalState.APPROVED ? approveZapper() : onConfirm(zappingToken, tokenName, val)
           }
         >
-          {approveZapperStatus !== ApprovalState.APPROVED ? 'Approve' : "Zap"}
+          {approveZapperStatus !== ApprovalState.APPROVED ? 'Approve' : 'Zap'}
         </Button>
       </ModalActions>
 
@@ -182,9 +181,5 @@ const StyledMenuItem = withStyles({
     },
   },
 })(MenuItem);
-
-
-
-
 
 export default ZapModal;
