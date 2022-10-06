@@ -1,7 +1,7 @@
 import React from 'react';
 import { useWallet } from 'use-wallet';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
-import Bank from '../Bank';
+import Farm from '../Bank';
 
 import { Alert } from '@material-ui/lab';
 import { Box, Container, Typography, Grid } from '@material-ui/core';
@@ -81,7 +81,7 @@ const Cemetery = () => {
         </Route>
         <Route path={`${path}/:bankId`}>
           <BackgroundImage />
-          <Bank />
+          <Farm />
         </Route>
       </Page>
     </Switch>

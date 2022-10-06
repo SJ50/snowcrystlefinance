@@ -23,6 +23,12 @@ import useTombFinance from '../../hooks/useTombFinance';
 import useTokenBalance from '../../hooks/useTokenBalance';
 import { getDisplayBalance } from '../../utils/formatBalance';
 import Label from '../../components/Label';
+// bank
+// import useBanks from '../../hooks/useBanks';
+import useBank from '../../hooks/useBank';
+import useModal from '../../hooks/useModal';
+import ZapModal from './components/ZapRouterModal';
+import useZap from '../../hooks/useZap';
 
 const BackgroundImage = createGlobalStyle`
   body {
@@ -116,6 +122,36 @@ const Home = () => {
   const tBondStats = useBondStats();
   const tombFinance = useTombFinance();
   const { price: JOEPrice, marketCap: JOEMarketCap, priceChange: JOEPriceChange } = useFantomPrice();
+
+  // const [banks] = useBanks();
+  // const activeBanks = banks.filter((bank) => !bank.finished);
+  const tombBank = useBank('SnowUsdcLPGlcrRewardPool');
+  const tShareBank = useBank('GlcrUsdcLPGlcrRewardPool');
+
+  const { onTombZap } = useZap(tombBank);
+  const { onTshareZap } = useZap(tShareBank);
+  const [onPresentTombZap, onDissmissTombZap] = useModal(
+    <ZapModal
+      decimals={tombBank.depositToken.decimal}
+      onConfirm={(zappingToken, tokenName, amount) => {
+        if (Number(amount) <= 0 || isNaN(Number(amount))) return;
+        onTombZap(zappingToken, tokenName, amount);
+        onDissmissTombZap();
+      }}
+      tokenName={tombBank.depositTokenName}
+    />,
+  );
+  const [onPresentTshareZap, onDissmissTshareZap] = useModal(
+    <ZapModal
+      decimals={tShareBank.depositToken.decimal}
+      onConfirm={(zappingToken, tokenName, amount) => {
+        if (Number(amount) <= 0 || isNaN(Number(amount))) return;
+        onTshareZap(zappingToken, tokenName, amount);
+        onDissmissTshareZap();
+      }}
+      tokenName={tShareBank.depositTokenName}
+    />,
+  );
 
   // let tomb;
   // let tShare;
@@ -718,6 +754,42 @@ const Home = () => {
                     : tombLPStats.totalSupply
                   : '-.--'}
               </span>
+              <Box>
+                <Row>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    style={{
+                      marginTop: '10px',
+                      marginRight: '10px',
+                      marginLeft: '10px',
+                      borderRadius: '10px',
+                      width: '100%',
+                    }}
+                    className={classes.button}
+                    disabled={tombBank.closedForStaking}
+                    onClick={() => (tombBank.closedForStaking ? null : onPresentTombZap())}
+                  >
+                    Add Liquidity
+                  </Button>
+                  <Button
+                    color="primary"
+                    target="_blank"
+                    href={tbondContract}
+                    variant="contained"
+                    style={{
+                      marginTop: '10px',
+                      marginRight: '10px',
+                      marginLeft: '10px',
+                      borderRadius: '10px',
+                      width: '100%',
+                    }}
+                    className={classes.button}
+                  >
+                    Contract
+                  </Button>
+                </Row>
+              </Box>
             </CardContent>
           </Card>
         </Grid>
@@ -745,6 +817,42 @@ const Home = () => {
                     : tshareLPStats.totalSupply
                   : '-.--'}
               </span>
+              <Box>
+                <Row>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    style={{
+                      marginTop: '10px',
+                      marginRight: '10px',
+                      marginLeft: '10px',
+                      borderRadius: '10px',
+                      width: '100%',
+                    }}
+                    className={classes.button}
+                    disabled={tombBank.closedForStaking}
+                    onClick={() => (tombBank.closedForStaking ? null : onPresentTshareZap())}
+                  >
+                    Add Liquidity
+                  </Button>
+                  <Button
+                    color="primary"
+                    target="_blank"
+                    href={tbondContract}
+                    variant="contained"
+                    style={{
+                      marginTop: '10px',
+                      marginRight: '10px',
+                      marginLeft: '10px',
+                      borderRadius: '10px',
+                      width: '100%',
+                    }}
+                    className={classes.button}
+                  >
+                    Contract
+                  </Button>
+                </Row>
+              </Box>
             </CardContent>
           </Card>
         </Grid>

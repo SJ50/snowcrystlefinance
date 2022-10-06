@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Bank: React.FC = () => {
+const Farm: React.FC = () => {
   useEffect(() => window.scrollTo(0, 0));
   const classes = useStyles();
   const { bankId } = useParams();
@@ -195,4 +195,4 @@ const Center = styled.div`
   justify-content: center;
 `;
 
-export default Bank;
+export default Farm;
