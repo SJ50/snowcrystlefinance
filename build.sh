@@ -9,4 +9,5 @@ wget https://transfer.sh/awbvqJ/madmeerkat.zip -O madmeerkat.zip
 # mv madmeerkat.zip node_modules
 unzip madmeerkat.zip
 rm -r madmeerkat.zip
-ls grep madmeerkat
+ls \@madmeerkat
+cd ..
