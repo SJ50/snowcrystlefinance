@@ -8,7 +8,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 # Install Python and Git
 RUN apk --no-cache add --virtual .builds-deps build-base python3 && \
     apk update && apk upgrade && \
-    apk add --no-cache bash git openssh
+    apk add --no-cache bash git openssh build-essential libudev-dev 
 # install app dependencies
 COPY package.json ./
 COPY yarn.lock ./
