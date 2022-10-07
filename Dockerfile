@@ -6,14 +6,14 @@ WORKDIR /app
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
 # Install Python and Git
-RUN apk --no-cache add --virtual .builds-deps build-base python3 && \
+RUN apk --no-cache add --virtual .builds-deps build-base libgudev shadow libusb libusb-dev eudev-dev python3 && \
     apk update && apk upgrade && \
-    apk add --no-cache bash git openssh build-essential libudev-dev 
+    apk add --no-cache bash git openssh 
 # install app dependencies
 COPY package.json ./
 COPY yarn.lock ./
-RUN yarn install --immutable --immutable-cache --check-cache --silent --network-timeout 500000 
-RUN yarn add react-scripts@3.4.1 --silent
+RUN yarn install --immutable --immutable-cache --check-cache --silent --network-timeout 500000 && \
+    yarn add react-scripts@3.4.1 --silent
 
 # add app
 COPY . ./
