@@ -37,7 +37,7 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
   const [zappingToken, setZappingToken] = useState(FTM_TICKER);
   const [zappingTokenBalance, setZappingTokenBalance] = useState(getDisplayBalance(ftmBalanceVal, 6));
   useEffect(() => {
-    if (Number(zappingTokenBalance) == 0) {
+    if (Number(zappingTokenBalance) === 0) {
       setZappingTokenBalance(getDisplayBalance(ftmBalanceVal, 6));
     }
   }, [ftmBalanceVal]);

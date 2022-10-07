@@ -33,6 +33,8 @@ import { /*config,*/ bankDefinitions } from '../config';
 import moment from 'moment';
 import { parseUnits } from 'ethers/lib/utils';
 import { FTM_TICKER, SPOOKY_ROUTER_ADDR, TOMB_TICKER, TSHARE_TICKER } from '../utils/constants';
+import { Client } from "@bandprotocol/bandchain.js";
+import { debug } from 'console';
 // import { CompareArrowsOutlined } from '@material-ui/icons';
 // import { CompareArrowsOutlined, CompassCalibrationOutlined } from '@material-ui/icons';
 /**
@@ -138,14 +140,11 @@ export class TombFinance {
       this.TOMB.taxRate(),
       this.TOMB.balanceOf(GenesisRewardPool.address),
     ]);
-
-    // console.log("debug " + genesisPoolTOMBBalance );
-
     // console.log("debug " + Number(await Promise.all([this.TOMB.balanceOf(GenesisRewardPool.address)])).toFixed(18));
     // console.log("debug "+ JSON.stringify(this.TOMB.totalSupply(), null,4));
     const tombCirculatingSupply = supply.sub(genesisPoolTOMBBalance);
     const priceOfTombInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(18);
-
+    // console.log("debug " + priceInFTM );
     return {
       tokenInFtm: priceInFTM,
       priceInDollars: priceOfTombInDollars,
@@ -632,9 +631,7 @@ export class TombFinance {
       case 'SNOW':
         return this.getTombStat();
       case 'GLCR':
-        return this.getShareStat();
-      case 'DIBS':
-        return this.getDibsStat();
+        return this.getShareStat(); 
       case 'WBTC':
         return this.getBtcStat();
       // case 'SNOBOND':
@@ -650,13 +647,20 @@ export class TombFinance {
     }
   }
 
+
+    
+   
   async getUsdtStat(): Promise<TokenStat> {
-    const { data } = await axios(
-      'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=tether-avalanche-bridged-usdt-e',
-    );
+    const rate = await this.getBandChainData('USDT/USD');
+    const rateInFtm = await this.getBandChainData('USDT/USDC'); 
+
+    // const { data } = await axios(
+    //   'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=tether-avalanche-bridged-usdt-e',
+    // );
+   
     return {
-      tokenInFtm: data[0].current_price,
-      priceInDollars: data[0].current_price,
+      tokenInFtm: rateInFtm,
+      priceInDollars: rate,
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -665,10 +669,12 @@ export class TombFinance {
   }
 
   async getUsdcStat(): Promise<TokenStat> {
-    const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=usd-coin');
+    const rate = await this.getBandChainData('USDC/USD');
+    // const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=usd-coin');
+
     return {
-      tokenInFtm: data[0].current_price,
-      priceInDollars: data[0].current_price,
+      tokenInFtm: rate,
+      priceInDollars: rate,
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -676,23 +682,23 @@ export class TombFinance {
     };
   }
 
-  async getDibsStat(): Promise<TokenStat> {
-    const { WCRO } = this.config.externalTokens;
-    const [priceInCro, priceOfOneCro] = await Promise.all([
-      this.getTokenPriceFromPancakeswap(this.DIBS, new Token(this.config.chainId, WCRO[0], WCRO[1], 'WCRO')),
-      this.getCroPriceFromPancakeswap(),
-    ]);
+  // async getDibsStat(): Promise<TokenStat> {
+  //   const { WCRO } = this.config.externalTokens;
+  //   const [priceInCro, priceOfOneCro] = await Promise.all([
+  //     this.getTokenPriceFromPancakeswap(this.DIBS, new Token(this.config.chainId, WCRO[0], WCRO[1], 'WCRO')),
+  //     this.getCroPriceFromPancakeswap(),
+  //   ]);
 
-    const priceInDollars = (Number(priceInCro) * Number(priceOfOneCro)).toFixed(12);
-    return {
-      tokenInFtm: priceInCro,
-      priceInDollars,
-      totalSupply: '0',
-      circulatingSupply: '0',
-      totalBurned: '0',
-      totalTax: '0',
-    };
-  }
+  //   const priceInDollars = (Number(priceInCro) * Number(priceOfOneCro)).toFixed(12);
+  //   return {
+  //     tokenInFtm: priceInCro,
+  //     priceInDollars,
+  //     totalSupply: '0',
+  //     circulatingSupply: '0',
+  //     totalBurned: '0',
+  //     totalTax: '0',
+  //   };
+  // }
 
   // async getSnoStat(): Promise<TokenStat> {
   //   const {MMF} = this.config.externalTokens;
@@ -711,10 +717,12 @@ export class TombFinance {
   // }
 
   async getBtcStat(): Promise<TokenStat> {
-    const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin');
+    const rate = await this.getBandChainData('BTC/USD'); 
+    const rateInFtm = await this.getBandChainData('BTC/USDC'); 
+    // const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin');
     return {
-      tokenInFtm: data[0].current_price,
-      priceInDollars: data[0].current_price,
+      tokenInFtm: rateInFtm,
+      priceInDollars: rate,
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -723,10 +731,12 @@ export class TombFinance {
   }
 
   async getEthStat(): Promise<TokenStat> {
-    const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=ethereum');
+    const rate = await this.getBandChainData('ETH/USD');
+    const rateInFtm = await this.getBandChainData('ETH/USDC');
+    // const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=ethereum');
     return {
-      tokenInFtm: data[0].current_price,
-      priceInDollars: data[0].current_price,
+      tokenInFtm: rateInFtm,
+      priceInDollars: rate,
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -735,10 +745,14 @@ export class TombFinance {
   }
 
   async getDaiStat(): Promise<TokenStat> {
-    const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=dai');
+    const rate = await this.getBandChainData('DAI/USD');
+    const rateInFtm = await this.getBandChainData('DAI/USDC'); 
+    // const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=dai');
     return {
-      tokenInFtm: data[0].current_price,
-      priceInDollars: data[0].current_price,
+      // tokenInFtm: data[0].current_price,
+      // priceInDollars: data[0].current_price,
+      tokenInFtm: rateInFtm,
+      priceInDollars: rate,
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -778,10 +792,12 @@ export class TombFinance {
   // }
 
   async getCroStat(): Promise<TokenStat> {
-    const priceInDollars = await this.getCroPriceFromPancakeswap();
+    const rate = await this.getBandChainData('CRO/USD');
+    const rateInFtm = await this.getBandChainData('CRO/USDC');
+    // const priceInDollars = await this.getCroPriceFromPancakeswap();
     return {
-      tokenInFtm: priceInDollars,
-      priceInDollars,
+      tokenInFtm: rateInFtm,
+      priceInDollars: rate,
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -789,38 +805,47 @@ export class TombFinance {
     };
   }
 
-  async getCroPriceFromPancakeswap(): Promise<string> {
-    const ready = await this.provider.ready;
-    if (!ready) return;
-    const { WCRO, USDC } = this.externalTokens;
-    try {
-      const busd_eth_lp_pair = this.externalTokens['USDC-WCRO-LP'];
-      let eth_amount_BN = await WCRO.balanceOf(busd_eth_lp_pair.address);
-      let eth_amount = Number(getFullDisplayBalance(eth_amount_BN, WCRO.decimal));
-      let busd_amount_BN = await USDC.balanceOf(busd_eth_lp_pair.address);
-      let busd_amount = Number(getFullDisplayBalance(busd_amount_BN, USDC.decimal));
-      return (busd_amount / eth_amount).toString();
-    } catch (err) {
-      console.error(`Failed to fetch token price of ETH: ${err}`);
-    }
+  async getBandChainData(Token: string): Promise<string> {
+    const endpoint = 'https://laozi1.bandchain.org/grpc-web';
+    const client = new Client(endpoint);
+    const rate = await client.getReferenceData(
+        [Token],0,0
+      ); 
+    return rate[0].rate.toString();
   }
 
-  async getMimPriceFromPancakeswap(): Promise<string> {
-    const ready = await this.provider.ready;
-    if (!ready) return;
-    const croPrice = await this.getCroPriceFromPancakeswap();
-    const { MIM, WCRO } = this.externalTokens;
-    try {
-      const busd_eth_lp_pair = this.externalTokens['MIM-WCRO-LP'];
-      let eth_amount_BN = await WCRO.balanceOf(busd_eth_lp_pair.address);
-      let eth_amount = Number(getFullDisplayBalance(eth_amount_BN, WCRO.decimal));
-      let busd_amount_BN = await MIM.balanceOf(busd_eth_lp_pair.address);
-      let busd_amount = Number(getFullDisplayBalance(busd_amount_BN, MIM.decimal));
-      return (busd_amount / eth_amount / Number(croPrice)).toString();
-    } catch (err) {
-      console.error(`Failed to fetch token price of ETH: ${err}`);
-    }
-  }
+  // async getCroPriceFromPancakeswap(): Promise<string> {
+  //   const ready = await this.provider.ready;
+  //   if (!ready) return;
+  //   const { WCRO, USDC } = this.externalTokens;
+  //   try {
+  //     const busd_eth_lp_pair = this.externalTokens['USDC-WCRO-LP'];
+  //     let eth_amount_BN = await WCRO.balanceOf(busd_eth_lp_pair.address);
+  //     let eth_amount = Number(getFullDisplayBalance(eth_amount_BN, WCRO.decimal));
+  //     let busd_amount_BN = await USDC.balanceOf(busd_eth_lp_pair.address);
+  //     let busd_amount = Number(getFullDisplayBalance(busd_amount_BN, USDC.decimal));
+  //     return (busd_amount / eth_amount).toString();
+  //   } catch (err) {
+  //     console.error(`Failed to fetch token price of ${WCRO.symbol}: ${err}`);
+  //   }
+  // }
+
+  // async getMimPriceFromPancakeswap(): Promise<string> {
+  //   const ready = await this.provider.ready;
+  //   if (!ready) return;
+  //   const croPrice = await this.getCroPriceFromPancakeswap();
+  //   const { MIM, WCRO } = this.externalTokens;
+  //   try {
+  //     const busd_eth_lp_pair = this.externalTokens['MIM-WCRO-LP'];
+  //     let eth_amount_BN = await WCRO.balanceOf(busd_eth_lp_pair.address);
+  //     let eth_amount = Number(getFullDisplayBalance(eth_amount_BN, WCRO.decimal));
+  //     let busd_amount_BN = await MIM.balanceOf(busd_eth_lp_pair.address);
+  //     let busd_amount = Number(getFullDisplayBalance(busd_amount_BN, MIM.decimal));
+  //     return (busd_amount / eth_amount / Number(croPrice)).toString();
+  //   } catch (err) {
+  //     console.error(`Failed to fetch token price of ETH: ${err}`);
+  //   }
+  // }
 
   async getMmfPriceFromPancakeswap(): Promise<string> {
     const ready = await this.provider.ready;
@@ -834,7 +859,7 @@ export class TombFinance {
       let busd_amount = Number(getFullDisplayBalance(busd_amount_BN, USDC.decimal));
       return (busd_amount / eth_amount).toString();
     } catch (err) {
-      console.error(`Failed to fetch token price of ETH: ${err}`);
+      console.error(`Failed to fetch token price of ${MMF.symbol}: ${err}`);
     }
   }
 
@@ -862,7 +887,7 @@ export class TombFinance {
         return await pool.pendingShare(poolId, account);
       }
     } catch (err) {
-      console.error(`Failed to call earned() on pool ${pool.address}: ${err.stack}`);
+      console.error(`Failed to call earned() on pool ${pool.address}: ${err}`);
       return BigNumber.from(0);
     }
   }
@@ -873,7 +898,7 @@ export class TombFinance {
       let userInfo = await pool.userInfo(poolId, account);
       return await userInfo.amount;
     } catch (err) {
-      console.error(`Failed to call balanceOf() on pool ${pool.address}: ${err.stack}`);
+      console.error(`Failed to call balanceOf() on pool ${pool.address}: ${err}`);
       return BigNumber.from(0);
     }
   }
@@ -944,7 +969,7 @@ export class TombFinance {
     if (!ready) return;
     const { chainId } = this.config;
     const { USDC } = this.config.externalTokens;
-
+    
     const wftm = baseToken || new Token(chainId, USDC[0], USDC[1]);
     const token = new Token(chainId, tokenContract.address, tokenContract.decimal, tokenContract.symbol);
     try {
@@ -1300,11 +1325,12 @@ export class TombFinance {
       estimate = await zapper.estimateZapIn(lpToken.address, SPOOKY_ROUTER_ADDR, parseUnits(amount, 18));
     } else {*/
     const token = tokenName === TOMB_TICKER ? this.TOMB : tokenName === TSHARE_TICKER ? this.TSHARE : this.FTM;
+    const decimals = tokenName === TOMB_TICKER ||  tokenName === TSHARE_TICKER ? 18 : 6 
     estimate = await zapper.estimateZapInToken(
       token.address,
       lpToken.address,
       SPOOKY_ROUTER_ADDR,
-      parseUnits(amount, 18),
+      parseUnits(amount, decimals),
     );
     /*}*/
     return [estimate[0] / 1e18, estimate[1] / 1e18];

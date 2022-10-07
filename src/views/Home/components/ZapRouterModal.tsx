@@ -26,7 +26,7 @@ interface ZapProps extends ModalProps {
 }
 
 const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', decimals = 18 }) => {
-  console.log("debug "+tokenName)
+  console.log("debug ZapRouterModal"+tokenName);
   const tombFinance = useTombFinance();
   // const { balance } = useWallet();
   // const ftmBalance = (Number(balance) / 1e18).toFixed(4).toString();
@@ -35,6 +35,7 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
   const tombBalance = useTokenBalance(tombFinance.TOMB);
   const tshareBalance = useTokenBalance(tombFinance.TSHARE);
   const [val, setVal] = useState('');
+  const [ftmVal, setFtmVal] = useState(''); 
   const [zappingToken, setZappingToken] = useState((tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER));
   const [zappingFtmToken, setZappingFtmToken] = useState(FTM_TICKER);
   const [zappingTokenBalance, setZappingTokenBalance] = useState(getDisplayBalance((tokenName.startsWith(TOMB_TICKER) ? tombBalance : tshareBalance), decimals));
@@ -87,13 +88,31 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
     }
     if (!isNumeric(e.currentTarget.value)) return;
     setVal(e.currentTarget.value);
+    const estimateZap = await tombFinance.estimateZapIn(zappingToken, tokenName, String(Number(e.currentTarget.value)*2));
+    setEstimate({ token0: estimateZap[0].toString(), token1: estimateZap[1].toString() });
+    setFtmVal(estimateZap[0].toString());
+  };
+
+  const handleFtmChange = async (e: any) => {
+    if (e.currentTarget.value === '' || e.currentTarget.value === 0) {
+      setVal(e.currentTarget.value);
+      setEstimate({ token0: '0', token1: '0' });
+    }
+    if (!isNumeric(e.currentTarget.value)) return;
+    setVal(e.currentTarget.value);
+    setFtmVal(e.currentTarget.value);
     const estimateZap = await tombFinance.estimateZapIn(zappingToken, tokenName, String(e.currentTarget.value));
     setEstimate({ token0: estimateZap[0].toString(), token1: estimateZap[1].toString() });
   };
 
   const handleSelectMax = async () => {
     setVal(zappingTokenBalance);
-    const estimateZap = await tombFinance.estimateZapIn(zappingToken, tokenName, String(zappingTokenBalance));
+    const estimateZap = await tombFinance.estimateZapIn(zappingToken, tokenName, String(Number(zappingTokenBalance)*2));
+    setEstimate({ token0: estimateZap[0].toString(), token1: estimateZap[1].toString() });
+  };
+  const handleSelectFtmMax = async () => {
+    setFtmVal(zappingFtmTokenBalance);
+    const estimateZap = await tombFinance.estimateZapIn(zappingFtmToken, tokenName, String(zappingFtmTokenBalance));
     setEstimate({ token0: estimateZap[0].toString(), token1: estimateZap[1].toString() });
   };
 
@@ -112,9 +131,9 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
       <StyledActionSpacer />
 
       <TokenInput
-        onSelectMax={handleSelectMax}
-        onChange={handleChange}
-        value={val}
+        onSelectMax={handleSelectFtmMax}
+        onChange={handleFtmChange}
+        value={ftmVal}
         max={zappingFtmTokenBalance}
         symbol={zappingFtmToken}
       />

@@ -121,7 +121,7 @@ const Home = () => {
   const tShareStats = usetShareStats();
   const tBondStats = useBondStats();
   const tombFinance = useTombFinance();
-  const { price: JOEPrice, marketCap: JOEMarketCap, priceChange: JOEPriceChange } = useFantomPrice();
+  // const { price: JOEPrice, marketCap: JOEMarketCap, priceChange: JOEPriceChange } = useFantomPrice();
 
   // const [banks] = useBanks();
   // const activeBanks = banks.filter((bank) => !bank.finished);
