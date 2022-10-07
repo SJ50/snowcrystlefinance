@@ -6,7 +6,7 @@ WORKDIR /app
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
 # Install Python and Git
-RUN apk --no-cache add --virtual .builds-deps build-base libgudev shadow libusb libusb-dev eudev-dev python3 && \
+RUN apk --no-cache add --virtual .builds-deps build-base python3 && \
     apk update && apk upgrade && \
     apk add --no-cache bash git openssh 
 # install app dependencies
