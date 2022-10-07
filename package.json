@@ -52,7 +52,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "react-scripts start",
+    "dev": "bash ./build.sh && react-scripts start",
     "build": "bash ./build.sh && CI= GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
