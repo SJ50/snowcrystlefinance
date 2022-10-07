@@ -12,8 +12,8 @@ RUN apk --no-cache add --virtual .builds-deps build-base python3 && \
 # install app dependencies
 COPY package.json ./
 COPY yarn.lock ./
-RUN yarn install --immutable --immutable-cache --check-cache --network-timeout 500000 && \
-    yarn add react-scripts@3.4.1 -g 
+RUN yarn install --immutable --immutable-cache --check-cache --silent --network-timeout 500000 && \
+    yarn add react-scripts@3.4.1 --silent
 
 # add app
 COPY . ./
