@@ -163,6 +163,17 @@ const ZapRouterModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = 
         ({Number(estimate.token0)} {FTM_TICKER} / {Number(estimate.token1)}{' '}
         {tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER}){' '}
       </StyledDescriptionText>
+        {Number(val) > Number(zappingTokenBalance) && <StyledActionSpacer /> }
+        {Number(val) > Number(zappingTokenBalance) && <Alert variant="filled" severity="error"  >
+        {' '} 
+        {(Number(val) > Number(zappingTokenBalance) ? 'Insufficient ' + (tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER) : '')}{' '}  
+        </Alert>}
+        {Number(ftmVal) > Number(zappingFtmTokenBalance) && <StyledActionSpacer /> }
+        {Number(ftmVal) > Number(zappingFtmTokenBalance) && <Alert variant="filled" severity="error" >
+        {' '} 
+        {(Number(ftmVal) > Number(zappingFtmTokenBalance) ? 'Insufficient ' + FTM_TICKER :'')}{' '}
+        </Alert>}
+    
       <ModalActions>
         <Button
           color="primary"
