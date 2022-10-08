@@ -27,7 +27,7 @@ import Label from '../../components/Label';
 // import useBanks from '../../hooks/useBanks';
 import useBank from '../../hooks/useBank';
 import useModal from '../../hooks/useModal';
-import zapRouterModal from './components/ZapRouterModal';
+import ZapRouterModal from './components/ZapRouterModal';
 import useZap from '../../hooks/useZap';
 
 const BackgroundImage = createGlobalStyle`
@@ -131,7 +131,7 @@ const Home = () => {
   const { onTombZap } = useZap(tombBank);
   const { onTshareZap } = useZap(tShareBank);
   const [onPresentTombZap, onDissmissTombZap] = useModal(
-    <zapRouterModal
+    <ZapRouterModal
       decimals={tombBank.depositToken.decimal}
       onConfirm={(zappingToken, tokenName, amount) => {
         if (Number(amount) <= 0 || isNaN(Number(amount))) return;
@@ -142,7 +142,7 @@ const Home = () => {
     />,
   );
   const [onPresentTshareZap, onDissmissTshareZap] = useModal(
-    <zapRouterModal
+    <ZapRouterModal
       decimals={tShareBank.depositToken.decimal}
       onConfirm={(zappingToken, tokenName, amount) => {
         if (Number(amount) <= 0 || isNaN(Number(amount))) return;

@@ -18,6 +18,8 @@ import useApproveZapper, { ApprovalState } from '../../../hooks/useApproveZapper
 import { TOMB_TICKER, TSHARE_TICKER, FTM_TICKER } from '../../../utils/constants';
 import { Alert } from '@material-ui/lab';
 // import { isCommunityResourcable } from '@ethersproject/providers';
+import useTombStats from '../../../hooks/useTombStats';
+import usetShareStats from '../../../hooks/usetShareStats';
 
 interface ZapProps extends ModalProps {
   onConfirm: (zapAsset: string, lpName: string, amount: string) => void;
@@ -25,7 +27,7 @@ interface ZapProps extends ModalProps {
   decimals?: number;
 }
 
-const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', decimals = 18 }) => {
+const ZapRouterModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', decimals = 18 }) => {
   const tombFinance = useTombFinance();
   // const { balance } = useWallet();
   // const ftmBalance = (Number(balance) / 1e18).toFixed(4).toString();
@@ -34,6 +36,11 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
   const tshareBalance = useTokenBalance(tombFinance.TSHARE);
   const tombStats = useTombStats();
   const tShareStats = usetShareStats();
+  const tombPriceInFTM = useMemo(() => (tombStats ? Number(tombStats.tokenInFtm).toFixed(6) : null), [tombStats]);
+  const tSharePriceInFTM = useMemo(
+    () => (tShareStats ? Number(tShareStats.tokenInFtm).toFixed(6) : null),
+    [tShareStats],
+  );
   const [val, setVal] = useState('');
   const [ftmVal, setFtmVal] = useState(''); 
   const [zappingToken, setZappingToken] = useState((tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER));
@@ -84,36 +91,45 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
   const handleChange = async (e: any) => {
     if (e.currentTarget.value === '' || e.currentTarget.value === 0) {
       setVal(e.currentTarget.value);
+      setFtmVal(e.currentTarget.value);
       setEstimate({ token0: '0', token1: '0' });
     }
     if (!isNumeric(e.currentTarget.value)) return;
     setVal(e.currentTarget.value);
-    const estimateZap = await tombFinance.estimateZapIn(zappingToken, tokenName, String(Number(e.currentTarget.value)*2));
-    setEstimate({ token0: estimateZap[0].toString(), token1: estimateZap[1].toString() });
-    setFtmVal(estimateZap[0].toString());
+    const ftmVal = Number(e.currentTarget.value)*Number(tokenName.startsWith(TOMB_TICKER) ? tombPriceInFTM : tSharePriceInFTM);
+    setFtmVal(ftmVal.toString());
+    // const estimateZap = await tombFinance.estimateZapIn(zappingToken, tokenName, String(Number(e.currentTarget.value)*2));
+    setEstimate({ token0: ftmVal.toString(), token1: e.currentTarget.value.toString() });
+    
   };
 
   const handleFtmChange = async (e: any) => {
     if (e.currentTarget.value === '' || e.currentTarget.value === 0) {
       setVal(e.currentTarget.value);
+      setFtmVal(e.currentTarget.value);
       setEstimate({ token0: '0', token1: '0' });
     }
     if (!isNumeric(e.currentTarget.value)) return;
-    setVal(e.currentTarget.value);
     setFtmVal(e.currentTarget.value);
-    const estimateZap = await tombFinance.estimateZapIn(zappingToken, tokenName, String(e.currentTarget.value));
-    setEstimate({ token0: estimateZap[0].toString(), token1: estimateZap[1].toString() });
+    const tokenVal = Number(e.currentTarget.value)/Number(tokenName.startsWith(TOMB_TICKER) ? tombPriceInFTM : tSharePriceInFTM);
+    setVal(tokenVal.toString());
+    // const estimateZap = await tombFinance.estimateZapIn(zappingToken, tokenName, String(e.currentTarget.value));
+    setEstimate({ token0: e.currentTarget.value.toString() , token1: tokenVal.toString()});
   };
 
   const handleSelectMax = async () => {
     setVal(zappingTokenBalance);
-    const estimateZap = await tombFinance.estimateZapIn(zappingToken, tokenName, String(Number(zappingTokenBalance)*2));
-    setEstimate({ token0: estimateZap[0].toString(), token1: estimateZap[1].toString() });
+    const ftmVal = Number(zappingTokenBalance)*Number(tokenName.startsWith(TOMB_TICKER) ? tombPriceInFTM : tSharePriceInFTM);
+    setFtmVal(ftmVal.toString());
+    // const estimateZap = await tombFinance.estimateZapIn(zappingToken, tokenName, String(Number(zappingTokenBalance)*2));
+    setEstimate({ token0: ftmVal.toString(), token1: zappingFtmTokenBalance.toString() });
   };
   const handleSelectFtmMax = async () => {
     setFtmVal(zappingFtmTokenBalance);
-    const estimateZap = await tombFinance.estimateZapIn(zappingFtmToken, tokenName, String(zappingFtmTokenBalance));
-    setEstimate({ token0: estimateZap[0].toString(), token1: estimateZap[1].toString() });
+    const tokenVal = Number(zappingFtmTokenBalance)/Number(tokenName.startsWith(TOMB_TICKER) ? tombPriceInFTM : tSharePriceInFTM);
+    setVal(tokenVal.toString());
+    // const estimateZap = await tombFinance.estimateZapIn(zappingFtmToken, tokenName, String(zappingFtmTokenBalance));
+    setEstimate({ token0: zappingFtmTokenBalance.toString(), token1: tokenVal.toString() });
   };
 
   return (
@@ -195,4 +211,4 @@ const StyledMenuItem = withStyles({
   },
 })(MenuItem);
 
-export default ZapModal;
+export default ZapRouterModal;
