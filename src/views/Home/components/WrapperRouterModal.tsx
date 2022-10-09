@@ -14,7 +14,8 @@ import useLpStats from '../../../hooks/useLpStats';
 import useTokenBalance from '../../../hooks/useTokenBalance';
 import useTombFinance from '../../../hooks/useTombFinance';
 // import { useWallet } from 'use-wallet';
-import useApproveZapper, { ApprovalState } from '../../../hooks/useApproveZapper';
+import useApproveWapper, { ApprovalState } from '../../../hooks/useApproveWrapperRouter';
+import useApproveFtmWapper, { ApprovalState as ApprovalFtmState } from '../../../hooks/useApproveWrapperRouter';
 import { TOMB_TICKER, TSHARE_TICKER, FTM_TICKER } from '../../../utils/constants';
 import { Alert } from '@material-ui/lab';
 // import { isCommunityResourcable } from '@ethersproject/providers';
@@ -58,7 +59,8 @@ const ZapRouterModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = 
     }
   }, [ftmBalanceVal]);
   const [estimate, setEstimate] = useState({ token0: '0', token1: '0' }); // token0 will always be FTM in this case
-  const [approveZapperStatus, approveZapper] = useApproveZapper(zappingToken);
+  const [approveZapperStatus, approveZapper] = useApproveWapper(zappingToken);
+  const [approveFtmZapperStatus, approveFtmZapper] = useApproveFtmWapper(zappingFtmToken);
   const tombFtmLpStats = useLpStats('SNOW-USDC-LP');
   const tShareFtmLpStats = useLpStats('GLCR-USDC-LP');
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
@@ -72,21 +74,21 @@ const ZapRouterModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = 
   function isNumeric(n: any) {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
-  const handleChangeAsset = (event: any) => {
-    const value = event.target.value;
-    setZappingToken(value);
+  // const handleChangeAsset = (event: any) => {
+  //   const value = event.target.value;
+  //   setZappingToken(value);
 
-    if (event.target.value === TSHARE_TICKER) {
-      setZappingTokenBalance(getDisplayBalance(tshareBalance, decimals));
-    }
-    if (event.target.value === TOMB_TICKER) {
-      setZappingTokenBalance(getDisplayBalance(tombBalance, decimals));
-    }
+  //   if (event.target.value === TSHARE_TICKER) {
+  //     setZappingTokenBalance(getDisplayBalance(tshareBalance, decimals));
+  //   }
+  //   if (event.target.value === TOMB_TICKER) {
+  //     setZappingTokenBalance(getDisplayBalance(tombBalance, decimals));
+  //   }
 
-    if (event.target.value === FTM_TICKER) {
-      setZappingTokenBalance(getDisplayBalance(ftmBalanceVal, 6));
-    }
-  };
+  //   if (event.target.value === FTM_TICKER) {
+  //     setZappingTokenBalance(getDisplayBalance(ftmBalanceVal, 6));
+  //   }
+  // };
 
   const handleChange = async (e: any) => {
     if (e.currentTarget.value === '' || e.currentTarget.value === 0) {
@@ -179,10 +181,11 @@ const ZapRouterModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = 
           color="primary"
           variant="contained"
           onClick={() =>
-            approveZapperStatus !== ApprovalState.APPROVED ? approveZapper() : onConfirm(zappingToken, tokenName, val)
+            approveZapperStatus !== ApprovalState.APPROVED ? approveZapper() : approveFtmZapperStatus !== ApprovalFtmState.APPROVED ? approveFtmZapper() : onConfirm(zappingToken, tokenName, val)
           }
         >
-          {approveZapperStatus !== ApprovalState.APPROVED ? 'Approve' : 'Zap'}
+          {approveZapperStatus !== ApprovalState.APPROVED ? 'Approve ' + (tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER) : approveFtmZapperStatus !== ApprovalFtmState.APPROVED ? 'Approve ' +FTM_TICKER :'Add Liquidity'}
+
         </Button>
       </ModalActions>
 
