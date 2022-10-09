@@ -31,7 +31,6 @@ import useModal from '../../hooks/useModal';
 import WrapperRouterModal from './components/WrapperRouterModal';
 import useWrapperRouter from '../../hooks/useWrapperRouter';
 import { TOMB_TICKER, TSHARE_TICKER, FTM_TICKER } from '../../utils/constants';
-import useAsyncState from '../../hooks/useAsyncState.js';
 
 const BackgroundImage = createGlobalStyle`
   body {
