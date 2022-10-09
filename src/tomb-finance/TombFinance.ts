@@ -1361,6 +1361,31 @@ export class TombFinance {
     );
     /*}*/
   }
+  async addLiquidity(tokenName: string, amount: string, ftmAmount: string): Promise<TransactionResponse> {
+    const { wrapperRouter } = this.contracts; 
+    const token =
+      tokenName === TOMB_TICKER
+        ? this.TOMB
+        : tokenName === TSHARE_TICKER
+        ? this.TSHARE
+        : null;
+    const ftmToken = this.FTM;
+    const minAmount = (Number(amount) * 0.995).toString(); 
+    const minFtmAmount = (Number(ftmAmount) * 0.995).toString();
+    const currentBlockNumber = await this.provider.getBlockNumber(); 
+    const currentBlockTimeStamp = (await this.provider.getBlock(currentBlockNumber)).timestamp;
+    return await wrapperRouter.addLiquidity(
+      token.address,
+      ftmToken.address,
+      parseUnits(amount, token.decimal),
+      parseUnits(ftmAmount, ftmToken.decimal), 
+      parseUnits(minAmount, token.decimal),
+      parseUnits(minFtmAmount, ftmToken.decimal), 
+      this.myAccount,
+      currentBlockTimeStamp + 60
+    );
+ 
+  }
   async swapTBondToTShare(tbondAmount: BigNumber): Promise<TransactionResponse> {
     const { TShareSwapper } = this.contracts;
     return await TShareSwapper.swapTBondToTShare(tbondAmount);

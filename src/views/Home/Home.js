@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+// import { useSetState } from 'react-use';
 import Page from '../../components/Page';
 import styled from 'styled-components';
 import HomeImage from '../../assets/img/SVG_Icons_and_web_bg/bg.svg';
@@ -28,7 +29,9 @@ import Label from '../../components/Label';
 import useBank from '../../hooks/useBank';
 import useModal from '../../hooks/useModal';
 import WrapperRouterModal from './components/WrapperRouterModal';
-import useZap from '../../hooks/useZap';
+import useWrapperRouter from '../../hooks/useWrapperRouter';
+import { TOMB_TICKER, TSHARE_TICKER, FTM_TICKER } from '../../utils/constants';
+import useAsyncState from '../../hooks/useAsyncState.js';
 
 const BackgroundImage = createGlobalStyle`
   body {
@@ -128,14 +131,22 @@ const Home = () => {
   const tombBank = useBank('SnowUsdcLPGlcrRewardPool');
   const tShareBank = useBank('GlcrUsdcLPGlcrRewardPool');
 
-  const { onTombZap } = useZap(tombBank);
-  const { onTshareZap } = useZap(tShareBank);
+  const [liquidityToken, setLiquidityToken] = useState(TOMB_TICKER);
+  const [ltAmount, setltAmount] = useState('0');
+  const [fmtltAmount, setftmltAmount] = useState('0');
+
+  const { onAddLiquidity } = useWrapperRouter(
+    liquidityToken === TOMB_TICKER ? tombBank : liquidityToken === TSHARE_TICKER ? tShareBank : null,
+  );
+
+  // const { onTshareZap } = useWrapperRouter(tShareBank);
   const [onPresentTombZap, onDissmissTombZap] = useModal(
     <WrapperRouterModal
       decimals={tombBank.depositToken.decimal}
-      onConfirm={(zappingToken, tokenName, amount) => {
-        if (Number(amount) <= 0 || isNaN(Number(amount))) return;
-        onTombZap(zappingToken, tokenName, amount);
+      onConfirm={(zappingToken, amount, ftmAmount) => {
+        if (Number(amount) <= 0 || isNaN(Number(amount)) || Number(ftmAmount) <= 0 || isNaN(Number(ftmAmount))) return;
+        setLiquidityToken(zappingToken);
+        onAddLiquidity(zappingToken, amount, ftmAmount);
         onDissmissTombZap();
       }}
       tokenName={tombBank.depositTokenName}
@@ -144,9 +155,10 @@ const Home = () => {
   const [onPresentTshareZap, onDissmissTshareZap] = useModal(
     <WrapperRouterModal
       decimals={tShareBank.depositToken.decimal}
-      onConfirm={(zappingToken, tokenName, amount) => {
-        if (Number(amount) <= 0 || isNaN(Number(amount))) return;
-        onTshareZap(zappingToken, tokenName, amount);
+      onConfirm={(zappingToken, amount, ftmAmount) => {
+        if (Number(amount) <= 0 || isNaN(Number(amount)) || Number(ftmAmount) <= 0 || isNaN(Number(ftmAmount))) return;
+        setLiquidityToken(zappingToken);
+        onAddLiquidity(zappingToken, amount, ftmAmount);
         onDissmissTshareZap();
       }}
       tokenName={tShareBank.depositTokenName}
