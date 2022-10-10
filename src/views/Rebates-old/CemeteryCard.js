@@ -24,7 +24,6 @@ const CemeteryCard = ({ bank }) => {
   const { onBond } = useRebates();
   const tombFinance = useTombFinance();
   const classes = useStyles();
-  console.log('debug rebate ' + bank.depositTokenName);
   const rebateStats = useRebateTreasury();
 
   const [approveStatus, approve] = useApprove(

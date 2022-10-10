@@ -44,7 +44,6 @@ function useApproveWapper(zappingToken: string): [ApprovalState, () => Promise<v
   const addTransaction = useTransactionAdder();
 
   const approve = useCallback(async (): Promise<void> => {
-    console.log("debug use approve warapper router " + zappingToken);
     if (approvalState !== ApprovalState.NOT_APPROVED) {
       console.error('approve was called unnecessarily');
       return;

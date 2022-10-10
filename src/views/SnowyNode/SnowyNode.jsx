@@ -36,7 +36,6 @@ const SnowyNode = () => {
   const bank = useBank(bankId);
   const { getNodeText } = useNodeText();
   const { account } = useWallet();
-  console.log(bank);
   const stakedTokenPriceInDollars = useStakedTokenPriceInDollars(bank.depositTokenName, bank.depositToken);
 
   const classes = useStyles();
