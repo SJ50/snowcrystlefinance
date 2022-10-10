@@ -1370,10 +1370,11 @@ export class TombFinance {
         ? this.TSHARE
         : null;
     const ftmToken = this.FTM;
-    const minAmount = (Number(amount) * 0.995).toString(); 
-    const minFtmAmount = (Number(ftmAmount) * 0.995).toString();
+    const minAmount = (Number(amount) * 0.995).toFixed(token.decimal).toString(); 
+    const minFtmAmount = (Number(ftmAmount) * 0.995).toFixed(ftmToken.decimal).toString();
     const currentBlockNumber = await this.provider.getBlockNumber(); 
     const currentBlockTimeStamp = (await this.provider.getBlock(currentBlockNumber)).timestamp;
+
     return await wrapperRouter.addLiquidity(
       token.address,
       ftmToken.address,

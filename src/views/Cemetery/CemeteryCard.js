@@ -9,6 +9,10 @@ import useBank from '../../hooks/useBank';
 import useStatsForPool from '../../hooks/useStatsForPool';
 // import useCashStat from '../../hooks/useCashPriceInEstimatedTWAP.ts';
 
+import useModal from '../../hooks/useModal';
+import WrapperRouterModal from '../Bank/components/WrapperRouterModal';
+import useWrapperRouter from '../../hooks/useWrapperRouter';
+
 const CemeteryCard = () => {
   const tombFtmLpStats = useLpStats('SNOW-USDC-LP');
   const tShareFtmLpStats = useLpStats('GLCR-USDC-LP');
@@ -21,6 +25,34 @@ const CemeteryCard = () => {
 
   const tShareBank = useBank('GlcrUsdcLPGlcrRewardPool');
   const tShareStatsOnPool = useStatsForPool(tShareBank);
+
+  const { onAddTombLiquidity } = useWrapperRouter(tombBank);
+  const { onAddTshareLiquidity } = useWrapperRouter(tShareBank);
+
+  const [onPresentTombZap, onDissmissTombZap] = useModal(
+    <WrapperRouterModal
+      decimals={tombBank.depositToken.decimal}
+      onConfirm={(zappingToken, amount, ftmAmount, lpAmount) => {
+        if (Number(amount) <= 0 || isNaN(Number(amount)) || Number(ftmAmount) <= 0 || isNaN(Number(ftmAmount))) return;
+        // setLiquidityToken(zappingToken);
+        onAddTombLiquidity(zappingToken, amount, ftmAmount, lpAmount);
+        onDissmissTombZap();
+      }}
+      tokenName={tombBank.depositTokenName}
+    />,
+  );
+  const [onPresentTshareZap, onDissmissTshareZap] = useModal(
+    <WrapperRouterModal
+      decimals={tShareBank.depositToken.decimal}
+      onConfirm={(zappingToken, amount, ftmAmount, lpAmount) => {
+        if (Number(amount) <= 0 || isNaN(Number(amount)) || Number(ftmAmount) <= 0 || isNaN(Number(ftmAmount))) return;
+        // setLiquidityToken(zappingToken);
+        onAddTshareLiquidity(zappingToken, amount, ftmAmount, lpAmount);
+        onDissmissTshareZap();
+      }}
+      tokenName={tShareBank.depositTokenName}
+    />,
+  );
 
   // const snoSnoShareLPStats = useMemo(() => (snoSnoShareLpStats ? snoSnoShareLpStats : null), [snoSnoShareLpStats]);
   // const snoPrice = useCashStat();
@@ -68,10 +100,10 @@ const CemeteryCard = () => {
             </Button>
             <Button
               color="primary"
-              target="_blank"
               style={{ width: '150px', height: '45px', marginBottom: '5%' }}
               variant="contained"
-              href="https://mm.finance/add/0x39D8fa99c9964D456b9fbD5e059e63442F314121/0x4eeA14405B658EaDBD981f2540691F1b9F86aB48#/"
+              disabled={tombBank.closedForStaking}
+              onClick={() => (tombBank.closedForStaking ? null : onPresentTshareZap())}
             >
               Add Liquidity
             </Button>
@@ -121,10 +153,10 @@ const CemeteryCard = () => {
             </Button>
             <Button
               color="primary"
-              target="_blank"
               style={{ width: '150px', height: '45px', marginBottom: '5%' }}
               variant="contained"
-              href="https://mm.finance/add/0x39D8fa99c9964D456b9fbD5e059e63442F314121/0x3522270A766657096ba25B7e3251b57aEB1d4dB1#/"
+              disabled={tombBank.closedForStaking}
+              onClick={() => (tombBank.closedForStaking ? null : onPresentTshareZap())}
             >
               Add Liquidity
             </Button>

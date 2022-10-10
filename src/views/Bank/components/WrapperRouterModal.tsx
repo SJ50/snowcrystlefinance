@@ -23,7 +23,7 @@ import useTombStats from '../../../hooks/useTombStats';
 import usetShareStats from '../../../hooks/usetShareStats';
 
 interface ZapProps extends ModalProps {
-  onConfirm: (zapAsset: string, amount: string, ftmAmount: string) => void;
+  onConfirm: (zapAsset: string, amount: string, ftmAmount: string, lpAmount: string) => void;
   tokenName?: string;
   decimals?: number;
 }
@@ -182,7 +182,7 @@ const ZapRouterModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = 
           variant="contained"
           disabled={Number(val) > Number(zappingTokenBalance) || Number(ftmVal) > Number(zappingFtmTokenBalance)}
           onClick={() =>
-            approveZapperStatus !== ApprovalState.APPROVED ? approveZapper() : approveFtmZapperStatus !== ApprovalFtmState.APPROVED ? approveFtmZapper() : onConfirm(zappingToken, val, ftmVal)
+            approveZapperStatus !== ApprovalState.APPROVED ? approveZapper() : approveFtmZapperStatus !== ApprovalFtmState.APPROVED ? approveFtmZapper() : onConfirm(zappingToken, val, ftmVal,(Number(estimate.token1) / Number(ftmAmountPerLP)).toString())
           }
         >
           {approveZapperStatus !== ApprovalState.APPROVED ? 'Approve ' + (tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER) : approveFtmZapperStatus !== ApprovalFtmState.APPROVED ? 'Approve ' +FTM_TICKER :'Add Liquidity'}

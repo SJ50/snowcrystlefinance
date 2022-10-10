@@ -1,5 +1,5 @@
-import React, { useState, useMemo, useEffect } from 'react';
-// import { useSetState } from 'react-use';
+import React, { useMemo } from 'react';
+
 import Page from '../../components/Page';
 import styled from 'styled-components';
 import HomeImage from '../../assets/img/SVG_Icons_and_web_bg/bg.svg';
@@ -24,13 +24,10 @@ import useTombFinance from '../../hooks/useTombFinance';
 import useTokenBalance from '../../hooks/useTokenBalance';
 import { getDisplayBalance } from '../../utils/formatBalance';
 import Label from '../../components/Label';
-// bank
-// import useBanks from '../../hooks/useBanks';
 import useBank from '../../hooks/useBank';
 import useModal from '../../hooks/useModal';
-import WrapperRouterModal from './components/WrapperRouterModal';
+import WrapperRouterModal from '../Bank/components/WrapperRouterModal';
 import useWrapperRouter from '../../hooks/useWrapperRouter';
-import { TOMB_TICKER, TSHARE_TICKER, FTM_TICKER } from '../../utils/constants';
 
 const BackgroundImage = createGlobalStyle`
   body {
@@ -125,27 +122,18 @@ const Home = () => {
   const tombFinance = useTombFinance();
   // const { price: JOEPrice, marketCap: JOEMarketCap, priceChange: JOEPriceChange } = useFantomPrice();
 
-  // const [banks] = useBanks();
-  // const activeBanks = banks.filter((bank) => !bank.finished);
   const tombBank = useBank('SnowUsdcLPGlcrRewardPool');
   const tShareBank = useBank('GlcrUsdcLPGlcrRewardPool');
+  const { onAddTombLiquidity } = useWrapperRouter(tombBank);
+  const { onAddTshareLiquidity } = useWrapperRouter(tShareBank);
 
-  const [liquidityToken, setLiquidityToken] = useState(TOMB_TICKER);
-  const [ltAmount, setltAmount] = useState('0');
-  const [fmtltAmount, setftmltAmount] = useState('0');
-
-  const { onAddLiquidity } = useWrapperRouter(
-    liquidityToken === TOMB_TICKER ? tombBank : liquidityToken === TSHARE_TICKER ? tShareBank : null,
-  );
-
-  // const { onTshareZap } = useWrapperRouter(tShareBank);
   const [onPresentTombZap, onDissmissTombZap] = useModal(
     <WrapperRouterModal
       decimals={tombBank.depositToken.decimal}
-      onConfirm={(zappingToken, amount, ftmAmount) => {
+      onConfirm={(zappingToken, amount, ftmAmount, lpAmount) => {
         if (Number(amount) <= 0 || isNaN(Number(amount)) || Number(ftmAmount) <= 0 || isNaN(Number(ftmAmount))) return;
-        setLiquidityToken(zappingToken);
-        onAddLiquidity(zappingToken, amount, ftmAmount);
+        // setLiquidityToken(zappingToken);
+        onAddTombLiquidity(zappingToken, amount, ftmAmount, lpAmount);
         onDissmissTombZap();
       }}
       tokenName={tombBank.depositTokenName}
@@ -154,25 +142,15 @@ const Home = () => {
   const [onPresentTshareZap, onDissmissTshareZap] = useModal(
     <WrapperRouterModal
       decimals={tShareBank.depositToken.decimal}
-      onConfirm={(zappingToken, amount, ftmAmount) => {
+      onConfirm={(zappingToken, amount, ftmAmount, lpAmount) => {
         if (Number(amount) <= 0 || isNaN(Number(amount)) || Number(ftmAmount) <= 0 || isNaN(Number(ftmAmount))) return;
-        setLiquidityToken(zappingToken);
-        onAddLiquidity(zappingToken, amount, ftmAmount);
+        // setLiquidityToken(zappingToken);
+        onAddTshareLiquidity(zappingToken, amount, ftmAmount, lpAmount);
         onDissmissTshareZap();
       }}
       tokenName={tShareBank.depositTokenName}
     />,
   );
-
-  // let tomb;
-  // let tShare;
-  // if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-  //   tomb = tombTesting;
-  //   tShare = tShareTesting;
-  // } else {
-  //   tomb = tombProd;
-  //   tShare = tShareProd;
-  // }
 
   const buyTombAddress =
     'https://mm.finance/swap?inputCurrency=0x39D8fa99c9964D456b9fbD5e059e63442F314121&outputCurrency=0x4eeA14405B658EaDBD981f2540691F1b9F86aB48#/';
@@ -786,7 +764,7 @@ const Home = () => {
                   <Button
                     color="primary"
                     target="_blank"
-                    href={tbondContract}
+                    href={tombChart}
                     variant="contained"
                     style={{
                       marginTop: '10px',
@@ -797,7 +775,7 @@ const Home = () => {
                     }}
                     className={classes.button}
                   >
-                    Contract
+                    Chart
                   </Button>
                 </Row>
               </Box>
@@ -849,7 +827,7 @@ const Home = () => {
                   <Button
                     color="primary"
                     target="_blank"
-                    href={tbondContract}
+                    href={tshareChart}
                     variant="contained"
                     style={{
                       marginTop: '10px',
@@ -860,7 +838,7 @@ const Home = () => {
                     }}
                     className={classes.button}
                   >
-                    Contract
+                    Chart
                   </Button>
                 </Row>
               </Box>
