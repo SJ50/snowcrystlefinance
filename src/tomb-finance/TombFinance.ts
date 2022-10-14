@@ -33,7 +33,7 @@ import { /*config,*/ bankDefinitions } from '../config';
 import moment from 'moment';
 import { parseUnits } from 'ethers/lib/utils';
 import { FTM_TICKER, SPOOKY_ROUTER_ADDR, TOMB_TICKER, TSHARE_TICKER } from '../utils/constants';
-import { Client } from "@bandprotocol/bandchain.js";
+// import { Client } from "@bandprotocol/bandchain.js";
 import { debug } from 'console';
 // import { CompareArrowsOutlined } from '@material-ui/icons';
 // import { CompareArrowsOutlined, CompassCalibrationOutlined } from '@material-ui/icons';
@@ -650,23 +650,23 @@ export class TombFinance {
     
    
   async getUsdtStat(): Promise<TokenStat> {
-    const {dataFeedOracle} = this.contracts
-    // const [rate, rateInFtm] =
-    //   await Promise.all([
-    //     dataFeedOracle.getPrice("USDT","USD");
-    //     dataFeedOracle.getPrice("USDT","USDC")
-    //   ]);
-    // const rate = await dataFeedOracle.getPrice("USDT","USD")
-    const rate = await this.getBandChainData('USDT/USD');
-    const rateInFtm = await this.getBandChainData('USDT/USDC'); 
+    const {DataFeedOracle} = this.contracts
+    const [rate, rateInFtm] =
+      await Promise.all([
+        DataFeedOracle.getPrice("USDT","USD"),
+        DataFeedOracle.getPrice("USDC","USDC")
+      ]);
+      
+    // const rate = await this.getBandChainData('USDT/USD');
+    // const rateInFtm = await this.getBandChainData('USDT/USDC'); 
 
     // const { data } = await axios(
     //   'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=tether-avalanche-bridged-usdt-e',
     // );
    
     return {
-      tokenInFtm: rateInFtm,
-      priceInDollars: rate,
+      tokenInFtm: getDisplayBalance(rateInFtm,18,4),
+      priceInDollars: getDisplayBalance(rate,18,4),
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -675,12 +675,18 @@ export class TombFinance {
   }
 
   async getUsdcStat(): Promise<TokenStat> {
-    const rate = await this.getBandChainData('USDC/USD');
+    const {DataFeedOracle} = this.contracts
+    const [rate, rateInFtm] =
+      await Promise.all([
+        DataFeedOracle.getPrice("USDC","USD"),
+        DataFeedOracle.getPrice("USDC","USDC")
+      ]);
+    // const rate = await this.getBandChainData('USDC/USD');
     // const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=usd-coin');
-
+    
     return {
-      tokenInFtm: rate,
-      priceInDollars: rate,
+      tokenInFtm: getDisplayBalance(rateInFtm,18,4),
+      priceInDollars: getDisplayBalance(rate,18,4),
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -723,12 +729,18 @@ export class TombFinance {
   // }
 
   async getBtcStat(): Promise<TokenStat> {
-    const rate = await this.getBandChainData('BTC/USD'); 
-    const rateInFtm = await this.getBandChainData('BTC/USDC'); 
+    const {DataFeedOracle} = this.contracts
+    const [rate, rateInFtm] =
+      await Promise.all([
+        DataFeedOracle.getPrice("WBTC","USD"),
+        DataFeedOracle.getPrice("WBTC","USDC")
+      ]);
+    // const rate = await this.getBandChainData('BTC/USD'); 
+    // const rateInFtm = await this.getBandChainData('BTC/USDC'); 
     // const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin');
     return {
-      tokenInFtm: rateInFtm,
-      priceInDollars: rate,
+      tokenInFtm: getDisplayBalance(rateInFtm,18,4),
+      priceInDollars: getDisplayBalance(rate,18,4),
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -737,12 +749,18 @@ export class TombFinance {
   }
 
   async getEthStat(): Promise<TokenStat> {
-    const rate = await this.getBandChainData('ETH/USD');
-    const rateInFtm = await this.getBandChainData('ETH/USDC');
+    const {DataFeedOracle} = this.contracts
+    const [rate, rateInFtm] =
+      await Promise.all([
+        DataFeedOracle.getPrice("ETH","USD"),
+        DataFeedOracle.getPrice("ETH","USDC")
+      ]);
+    // const rate = await this.getBandChainData('ETH/USD');
+    // const rateInFtm = await this.getBandChainData('ETH/USDC');
     // const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=ethereum');
     return {
-      tokenInFtm: rateInFtm,
-      priceInDollars: rate,
+      tokenInFtm: getDisplayBalance(rateInFtm,18,4),
+      priceInDollars: getDisplayBalance(rate,18,4),
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -751,14 +769,20 @@ export class TombFinance {
   }
 
   async getDaiStat(): Promise<TokenStat> {
-    const rate = await this.getBandChainData('DAI/USD');
-    const rateInFtm = await this.getBandChainData('DAI/USDC'); 
+    const {DataFeedOracle} = this.contracts
+    const [rate, rateInFtm] =
+      await Promise.all([
+        DataFeedOracle.getPrice("DAI","USD"),
+        DataFeedOracle.getPrice("DAI","USDC")
+      ]);
+    // const rate = await this.getBandChainData('DAI/USD');
+    // const rateInFtm = await this.getBandChainData('DAI/USDC'); 
     // const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=dai');
     return {
       // tokenInFtm: data[0].current_price,
       // priceInDollars: data[0].current_price,
-      tokenInFtm: rateInFtm,
-      priceInDollars: rate,
+      tokenInFtm: getDisplayBalance(rateInFtm,18,4),
+      priceInDollars: getDisplayBalance(rate,18,4),
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -798,12 +822,18 @@ export class TombFinance {
   // }
 
   async getCroStat(): Promise<TokenStat> {
-    const rate = await this.getBandChainData('CRO/USD');
-    const rateInFtm = await this.getBandChainData('CRO/USDC');
+    const {DataFeedOracle} = this.contracts
+    const [rate, rateInFtm] =
+      await Promise.all([
+        DataFeedOracle.getPrice("CRO","USD"),
+        DataFeedOracle.getPrice("CRO","USDC")
+      ]);
+    // const rate = await this.getBandChainData('CRO/USD');
+    // const rateInFtm = await this.getBandChainData('CRO/USDC');
     // const priceInDollars = await this.getCroPriceFromPancakeswap();
     return {
-      tokenInFtm: rateInFtm,
-      priceInDollars: rate,
+      tokenInFtm: getDisplayBalance(rateInFtm,18,4),
+      priceInDollars: getDisplayBalance(rate,18,4),
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -811,14 +841,14 @@ export class TombFinance {
     };
   }
 
-  async getBandChainData(Token: string): Promise<string> {
-    const endpoint = 'https://laozi1.bandchain.org/grpc-web';
-    const client = new Client(endpoint);
-    const rate = await client.getReferenceData(
-        [Token],0,0
-      ); 
-    return rate[0].rate.toString();
-  }
+  // async getBandChainData(Token: string): Promise<string> {
+  //   const endpoint = 'https://laozi1.bandchain.org/grpc-web';
+  //   const client = new Client(endpoint);
+  //   const rate = await client.getReferenceData(
+  //       [Token],0,0
+  //     ); 
+  //   return rate[0].rate.toString();
+  // }
 
   // async getCroPriceFromPancakeswap(): Promise<string> {
   //   const ready = await this.provider.ready;

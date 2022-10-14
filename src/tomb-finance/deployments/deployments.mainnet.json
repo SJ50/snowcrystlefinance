@@ -1,6 +1,6 @@
 {
   "snow": {
-    "address": "0x4eeA14405B658EaDBD981f2540691F1b9F86aB48",
+    "address": "0x6075433fDDef9D3aB7573765839E13d906879bb8",
     "abi": [
       {
         "inputs": [
@@ -786,7 +786,7 @@
     ]
   },
   "sBond": {
-    "address": "0xb23d88891C8d977Ee717cEeb21F41A2Aa1c7Fea1",
+    "address": "0xAF7965bFCF95c101890838ebe669565484FDD385",
     "abi": [
       {
         "inputs": [
@@ -1278,7 +1278,7 @@
     ]
   },
   "glcr": {
-    "address": "0x3522270A766657096ba25B7e3251b57aEB1d4dB1",
+    "address": "0x2a1764f110D65310D05B534e968A587b415D3219",
     "abi": [
       {
         "inputs": [
@@ -1989,7 +1989,7 @@
     ]
   },
   "Masonry": {
-    "address": "0xf66ED1C4DEfa14890442CAF4CDef060e7F1F475f",
+    "address": "0x5899Cf6d4Fb8687070edd98f3968f549842E5579",
     "abi": [
       {
         "anonymous": false,
@@ -2566,7 +2566,7 @@
     ]
   },
   "Treasury": {
-    "address": "0x4E5D299e7414E8174A19914F56acf01A556d661f",
+    "address": "0xe10FbdeF85AfaBF8F77DC56363f5B72860B841c7",
     "abi": [
       {
         "anonymous": false,
@@ -3894,7 +3894,7 @@
     ]
   },
   "SeigniorageOracle": {
-    "address": "0xBfE9DfeC12f1C533ae5c12fA94619ea1D3Ed901e",
+    "address": "0xF35DeeEa85B7cE927B0D96ba1B4D424F4E9443D2",
     "abi": [
       {
         "inputs": [
@@ -4299,7 +4299,7 @@
     ]
   },
   "DataFeedOracle": {
-    "address": "0xBfE9DfeC12f1C533ae5c12fA94619ea1D3Ed901e",
+    "address": "0x6B556819CcC03EEb6cB6c69742481e7f2Ba58875",
     "abi": [
       {
         "inputs": [
@@ -7400,7 +7400,7 @@
     ]
   },
   "zapper": {
-    "address": "0xBFaA1207b7329FcfF52AeA3d387E5C84Cd6A03eA",
+    "address": "0x0684A259255c6c69562F29b461F8e8C6723feaB0",
     "abi": [
       {
         "inputs": [
@@ -7867,7 +7867,7 @@
     ]
   },
   "wrapperRouter": {
-    "address": "0x81EcE14109336a23c04cf6cA7Ff6A8DBaF4BB787",
+    "address": "0x533d849fd101cbBa6f5499113E9c00d5B069d244",
     "abi": [
       {
         "inputs": [
@@ -9664,7 +9664,7 @@
     ]
   },
   "GlcrRewardPool": {
-    "address": "0x0a626C54FC2F0593f90207b43856104e5A2B79CD",
+    "address": "0xA95434D60EA286C8C4fD8A6Ecb36f390E5fA0B07",
     "abi": [
       {
         "inputs": [
@@ -10281,7 +10281,7 @@
     ]
   },
   "SnowUsdcLPGlcrRewardPool": {
-    "address": "0x0a626C54FC2F0593f90207b43856104e5A2B79CD",
+    "address": "0xA95434D60EA286C8C4fD8A6Ecb36f390E5fA0B07",
     "abi": [
       {
         "inputs": [
@@ -10898,7 +10898,7 @@
     ]
   },
   "GlcrUsdcLPGlcrRewardPool": {
-    "address": "0x0a626C54FC2F0593f90207b43856104e5A2B79CD",
+    "address": "0xA95434D60EA286C8C4fD8A6Ecb36f390E5fA0B07",
     "abi": [
       {
         "inputs": [
@@ -11515,7 +11515,7 @@
     ]
   },
   "GenesisRewardPool": {
-    "address": "0x02787201691DE6973D12ce5CdD46Bd305808c6B3",
+    "address": "0xebbcdA5919939E5C519E10bC491A3a4b2ED8432B",
     "abi": [
       {
         "inputs": [
@@ -12055,7 +12055,7 @@
     ]
   },
   "SnowUsdcGenesisRewardPool": {
-    "address": "0x02787201691DE6973D12ce5CdD46Bd305808c6B3",
+    "address": "0xebbcdA5919939E5C519E10bC491A3a4b2ED8432B",
     "abi": [
       {
         "inputs": [
@@ -12595,7 +12595,7 @@
     ]
   },
   "SnowCroGenesisRewardPool": {
-    "address": "0x02787201691DE6973D12ce5CdD46Bd305808c6B3",
+    "address": "0xebbcdA5919939E5C519E10bC491A3a4b2ED8432B",
     "abi": [
       {
         "inputs": [
@@ -13135,7 +13135,7 @@
     ]
   },
   "SnowUsdtGenesisRewardPool": {
-    "address": "0x02787201691DE6973D12ce5CdD46Bd305808c6B3",
+    "address": "0xebbcdA5919939E5C519E10bC491A3a4b2ED8432B",
     "abi": [
       {
         "inputs": [
@@ -13675,7 +13675,7 @@
     ]
   },
   "SnowDaiGenesisRewardPool": {
-    "address": "0x02787201691DE6973D12ce5CdD46Bd305808c6B3",
+    "address": "0xebbcdA5919939E5C519E10bC491A3a4b2ED8432B",
     "abi": [
       {
         "inputs": [
@@ -14215,7 +14215,7 @@
     ]
   },
   "SnowEthGenesisRewardPool": {
-    "address": "0x02787201691DE6973D12ce5CdD46Bd305808c6B3",
+    "address": "0xebbcdA5919939E5C519E10bC491A3a4b2ED8432B",
     "abi": [
       {
         "inputs": [
@@ -14755,7 +14755,7 @@
     ]
   },
   "SnowBtcGenesisRewardPool": {
-    "address": "0x02787201691DE6973D12ce5CdD46Bd305808c6B3",
+    "address": "0xebbcdA5919939E5C519E10bC491A3a4b2ED8432B",
     "abi": [
       {
         "inputs": [
@@ -15295,7 +15295,7 @@
     ]
   },
   "RebateTreasury": {
-    "address": "0xf260a27E5968713e7D655D7Aa2d7c71C12c0c0d1",
+    "address": "0xAd19C98F1Ea75Fb0AA8B5B6797b1f12ff3Df3EF3",
     "abi": [
       {
         "inputs": [
@@ -15856,7 +15856,7 @@
     ]
   },
   "DaoSnowRebateTreasury": {
-    "address": "0xE72BBB2aBF1fAC814433A9cEfa6bb94E09659b28",
+    "address": "0xAd19C98F1Ea75Fb0AA8B5B6797b1f12ff3Df3EF3",
     "abi": [
       {
         "inputs": [
@@ -16490,7 +16490,7 @@
     ]
   },
   "DaoGlcrRebateTreasury": {
-    "address": "0x430cc3f177F4bc740153282221182A90A45Ac077",
+    "address": "0x7e97e4F436cD4759811EB713D008FCd44e456d37",
     "abi": [
       {
         "inputs": [
@@ -17137,7 +17137,7 @@
     ]
   },
   "DevSnowRebateTreasury": {
-    "address": "0x3e2Bf74b208449faCbF96d2C7f4D1BeAA83afA59",
+    "address": "0xc1a1bf352F498D3E57e453856119a593491633a5",
     "abi": [
       {
         "inputs": [
@@ -17771,7 +17771,7 @@
     ]
   },
   "DevGlcrRebateTreasury": {
-    "address": "0x32600C01E7B2556d215BEc06975cb51eD2DBf8b6",
+    "address": "0x3423016A2fdb6FbD974c826B085c21f3441C3a25",
     "abi": [
       {
         "inputs": [
@@ -18418,7 +18418,7 @@
     ]
   },
   "PegLPNode": {
-    "address": "0x6C8a309529Ff936FD0EF38FE90472664d4722c10",
+    "address": "0xe9b9eC9965667e160fddf37721798da7808e0FEC",
     "abi": [
       {
         "inputs": [
@@ -19235,7 +19235,7 @@
     ]
   },
   "ShareLPNode": {
-    "address": "0x3D8B4A0e5D1632760E6B73CA7deDb9D864C13bCC",
+    "address": "0xf885d3667BfF37B76312c2979e30323d65dC1Fb0",
     "abi": [
       {
         "inputs": [
