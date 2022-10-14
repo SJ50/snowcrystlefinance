@@ -11515,7 +11515,7 @@
     ]
   },
   "GenesisRewardPool": {
-    "address": "0xebbcdA5919939E5C519E10bC491A3a4b2ED8432B",
+    "address": "0x07134c205cF1f35199b1570B4adC84a618938897",
     "abi": [
       {
         "inputs": [
@@ -12055,7 +12055,7 @@
     ]
   },
   "SnowUsdcGenesisRewardPool": {
-    "address": "0xebbcdA5919939E5C519E10bC491A3a4b2ED8432B",
+    "address": "0x07134c205cF1f35199b1570B4adC84a618938897",
     "abi": [
       {
         "inputs": [
@@ -12595,7 +12595,7 @@
     ]
   },
   "SnowCroGenesisRewardPool": {
-    "address": "0xebbcdA5919939E5C519E10bC491A3a4b2ED8432B",
+    "address": "0x07134c205cF1f35199b1570B4adC84a618938897",
     "abi": [
       {
         "inputs": [
@@ -13135,7 +13135,7 @@
     ]
   },
   "SnowUsdtGenesisRewardPool": {
-    "address": "0xebbcdA5919939E5C519E10bC491A3a4b2ED8432B",
+    "address": "0x07134c205cF1f35199b1570B4adC84a618938897",
     "abi": [
       {
         "inputs": [
@@ -13675,7 +13675,7 @@
     ]
   },
   "SnowDaiGenesisRewardPool": {
-    "address": "0xebbcdA5919939E5C519E10bC491A3a4b2ED8432B",
+    "address": "0x07134c205cF1f35199b1570B4adC84a618938897",
     "abi": [
       {
         "inputs": [
@@ -14215,7 +14215,7 @@
     ]
   },
   "SnowEthGenesisRewardPool": {
-    "address": "0xebbcdA5919939E5C519E10bC491A3a4b2ED8432B",
+    "address": "0x07134c205cF1f35199b1570B4adC84a618938897",
     "abi": [
       {
         "inputs": [
@@ -14755,7 +14755,7 @@
     ]
   },
   "SnowBtcGenesisRewardPool": {
-    "address": "0xebbcdA5919939E5C519E10bC491A3a4b2ED8432B",
+    "address": "0x07134c205cF1f35199b1570B4adC84a618938897",
     "abi": [
       {
         "inputs": [
