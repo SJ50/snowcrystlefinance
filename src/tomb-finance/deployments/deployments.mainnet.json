@@ -4298,6 +4298,186 @@
       }
     ]
   },
+  "DataFeedOracle": {
+    "address": "0xBfE9DfeC12f1C533ae5c12fA94619ea1D3Ed901e",
+    "abi": [
+      {
+        "inputs": [
+          {
+            "internalType": "contract IStdReference",
+            "name": "_ref",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_amountIn",
+            "type": "uint256"
+          }
+        ],
+        "name": "consult",
+        "outputs": [
+          {
+            "internalType": "uint144",
+            "name": "amountOut",
+            "type": "uint144"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string[]",
+            "name": "_bases",
+            "type": "string[]"
+          },
+          {
+            "internalType": "string[]",
+            "name": "_quotes",
+            "type": "string[]"
+          }
+        ],
+        "name": "getMultiPrices",
+        "outputs": [
+          {
+            "internalType": "uint256[]",
+            "name": "",
+            "type": "uint256[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "_base",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_quote",
+            "type": "string"
+          }
+        ],
+        "name": "getPrice",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "price",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "pricesArr",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string[]",
+            "name": "_bases",
+            "type": "string[]"
+          },
+          {
+            "internalType": "string[]",
+            "name": "_quotes",
+            "type": "string[]"
+          }
+        ],
+        "name": "saveMultiPrices",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "_base",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_quote",
+            "type": "string"
+          }
+        ],
+        "name": "savePrice",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_amountIn",
+            "type": "uint256"
+          }
+        ],
+        "name": "twap",
+        "outputs": [
+          {
+            "internalType": "uint144",
+            "name": "_amountOut",
+            "type": "uint144"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ]
+  },
   "TombFtmRewardPool": {
     "address": "0xD2641C5e2Bb94ec5A9CdCAdDF3fd979b32AfF659",
     "abi": [

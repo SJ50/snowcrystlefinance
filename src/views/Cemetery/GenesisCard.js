@@ -60,6 +60,30 @@ const GenesisCard = () => {
         <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
+              USDC
+            </Typography>
+            <Box mt={2}>
+              <TokenSymbol symbol="USDC" />
+            </Box>
+          </CardContent>
+          <CardActions style={{ justifyContent: 'center' }}>
+            <Button
+              color="primary"
+              size="small"
+              style={{ width: '200px', height: '40px', marginBottom: '10%' }}
+              variant="contained"
+              component={Link}
+              to={`/farms/SnowUsdcGenesisRewardPool/`}
+            >
+              Stake
+            </Button>
+          </CardActions>
+        </Card>
+      </Grid>
+      <Grid item xs={12} sm={3}>
+        <Card>
+          <CardContent align="center">
+            <Typography variant="h5" component="h2">
               wBTC
             </Typography>
             <Box mt={2}>
@@ -129,30 +153,7 @@ const GenesisCard = () => {
           </CardActions>
         </Card>
       </Grid>
-      <Grid item xs={12} sm={3}>
-        <Card>
-          <CardContent align="center">
-            <Typography variant="h5" component="h2">
-              USDC
-            </Typography>
-            <Box mt={2}>
-              <TokenSymbol symbol="USDC" />
-            </Box>
-          </CardContent>
-          <CardActions style={{ justifyContent: 'center' }}>
-            <Button
-              color="primary"
-              size="small"
-              style={{ width: '200px', height: '40px', marginBottom: '10%' }}
-              variant="contained"
-              component={Link}
-              to={`/farms/SnowUsdcGenesisRewardPool/`}
-            >
-              Stake
-            </Button>
-          </CardActions>
-        </Card>
-      </Grid>
+
       <Grid item xs={12} sm={3}>
         <Card>
           <CardContent align="center">

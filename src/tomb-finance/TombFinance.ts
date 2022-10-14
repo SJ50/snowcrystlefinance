@@ -430,10 +430,7 @@ export class TombFinance {
         bank.depositTokenName,
       );
 
-      let tokenPerHour = tokenPerSecond.mul(60).mul(60).mul(3).div(8);
-      if (bank.sectionInUI === 2 && bank.depositTokenName === 'SNOW') {
-        tokenPerHour = tokenPerHour.mul(3).div(5);
-      }
+      let tokenPerHour = tokenPerSecond.mul(60).mul(60);
       const totalRewardPricePerYear =
         Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerHour.mul(24).mul(365)));
       const totalRewardPricePerDay = Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerHour.mul(24)));
@@ -462,9 +459,9 @@ export class TombFinance {
     poolContract: Contract,
     depositTokenName: string,
   ) {
+
     if (earnTokenName === 'SNOW') {
-      if (contractName.endsWith('GenesisRewardPool')) {
-        // TODO: update function name after abi change
+      if (contractName.endsWith('GenesisRewardPool')) {    
         const rewardPerSecond = await poolContract.snowPerSecond();
         // if (depositTokenName === 'WAVAX') {
         //   return rewardPerSecond.mul(6000).div(11000).div(24);
@@ -475,9 +472,13 @@ export class TombFinance {
         // } else if (depositTokenName === 'SHIBA') {
         //   return rewardPerSecond.mul(1500).div(11000).div(24);
         // }
-        return rewardPerSecond /*.div(24)*/;
+        if (depositTokenName === 'USDC') {
+            return rewardPerSecond.mul(12000).div(24000).div(24);
+          } else  {
+            return rewardPerSecond.mul(2400).div(24000).div(24);
+          }
       }
-
+      
       const poolStartTime = await poolContract.poolStartTime();
       const startDateTime = new Date(poolStartTime.toNumber() * 1000);
       const FOUR_DAYS = 4 * 24 * 60 * 60 * 1000;
@@ -485,14 +486,14 @@ export class TombFinance {
         return await poolContract.epochTombPerSecond(1);
       }
 
-      return await poolContract.epocTombPerSecond(0);
+      return await poolContract.epochTombPerSecond(0);
     }
-    // TODO: update function call after ABI update
+
     const rewardPerSecond = await poolContract.glcrPerSecond();
     if (depositTokenName.startsWith('SNOW')) {
-      return rewardPerSecond.mul(30000).div(50000).mul(3).div(2);
+      return rewardPerSecond.mul(12900).div(21500);
     } else {
-      return rewardPerSecond.mul(20000).div(50000).mul(3).div(2);
+      return rewardPerSecond.mul(8600).div(21500);
     }
   }
 
@@ -548,7 +549,6 @@ export class TombFinance {
    */
   async buyBonds(amount: string | number): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
-    // TODO: update function name after abi change
     const treasuryTombPrice = await Treasury.getSnowPrice();
     return await Treasury.buyBonds(decimalToBalance(amount), treasuryTombPrice);
   }
@@ -559,7 +559,6 @@ export class TombFinance {
    */
   async redeemBonds(amount: string): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
-    // TODO: update function name after abi change
     const priceForTomb = await Treasury.getSnowPrice();
     return await Treasury.redeemBonds(decimalToBalance(amount), priceForTomb);
   }
@@ -651,6 +650,13 @@ export class TombFinance {
     
    
   async getUsdtStat(): Promise<TokenStat> {
+    const {dataFeedOracle} = this.contracts
+    // const [rate, rateInFtm] =
+    //   await Promise.all([
+    //     dataFeedOracle.getPrice("USDT","USD");
+    //     dataFeedOracle.getPrice("USDT","USDC")
+    //   ]);
+    // const rate = await dataFeedOracle.getPrice("USDT","USD")
     const rate = await this.getBandChainData('USDT/USD');
     const rateInFtm = await this.getBandChainData('USDT/USDC'); 
 
@@ -881,7 +887,6 @@ export class TombFinance {
         return await pool.getTotalRewards(account);
       }
       if (earnTokenName === 'SNOW') {
-        // TODO: update function name after abi change
         return await pool.pendingSNOW(poolId, account);
       } else {
         return await pool.pendingShare(poolId, account);
