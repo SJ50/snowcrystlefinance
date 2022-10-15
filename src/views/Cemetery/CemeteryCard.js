@@ -103,7 +103,7 @@ const CemeteryCard = () => {
               style={{ width: '150px', height: '45px', marginBottom: '5%' }}
               variant="contained"
               disabled={tombBank.closedForStaking}
-              onClick={() => (tombBank.closedForStaking ? null : onPresentTshareZap())}
+              onClick={() => (tombBank.closedForStaking ? null : onPresentTombZap())}
             >
               Add Liquidity
             </Button>
@@ -155,8 +155,8 @@ const CemeteryCard = () => {
               color="primary"
               style={{ width: '150px', height: '45px', marginBottom: '5%' }}
               variant="contained"
-              disabled={tombBank.closedForStaking}
-              onClick={() => (tombBank.closedForStaking ? null : onPresentTshareZap())}
+              disabled={tShareBank.closedForStaking}
+              onClick={() => (tShareBank.closedForStaking ? null : onPresentTshareZap())}
             >
               Add Liquidity
             </Button>
