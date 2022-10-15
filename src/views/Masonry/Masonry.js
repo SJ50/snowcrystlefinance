@@ -68,6 +68,7 @@ const Masonry = () => {
                 >
                   <CardContent>
                     <h3 style={{ textAlign: 'center', color: '#5686d6', fontSize: '18px' }}>Next Epoch</h3>
+                    <div style={{ marginTop: '10px', fontWeight: 'normal' }}></div>
                     <ProgressCountdown base={moment().toDate()} hideBar={true} deadline={to} description="Next Epoch" />
                   </CardContent>
                 </Card>
@@ -79,7 +80,7 @@ const Masonry = () => {
                 >
                   <CardContent align="center">
                     <h3 style={{ textAlign: 'center', color: '#5686d6', fontSize: '18px' }}>Current Epoch</h3>
-                    <h2 style={{ fontWeight: 'lighter' }}>{Number(currentEpoch)}</h2>
+                    <h2 style={{ marginTop: '10px', fontWeight: 'normal' }}>{Number(currentEpoch)}</h2>
                   </CardContent>
                 </Card>
               </Grid>
@@ -90,9 +91,9 @@ const Masonry = () => {
                 >
                   <CardContent align="center">
                     <h3 style={{ textAlign: 'center', color: '#5686d6', fontSize: '18px' }}>
-                      SNOW Price<small> (TWAP)</small>
+                      SNOW&nbsp;Price&nbsp;<small>(TWAP)</small>
                     </h3>
-                    <h2 style={{ fontWeight: 'lighter' }}>{scalingFactor} USDC</h2>
+                    <h2 style={{ marginTop: '10px', fontWeight: 'normal' }}>{scalingFactor} USDC</h2>
                   </CardContent>
                 </Card>
               </Grid>
@@ -103,7 +104,7 @@ const Masonry = () => {
                 >
                   <CardContent align="center">
                     <h3 style={{ textAlign: 'center', color: '#5686d6', fontSize: '18px' }}>APR</h3>
-                    <h2 style={{ fontWeight: 'lighter' }}>{masonryAPR.toFixed(2)}%</h2>
+                    <h2 style={{ marginTop: '10px', fontWeight: 'normal' }}>{masonryAPR.toFixed(2)}%</h2>
                   </CardContent>
                 </Card>
               </Grid>
@@ -114,7 +115,7 @@ const Masonry = () => {
                 >
                   <CardContent align="center">
                     <h3 style={{ textAlign: 'center', color: '#5686d6', fontSize: '18px' }}>Shares Staked</h3>
-                    <h2 style={{ fontWeight: 'lighter' }}>{getDisplayBalance(totalStaked)}</h2>
+                    <h2 style={{ marginTop: '10px', fontWeight: 'normal' }}>{getDisplayBalance(totalStaked)}</h2>
                   </CardContent>
                 </Card>
               </Grid>
