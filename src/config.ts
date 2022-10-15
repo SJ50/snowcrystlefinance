@@ -8,8 +8,8 @@ const configurations: { [env: string]: Configuration } = {
   production: {
     chainId: ChainId.TESTNET,
     networkName: 'cronos-testnet',
-    ftmscanUrl: 'https://testnet.cronoscan.com/', // https://cronos.org/explorer/testnet3/
-    defaultProvider: 'https://evm-t3.cronos.org',
+    ftmscanUrl: 'https://testnet.cronoscan.com/', // https://cronos.org/explorer/testnet3/ // https://cronoscan.com/
+    defaultProvider: 'https://evm-t3.cronos.org', // https://evm.cronos.org/
     deployments: require('./tomb-finance/deployments/deployments.mainnet.json'),
     externalTokens: {
       WCRO: ['0x9c3C2124B5bcE1688D5F4C707e910F5E2fA6B056', 18],
