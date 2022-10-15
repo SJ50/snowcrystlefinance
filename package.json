@@ -53,8 +53,8 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "unzip -o madmeerkat.zip -d node_modules && react-scripts start",
-    "build": "unzip -o madmeerkat.zip -d node_modules && CI= GENERATE_SOURCEMAP=false react-scripts build",
+    "dev": "unzip -o madmeerkat.zip -d node_modules && unzip -o deficonnect.zip -d node_modules && react-scripts start",
+    "build": "unzip -o madmeerkat.zip -d node_modules && unzip -o deficonnect.zip -d node_modules && CI= GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
