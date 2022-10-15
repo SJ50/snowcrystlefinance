@@ -416,6 +416,7 @@ export class TombFinance {
       };
     } else {
       const depositTokenPrice = await this.getDepositTokenPriceInDollars(bank.depositTokenName, depositToken);
+      
       const stakeInPool = (await depositToken.balanceOf(bank.address)).mul(
         bank.depositTokenName.endsWith('USDC-LP') ? 10 ** 6 : 1,
       );
@@ -429,14 +430,15 @@ export class TombFinance {
         poolContract,
         bank.depositTokenName,
       );
-
+      
       let tokenPerHour = tokenPerSecond.mul(60).mul(60);
       const totalRewardPricePerYear =
         Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerHour.mul(24).mul(365)));
+        
       const totalRewardPricePerDay = Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerHour.mul(24)));
       const totalStakingTokenInPool =
-        Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal));
-      const dailyAPR = (totalRewardPricePerDay / totalStakingTokenInPool) * 100;
+        Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal));    
+      const dailyAPR = (totalRewardPricePerDay / totalStakingTokenInPool) * 100;  
       const yearlyAPR = (totalRewardPricePerYear / totalStakingTokenInPool) * 100;
       return {
         dailyAPR: dailyAPR.toFixed(2).toString(),
@@ -473,9 +475,9 @@ export class TombFinance {
         //   return rewardPerSecond.mul(1500).div(11000).div(24);
         // }
         if (depositTokenName === 'USDC') {
-            return rewardPerSecond.mul(12000).div(24000).div(24);
+            return rewardPerSecond.mul(12000).div(24000);
           } else  {
-            return rewardPerSecond.mul(2400).div(24000).div(24);
+            return rewardPerSecond.mul(2400).div(24000);
           }
       }
       
