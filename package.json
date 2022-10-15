@@ -27,6 +27,7 @@
     "@types/react-redux": "^7.1.9",
     "bignumber.js": "^9.0.0",
     "clsx": "^1.1.1",
+    "deficonnect": "^1.6.14-dev.2",
     "ethers": "^5.4.1",
     "express": "^4.17.3",
     "material-ui-image": "^3.3.2",
