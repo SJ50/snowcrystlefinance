@@ -431,11 +431,11 @@ export class TombFinance {
         bank.depositTokenName,
       );
       
-      let tokenPerHour = tokenPerSecond.mul(60).mul(60);
+
       const totalRewardPricePerYear =
-        Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerHour.mul(24).mul(365)));
+        Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerSecond.mul(60).mul(60).mul(24).mul(365)));
         
-      const totalRewardPricePerDay = Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerHour.mul(24)));
+      const totalRewardPricePerDay = Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerSecond.mul(60).mul(60).mul(24)));
       const totalStakingTokenInPool =
         Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal));    
       const dailyAPR = (totalRewardPricePerDay / totalStakingTokenInPool) * 100;  
