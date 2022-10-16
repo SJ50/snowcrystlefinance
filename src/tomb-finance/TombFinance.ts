@@ -385,20 +385,20 @@ export class TombFinance {
     if (bank.sectionInUI === 4) {
       const [depositTokenPrice, points, totalPoints, tierAmount, poolBalance, totalBalance, dripRate, dailyUserDrip] =
         await Promise.all([
-          this.getDepositTokenPriceInDollars(bank.depositTokenName, depositToken),
-          poolContract.tierAllocPoints(bank.poolId),
-          poolContract.totalAllocPoints(),
-          poolContract.tierAmounts(bank.poolId),
-          poolContract.getBalancePool(),
-          depositToken.balanceOf(bank.address),
-          poolContract.dripRate(),
-          poolContract.getDayDripEstimate(this.myAccount),
+          this.getDepositTokenPriceInDollars(bank.depositTokenName, depositToken), // depositTokenPrice
+          poolContract.tierAllocPoints(bank.poolId), // points
+          poolContract.totalAllocPoints(), // totalPoints
+          poolContract.tierAmounts(bank.poolId), // tierAmount
+          poolContract.getBalancePool(), // poolBalance
+          depositToken.balanceOf(bank.address), // totalBalance
+          poolContract.dripRate(), // dripRate
+          poolContract.getDayDripEstimate(this.myAccount), // drailyUserDrip
         ]);
       const stakeAmount = Number(tierAmount) / 1e18;
 
       const dailyDrip =
         totalPoints && +totalPoints > 0
-          ? poolBalance.mul(BigNumber.from(86400)).mul(points).div(totalPoints).div(dripRate) / 1e18
+          ? poolBalance.mul(BigNumber.from(24*60*60)).mul(points).div(totalPoints).div(dripRate) / 1e18
           : 0;
       const dailyDripAPR = (Number(dailyDrip) / stakeAmount) * 100;
       const yearlyDripAPR = ((Number(dailyDrip) * 365) / stakeAmount) * 100;
