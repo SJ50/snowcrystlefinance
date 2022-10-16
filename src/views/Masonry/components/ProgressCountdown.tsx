@@ -7,9 +7,16 @@ interface ProgressCountdownProps {
   deadline: Date;
   hideBar?: boolean;
   description: string;
+  epoch?: boolean;
 }
 
-const ProgressCountdown: React.FC<ProgressCountdownProps> = ({ base, deadline, hideBar, description }) => {
+const ProgressCountdown: React.FC<ProgressCountdownProps> = ({
+  base,
+  deadline,
+  hideBar,
+  description,
+  epoch = false,
+}) => {
   const percentage =
     Date.now() >= deadline.getTime()
       ? 100
@@ -20,7 +27,11 @@ const ProgressCountdown: React.FC<ProgressCountdownProps> = ({ base, deadline, h
     const h = String(days * 24 + hours);
     const m = String(minutes);
     const s = String(seconds);
-    return (
+    return epoch ? (
+      <StyledCountdown2>
+        {h.padStart(2, '0')}:{m.padStart(2, '0')}:{s.padStart(2, '0')}
+      </StyledCountdown2>
+    ) : (
       <StyledCountdown>
         {h.padStart(2, '0')}:{m.padStart(2, '0')}:{s.padStart(2, '0')}
       </StyledCountdown>
@@ -46,6 +57,15 @@ const ProgressCountdown: React.FC<ProgressCountdownProps> = ({ base, deadline, h
 const StyledCountdown = styled.p`
   font-size: 24px;
   font-weight: 400;
+  color: rgba(74, 68, 82);
+  // color: ${(props) => props.theme.color.grey[100]};
+  margin: 0 0 6px 0;
+`;
+
+const StyledCountdown2 = styled.p`
+  font-size: 24px;
+  font-weight: 400;
+
   // color: ${(props) => props.theme.color.grey[100]};
   margin: 0 0 6px 0;
 `;

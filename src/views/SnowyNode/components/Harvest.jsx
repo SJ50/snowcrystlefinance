@@ -17,7 +17,11 @@ import { Bank } from '../../../tomb-finance';
 import useGrapeStats from '../../../hooks/useTombStats';
 import useStakedTokenPriceInDollars from '../../../hooks/useStakedTokenPriceInDollars';
 import useNodePrice from '../../../hooks/useNodePrice';
-
+const HomeCard = styled.div`
+  border-radius: 25px;
+  box-shadow: 0px 0px 18px black;
+  padding: 2px;
+`;
 const Harvest = ({ bank }) => {
   const earnings = useEarnings(bank.contract, bank.earnTokenName, bank.poolId);
   const grapeStats = useGrapeStats();
@@ -32,14 +36,14 @@ const Harvest = ({ bank }) => {
   const { onReward } = useHarvest(bank);
   const { onCompound } = useCompound(bank);
   return (
-    <Card style={{ borderRadius: '15px' }}>
-      <CardContent style={{ background: 'linear-gradient(90deg, #8fbdeb 14%, #a2c8ee 100%)', borderRadius: '15px' }}>
+    <HomeCard >
+      <CardContent >
         <StyledCardContentInner>
           <StyledCardHeader>
-            <CardIcon>
+
               <TokenSymbol symbol={bank.depositTokenName} />
-            </CardIcon>
-            <Typography style={{ textTransform: 'uppercase', color: '#fff' }}>
+  
+            <Typography style={{ textTransform: 'uppercase', color:"rgba(74, 68, 82)" }}>
               <Value
                 value={
                   bank.depositTokenName === 'GRAPE-SNOW-LP'
@@ -48,8 +52,8 @@ const Harvest = ({ bank }) => {
                 }
               />
             </Typography>
-            <Label text={`≈ $${(earnedInDollars / 1e18).toFixed(2)}`} />
-            <Typography style={{ textTransform: 'uppercase', color: '#fff' }}>{`Earned`}</Typography>
+            <Label color="rgba(74, 68, 82)" text={`≈ $${(earnedInDollars / 1e18).toFixed(2)}`} />
+            <Typography style={{ textTransform: 'uppercase', color:"rgba(74, 68, 82)" }}>{`Earned`}</Typography>
           </StyledCardHeader>
           <StyledCardActions>
             <Button
@@ -69,7 +73,7 @@ const Harvest = ({ bank }) => {
           </Button>
         </StyledCardContentInner>
       </CardContent>
-    </Card>
+    </HomeCard>
   );
 };
 

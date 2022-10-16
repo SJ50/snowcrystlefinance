@@ -6,13 +6,18 @@ import TokenSymbol from '../../components/TokenSymbol';
 import useBank from '../../hooks/useBank';
 import useStatsForPool from '../../hooks/useStatsForPool';
 import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle';
-
+import styled from 'styled-components';
+const HomeCard = styled.div`
+  border-radius: 25px;
+  box-shadow: 0px 0px 18px black;
+  padding: 2px;
+`;
 const PegLPCard = ({}) => {
   const tombBank = useBank('PegLPNode');
   const statsOnPool = useStatsForPool(tombBank);
   return (
     <Grid item xs={12} md={4} lg={4}>
-      <Card style={{ background: 'linear-gradient(90deg, #8fbdeb 14%, #a2c8ee 100%)', borderRadius: '15px' }}>
+      <HomeCard>
         <CardContent>
           <Box style={{ position: 'relative' }}>
             <Box
@@ -34,7 +39,7 @@ const PegLPCard = ({}) => {
             <Typography variant="h5" component="h2">
               SNOW-USDC LP Node
             </Typography>
-            <Typography color="#322f32">
+            <Typography variant="h7" >
               Lock your SNOW LP to earn daily yields<br></br>
               <b>Daily APR:</b> {statsOnPool?.dailyAPR}%<br></br>
               <b>Yearly APR:</b> {statsOnPool?.yearlyAPR}%
@@ -51,7 +56,7 @@ const PegLPCard = ({}) => {
             Stake
           </Button>
         </CardActions>
-      </Card>
+      </HomeCard>
     </Grid>
   );
 };

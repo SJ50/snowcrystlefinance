@@ -69,7 +69,13 @@ const Masonry = () => {
                   <CardContent>
                     <h3 style={{ textAlign: 'center', color: '#5686d6', fontSize: '18px' }}>Next Epoch</h3>
                     <div style={{ marginTop: '10px', fontWeight: 'normal' }}></div>
-                    <ProgressCountdown base={moment().toDate()} hideBar={true} deadline={to} description="Next Epoch" />
+                    <ProgressCountdown
+                      base={moment().toDate()}
+                      hideBar={true}
+                      deadline={to}
+                      description="Next Epoch"
+                      epoch={true}
+                    />
                   </CardContent>
                 </Card>
               </Grid>

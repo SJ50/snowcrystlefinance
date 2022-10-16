@@ -20,7 +20,11 @@ import useStakedTokenPriceInDollars from '../../../hooks/useStakedTokenPriceInDo
 import useTokenBalance from '../../../hooks/useTokenBalance';
 import { getDisplayBalance } from '../../../utils/formatBalance';
 import TokenSymbol from '../../../components/TokenSymbol';
-
+const HomeCard = styled.div`
+  border-radius: 25px;
+  box-shadow: 0px 0px 18px black;
+  padding: 2px;
+`;
 const Stake = ({ bank }) => {
   const [approveStatus, approve] = useApprove(bank.depositToken, bank.address);
 
@@ -51,14 +55,14 @@ const Stake = ({ bank }) => {
   );
 
   return (
-    <Card style={{ borderRadius: '15px' }}>
-      <CardContent style={{ background: 'linear-gradient(90deg, #8fbdeb 14%, #a2c8ee 100%)', borderRadius: '15px' }}>
+    <HomeCard>
+      <CardContent >
         <StyledCardContentInner>
           <StyledCardHeader>
-            <CardIcon>
+
               <TokenSymbol symbol={bank.depositTokenName} />
-            </CardIcon>
-            <Typography style={{ textTransform: 'uppercase', color: '#fff' }}>
+      
+            <Typography style={{ textTransform: 'uppercase', color:"rgba(74, 68, 82)" }}>
               <Value
                 value={
                   bank.depositTokenName === 'GRAPE-SNOW-LP'
@@ -68,9 +72,9 @@ const Stake = ({ bank }) => {
               />
             </Typography>
 
-            <Label text={`≈ $${earnedInDollars}`} />
+            <Label color="rgba(74, 68, 82)" text={`≈ $${earnedInDollars}`} />
 
-            <Typography style={{ textTransform: 'uppercase', color: '#fff' }}>{`${'NODE'} COST`}</Typography>
+            <Typography style={{ textTransform: 'uppercase', color:"rgba(74, 68, 82)"}}>{`${'NODE'} COST`}</Typography>
           </StyledCardHeader>
           <StyledCardActions>
             {approveStatus !== ApprovalState.APPROVED ? (
@@ -98,7 +102,7 @@ const Stake = ({ bank }) => {
           </StyledCardActions>
         </StyledCardContentInner>
       </CardContent>
-    </Card>
+    </HomeCard>
   );
 };
 

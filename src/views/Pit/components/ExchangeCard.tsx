@@ -29,7 +29,11 @@ interface ExchangeCardProps {
   disabled?: boolean;
   disabledDescription?: string;
 }
-
+const HomeCard = styled.div`
+  border-radius: 25px;
+  box-shadow: 0px 0px 18px black;
+  padding: 2px;
+`;
 const ExchangeCard: React.FC<ExchangeCardProps> = ({
   action,
   fromToken,
@@ -62,7 +66,7 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
     />,
   );
   return (
-    <Card>
+    <HomeCard>
       <CardContent>
         <StyledCardContentInner>
           <StyledCardTitle>{`${action} ${toTokenName}`}</StyledCardTitle>
@@ -71,7 +75,7 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
               <StyledCardIcon>
                 <TokenSymbol symbol={fromToken.symbol} size={54} />
               </StyledCardIcon>
-              <Label text={fromTokenName} variant="normal" />
+              <Label color="rgba(74, 68, 82)" text={fromTokenName} variant="normal" />
             </StyledToken>
             <StyledExchangeArrow>
               <FontAwesomeIcon icon={faArrowRight} />
@@ -80,7 +84,7 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
               <StyledCardIcon>
                 <TokenSymbol symbol={toToken.symbol} size={54} />
               </StyledCardIcon>
-              <Label text={toTokenName} variant="normal" />
+              <Label color="rgba(74, 68, 82)" text={toTokenName} variant="normal" />
             </StyledToken>
           </StyledExchanger>
           <StyledDesc>{priceDesc}</StyledDesc>
@@ -102,7 +106,7 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
           </StyledCardActions>
         </StyledCardContentInner>
       </CardContent>
-    </Card>
+    </HomeCard>
   );
 };
 

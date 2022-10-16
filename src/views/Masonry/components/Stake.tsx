@@ -30,6 +30,11 @@ import TokenSymbol from '../../../components/TokenSymbol';
 import useStakeToMasonry from '../../../hooks/useStakeToMasonry';
 import useWithdrawFromMasonry from '../../../hooks/useWithdrawFromMasonry';
 
+const HomeCard = styled.div`
+  border-radius: 25px;
+  box-shadow: 0px 0px 18px black;
+  padding: 2px;
+`;
 const Stake: React.FC = () => {
   const tombFinance = useTombFinance();
   const [approveStatus, approve] = useApprove(tombFinance.TSHARE, tombFinance.contracts.Masonry.address);
@@ -76,14 +81,14 @@ const Stake: React.FC = () => {
 
   return (
     <Box>
-      <Card>
+      <HomeCard>
         <CardContent>
           <StyledCardContentInner>
             <StyledCardHeader>
               <TokenSymbol symbol="GLCR" />
               <Value value={getDisplayBalance(stakedBalance)} />
-              <Label color="#777" text={`≈ $${tokenPriceInDollars}`} />
-              <Label color="#777" text={'GLCR Staked'} />
+              <Label color="rgba(74, 68, 82)" text={`≈ $${tokenPriceInDollars}`} />
+              <Label color="rgba(74, 68, 82)" text={'GLCR Staked'} />
             </StyledCardHeader>
             <StyledCardActions>
               {approveStatus !== ApprovalState.APPROVED ? (
@@ -112,17 +117,17 @@ const Stake: React.FC = () => {
             </StyledCardActions>
           </StyledCardContentInner>
         </CardContent>
-      </Card>
+      </HomeCard>
       <Box mt={2} style={{ color: '#FFF' }}>
         {canWithdrawFromMasonry ? (
           ''
         ) : (
-          <Card>
+          <HomeCard>
             <CardContent>
               <Typography style={{ textAlign: 'center', color: '#000' }}>Withdraw possible in</Typography>
               <ProgressCountdown hideBar={true} base={from} deadline={to} description="Withdraw available in" />
             </CardContent>
-          </Card>
+          </HomeCard>
         )}
       </Box>
     </Box>

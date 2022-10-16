@@ -22,7 +22,11 @@ import useShareStats from '../../../hooks/usetShareStats';
 interface HarvestProps {
   bank: Bank;
 }
-
+const HomeCard = styled.div`
+  border-radius: 25px;
+  box-shadow: 0px 0px 18px black;
+  padding: 2px;
+`;
 const Harvest: React.FC<HarvestProps> = ({ bank }) => {
   const earnings = useEarnings(bank.contract, bank.earnTokenName, bank.poolId);
   const { onReward } = useHarvest(bank);
@@ -38,14 +42,14 @@ const Harvest: React.FC<HarvestProps> = ({ bank }) => {
   const earnedInDollars = (Number(tokenPriceInDollars) * Number(getDisplayBalance(earnings))).toFixed(2);
   const { onRedeem } = useRedeem(bank);
   return (
-    <Card>
+    <HomeCard>
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
             <TokenSymbol symbol={bank.earnToken.symbol} size={100} />
             <Value value={getDisplayBalance(earnings)} />
-            <Label color="#777" text={`≈ $${earnedInDollars}`} />
-            <Label color="#777" text={`${tokenName} Earned`} />
+            <Label color="#4b4453" text={`≈ $${earnedInDollars}`} />
+            <Label color="#4b4453" text={`${tokenName} Earned`} />
           </StyledCardHeader>
           <StyledCardActions>
             <Button
@@ -68,7 +72,7 @@ const Harvest: React.FC<HarvestProps> = ({ bank }) => {
           </Button>
         </StyledCardContentInner>
       </CardContent>
-    </Card>
+    </HomeCard>
   );
 };
 

@@ -34,7 +34,11 @@ const BN = (n) => new web3.utils.BN(n);
 //     color: '#000000 !important',
 //   },
 // }));
-
+const HomeCard = styled.div`
+  border-radius: 25px;
+  box-shadow: 0px 0px 18px black;
+  padding: 2px;
+`;
 const CemeteryCard = ({ bank }) => {
   const daoGlcrRebatesStats = useDaoGlcrRebatesStats();
   const daoGlcrRebatePriceInUSDC = useMemo(
@@ -148,7 +152,7 @@ const CemeteryCard = ({ bank }) => {
     />,
   );
   return (
-    <Card>
+    <HomeCard>
       <div>
         <br />
         <Typography
@@ -229,7 +233,7 @@ const CemeteryCard = ({ bank }) => {
           Claim {bank.earnTokenName === 'GLCR' ? 'GLCR' : ''}
         </Button>
       </CardActions>
-    </Card>
+    </HomeCard>
   );
 };
 

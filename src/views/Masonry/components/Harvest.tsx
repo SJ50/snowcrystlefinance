@@ -18,6 +18,12 @@ import useRedeemOnMasonry from '../../../hooks/useRedeemOnMasonry';
 import useStakedBalanceOnMasonry from '../../../hooks/useStakedBalanceOnMasonry';
 import useWithdrawCheck from '../../../hooks/masonry/useWithdrawCheck';
 
+const HomeCard = styled.div`
+  border-radius: 25px;
+  box-shadow: 0px 0px 18px black;
+  padding: 2px;
+`;
+
 const Harvest: React.FC = () => {
   const { onRedeem } = useRedeemOnMasonry();
   const tombStats = useTombStats();
@@ -38,14 +44,14 @@ const Harvest: React.FC = () => {
 
   return (
     <Box>
-      <Card>
+      <HomeCard>
         <CardContent>
           <StyledCardContentInner>
             <StyledCardHeader>
               <TokenSymbol symbol="TOMB" />
               <Value value={getDisplayBalance(earnings)} />
-              <Label color="#777" text={`≈ $${earnedInDollars}`} />
-              <Label color="#777" text="SNOW Earned" />
+              <Label color="rgba(74, 68, 82)" text={`≈ $${earnedInDollars}`} />
+              <Label color="rgba(74, 68, 82)" text="SNOW Earned" />
             </StyledCardHeader>
             <StyledCardActions>
               <Button
@@ -69,17 +75,17 @@ const Harvest: React.FC = () => {
             </Button> */}
           </StyledCardContentInner>
         </CardContent>
-      </Card>
+      </HomeCard>
       <Box mt={2} style={{ color: '#FFF' }}>
         {canClaimReward ? (
           ''
         ) : (
-          <Card>
+          <HomeCard>
             <CardContent>
-              <Typography style={{ textAlign: 'center', color: '#000' }}>Claim possible in</Typography>
+              <Typography style={{ textAlign: 'center', color: 'rgba(74, 68, 82)' }}>Claim possible in</Typography>
               <ProgressCountdown hideBar={true} base={from} deadline={to} description="Claim available in" />
             </CardContent>
-          </Card>
+          </HomeCard>
         )}
       </Box>
     </Box>

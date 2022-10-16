@@ -34,6 +34,12 @@ interface StakeProps {
   bank: Bank;
 }
 
+const HomeCard = styled.div`
+  border-radius: 25px;
+  box-shadow: 0px 0px 18px black;
+  padding: 2px;
+`;
+
 const Stake: React.FC<StakeProps> = ({ bank }) => {
   const [approveStatus, approve] = useApprove(bank.depositToken, bank.address);
 
@@ -98,7 +104,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
     getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9),
   );
   return (
-    <Card>
+    <HomeCard>
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
@@ -111,9 +117,9 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
                   : stakedBalanceNumber)
               }
             />
-            <Label color="#777" text={`≈ $${earnedInDollars}`} />
+            <Label color="rgba(74, 68, 82)" text={`≈ $${earnedInDollars}`} />
             <Label
-              color="#777"
+              color="rgba(74, 68, 82)"
               text={`${
                 bank.depositTokenName === 'USDC' || bank.depositTokenName === 'USDT'
                   ? bank.depositTokenName
@@ -164,7 +170,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
           </StyledCardActions>
         </StyledCardContentInner>
       </CardContent>
-    </Card>
+    </HomeCard>
   );
 };
 
