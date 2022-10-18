@@ -44,7 +44,7 @@ const Harvest: React.FC = () => {
 
   return (
     <Box>
-      <HomeCard>
+      <Card>
         <CardContent>
           <StyledCardContentInner>
             <StyledCardHeader>
@@ -75,17 +75,17 @@ const Harvest: React.FC = () => {
             </Button> */}
           </StyledCardContentInner>
         </CardContent>
-      </HomeCard>
+      </Card>
       <Box mt={2} style={{ color: '#FFF' }}>
         {canClaimReward ? (
           ''
         ) : (
-          <HomeCard>
+          <Card>
             <CardContent>
               <Typography style={{ textAlign: 'center', color: 'rgba(74, 68, 82)' }}>Claim possible in</Typography>
               <ProgressCountdown hideBar={true} base={from} deadline={to} description="Claim available in" />
             </CardContent>
-          </HomeCard>
+          </Card>
         )}
       </Box>
     </Box>

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
-import { Button, Card, CardContent, Typography } from '@material-ui/core';
+import { Button, /*Card,*/ CardContent, Typography } from '@material-ui/core';
 // import Button from '../../../components/Button';
 // import Card from '../../../components/Card';
 // import CardContent from '../../../components/CardContent';
@@ -17,6 +17,7 @@ import { Bank } from '../../../tomb-finance';
 import useGrapeStats from '../../../hooks/useTombStats';
 import useStakedTokenPriceInDollars from '../../../hooks/useStakedTokenPriceInDollars';
 import useNodePrice from '../../../hooks/useNodePrice';
+import Card from '../../../components/Card';
 const HomeCard = styled.div`
   border-radius: 25px;
   box-shadow: 0px 0px 18px black;
@@ -36,7 +37,7 @@ const Harvest = ({ bank }) => {
   const { onReward } = useHarvest(bank);
   const { onCompound } = useCompound(bank);
   return (
-    <HomeCard >
+    <Card >
       <CardContent >
         <StyledCardContentInner>
           <StyledCardHeader>
@@ -48,7 +49,7 @@ const Harvest = ({ bank }) => {
                 value={
                   bank.depositTokenName === 'GRAPE-SNOW-LP'
                     ? (Number(earnings) / 1e18).toFixed(4)
-                    : (Number(earnings) / 1e18).toFixed(10)
+                    : (Number(earnings) / 1e18).toFixed(6)
                 }
               />
             </Typography>
@@ -73,7 +74,7 @@ const Harvest = ({ bank }) => {
           </Button>
         </StyledCardContentInner>
       </CardContent>
-    </HomeCard>
+    </Card>
   );
 };
 

@@ -81,7 +81,7 @@ const Stake: React.FC = () => {
 
   return (
     <Box>
-      <HomeCard>
+      <Card>
         <CardContent>
           <StyledCardContentInner>
             <StyledCardHeader>
@@ -117,17 +117,17 @@ const Stake: React.FC = () => {
             </StyledCardActions>
           </StyledCardContentInner>
         </CardContent>
-      </HomeCard>
+      </Card>
       <Box mt={2} style={{ color: '#FFF' }}>
         {canWithdrawFromMasonry ? (
           ''
         ) : (
-          <HomeCard>
+          <Card>
             <CardContent>
               <Typography style={{ textAlign: 'center', color: '#000' }}>Withdraw possible in</Typography>
               <ProgressCountdown hideBar={true} base={from} deadline={to} description="Withdraw available in" />
             </CardContent>
-          </HomeCard>
+          </Card>
         )}
       </Box>
     </Box>

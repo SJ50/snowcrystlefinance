@@ -21,6 +21,7 @@ import { getDisplayBalance } from '../../utils/formatBalance';
 import useMaxPayout from '../../hooks/useMaxPayout';
 import useUserDetails from '../../hooks/useUserDetails';
 
+
 const useStyles = makeStyles((theme) => ({
   gridItem: {
     height: '100%',
@@ -131,33 +132,16 @@ const SnowyNode = () => {
           </Grid>
         </Grid>
       </Box>
-      <Box mt={4}>
-        <StyledBoardroom>
+      <Box mt={12}>
+      <StyledBank>
           <StyledCardsWrapper>
             <StyledCardWrapper>
               <Harvest bank={bank} />
             </StyledCardWrapper>
             <Spacer />
             <StyledCardWrapper>{<Stake bank={bank} />}</StyledCardWrapper>
-          </StyledCardsWrapper>
-          {bank.depositTokenName === 'GRAPE-SNOW-LP' ? (
-            <Card style={{ borderRadius: '15px', marginTop: '20px' }}>
-              <CardContent
-                style={{ background: 'linear-gradient(90deg, #8fbdeb 14%, #a2c8ee 100%)', borderRadius: '15px' }}
-              >
-                <StyledLink
-                  href={
-                    'https://traderjoexyz.com/pool/0x4eeA14405B658EaDBD981f2540691F1b9F86aB48/0x5541d83efad1f281571b343977648b75d95cdac2'
-                  }
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <span style={{ color: '#fff' }}>Provide liquidity for GRAPE-SNOW on Joe</span>
-                </StyledLink>
-              </CardContent>
-            </Card>
-          ) : null}
-        </StyledBoardroom>
+          </StyledCardsWrapper> 
+          </StyledBank>
       </Box>
     </>
   ) : (

@@ -152,7 +152,7 @@ const CemeteryCard = ({ bank }) => {
   );
 
   return (
-    <HomeCard>
+    <Card>
       <div>
         <br />
         <Typography
@@ -233,7 +233,7 @@ const CemeteryCard = ({ bank }) => {
           Claim {bank.earnTokenName === 'SNOW' ? 'SNOW' : bank.earnTokenName === 'GLCR' ? 'GLCR' : ''}
         </Button>
       </CardActions>
-    </HomeCard>
+    </Card>
   );
 };
 

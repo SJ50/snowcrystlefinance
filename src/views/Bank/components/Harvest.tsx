@@ -42,7 +42,7 @@ const Harvest: React.FC<HarvestProps> = ({ bank }) => {
   const earnedInDollars = (Number(tokenPriceInDollars) * Number(getDisplayBalance(earnings))).toFixed(2);
   const { onRedeem } = useRedeem(bank);
   return (
-    <HomeCard>
+    <Card>
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
@@ -72,7 +72,7 @@ const Harvest: React.FC<HarvestProps> = ({ bank }) => {
           </Button>
         </StyledCardContentInner>
       </CardContent>
-    </HomeCard>
+    </Card>
   );
 };
 

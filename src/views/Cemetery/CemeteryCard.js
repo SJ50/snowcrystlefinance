@@ -81,7 +81,7 @@ const CemeteryCard = () => {
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} sm={6}>
-        <HomeCard>
+        <Card>
           <CardContent
             style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', textAlign: 'center' }}
           >
@@ -130,10 +130,10 @@ const CemeteryCard = () => {
               Add Liquidity
             </Button>
           </CardActions>
-        </HomeCard>
+        </Card>
       </Grid>
       <Grid item xs={12} sm={6}>
-        <HomeCard>
+        <Card>
           <CardContent
             style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', textAlign: 'center' }}
           >
@@ -183,7 +183,7 @@ const CemeteryCard = () => {
               Add Liquidity
             </Button>
           </CardActions>
-        </HomeCard>
+        </Card>
       </Grid>
       {/* <Grid item xs={12} sm={6}>
         <Card>

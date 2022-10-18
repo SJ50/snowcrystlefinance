@@ -104,7 +104,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
     getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9),
   );
   return (
-    <HomeCard>
+    <Card>
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
@@ -170,7 +170,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
           </StyledCardActions>
         </StyledCardContentInner>
       </CardContent>
-    </HomeCard>
+    </Card>
   );
 };
 

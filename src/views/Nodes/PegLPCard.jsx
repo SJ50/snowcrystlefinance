@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Button, Card, CardActions, CardContent, Typography, Grid } from '@material-ui/core';
+import { Box, Button, /*Card,*/ CardActions, CardContent, Typography, Grid } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
 import TokenSymbol from '../../components/TokenSymbol';
 import useBank from '../../hooks/useBank';
 import useStatsForPool from '../../hooks/useStatsForPool';
 import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle';
 import styled from 'styled-components';
+import Card from '../../components/Card';
 const HomeCard = styled.div`
   border-radius: 25px;
   box-shadow: 0px 0px 18px black;
@@ -17,7 +18,7 @@ const PegLPCard = ({}) => {
   const statsOnPool = useStatsForPool(tombBank);
   return (
     <Grid item xs={12} md={4} lg={4}>
-      <HomeCard>
+      <Card>
         <CardContent>
           <Box style={{ position: 'relative' }}>
             <Box
@@ -56,7 +57,7 @@ const PegLPCard = ({}) => {
             Stake
           </Button>
         </CardActions>
-      </HomeCard>
+      </Card>
     </Grid>
   );
 };

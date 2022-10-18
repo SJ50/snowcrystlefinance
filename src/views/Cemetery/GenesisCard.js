@@ -14,7 +14,7 @@ const GenesisCard = () => {
   return (
     <Grid container spacing={3}>
       {/* <Grid item xs={12} sm={3}>
-        <HomeCard>
+        <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
               SNOBOND
@@ -35,10 +35,10 @@ const GenesisCard = () => {
               Stake
             </Button>
           </CardActions>
-        </HomeCard>
+        </Card>
       </Grid>
       <Grid item xs={12} sm={3}>
-        <HomeCard>
+        <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
               DIBS
@@ -59,10 +59,10 @@ const GenesisCard = () => {
               Stake
             </Button>
           </CardActions>
-        </HomeCard>
+        </Card>
       </Grid> */}
       <Grid item xs={12} sm={3}>
-        <HomeCard>
+        <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
               USDC
@@ -83,10 +83,10 @@ const GenesisCard = () => {
               Stake
             </Button>
           </CardActions>
-        </HomeCard>
+        </Card>
       </Grid>
       <Grid item xs={12} sm={3}>
-        <HomeCard>
+        <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
               wBTC
@@ -107,10 +107,10 @@ const GenesisCard = () => {
               Stake
             </Button>
           </CardActions>
-        </HomeCard>
+        </Card>
       </Grid>
       <Grid item xs={12} sm={3}>
-        <HomeCard>
+        <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
               wETH
@@ -131,11 +131,11 @@ const GenesisCard = () => {
               Stake
             </Button>
           </CardActions>
-        </HomeCard>
+        </Card>
       </Grid>
 
       <Grid item xs={12} sm={3}>
-        <HomeCard>
+        <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
               wCRO
@@ -156,11 +156,11 @@ const GenesisCard = () => {
               Stake
             </Button>
           </CardActions>
-        </HomeCard>
+        </Card>
       </Grid>
 
       <Grid item xs={12} sm={3}>
-        <HomeCard>
+        <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
               DAI
@@ -181,10 +181,10 @@ const GenesisCard = () => {
               Stake
             </Button>
           </CardActions>
-        </HomeCard>
+        </Card>
       </Grid>
       <Grid item xs={12} sm={3}>
-        <HomeCard>
+        <Card>
           <CardContent align="center">
             <Typography variant="h5" component="h2">
               USDT
@@ -205,7 +205,7 @@ const GenesisCard = () => {
               Stake
             </Button>
           </CardActions>
-        </HomeCard>
+        </Card>
       </Grid>
     </Grid>
   );

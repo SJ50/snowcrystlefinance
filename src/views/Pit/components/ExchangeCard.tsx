@@ -66,7 +66,7 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
     />,
   );
   return (
-    <HomeCard>
+    <Card>
       <CardContent>
         <StyledCardContentInner>
           <StyledCardTitle>{`${action} ${toTokenName}`}</StyledCardTitle>
@@ -106,7 +106,7 @@ const ExchangeCard: React.FC<ExchangeCardProps> = ({
           </StyledCardActions>
         </StyledCardContentInner>
       </CardContent>
-    </HomeCard>
+    </Card>
   );
 };
 

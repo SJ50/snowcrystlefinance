@@ -2,7 +2,7 @@ import React, { useMemo, useContext } from 'react';
 import styled from 'styled-components';
 
 // import Button from '../../../components/Button';
-import { Button, Card, CardContent, Typography } from '@material-ui/core';
+import { Button, /*Card,*/ CardContent, Typography } from '@material-ui/core';
 import DepositModal from './DepositModal';
 // import Card from '../../../components/Card';
 // import CardContent from '../../../components/CardContent';
@@ -20,6 +20,7 @@ import useStakedTokenPriceInDollars from '../../../hooks/useStakedTokenPriceInDo
 import useTokenBalance from '../../../hooks/useTokenBalance';
 import { getDisplayBalance } from '../../../utils/formatBalance';
 import TokenSymbol from '../../../components/TokenSymbol';
+import Card from '../../../components/Card';
 const HomeCard = styled.div`
   border-radius: 25px;
   box-shadow: 0px 0px 18px black;
@@ -55,7 +56,7 @@ const Stake = ({ bank }) => {
   );
 
   return (
-    <HomeCard>
+    <Card>
       <CardContent >
         <StyledCardContentInner>
           <StyledCardHeader>
@@ -102,7 +103,7 @@ const Stake = ({ bank }) => {
           </StyledCardActions>
         </StyledCardContentInner>
       </CardContent>
-    </HomeCard>
+    </Card>
   );
 };
 

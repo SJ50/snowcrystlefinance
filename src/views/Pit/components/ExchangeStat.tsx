@@ -16,12 +16,12 @@ const HomeCard = styled.div`
 `;
 const ExchangeStat: React.FC<ExchangeStatProps> = ({ tokenName, description, price }) => {
   return (
-    <HomeCard>
+    <Card>
       <StyledCardContentInner>
         <StyledCardTitle>{`💰 ${tokenName} = ${price} USDC`}</StyledCardTitle>
         <StyledDesc>{description}</StyledDesc>
       </StyledCardContentInner>
-    </HomeCard>
+    </Card>
   );
 };
 
