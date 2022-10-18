@@ -8,11 +8,7 @@ import useStatsForPool from '../../hooks/useStatsForPool';
 import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle';
 import styled from 'styled-components';
 import Card from '../../components/Card';
-const HomeCard = styled.div`
-  border-radius: 25px;
-  box-shadow: 0px 0px 18px black;
-  padding: 2px;
-`;
+
 const PegLPCard = ({}) => {
   const tombBank = useBank('PegLPNode');
   const statsOnPool = useStatsForPool(tombBank);

@@ -21,11 +21,7 @@ import useTokenBalance from '../../../hooks/useTokenBalance';
 import { getDisplayBalance } from '../../../utils/formatBalance';
 import TokenSymbol from '../../../components/TokenSymbol';
 import Card from '../../../components/Card';
-const HomeCard = styled.div`
-  border-radius: 25px;
-  box-shadow: 0px 0px 18px black;
-  padding: 2px;
-`;
+
 const Stake = ({ bank }) => {
   const [approveStatus, approve] = useApprove(bank.depositToken, bank.address);
 
@@ -57,13 +53,12 @@ const Stake = ({ bank }) => {
 
   return (
     <Card>
-      <CardContent >
+      <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
+            <TokenSymbol symbol={bank.depositTokenName} />
 
-              <TokenSymbol symbol={bank.depositTokenName} />
-      
-            <Typography style={{ textTransform: 'uppercase', color:"rgba(74, 68, 82)" }}>
+            <Typography style={{ textTransform: 'uppercase', color: 'rgba(74, 68, 82)' }}>
               <Value
                 value={
                   bank.depositTokenName === 'GRAPE-SNOW-LP'
@@ -75,7 +70,9 @@ const Stake = ({ bank }) => {
 
             <Label color="rgba(74, 68, 82)" text={`≈ $${earnedInDollars}`} />
 
-            <Typography style={{ textTransform: 'uppercase', color:"rgba(74, 68, 82)"}}>{`${'NODE'} COST`}</Typography>
+            <Typography
+              style={{ textTransform: 'uppercase', color: 'rgba(74, 68, 82)' }}
+            >{`${'NODE'} COST`}</Typography>
           </StyledCardHeader>
           <StyledCardActions>
             {approveStatus !== ApprovalState.APPROVED ? (
@@ -87,7 +84,7 @@ const Stake = ({ bank }) => {
                 }
                 color="#fff"
                 onClick={approve}
-                style={{ marginTop: '20px', background: '#5686d6', borderRadius: '15px' }}
+                style={{ marginTop: '65px', background: '#5686d6', borderRadius: '15px' }}
               >
                 {`Approve ${bank.depositTokenName.replace('USDC', 'USDC')}`}
               </Button>
@@ -95,12 +92,14 @@ const Stake = ({ bank }) => {
               <IconButton
                 disabled={bank.closedForStaking}
                 onClick={() => (bank.closedForStaking ? null : onPresentDeposit())}
-                style={{ marginTop: '20px', background: '#5686d6', borderRadius: '15px' }}
+                style={{ marginTop: '65px', background: '#5686d6', borderRadius: '15px' }}
               >
                 <AddIcon />
               </IconButton>
             )}
           </StyledCardActions>
+          {/* <StyledActionSpacer>
+          </StyledActionSpacer> */}
         </StyledCardContentInner>
       </CardContent>
     </Card>

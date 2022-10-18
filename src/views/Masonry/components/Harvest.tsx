@@ -18,12 +18,6 @@ import useRedeemOnMasonry from '../../../hooks/useRedeemOnMasonry';
 import useStakedBalanceOnMasonry from '../../../hooks/useStakedBalanceOnMasonry';
 import useWithdrawCheck from '../../../hooks/masonry/useWithdrawCheck';
 
-const HomeCard = styled.div`
-  border-radius: 25px;
-  box-shadow: 0px 0px 18px black;
-  padding: 2px;
-`;
-
 const Harvest: React.FC = () => {
   const { onRedeem } = useRedeemOnMasonry();
   const tombStats = useTombStats();

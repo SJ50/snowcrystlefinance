@@ -30,11 +30,6 @@ import TokenSymbol from '../../../components/TokenSymbol';
 import useStakeToMasonry from '../../../hooks/useStakeToMasonry';
 import useWithdrawFromMasonry from '../../../hooks/useWithdrawFromMasonry';
 
-const HomeCard = styled.div`
-  border-radius: 25px;
-  box-shadow: 0px 0px 18px black;
-  padding: 2px;
-`;
 const Stake: React.FC = () => {
   const tombFinance = useTombFinance();
   const [approveStatus, approve] = useApprove(tombFinance.TSHARE, tombFinance.contracts.Masonry.address);

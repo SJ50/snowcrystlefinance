@@ -34,12 +34,6 @@ interface StakeProps {
   bank: Bank;
 }
 
-const HomeCard = styled.div`
-  border-radius: 25px;
-  box-shadow: 0px 0px 18px black;
-  padding: 2px;
-`;
-
 const Stake: React.FC<StakeProps> = ({ bank }) => {
   const [approveStatus, approve] = useApprove(bank.depositToken, bank.address);
 

@@ -9,11 +9,7 @@ interface ExchangeStatProps {
   description: string;
   price: string;
 }
-const HomeCard = styled.div`
-  border-radius: 25px;
-  box-shadow: 0px 0px 18px black;
-  padding: 2px;
-`;
+
 const ExchangeStat: React.FC<ExchangeStatProps> = ({ tokenName, description, price }) => {
   return (
     <Card>

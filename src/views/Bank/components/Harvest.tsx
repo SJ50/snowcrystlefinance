@@ -22,11 +22,7 @@ import useShareStats from '../../../hooks/usetShareStats';
 interface HarvestProps {
   bank: Bank;
 }
-const HomeCard = styled.div`
-  border-radius: 25px;
-  box-shadow: 0px 0px 18px black;
-  padding: 2px;
-`;
+
 const Harvest: React.FC<HarvestProps> = ({ bank }) => {
   const earnings = useEarnings(bank.contract, bank.earnTokenName, bank.poolId);
   const { onReward } = useHarvest(bank);

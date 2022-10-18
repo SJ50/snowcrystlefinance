@@ -18,11 +18,7 @@ import useGrapeStats from '../../../hooks/useTombStats';
 import useStakedTokenPriceInDollars from '../../../hooks/useStakedTokenPriceInDollars';
 import useNodePrice from '../../../hooks/useNodePrice';
 import Card from '../../../components/Card';
-const HomeCard = styled.div`
-  border-radius: 25px;
-  box-shadow: 0px 0px 18px black;
-  padding: 2px;
-`;
+
 const Harvest = ({ bank }) => {
   const earnings = useEarnings(bank.contract, bank.earnTokenName, bank.poolId);
   const grapeStats = useGrapeStats();
@@ -37,14 +33,12 @@ const Harvest = ({ bank }) => {
   const { onReward } = useHarvest(bank);
   const { onCompound } = useCompound(bank);
   return (
-    <Card >
-      <CardContent >
+    <Card>
+      <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
-
-              <TokenSymbol symbol={bank.depositTokenName} />
-  
-            <Typography style={{ textTransform: 'uppercase', color:"rgba(74, 68, 82)" }}>
+            <TokenSymbol symbol={bank.depositTokenName} />
+            <Typography style={{ textTransform: 'uppercase', color: 'rgba(74, 68, 82)' }}>
               <Value
                 value={
                   bank.depositTokenName === 'GRAPE-SNOW-LP'
@@ -54,21 +48,25 @@ const Harvest = ({ bank }) => {
               />
             </Typography>
             <Label color="rgba(74, 68, 82)" text={`≈ $${(earnedInDollars / 1e18).toFixed(2)}`} />
-            <Typography style={{ textTransform: 'uppercase', color:"rgba(74, 68, 82)" }}>{`Earned`}</Typography>
+            <Typography style={{ textTransform: 'uppercase', color: 'rgba(74, 68, 82)' }}>{`Earned`}</Typography>
           </StyledCardHeader>
           <StyledCardActions>
             <Button
+              style={{ borderRadius: '15px', width: '250px' }}
               onClick={onReward}
               disabled={earnings.eq(0)}
-              style={{ background: '#5686d6', borderRadius: '15px' }}
+              color="primary"
+              variant="contained"
             >
               Claim
             </Button>
           </StyledCardActions>
           <Button
+            style={{ borderRadius: '15px', marginTop: '10px', width: '250px' }}
             onClick={onCompound}
             disabled={Number(earnings) < Number(nodePrice)}
-            style={{ background: '#5686d6', borderRadius: '15px', marginTop: '10px' }}
+            color="primary"
+            variant="contained"
           >
             Compound {(Number(earnings) / Number(nodePrice)) | 0} Nodes
           </Button>
@@ -86,7 +84,7 @@ const StyledCardHeader = styled.div`
 const StyledCardActions = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: ${(props) => props.theme.spacing[6]}px;
   width: 100%;
 `;
 

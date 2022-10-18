@@ -19,4 +19,25 @@ const StyledCard = styled.div`
   position: relative;
 `;
 
+const HomeCardPurple = styled.div`
+  background: rgba(214, 211, 242, 0.9);
+  border-radius: 50px;
+  box-shadow: 0px 0px 18px black;
+  padding: 25px;
+  color: #4b4453;
+`;
+const HomeCard = styled.div`
+  border-radius: 25px;
+  box-shadow: 0px 0px 18px black;
+  padding: 2px;
+`;
+const HomeCardPegasaurus = styled.div`
+  background: rgba(217, 238, 254, 0.95);
+  border-radius: 50px;
+  box-shadow: 0 0 8px 3px #fff, /* inner white */ 0 0 12px 7px #a97ddb, /* middle magenta */ 0 0 16px 11px #0ff; /* outer cyan */
+  padding: 20px;
+  color: #4b4453;
+  margin: 10px;
+`;
+
 export default Card;

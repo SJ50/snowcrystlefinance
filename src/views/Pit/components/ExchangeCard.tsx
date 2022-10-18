@@ -29,11 +29,7 @@ interface ExchangeCardProps {
   disabled?: boolean;
   disabledDescription?: string;
 }
-const HomeCard = styled.div`
-  border-radius: 25px;
-  box-shadow: 0px 0px 18px black;
-  padding: 2px;
-`;
+
 const ExchangeCard: React.FC<ExchangeCardProps> = ({
   action,
   fromToken,
