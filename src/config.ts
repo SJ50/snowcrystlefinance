@@ -25,9 +25,9 @@ const configurations: { [env: string]: Configuration } = {
       'SNOW-USDC-LP': ['0xd02Bf39EB5BBebE42Aa0f12Bc2a5a5995627EDB0', 18],
       'GLCR-USDC-LP': ['0x53c2F7E378879395d5F2a0dD7bD95eF89EF4C564', 18],
     },
-    baseLaunchDate: new Date('2022-10-15T00:00:00Z'),
-    bondLaunchesAt: new Date('2022-10-15T00:00:00Z'),
-    masonryLaunchesAt: new Date('2022-10-16T18:00:00Z'),
+    baseLaunchDate: new Date('2022-10-29T00:00:00Z'),
+    bondLaunchesAt: new Date('2022-10-29T00:00:00Z'),
+    masonryLaunchesAt: new Date('2022-10-30T18:00:00Z'),
     refreshInterval: 10000,
   },
 };
