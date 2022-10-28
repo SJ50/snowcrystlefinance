@@ -153,9 +153,9 @@ const Home = () => {
   );
 
   const buyTombAddress =
-    'https://mm.finance/swap?inputCurrency=0x39D8fa99c9964D456b9fbD5e059e63442F314121&outputCurrency=0x4eeA14405B658EaDBD981f2540691F1b9F86aB48#/';
+    'https://mm.finance/swap?inputCurrency=0xc3F95DeDacFEA28a3d657FfbCc74e9BaB6FB949B&outputCurrency=0x4eeA14405B658EaDBD981f2540691F1b9F86aB48#/';
   const buyTShareAddress =
-    'https://mm.finance/swap?inputCurrency=0x39D8fa99c9964D456b9fbD5e059e63442F314121&outputCurrency=0x3522270A766657096ba25B7e3251b57aEB1d4dB1#/';
+    'https://mm.finance/swap?inputCurrency=0xc3F95DeDacFEA28a3d657FfbCc74e9BaB6FB949B&outputCurrency=0x3522270A766657096ba25B7e3251b57aEB1d4dB1#/';
 
   const tombChart = 'https://dexscreener.com/avalanche/0x3845e67ca111efcDAa767F520bE001137501AE6D';
   const tshareChart = 'https://dexscreener.com/avalanche/0xc71c080AB2528181620994C1F5e186f776051794';
@@ -447,7 +447,7 @@ const Home = () => {
                 <Button
                   color="primary"
                   target="_blank"
-                  href={'https://mm.finance/swap?outputCurrency=0x39D8fa99c9964D456b9fbD5e059e63442F314121#/'}
+                  href={'https://mm.finance/swap?outputCurrency=0xc3F95DeDacFEA28a3d657FfbCc74e9BaB6FB949B#/'}
                   variant="contained"
                   style={{ marginTop: '10px', borderRadius: '10px', width: '100%' }}
                   className={classes.button}
