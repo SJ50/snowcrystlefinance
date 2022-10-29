@@ -12,14 +12,10 @@
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.58",
-    "@pangolindex/sdk": "^1.1.0",
     "@reduxjs/toolkit": "^1.4.0",
-    "@spiritswap/sdk": "https://github.com/Layer3Org/spiritswap-sdk",
-    "@spookyswap/sdk": "https://github.com/SpookySwap/spookyswap-sdk",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "@traderjoe-xyz/sdk": "^0.8.5",
     "@types/humanize-plus": "^1.8.0",
     "@types/jest": "^26.0.9",
     "@types/node": "^14.0.27",
@@ -53,7 +49,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "unzip -o madmeerkat.zip -d node_modules && unzip -o deficonnect.zip -d node_modules && react-scripts start",
+    "dev": "unzip -o madmeerkat.zip -d node_modules && react-scripts start",
     "build": "unzip -o madmeerkat.zip -d node_modules && unzip -o deficonnect.zip -d node_modules && CI= GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
