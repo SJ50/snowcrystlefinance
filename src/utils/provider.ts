@@ -11,3 +11,12 @@ export function getDefaultProvider(): ethers.providers.Web3Provider {
 
   return provider;
 }
+
+let baseProvider: ethers.providers.BaseProvider = null;
+export function getDefaultBaseProvider(): ethers.providers.BaseProvider {
+  if (!provider) {
+    baseProvider = new ethers.providers.BaseProvider(web3ProviderFrom(config.defaultProvider));
+  }
+
+  return baseProvider;
+}

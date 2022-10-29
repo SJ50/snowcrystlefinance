@@ -27,7 +27,7 @@ import { decimalToBalance } from './ether-utils';
 import { TransactionResponse } from '@ethersproject/providers';
 import ERC20 from './ERC20';
 import { getFullDisplayBalance, getDisplayBalance } from '../utils/formatBalance';
-import { getDefaultProvider } from '../utils/provider';
+import { getDefaultProvider, getDefaultBaseProvider } from '../utils/provider';
 import IUniswapV2PairABI from './IUniswapV2Pair.abi.json';
 import { /*config,*/ bankDefinitions } from '../config';
 import moment from 'moment';
@@ -44,6 +44,7 @@ import { debug } from 'console';
 export class TombFinance {
   myAccount: string;
   provider: ethers.providers.Web3Provider;
+  baseProvider: ethers.providers.BaseProvider;
   signer?: ethers.Signer;
   config: Configuration;
   contracts: { [name: string]: Contract };
@@ -65,6 +66,7 @@ export class TombFinance {
   constructor(cfg: Configuration) {
     const { deployments, externalTokens } = cfg;
     const provider = getDefaultProvider();
+    const baseProvider = getDefaultBaseProvider();
 
     // loads contracts from deployments
     this.contracts = {};
@@ -90,6 +92,7 @@ export class TombFinance {
     this.TSHAREWFTM_LP = new Contract(externalTokens['GLCR-USDC-LP'][0], IUniswapV2PairABI, provider);
     this.config = cfg;
     this.provider = provider;
+    this.baseProvider = baseProvider;
   }
 
   /**
@@ -144,7 +147,7 @@ export class TombFinance {
     // console.log("debug "+ JSON.stringify(this.TOMB.totalSupply(), null,4));
     const tombCirculatingSupply = supply.sub(genesisPoolTOMBBalance);
     const priceOfTombInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(18);
-    // console.log('debug ' + priceInFTM);
+    // console.log('debug ' + (await this.getTokenPriceFromPancakeswap(this.TOMB)));
     return {
       tokenInFtm: priceInFTM,
       priceInDollars: priceOfTombInDollars,
@@ -997,41 +1000,20 @@ export class TombFinance {
 
   async getTokenPriceFromPancakeswap(tokenContract: ERC20, baseToken?: Token): Promise<string> {
     const ready = await this.provider.ready;
+
     if (!ready) return;
     const { chainId } = this.config;
     const { USDC } = this.config.externalTokens;
 
     const wftm = baseToken || new Token(chainId, USDC[0], USDC[1]);
     const token = new Token(chainId, tokenContract.address, tokenContract.decimal, tokenContract.symbol);
+    // console.log(`debug ${JSON.stringify('test', null, 4)}`);
     try {
       const wftmToToken = await Fetcher.fetchPairData(wftm, token, this.provider);
       const priceInBUSD = new Route([wftmToToken], token);
       return priceInBUSD.midPrice.toFixed(18);
     } catch (err) {
-      console.error(`Failed to fetch token price of ${tokenContract.symbol}: ${err}`);
-    }
-  }
-
-  async getTokenPriceFromSpiritswap(tokenContract: ERC20): Promise<string> {
-    const ready = await this.provider.ready;
-    if (!ready) return;
-    const { chainId } = this.config;
-    const { WFTM } = this.externalTokens;
-
-    const wftm = new TokenSpirit(chainId, WFTM.address, WFTM.decimal);
-    const token = new TokenSpirit(chainId, tokenContract.address, tokenContract.decimal, tokenContract.symbol);
-    try {
-      const wftmToToken = await FetcherSpirit.fetchPairData(wftm, token, this.provider);
-      const liquidityToken = wftmToToken.liquidityToken;
-      let ftmBalanceInLP = await WFTM.balanceOf(liquidityToken.address);
-      let ftmAmount = Number(getFullDisplayBalance(ftmBalanceInLP, WFTM.decimal));
-      let shibaBalanceInLP = await tokenContract.balanceOf(liquidityToken.address);
-      let shibaAmount = Number(getFullDisplayBalance(shibaBalanceInLP, tokenContract.decimal));
-      const priceOfOneFtmInDollars = await this.getWFTMPriceFromPancakeswap();
-      let priceOfShiba = (ftmAmount / shibaAmount) * Number(priceOfOneFtmInDollars);
-      return priceOfShiba.toString();
-    } catch (err) {
-      console.error(`Failed to fetch token price of ${tokenContract.symbol}: ${err}`);
+      console.error(`DEBUG Failed to fetch token price of ${tokenContract.symbol}: ${err}`);
     }
   }
 
