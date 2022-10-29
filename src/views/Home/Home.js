@@ -153,16 +153,16 @@ const Home = () => {
   );
 
   const buyTombAddress =
-    'https://mm.finance/swap?inputCurrency=0xc3F95DeDacFEA28a3d657FfbCc74e9BaB6FB949B&outputCurrency=0x4eeA14405B658EaDBD981f2540691F1b9F86aB48#/';
+    'https://mm.finance/swap?inputCurrency=0xc3F95DeDacFEA28a3d657FfbCc74e9BaB6FB949B&outputCurrency=0xDd5a54be18BC4a9D181D70Ab5728E42031Be836b#/';
   const buyTShareAddress =
-    'https://mm.finance/swap?inputCurrency=0xc3F95DeDacFEA28a3d657FfbCc74e9BaB6FB949B&outputCurrency=0x3522270A766657096ba25B7e3251b57aEB1d4dB1#/';
+    'https://mm.finance/swap?inputCurrency=0xc3F95DeDacFEA28a3d657FfbCc74e9BaB6FB949B&outputCurrency=0x6C8afC3EEe9bc98bAa8327Fac1073bE1c8B23729#/';
 
-  const tombChart = 'https://dexscreener.com/avalanche/0x3845e67ca111efcDAa767F520bE001137501AE6D';
-  const tshareChart = 'https://dexscreener.com/avalanche/0xc71c080AB2528181620994C1F5e186f776051794';
+  const tombChart = 'https://dexscreener.com/avalanche/0xd02Bf39EB5BBebE42Aa0f12Bc2a5a5995627EDB0';
+  const tshareChart = 'https://dexscreener.com/avalanche/0x53c2F7E378879395d5F2a0dD7bD95eF89EF4C564';
 
-  const tombContract = 'https://testnet.cronoscan.com/address/0x4eeA14405B658EaDBD981f2540691F1b9F86aB48#code';
-  const tshareContract = 'https://testnet.cronoscan.com/address/0x3522270A766657096ba25B7e3251b57aEB1d4dB1#code';
-  const tbondContract = 'https://testnet.cronoscan.com/address/0xb23d88891C8d977Ee717cEeb21F41A2Aa1c7Fea1#code';
+  const tombContract = 'https://testnet.cronoscan.com/address/0xDd5a54be18BC4a9D181D70Ab5728E42031Be836b#code';
+  const tshareContract = 'https://testnet.cronoscan.com/address/0x6C8afC3EEe9bc98bAa8327Fac1073bE1c8B23729#code';
+  const tbondContract = 'https://testnet.cronoscan.com/address/0xdF224aA5BB984a1c49F227D9D3e952D339cD200A#code';
 
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
   const tshareLPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);

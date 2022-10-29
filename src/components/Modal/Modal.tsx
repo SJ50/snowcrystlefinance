@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Card from '../Card';
+import Card from '../Card-old';
 import CardContent from '../CardContent';
 import Container from '../Container';
 

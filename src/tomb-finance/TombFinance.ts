@@ -144,7 +144,7 @@ export class TombFinance {
     // console.log("debug "+ JSON.stringify(this.TOMB.totalSupply(), null,4));
     const tombCirculatingSupply = supply.sub(genesisPoolTOMBBalance);
     const priceOfTombInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(18);
-    // console.log("debug " + priceInFTM );
+    // console.log('debug ' + priceInFTM);
     return {
       tokenInFtm: priceInFTM,
       priceInDollars: priceOfTombInDollars,
@@ -398,7 +398,11 @@ export class TombFinance {
 
       const dailyDrip =
         totalPoints && +totalPoints > 0
-          ? poolBalance.mul(BigNumber.from(24*60*60)).mul(points).div(totalPoints).div(dripRate) / 1e18
+          ? poolBalance
+              .mul(BigNumber.from(24 * 60 * 60))
+              .mul(points)
+              .div(totalPoints)
+              .div(dripRate) / 1e18
           : 0;
       const dailyDripAPR = (Number(dailyDrip) / stakeAmount) * 100;
       const yearlyDripAPR = ((Number(dailyDrip) * 365) / stakeAmount) * 100;
@@ -416,7 +420,7 @@ export class TombFinance {
       };
     } else {
       const depositTokenPrice = await this.getDepositTokenPriceInDollars(bank.depositTokenName, depositToken);
-      
+
       const stakeInPool = (await depositToken.balanceOf(bank.address)).mul(
         bank.depositTokenName.endsWith('USDC-LP') ? 10 ** 6 : 1,
       );
@@ -430,15 +434,15 @@ export class TombFinance {
         poolContract,
         bank.depositTokenName,
       );
-      
 
       const totalRewardPricePerYear =
         Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerSecond.mul(60).mul(60).mul(24).mul(365)));
-        
-      const totalRewardPricePerDay = Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerSecond.mul(60).mul(60).mul(24)));
+
+      const totalRewardPricePerDay =
+        Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerSecond.mul(60).mul(60).mul(24)));
       const totalStakingTokenInPool =
-        Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal));    
-      const dailyAPR = (totalRewardPricePerDay / totalStakingTokenInPool) * 100;  
+        Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal));
+      const dailyAPR = (totalRewardPricePerDay / totalStakingTokenInPool) * 100;
       const yearlyAPR = (totalRewardPricePerYear / totalStakingTokenInPool) * 100;
       return {
         dailyAPR: dailyAPR.toFixed(2).toString(),
@@ -461,9 +465,8 @@ export class TombFinance {
     poolContract: Contract,
     depositTokenName: string,
   ) {
-
     if (earnTokenName === 'SNOW') {
-      if (contractName.endsWith('GenesisRewardPool')) {    
+      if (contractName.endsWith('GenesisRewardPool')) {
         const rewardPerSecond = await poolContract.snowPerSecond();
         // if (depositTokenName === 'WAVAX') {
         //   return rewardPerSecond.mul(6000).div(11000).div(24);
@@ -475,12 +478,12 @@ export class TombFinance {
         //   return rewardPerSecond.mul(1500).div(11000).div(24);
         // }
         if (depositTokenName === 'USDC') {
-            return rewardPerSecond.mul(12000).div(24000);
-          } else  {
-            return rewardPerSecond.mul(2400).div(24000);
-          }
+          return rewardPerSecond.mul(12000).div(24000);
+        } else {
+          return rewardPerSecond.mul(2400).div(24000);
+        }
       }
-      
+
       const poolStartTime = await poolContract.poolStartTime();
       const startDateTime = new Date(poolStartTime.toNumber() * 1000);
       const FOUR_DAYS = 4 * 24 * 60 * 60 * 1000;
@@ -632,7 +635,7 @@ export class TombFinance {
       case 'SNOW':
         return this.getTombStat();
       case 'GLCR':
-        return this.getShareStat(); 
+        return this.getShareStat();
       case 'WBTC':
         return this.getBtcStat();
       // case 'SNOBOND':
@@ -648,27 +651,23 @@ export class TombFinance {
     }
   }
 
-
-    
-   
   async getUsdtStat(): Promise<TokenStat> {
-    const {DataFeedOracle} = this.contracts
-    const [rate, rateInFtm] =
-      await Promise.all([
-        DataFeedOracle.getPrice("USDT","USD"),
-        DataFeedOracle.getPrice("USDC","USDC")
-      ]);
-      
+    const { DataFeedOracle } = this.contracts;
+    const [rate, rateInFtm] = await Promise.all([
+      DataFeedOracle.getPrice('USDT', 'USD'),
+      DataFeedOracle.getPrice('USDC', 'USDC'),
+    ]);
+
     // const rate = await this.getBandChainData('USDT/USD');
-    // const rateInFtm = await this.getBandChainData('USDT/USDC'); 
+    // const rateInFtm = await this.getBandChainData('USDT/USDC');
 
     // const { data } = await axios(
     //   'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=tether-avalanche-bridged-usdt-e',
     // );
-   
+
     return {
-      tokenInFtm: getDisplayBalance(rateInFtm,18,4),
-      priceInDollars: getDisplayBalance(rate,18,4),
+      tokenInFtm: getDisplayBalance(rateInFtm, 18, 4),
+      priceInDollars: getDisplayBalance(rate, 18, 4),
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -677,18 +676,17 @@ export class TombFinance {
   }
 
   async getUsdcStat(): Promise<TokenStat> {
-    const {DataFeedOracle} = this.contracts
-    const [rate, rateInFtm] =
-      await Promise.all([
-        DataFeedOracle.getPrice("USDC","USD"),
-        DataFeedOracle.getPrice("USDC","USDC")
-      ]);
+    const { DataFeedOracle } = this.contracts;
+    const [rate, rateInFtm] = await Promise.all([
+      DataFeedOracle.getPrice('USDC', 'USD'),
+      DataFeedOracle.getPrice('USDC', 'USDC'),
+    ]);
     // const rate = await this.getBandChainData('USDC/USD');
     // const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=usd-coin');
-    
+
     return {
-      tokenInFtm: getDisplayBalance(rateInFtm,18,4),
-      priceInDollars: getDisplayBalance(rate,18,4),
+      tokenInFtm: getDisplayBalance(rateInFtm, 18, 4),
+      priceInDollars: getDisplayBalance(rate, 18, 4),
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -731,18 +729,17 @@ export class TombFinance {
   // }
 
   async getBtcStat(): Promise<TokenStat> {
-    const {DataFeedOracle} = this.contracts
-    const [rate, rateInFtm] =
-      await Promise.all([
-        DataFeedOracle.getPrice("WBTC","USD"),
-        DataFeedOracle.getPrice("WBTC","USDC")
-      ]);
-    // const rate = await this.getBandChainData('BTC/USD'); 
-    // const rateInFtm = await this.getBandChainData('BTC/USDC'); 
+    const { DataFeedOracle } = this.contracts;
+    const [rate, rateInFtm] = await Promise.all([
+      DataFeedOracle.getPrice('WBTC', 'USD'),
+      DataFeedOracle.getPrice('WBTC', 'USDC'),
+    ]);
+    // const rate = await this.getBandChainData('BTC/USD');
+    // const rateInFtm = await this.getBandChainData('BTC/USDC');
     // const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin');
     return {
-      tokenInFtm: getDisplayBalance(rateInFtm,18,4),
-      priceInDollars: getDisplayBalance(rate,18,4),
+      tokenInFtm: getDisplayBalance(rateInFtm, 18, 4),
+      priceInDollars: getDisplayBalance(rate, 18, 4),
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -751,18 +748,17 @@ export class TombFinance {
   }
 
   async getEthStat(): Promise<TokenStat> {
-    const {DataFeedOracle} = this.contracts
-    const [rate, rateInFtm] =
-      await Promise.all([
-        DataFeedOracle.getPrice("ETH","USD"),
-        DataFeedOracle.getPrice("ETH","USDC")
-      ]);
+    const { DataFeedOracle } = this.contracts;
+    const [rate, rateInFtm] = await Promise.all([
+      DataFeedOracle.getPrice('ETH', 'USD'),
+      DataFeedOracle.getPrice('ETH', 'USDC'),
+    ]);
     // const rate = await this.getBandChainData('ETH/USD');
     // const rateInFtm = await this.getBandChainData('ETH/USDC');
     // const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=ethereum');
     return {
-      tokenInFtm: getDisplayBalance(rateInFtm,18,4),
-      priceInDollars: getDisplayBalance(rate,18,4),
+      tokenInFtm: getDisplayBalance(rateInFtm, 18, 4),
+      priceInDollars: getDisplayBalance(rate, 18, 4),
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -771,20 +767,19 @@ export class TombFinance {
   }
 
   async getDaiStat(): Promise<TokenStat> {
-    const {DataFeedOracle} = this.contracts
-    const [rate, rateInFtm] =
-      await Promise.all([
-        DataFeedOracle.getPrice("DAI","USD"),
-        DataFeedOracle.getPrice("DAI","USDC")
-      ]);
+    const { DataFeedOracle } = this.contracts;
+    const [rate, rateInFtm] = await Promise.all([
+      DataFeedOracle.getPrice('DAI', 'USD'),
+      DataFeedOracle.getPrice('DAI', 'USDC'),
+    ]);
     // const rate = await this.getBandChainData('DAI/USD');
-    // const rateInFtm = await this.getBandChainData('DAI/USDC'); 
+    // const rateInFtm = await this.getBandChainData('DAI/USDC');
     // const { data } = await axios('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=dai');
     return {
       // tokenInFtm: data[0].current_price,
       // priceInDollars: data[0].current_price,
-      tokenInFtm: getDisplayBalance(rateInFtm,18,4),
-      priceInDollars: getDisplayBalance(rate,18,4),
+      tokenInFtm: getDisplayBalance(rateInFtm, 18, 4),
+      priceInDollars: getDisplayBalance(rate, 18, 4),
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -824,18 +819,17 @@ export class TombFinance {
   // }
 
   async getCroStat(): Promise<TokenStat> {
-    const {DataFeedOracle} = this.contracts
-    const [rate, rateInFtm] =
-      await Promise.all([
-        DataFeedOracle.getPrice("CRO","USD"),
-        DataFeedOracle.getPrice("CRO","USDC")
-      ]);
+    const { DataFeedOracle } = this.contracts;
+    const [rate, rateInFtm] = await Promise.all([
+      DataFeedOracle.getPrice('CRO', 'USD'),
+      DataFeedOracle.getPrice('CRO', 'USDC'),
+    ]);
     // const rate = await this.getBandChainData('CRO/USD');
     // const rateInFtm = await this.getBandChainData('CRO/USDC');
     // const priceInDollars = await this.getCroPriceFromPancakeswap();
     return {
-      tokenInFtm: getDisplayBalance(rateInFtm,18,4),
-      priceInDollars: getDisplayBalance(rate,18,4),
+      tokenInFtm: getDisplayBalance(rateInFtm, 18, 4),
+      priceInDollars: getDisplayBalance(rate, 18, 4),
       totalSupply: '0',
       circulatingSupply: '0',
       totalBurned: '0',
@@ -848,7 +842,7 @@ export class TombFinance {
   //   const client = new Client(endpoint);
   //   const rate = await client.getReferenceData(
   //       [Token],0,0
-  //     ); 
+  //     );
   //   return rate[0].rate.toString();
   // }
 
@@ -1006,7 +1000,7 @@ export class TombFinance {
     if (!ready) return;
     const { chainId } = this.config;
     const { USDC } = this.config.externalTokens;
-    
+
     const wftm = baseToken || new Token(chainId, USDC[0], USDC[1]);
     const token = new Token(chainId, tokenContract.address, tokenContract.decimal, tokenContract.symbol);
     try {
@@ -1362,7 +1356,7 @@ export class TombFinance {
       estimate = await zapper.estimateZapIn(lpToken.address, SPOOKY_ROUTER_ADDR, parseUnits(amount, 18));
     } else {*/
     const token = tokenName === TOMB_TICKER ? this.TOMB : tokenName === TSHARE_TICKER ? this.TSHARE : this.FTM;
-    const decimals = tokenName === TOMB_TICKER ||  tokenName === TSHARE_TICKER ? 18 : 6 
+    const decimals = tokenName === TOMB_TICKER || tokenName === TSHARE_TICKER ? 18 : 6;
     estimate = await zapper.estimateZapInToken(
       token.address,
       lpToken.address,
@@ -1399,30 +1393,24 @@ export class TombFinance {
     /*}*/
   }
   async addLiquidity(tokenName: string, amount: string, ftmAmount: string): Promise<TransactionResponse> {
-    const { wrapperRouter } = this.contracts; 
-    const token =
-      tokenName === TOMB_TICKER
-        ? this.TOMB
-        : tokenName === TSHARE_TICKER
-        ? this.TSHARE
-        : null;
+    const { wrapperRouter } = this.contracts;
+    const token = tokenName === TOMB_TICKER ? this.TOMB : tokenName === TSHARE_TICKER ? this.TSHARE : null;
     const ftmToken = this.FTM;
-    const minAmount = (Number(amount) * 0.995).toFixed(token.decimal).toString(); 
+    const minAmount = (Number(amount) * 0.995).toFixed(token.decimal).toString();
     const minFtmAmount = (Number(ftmAmount) * 0.995).toFixed(ftmToken.decimal).toString();
-    const currentBlockNumber = await this.provider.getBlockNumber(); 
+    const currentBlockNumber = await this.provider.getBlockNumber();
     const currentBlockTimeStamp = (await this.provider.getBlock(currentBlockNumber)).timestamp;
 
     return await wrapperRouter.addLiquidity(
       token.address,
       ftmToken.address,
       parseUnits(amount, token.decimal),
-      parseUnits(ftmAmount, ftmToken.decimal), 
+      parseUnits(ftmAmount, ftmToken.decimal),
       parseUnits(minAmount, token.decimal),
-      parseUnits(minFtmAmount, ftmToken.decimal), 
+      parseUnits(minFtmAmount, ftmToken.decimal),
       this.myAccount,
-      currentBlockTimeStamp + 60
+      currentBlockTimeStamp + 60,
     );
- 
   }
   async swapTBondToTShare(tbondAmount: BigNumber): Promise<TransactionResponse> {
     const { TShareSwapper } = this.contracts;
