@@ -127,7 +127,7 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
         max={zappingTokenBalance}
         symbol={zappingToken}
       />
-      <Label text="Zap Estimations" color="black" />
+      {/* <Label text="Zap Estimations" color="black" /> */}
       {/* <StyledDescriptionText>
         {' '}
         {tokenName}: {Number(estimate.token1) / Number(ftmAmountPerLP)}
