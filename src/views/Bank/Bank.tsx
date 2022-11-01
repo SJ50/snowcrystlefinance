@@ -45,11 +45,7 @@ const Farm: React.FC = () => {
     <>
       <PageHeader
         icon="🏦"
-        subtitle={`Deposit ${
-          bank?.depositTokenName === 'USDC' || bank?.depositTokenName === 'USDT'
-            ? bank?.depositTokenName
-            : bank?.depositTokenName.replace('USDC', 'USDC')
-        } and earn ${bank?.earnTokenName}`}
+        subtitle={`Deposit ${bank?.depositTokenName} and earn ${bank?.earnTokenName}`}
         title={bank?.name}
       />
       {bank?.depositTokenName === 'SNOW' && Date.now() < 1646510400000 ? (
@@ -80,7 +76,9 @@ const Farm: React.FC = () => {
             <Card style={{ background: '#161414', borderRadius: '15px', height: '100px' }} className={classes.gridItem}>
               <CardContent style={{ textAlign: 'center' }}>
                 <h3 style={{ color: '#5686d6' }}>APR</h3>
-                <h2 style={{ marginTop: '10px', fontWeight: 'normal' }}>{bank.closedForStaking ? '0.00' : statsOnPool?.yearlyAPR}%</h2>
+                <h2 style={{ marginTop: '10px', fontWeight: 'normal' }}>
+                  {bank.closedForStaking ? '0.00' : statsOnPool?.yearlyAPR}%
+                </h2>
               </CardContent>
             </Card>
           </Grid>
@@ -88,7 +86,9 @@ const Farm: React.FC = () => {
             <Card style={{ background: '#161414', borderRadius: '15px', height: '100px' }} className={classes.gridItem}>
               <CardContent style={{ textAlign: 'center' }}>
                 <h3 style={{ color: '#5686d6' }}>Daily APR</h3>
-                <h2 style={{ marginTop: '10px', fontWeight: 'normal' }}>{bank.closedForStaking ? '0.00' : statsOnPool?.dailyAPR}%</h2>
+                <h2 style={{ marginTop: '10px', fontWeight: 'normal' }}>
+                  {bank.closedForStaking ? '0.00' : statsOnPool?.dailyAPR}%
+                </h2>
               </CardContent>
             </Card>
           </Grid>
@@ -96,7 +96,7 @@ const Farm: React.FC = () => {
             <Card style={{ background: '#161414', borderRadius: '15px', height: '100px' }} className={classes.gridItem}>
               <CardContent style={{ textAlign: 'center' }}>
                 <h3 style={{ color: '#5686d6' }}>TVL</h3>
-                <h2 style={{ marginTop: '10px',fontWeight: 'normal' }}>${statsOnPool?.TVL}</h2>
+                <h2 style={{ marginTop: '10px', fontWeight: 'normal' }}>${statsOnPool?.TVL}</h2>
               </CardContent>
             </Card>
           </Grid>

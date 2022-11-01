@@ -47,9 +47,16 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
   );
 
   const multiplier = bank.depositTokenName.includes('SNOW') || bank.depositTokenName.includes('GLCR') ? 10 ** 6 : 1;
+  // console.log(`debug ${JSON.stringify(tokenPriceInDollars, null, 4)}`);
   const earnedInDollars = (
     Number(tokenPriceInDollars) *
-    Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9)) *
+    Number(
+      getDisplayBalance(
+        stakedBalance,
+        bank.depositToken.decimal,
+        bank.depositToken.decimal === 6 ? 3 : bank.depositToken.decimal === 8 ? 8 : 9,
+      ),
+    ) *
     multiplier
   ).toFixed(2);
   const { onStake } = useStake(bank);
@@ -95,7 +102,11 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
   );
 
   const stakedBalanceNumber = Number(
-    getDisplayBalance(stakedBalance, bank.depositToken.decimal, bank.depositToken.decimal === 6 ? 3 : 9),
+    getDisplayBalance(
+      stakedBalance,
+      bank.depositToken.decimal,
+      bank.depositToken.decimal === 6 ? 3 : bank.depositToken.decimal === 8 ? 8 : 9,
+    ),
   );
   return (
     <Card>
@@ -112,14 +123,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
               }
             />
             <Label color="rgba(74, 68, 82)" text={`≈ $${earnedInDollars}`} />
-            <Label
-              color="rgba(74, 68, 82)"
-              text={`${
-                bank.depositTokenName === 'USDC' || bank.depositTokenName === 'USDT'
-                  ? bank.depositTokenName
-                  : bank.depositTokenName.replace('USDC', 'USDC')
-              } Staked`}
-            />
+            <Label color="rgba(74, 68, 82)" text={`${bank.depositTokenName} Staked`} />
           </StyledCardHeader>
           <StyledCardActions>
             {approveStatus !== ApprovalState.APPROVED ? (
@@ -134,7 +138,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
                 variant="contained"
                 style={{ marginTop: '65px', borderRadius: '15px', width: '250px' }}
               >
-                {`Approve ${bank.depositTokenName.replace('USDC', 'USDC')}`}
+                {`Approve ${bank.depositTokenName}`}
               </Button>
             ) : (
               <>

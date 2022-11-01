@@ -429,7 +429,13 @@ export class TombFinance {
       );
       const TVL =
         Number(depositTokenPrice) *
-        Number(getDisplayBalance(stakeInPool, depositToken.decimal, depositToken.decimal === 6 ? 3 : 9));
+        Number(
+          getDisplayBalance(
+            stakeInPool,
+            depositToken.decimal,
+            depositToken.decimal === 6 ? 3 : bank.depositToken.decimal === 8 ? 8 : 9,
+          ),
+        );
       const stat = bank.earnTokenName === 'SNOW' ? await this.getTombStat() : await this.getShareStat();
       const tokenPerSecond = await this.getTokenPerSecond(
         bank.earnTokenName,
@@ -950,8 +956,11 @@ export class TombFinance {
     amount: BigNumber,
   ): Promise<TransactionResponse> {
     const pool = this.contracts[poolName];
-
-    return sectionInUI !== 4 ? await pool.deposit(poolId, amount) : await pool.create(poolId, amount);
+    try {
+      return sectionInUI !== 4 ? await pool.deposit(poolId, amount) : await pool.create(poolId, amount);
+    } catch (err) {
+      console.error(`debug stake ${err}`);
+    }
   }
 
   /**

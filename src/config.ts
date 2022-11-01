@@ -39,14 +39,17 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   poolId: the poolId assigned in the contract
   sectionInUI: way to distinguish in which of the 3 pool groups it should be listed
         - 0 = Single asset stake pools
-        - 1 = LP asset staking rewarding TOMB
-        - 2 = LP asset staking rewarding TSHARE
+        - 1 = LP asset staking rewarding SNOW
+        - 2 = LP asset staking rewarding GLCR
   contract: the contract name which will be loaded from the deployment.environmnet.json
   depositTokenName : the name of the token to be deposited
   earnTokenName: the rewarded token
   finished: will disable the pool on the UI if set to true
   sort: the order of the pool
   */
+  /*
+  SNOW GENESIS pools
+ */
   SnowUsdcGenesisRewardPool: {
     name: 'Earn SNOW by USDC',
     poolId: 0,
@@ -60,7 +63,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   },
   SnowBtcGenesisRewardPool: {
     name: 'Earn SNOW by wBTC',
-    poolId: 1,
+    poolId: 4,
     sectionInUI: 0,
     contract: 'SnowBtcGenesisRewardPool',
     depositTokenName: 'WBTC',
@@ -71,7 +74,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   },
   SnowEthGenesisRewardPool: {
     name: 'Earn SNOW by wETH',
-    poolId: 2,
+    poolId: 1,
     sectionInUI: 0,
     contract: 'SnowEthGenesisRewardPool',
     depositTokenName: 'WETH',
@@ -82,7 +85,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   },
   SnowCroGenesisRewardPool: {
     name: 'Earn SNOW by wCRO',
-    poolId: 3,
+    poolId: 5,
     sectionInUI: 0,
     contract: 'SnowCroGenesisRewardPool',
     depositTokenName: 'WCRO',
@@ -93,7 +96,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   },
   SnowDAIGenesisRewardPool: {
     name: 'Earn SNOW by DAI',
-    poolId: 4,
+    poolId: 2,
     sectionInUI: 0,
     contract: 'SnowDaiGenesisRewardPool',
     depositTokenName: 'DAI',
@@ -104,7 +107,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   },
   SnowUsdtGenesisRewardPool: {
     name: 'Earn SNOW by USDT',
-    poolId: 5,
+    poolId: 3,
     sectionInUI: 0,
     contract: 'SnowUsdtGenesisRewardPool',
     depositTokenName: 'USDT',
@@ -113,6 +116,9 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 6,
     closedForStaking: false,
   },
+  /*
+  GLCR farming pool
+ */
   SnowUsdcLPGlcrRewardPool: {
     name: 'Earn GLCR by SNOW-USDC LP',
     poolId: 0,
@@ -135,6 +141,9 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 2,
     closedForStaking: false,
   },
+  /*
+  REBATE Treasury
+ */
   DaoSnowRebateTreasury: {
     name: 'Bond USDC for SNOW',
     poolId: 100,
@@ -179,6 +188,9 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sort: 4,
     closedForStaking: false,
   },
+  /*
+  NODES
+ */
   PegLPNode: {
     name: 'Generate SNOW-USDC LP with Nodes',
     poolId: 0,
