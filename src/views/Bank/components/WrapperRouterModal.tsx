@@ -143,7 +143,7 @@ const ZapRouterModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = 
 
   return (
     <Modal>
-      <ModalTitle text={`Create Liquidity`} />
+      <ModalTitle text={`Create Liquidity (Tax Free)`} />
 
       <TokenInput
         onSelectMax={handleSelectMax}
