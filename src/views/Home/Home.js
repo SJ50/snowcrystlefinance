@@ -3,7 +3,8 @@ import React, { useMemo } from 'react';
 import Page from '../../components/Page';
 import styled from 'styled-components';
 import HomeImage from '../../assets/img/SVG_Icons_and_web_bg/bg.svg';
-import AvaxLogo from '../../assets/img/USDC.png';
+import MetamaskFox from '../../assets/img/metamask-fox.svg';
+import UsdcLogo from '../../assets/img/USDC.png';
 import { createGlobalStyle } from 'styled-components';
 import CountUp from 'react-countup';
 import TokenSymbol from '../../components/TokenSymbol';
@@ -461,8 +462,23 @@ const Home = () => {
         <Grid item xs={12} sm={4}>
           <Card>
             <CardContent style={{ position: 'relative' }}>
-              <div style={{ position: 'absolute', right: 5, top: 5 }}>
+              <div style={{ position: 'absolute', right: 10, top: 10 }}>
                 <TokenSymbol symbol="TOMB" size={50} />
+              </div>
+              <div>
+                <Button
+                  onClick={() => {
+                    tombFinance.watchAssetInMetamask('SNOW');
+                  }}
+                  style={{
+                    position: 'absolute',
+                    'background-image':
+                      'linear-gradient(hsla(170, 77%, 83%, 0.2), hsla(202, 81%, 86%, 0.2), hsla(0, 97%, 85%, 0.2))',
+                  }}
+                >
+                  <b>+</b>&nbsp;&nbsp;
+                  <img alt="metamask fox" style={{ width: '20px', filter: 'grayscale(30%)' }} src={MetamaskFox} />
+                </Button>
               </div>
               <h2 align="center">SNOW</h2>
               <p align="center">Current Price</p>
@@ -477,7 +493,7 @@ const Home = () => {
                   }}
                 >
                   {tombPriceInFTM ? tombPriceInFTM : '-.----'}{' '}
-                  <img alt="logo" style={{ width: '30px', marginLeft: '6px' }} src={AvaxLogo} />
+                  <img alt="logo" style={{ width: '30px', marginLeft: '6px' }} src={UsdcLogo} />
                 </span>
               </Box>
               <Box align="center" marginBottom={3}>
@@ -485,16 +501,7 @@ const Home = () => {
                   ${tombPriceInDollars ? tombPriceInDollars : '-.--'}
                 </span>
               </Box>
-              {/* <Button
-                onClick={() => {
-                  gemFinance.watchAssetInMetamask('SNOW');
-                }}
-                style={{ position: 'absolute', top: '10px', right: '10px', border: '1px grey solid' }}
-              >
-                {' '}
-                <b>+</b>&nbsp;&nbsp;
-                <img alt="metamask fox" style={{ width: '20px', filter: 'grayscale(100%)' }} src={MetamaskFox} />
-              </Button> */}
+
               <Row>
                 <span style={{ fontSize: '14px' }}>
                   Market Cap:
@@ -558,6 +565,21 @@ const Home = () => {
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
                 <TokenSymbol symbol="GLCR" size={50} />
               </div>
+              <div>
+                <Button
+                  onClick={() => {
+                    tombFinance.watchAssetInMetamask('GLCR');
+                  }}
+                  style={{
+                    position: 'absolute',
+                    'background-image':
+                      'linear-gradient(hsla(170, 77%, 83%, 0.2), hsla(202, 81%, 86%, 0.2), hsla(0, 97%, 85%, 0.2))',
+                  }}
+                >
+                  <b>+</b>&nbsp;&nbsp;
+                  <img alt="metamask fox" style={{ width: '20px', filter: 'grayscale(30%)' }} src={MetamaskFox} />
+                </Button>
+              </div>
               <h2 align="center">GLCR</h2>
               <p align="center">Current Price</p>
               <Box align="center">
@@ -571,7 +593,7 @@ const Home = () => {
                   }}
                 >
                   {tSharePriceInFTM ? tSharePriceInFTM : '-.----'}{' '}
-                  <img alt="logo" style={{ width: '30px', marginLeft: '6px' }} src={AvaxLogo} />
+                  <img alt="logo" style={{ width: '30px', marginLeft: '6px' }} src={UsdcLogo} />
                 </span>
               </Box>
               <Box align="center" marginBottom={3}>
@@ -642,6 +664,21 @@ const Home = () => {
               <div style={{ position: 'absolute', right: 5, top: 5 }}>
                 <TokenSymbol symbol="SBOND" size={50} />
               </div>
+              <div>
+                <Button
+                  onClick={() => {
+                    tombFinance.watchAssetInMetamask('SBOND');
+                  }}
+                  style={{
+                    position: 'absolute',
+                    'background-image':
+                      'linear-gradient(hsla(170, 77%, 83%, 0.2), hsla(202, 81%, 86%, 0.2), hsla(0, 97%, 85%, 0.2))',
+                  }}
+                >
+                  <b>+</b>&nbsp;&nbsp;
+                  <img alt="metamask fox" style={{ width: '20px', filter: 'grayscale(30%)' }} src={MetamaskFox} />
+                </Button>
+              </div>
               <h2 align="center">SBOND</h2>
               <p align="center">Current Price</p>
               <Box align="center">
@@ -655,7 +692,7 @@ const Home = () => {
                   }}
                 >
                   {tBondPriceInFTM ? tBondPriceInFTM : '-.----'}{' '}
-                  <img alt="logo" style={{ width: '30px', marginLeft: '6px' }} src={AvaxLogo} />
+                  <img alt="logo" style={{ width: '30px', marginLeft: '6px' }} src={UsdcLogo} />
                 </span>
               </Box>
               <Box align="center" marginBottom={3}>

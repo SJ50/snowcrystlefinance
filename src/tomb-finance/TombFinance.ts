@@ -29,7 +29,7 @@ import ERC20 from './ERC20';
 import { getFullDisplayBalance, getDisplayBalance } from '../utils/formatBalance';
 import { getDefaultProvider, getDefaultBaseProvider } from '../utils/provider';
 import IUniswapV2PairABI from './IUniswapV2Pair.abi.json';
-import { /*config,*/ bankDefinitions } from '../config';
+import config, { bankDefinitions } from '../config';
 import moment from 'moment';
 import { parseUnits } from 'ethers/lib/utils';
 import { FTM_TICKER, SPOOKY_ROUTER_ADDR, TOMB_TICKER, TSHARE_TICKER } from '../utils/constants';
@@ -37,6 +37,7 @@ import { FTM_TICKER, SPOOKY_ROUTER_ADDR, TOMB_TICKER, TSHARE_TICKER } from '../u
 import { debug } from 'console';
 // import { CompareArrowsOutlined } from '@material-ui/icons';
 // import { CompareArrowsOutlined, CompassCalibrationOutlined } from '@material-ui/icons';
+import SnowLogo from '../assets/img/SVG_Icons_and_web_bg/SNOW-Icon-01.svg';
 /**
  * An API module of Tomb Finance contracts.
  * All contract-interacting domain logic should be defined in here.
@@ -1216,29 +1217,30 @@ export class TombFinance {
 
     let asset;
     let assetUrl;
-    if (assetName === 'SNOW') {
-      asset = this.TOMB;
-      assetUrl = 'https://gateway.pinata.cloud/ipfs/QmVL6cK5iUmkfGhw41s4gCksHn4H4KoF2tnEin2fhbEMmQ';
-    } else if (assetName === 'GLCR') {
-      asset = this.TSHARE;
-      assetUrl = 'https://gateway.pinata.cloud/ipfs/QmSkdqbueZTKDjb2oqKo6bEcn6qenA9Z6iiSNR1omHGVZx';
-    } else if (assetName === 'SBOND') {
-      asset = this.TBOND;
-      assetUrl = 'https://gateway.pinata.cloud/ipfs/QmVCNLxo6vRUr3qCaNHJPwVL7jMGBf18FSa65zkeaHSbua';
-    }
-    await ethereum.request({
-      method: 'wallet_watchAsset',
-      params: {
-        type: 'ERC20',
-        options: {
-          address: asset.address,
-          symbol: asset.symbol,
-          decimals: 18,
-          image: assetUrl,
+    if (ethereum && ethereum.networkVersion === config.chainId.toString()) {
+      if (assetName === 'SNOW') {
+        asset = this.TOMB;
+        assetUrl = 'https://i.ibb.co/ryh8ZmN/SNOW-Icon-01.png';
+      } else if (assetName === 'GLCR') {
+        asset = this.TSHARE;
+        assetUrl = 'https://i.ibb.co/LrwQXzQ/GLCR-Icon-01.png';
+      } else if (assetName === 'SBOND') {
+        asset = this.TBOND;
+        assetUrl = 'https://i.ibb.co/3WKVW9Z/Bond-icon-01.png';
+      }
+      await ethereum.request({
+        method: 'wallet_watchAsset',
+        params: {
+          type: 'ERC20',
+          options: {
+            address: asset.address,
+            symbol: asset.symbol,
+            decimals: 18,
+            image: assetUrl,
+          },
         },
-      },
-    });
-
+      });
+    }
     return true;
   }
 
