@@ -579,6 +579,7 @@ export class TombFinance {
 
   async getTotalValueLocked(): Promise<Number> {
     let totalValue = 0;
+
     for (const bankInfo of Object.values(bankDefinitions)) {
       const pool = this.contracts[bankInfo.contract]; // SnowUsdcLPGlcrRewardPool
       const token = this.externalTokens[bankInfo.depositTokenName]; // SNOW-USDC-LP
@@ -589,13 +590,16 @@ export class TombFinance {
         this.getDepositTokenPriceInDollars(bankInfo.depositTokenName, token),
         token.balanceOf(pool.address),
       ]);
-      // console.log("debug "+ JSON.stringify(bankInfo, null,4));
+      // console.log(`debug  TVL ${JSON.stringify(bankInfo.depositTokenName, null, 4)}`);
       const value =
-        Number(getDisplayBalance(tokenAmountInPool, token.decimal, token.decimal === 6 ? 3 : 9)) * Number(tokenPrice);
+        Number(
+          getDisplayBalance(tokenAmountInPool, token.decimal, token.decimal === 6 ? 3 : token.decimal === 8 ? 8 : 9),
+        ) * Number(tokenPrice);
       let poolValue = Number.isNaN(value) ? 0 : value;
       if (bankInfo.depositTokenName.endsWith('-USDC-LP')) {
         poolValue = poolValue * 10 ** 6;
       }
+      // console.log(`debug  TVL ${JSON.stringify(poolValue, null, 4)}`);
       totalValue += poolValue;
     }
 
@@ -1374,13 +1378,17 @@ export class TombFinance {
         : tokenName === FTM_TICKER
         ? this.FTM
         : null;
-    return await zapper.zapInToken(
-      token.address,
-      parseUnits(amount, token.decimal),
-      lpToken.address,
-      SPOOKY_ROUTER_ADDR,
-      this.myAccount,
-    );
+    try {
+      return await zapper.zapInToken(
+        token.address,
+        parseUnits(amount, token.decimal),
+        lpToken.address,
+        SPOOKY_ROUTER_ADDR,
+        this.myAccount,
+      );
+    } catch (err) {
+      console.error(`debug failed to zap: ${JSON.stringify(err, null, 4)}`);
+    }
     /*}*/
   }
   async addLiquidity(tokenName: string, amount: string, ftmAmount: string): Promise<TransactionResponse> {
