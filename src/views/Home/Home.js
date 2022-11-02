@@ -472,7 +472,7 @@ const Home = () => {
                   }}
                   style={{
                     position: 'absolute',
-                    'background-image':
+                    backgroundImage:
                       'linear-gradient(hsla(170, 77%, 83%, 0.2), hsla(202, 81%, 86%, 0.2), hsla(0, 97%, 85%, 0.2))',
                   }}
                 >
@@ -572,7 +572,7 @@ const Home = () => {
                   }}
                   style={{
                     position: 'absolute',
-                    'background-image':
+                    backgroundImage:
                       'linear-gradient(hsla(170, 77%, 83%, 0.2), hsla(202, 81%, 86%, 0.2), hsla(0, 97%, 85%, 0.2))',
                   }}
                 >
@@ -671,7 +671,7 @@ const Home = () => {
                   }}
                   style={{
                     position: 'absolute',
-                    'background-image':
+                    backgroundImage:
                       'linear-gradient(hsla(170, 77%, 83%, 0.2), hsla(202, 81%, 86%, 0.2), hsla(0, 97%, 85%, 0.2))',
                   }}
                 >
