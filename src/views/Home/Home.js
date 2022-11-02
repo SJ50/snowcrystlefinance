@@ -759,7 +759,7 @@ const Home = () => {
                     disabled={tombBank.closedForStaking}
                     onClick={() => (tombBank.closedForStaking ? null : onPresentTombZap())}
                   >
-                    Create Liquidity
+                    Create LP
                   </Button>
                   <Button
                     color="primary"
@@ -822,7 +822,7 @@ const Home = () => {
                     disabled={tombBank.closedForStaking}
                     onClick={() => (tombBank.closedForStaking ? null : onPresentTshareZap())}
                   >
-                    Create Liquidity
+                    Create LP
                   </Button>
                   <Button
                     color="primary"
