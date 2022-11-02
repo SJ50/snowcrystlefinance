@@ -106,7 +106,7 @@ const CemeteryCard = () => {
               disabled={tombBank.closedForStaking}
               onClick={() => (tombBank.closedForStaking ? null : onPresentTombZap())}
             >
-              Add Liquidity
+              Create LP
             </Button>
           </CardActions>
         </Card>
@@ -159,7 +159,7 @@ const CemeteryCard = () => {
               disabled={tShareBank.closedForStaking}
               onClick={() => (tShareBank.closedForStaking ? null : onPresentTshareZap())}
             >
-              Add Liquidity
+              Create LP
             </Button>
           </CardActions>
         </Card>

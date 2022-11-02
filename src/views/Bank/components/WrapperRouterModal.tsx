@@ -143,7 +143,7 @@ const ZapRouterModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = 
 
   return (
     <Modal>
-      <ModalTitle text={`Add Liquidity`} />
+      <ModalTitle text={`Create Liquidity`} />
 
       <TokenInput
         onSelectMax={handleSelectMax}
@@ -204,7 +204,7 @@ const ZapRouterModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = 
             ? 'Approve ' + (tokenName.startsWith(TOMB_TICKER) ? TOMB_TICKER : TSHARE_TICKER)
             : approveFtmZapperStatus !== ApprovalFtmState.APPROVED
             ? 'Approve ' + FTM_TICKER
-            : 'Add Liquidity'}
+            : 'Create Liquidity'}
         </Button>
       </ModalActions>
 
