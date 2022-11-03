@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react';
 import { useHasPendingApproval, useTransactionAdder } from '../state/transactions/hooks';
 import useAllowance from './useAllowance';
 import ERC20 from '../tomb-finance/ERC20';
-import { FTM_TICKER, TOMB_TICKER, TSHARE_TICKER, ZAPPER_ROUTER_ADDR } from '../utils/constants';
+import { FTM_TICKER, TOMB_TICKER, TSHARE_TICKER } from '../utils/constants';
 import useTombFinance from './useTombFinance';
 
 const APPROVE_AMOUNT = ethers.constants.MaxUint256;
@@ -23,8 +23,8 @@ function useApproveZapper(zappingToken: string): [ApprovalState, () => Promise<v
   if (zappingToken === FTM_TICKER) token = tombFinance.FTM;
   else if (zappingToken === TOMB_TICKER) token = tombFinance.TOMB;
   else if (zappingToken === TSHARE_TICKER) token = tombFinance.TSHARE;
-  const pendingApproval = useHasPendingApproval(token.address, ZAPPER_ROUTER_ADDR);
-  const currentAllowance = useAllowance(token, ZAPPER_ROUTER_ADDR, pendingApproval);
+  const pendingApproval = useHasPendingApproval(token.address, tombFinance.zapperAddress());
+  const currentAllowance = useAllowance(token, tombFinance.zapperAddress(), pendingApproval);
 
   // check the current approval status
   const approvalState: ApprovalState = useMemo(() => {
@@ -48,12 +48,12 @@ function useApproveZapper(zappingToken: string): [ApprovalState, () => Promise<v
       return;
     }
 
-    const response = await token.approve(ZAPPER_ROUTER_ADDR, APPROVE_AMOUNT);
+    const response = await token.approve(tombFinance.zapperAddress(), APPROVE_AMOUNT);
     addTransaction(response, {
       summary: `Approve ${token.symbol}`,
       approval: {
         tokenAddress: token.address,
-        spender: ZAPPER_ROUTER_ADDR,
+        spender: tombFinance.zapperAddress(),
       },
     });
   }, [approvalState, token, addTransaction]);

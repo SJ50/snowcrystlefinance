@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react';
 import { useHasPendingApproval, useTransactionAdder } from '../state/transactions/hooks';
 import useAllowance from './useAllowance';
 import ERC20 from '../tomb-finance/ERC20';
-import { FTM_TICKER, TOMB_TICKER, TSHARE_TICKER, WRAPPER_ROUTER_ADDR } from '../utils/constants';
+import { FTM_TICKER, TOMB_TICKER, TSHARE_TICKER } from '../utils/constants';
 import useTombFinance from './useTombFinance';
 
 const APPROVE_AMOUNT = ethers.constants.MaxUint256;
@@ -18,14 +18,13 @@ export enum ApprovalState {
 
 // returns a variable indicating the state of the approval and a function which approves if necessary or early returns
 function useApproveWapper(zappingToken: string): [ApprovalState, () => Promise<void>] {
-  
   const tombFinance = useTombFinance();
   let token: ERC20;
   if (zappingToken === FTM_TICKER) token = tombFinance.FTM;
   else if (zappingToken === TOMB_TICKER) token = tombFinance.TOMB;
   else if (zappingToken === TSHARE_TICKER) token = tombFinance.TSHARE;
-  const pendingApproval = useHasPendingApproval(token.address, WRAPPER_ROUTER_ADDR);
-  const currentAllowance = useAllowance(token, WRAPPER_ROUTER_ADDR, pendingApproval);
+  const pendingApproval = useHasPendingApproval(token.address, tombFinance.wrapperRouterAddress());
+  const currentAllowance = useAllowance(token, tombFinance.wrapperRouterAddress(), pendingApproval);
 
   // check the current approval status
   const approvalState: ApprovalState = useMemo(() => {
@@ -49,12 +48,12 @@ function useApproveWapper(zappingToken: string): [ApprovalState, () => Promise<v
       return;
     }
 
-    const response = await token.approve(WRAPPER_ROUTER_ADDR, APPROVE_AMOUNT);
+    const response = await token.approve(tombFinance.wrapperRouterAddress(), APPROVE_AMOUNT);
     addTransaction(response, {
       summary: `Approve ${token.symbol}`,
       approval: {
         tokenAddress: token.address,
-        spender: WRAPPER_ROUTER_ADDR,
+        spender: tombFinance.wrapperRouterAddress(),
       },
     });
   }, [approvalState, token, addTransaction]);

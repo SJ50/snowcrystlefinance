@@ -6,11 +6,36 @@ import { BankInfo } from './tomb-finance';
 
 const configurations: { [env: string]: Configuration } = {
   production: {
+    chainId: ChainId.MAINNET,
+    networkName: 'cronos',
+    ftmscanUrl: 'https://cronoscan.com', // https://cronos.org/explorer/testnet3/ // https://cronoscan.com/
+    defaultProvider: 'https://evm.cronos.org', // https://evm.cronos.org/
+    deployments: require('./tomb-finance/deployments/deployments.mainnet.json'),
+    externalTokens: {
+      WCRO: ['0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23', 18],
+      SNOW: ['0x05a3F4E0ad6580D9d977F5eE12F168620f4F71e9', 18],
+      SBOND: ['0x66608790511b4d7B5f179d3b65f68A3Aa42347b0', 18],
+      GLCR: ['0xbe27f32D9F731CC9DddAfE3ddaA7CBBC0f58b414', 18],
+      USDC: ['0xc21223249CA28397B4B6541dfFaEcC539BfF0c59', 6],
+      USDT: ['0x66e428c3f67a68878562e79A0234c1F83c208770', 6],
+      WFTM: ['0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23', 18], // router WETH
+      WBTC: ['0x062E66477Faf219F25D27dCED647BF57C3107d52', 8],
+      WETH: ['0xe44Fd7fCb2b1581822D0c862B68222998a0c299a', 18],
+      DAI: ['0xF2001B145b43032AAF5Ee2884e456CCd805F677D', 18],
+      SNOW_USDC_LP: ['0xbFCF9D86CFb0E1E58F63F7e0b9861A4Db204D3a7', 18],
+      GLCR_USDC_LP: ['0xB4586CAb2e3Aa47A3586854AfD35592a78D62cF3', 18],
+    },
+    baseLaunchDate: new Date('2022-10-31T00:00:00Z'),
+    bondLaunchesAt: new Date('2022-10-31T00:00:00Z'),
+    masonryLaunchesAt: new Date('2022-11-01T18:00:00Z'),
+    refreshInterval: 10000,
+  },
+  development: {
     chainId: ChainId.TESTNET,
     networkName: 'cronos-testnet',
     ftmscanUrl: 'https://testnet.cronoscan.com/', // https://cronos.org/explorer/testnet3/ // https://cronoscan.com/
     defaultProvider: 'https://evm-t3.cronos.org', // https://evm.cronos.org/
-    deployments: require('./tomb-finance/deployments/deployments.mainnet.json'),
+    deployments: require('./tomb-finance/deployments/deployments.testnet.json'),
     externalTokens: {
       WCRO: ['0x0A293560E05eb5A62d9AED0dA043CDe17056C83e', 18],
       SNOW: ['0x05a3F4E0ad6580D9d977F5eE12F168620f4F71e9', 18],
@@ -215,4 +240,4 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   },
 };
 
-export default configurations[/*process.env.NODE_ENV || */ 'production'];
+export default configurations[/*process.env.NODE_ENV || */ 'development'];

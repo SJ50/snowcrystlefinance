@@ -29,6 +29,7 @@ import useBank from '../../hooks/useBank';
 import useModal from '../../hooks/useModal';
 import WrapperRouterModal from '../Bank/components/WrapperRouterModal';
 import useWrapperRouter from '../../hooks/useWrapperRouter';
+import Configuration from '../../config';
 
 const BackgroundImage = createGlobalStyle`
   body {
@@ -153,17 +154,15 @@ const Home = () => {
     />,
   );
 
-  const buyTombAddress =
-    'https://mm.finance/swap?inputCurrency=0xc3F95DeDacFEA28a3d657FfbCc74e9BaB6FB949B&outputCurrency=0x05a3F4E0ad6580D9d977F5eE12F168620f4F71e9#/';
-  const buyTShareAddress =
-    'https://mm.finance/swap?inputCurrency=0xc3F95DeDacFEA28a3d657FfbCc74e9BaB6FB949B&outputCurrency=0xbe27f32D9F731CC9DddAfE3ddaA7CBBC0f58b414#/';
+  const buyTombAddress = `https://mm.finance/swap?inputCurrency=${Configuration.externalTokens.USDC[0]}&outputCurrency=${Configuration.externalTokens.SNOW[0]}#/`;
+  const buyTShareAddress = `https://mm.finance/swap?inputCurrency=${Configuration.externalTokens.USDC[0]}&outputCurrency=${Configuration.externalTokens.GLCR[0]}#/`;
+  // prettier-ignore
+  const tombChart = `https://dexscreener.com/avalanche/${Configuration.externalTokens['SNOW-USDC-LP'][0]}`;
+  const tshareChart = `https://dexscreener.com/avalanche/${Configuration.externalTokens['GLCR-USDC-LP'][0]}`;
 
-  const tombChart = 'https://dexscreener.com/avalanche/0xbFCF9D86CFb0E1E58F63F7e0b9861A4Db204D3a7';
-  const tshareChart = 'https://dexscreener.com/avalanche/0xB4586CAb2e3Aa47A3586854AfD35592a78D62cF3';
-
-  const tombContract = 'https://testnet.cronoscan.com/address/0x05a3F4E0ad6580D9d977F5eE12F168620f4F71e9#code';
-  const tshareContract = 'https://testnet.cronoscan.com/address/0xbe27f32D9F731CC9DddAfE3ddaA7CBBC0f58b414#code';
-  const tbondContract = 'https://testnet.cronoscan.com/address/0x66608790511b4d7B5f179d3b65f68A3Aa42347b0#code';
+  const tombContract = `${Configuration.ftmscanUrl}/address/${Configuration.externalTokens.SNOW[0]}#code`;
+  const tshareContract = `${Configuration.ftmscanUrl}/address/${Configuration.externalTokens.GLCR[0]}#code`;
+  const tbondContract = `${Configuration.ftmscanUrl}/address/${Configuration.externalTokens.SBOND[0]}#code`;
 
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
   const tshareLPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);

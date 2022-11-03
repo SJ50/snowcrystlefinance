@@ -32,7 +32,7 @@ import IUniswapV2PairABI from './IUniswapV2Pair.abi.json';
 import config, { bankDefinitions } from '../config';
 import moment from 'moment';
 import { parseUnits } from 'ethers/lib/utils';
-import { FTM_TICKER, SPOOKY_ROUTER_ADDR, TOMB_TICKER, TSHARE_TICKER } from '../utils/constants';
+import { FTM_TICKER, TOMB_TICKER, TSHARE_TICKER } from '../utils/constants';
 // import { Client } from "@bandprotocol/bandchain.js";
 import { debug } from 'console';
 // import { CompareArrowsOutlined } from '@material-ui/icons';
@@ -145,7 +145,7 @@ export class TombFinance {
       this.TOMB.balanceOf(GenesisRewardPool.address),
     ]);
     // console.log("debug " + Number(await Promise.all([this.TOMB.balanceOf(GenesisRewardPool.address)])).toFixed(18));
-    // console.log("debug "+ JSON.stringify(this.TOMB.totalSupply(), null,4));
+    // console.log(`debug tombstat ${JSON.stringify(getDisplayBalance(await this.TOMB.totalBurned(), 18, 4), null, 4)}`);
     const tombCirculatingSupply = supply.sub(genesisPoolTOMBBalance);
     const priceOfTombInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(18);
     // console.log('debug ' + (await this.getTokenPriceFromPancakeswap(this.TOMB)));
@@ -154,7 +154,7 @@ export class TombFinance {
       priceInDollars: priceOfTombInDollars,
       totalSupply: getDisplayBalance(supply, this.TOMB.decimal, 0),
       circulatingSupply: getDisplayBalance(tombCirculatingSupply, this.TOMB.decimal, 0),
-      totalBurned: getDisplayBalance(burned, this.TOMB.decimal, 0),
+      totalBurned: getDisplayBalance(burned, this.TOMB.decimal, 4),
       totalTax: getDisplayBalance(taxRate, 2, 0),
     };
   }
@@ -1342,6 +1342,18 @@ export class TombFinance {
     return bondsAmount.length;
   }
 
+  routerAddress() {
+    return this.contracts.SpookyRouter.address;
+  }
+
+  zapperAddress() {
+    return this.contracts.zapper.address;
+  }
+
+  wrapperRouterAddress() {
+    return this.contracts.wrapperRouter.address;
+  }
+
   async estimateZapIn(tokenName: string, lpName: string, amount: string): Promise<number[]> {
     const { zapper } = this.contracts;
     const lpToken = this.externalTokens[lpName];
@@ -1350,14 +1362,14 @@ export class TombFinance {
       return [0, 0];
     }
     /*if (tokenName === FTM_TICKER) {
-      estimate = await zapper.estimateZapIn(lpToken.address, SPOOKY_ROUTER_ADDR, parseUnits(amount, 18));
+      estimate = await zapper.estimateZapIn(lpToken.address, this.routerAddress(), parseUnits(amount, 18));
     } else {*/
     const token = tokenName === TOMB_TICKER ? this.TOMB : tokenName === TSHARE_TICKER ? this.TSHARE : this.FTM;
     const decimals = tokenName === TOMB_TICKER || tokenName === TSHARE_TICKER ? 18 : 6;
     estimate = await zapper.estimateZapInToken(
       token.address,
       lpToken.address,
-      SPOOKY_ROUTER_ADDR,
+      this.routerAddress(),
       parseUnits(amount, decimals),
     );
     /*}*/
@@ -1370,7 +1382,7 @@ export class TombFinance {
       let overrides = {
         value: parseUnits(amount, 18),
       };
-      return await zapper.zapIn(lpToken.address, SPOOKY_ROUTER_ADDR, this.myAccount, overrides);
+      return await zapper.zapIn(lpToken.address, this.routerAddress(), this.myAccount, overrides);
     } else {*/
     const token =
       tokenName === TOMB_TICKER
@@ -1385,7 +1397,7 @@ export class TombFinance {
         token.address,
         parseUnits(amount, token.decimal),
         lpToken.address,
-        SPOOKY_ROUTER_ADDR,
+        this.routerAddress(),
         this.myAccount,
       );
     } catch (err) {

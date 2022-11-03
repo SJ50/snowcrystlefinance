@@ -36,7 +36,7 @@ const PegLPCard = ({}) => {
             <Typography variant="h5" component="h2">
               SNOW-USDC LP Node
             </Typography>
-            <Typography variant="h7" >
+            <Typography variant="h7">
               Lock your SNOW LP to earn daily yields<br></br>
               <b>Daily APR:</b> {statsOnPool?.dailyAPR}%<br></br>
               <b>Yearly APR:</b> {statsOnPool?.yearlyAPR}%
