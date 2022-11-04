@@ -71,7 +71,7 @@ const CemeteryCard = () => {
               target="_blank"
               style={{ width: '150px', height: '45px', marginBottom: '5%' }}
               variant="contained"
-              href="https://mm.finance/add/0xc3F95DeDacFEA28a3d657FfbCc74e9BaB6FB949B/0x05a3F4E0ad6580D9d977F5eE12F168620f4F71e9#/"
+              href="https://mm.finance/add/0xc3F95DeDacFEA28a3d657FfbCc74e9BaB6FB949B/0x4F79bb07123d133C4eB82174014DC58585Cb7f68#/"
             >
               Add Liquidity
             </Button>
@@ -124,7 +124,7 @@ const CemeteryCard = () => {
               target="_blank"
               style={{ width: '150px', height: '45px', marginBottom: '5%' }}
               variant="contained"
-              href="https://mm.finance/add/0xc3F95DeDacFEA28a3d657FfbCc74e9BaB6FB949B/0xbe27f32D9F731CC9DddAfE3ddaA7CBBC0f58b414#/"
+              href="https://mm.finance/add/0xc3F95DeDacFEA28a3d657FfbCc74e9BaB6FB949B/0xcBa7B6E4888400a2D73036d2c7b8E1d63d529654#/"
             >
               Add Liquidity
             </Button>
