@@ -87,7 +87,7 @@ export class TombFinance {
     this.WETH = this.externalTokens['WETH'];
     this.DIBS = this.externalTokens['DIBS'];
     this.DAI = this.externalTokens['DAI'];
-
+    console.log(`debug constructor ${JSON.stringify(externalTokens['SNOW-USDC-LP'], null, 4)}`);
     // Uniswap V2 Pair
     this.TOMBWFTM_LP = new Contract(externalTokens['SNOW-USDC-LP'][0], IUniswapV2PairABI, provider);
     this.TSHAREWFTM_LP = new Contract(externalTokens['GLCR-USDC-LP'][0], IUniswapV2PairABI, provider);
