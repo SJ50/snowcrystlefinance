@@ -1401,7 +1401,13 @@ export class TombFinance {
         this.myAccount,
       );
     } catch (err) {
-      console.error(`debug failed to zap: ${JSON.stringify(err, null, 4)}`);
+      console.error(
+        `debug Failed to zap (${tokenName}=${token.address}) using (zapper=${zapper.address}): ${JSON.stringify(
+          err?.data,
+          null,
+          4,
+        )}`,
+      );
     }
     /*}*/
   }

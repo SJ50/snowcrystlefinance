@@ -104,7 +104,7 @@ const ZapRouterModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = 
     setVal(e.currentTarget.value);
     const ftmVal =
       Number(e.currentTarget.value) * Number(tokenName.startsWith(TOMB_TICKER) ? tombPriceInFTM : tSharePriceInFTM);
-    setFtmVal(ftmVal.toString());
+    setFtmVal(ftmVal.toFixed(6).toString());
     // const estimateZap = await tombFinance.estimateZapIn(zappingToken, tokenName, String(Number(e.currentTarget.value)*2));
     setEstimate({ token0: ftmVal.toString(), token1: e.currentTarget.value.toString() });
   };
@@ -128,7 +128,7 @@ const ZapRouterModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = 
     setVal(zappingTokenBalance);
     const ftmVal =
       Number(zappingTokenBalance) * Number(tokenName.startsWith(TOMB_TICKER) ? tombPriceInFTM : tSharePriceInFTM);
-    setFtmVal(ftmVal.toString());
+    setFtmVal(ftmVal.toFixed(6).toString());
     // const estimateZap = await tombFinance.estimateZapIn(zappingToken, tokenName, String(Number(zappingTokenBalance)*2));
     setEstimate({ token0: ftmVal.toString(), token1: zappingFtmTokenBalance.toString() });
   };
@@ -191,7 +191,12 @@ const ZapRouterModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = 
         <Button
           color="primary"
           variant="contained"
-          disabled={Number(val) > Number(zappingTokenBalance) || Number(ftmVal) > Number(zappingFtmTokenBalance)}
+          disabled={
+            Number(val) > Number(zappingTokenBalance) ||
+            Number(ftmVal) > Number(zappingFtmTokenBalance) ||
+            Number(ftmVal) === 0 ||
+            Number(val) === 0
+          }
           onClick={() =>
             approveZapperStatus !== ApprovalState.APPROVED
               ? approveZapper()

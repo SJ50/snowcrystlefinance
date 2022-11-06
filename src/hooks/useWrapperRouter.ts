@@ -9,7 +9,6 @@ const useWrapperRouter = (bank: Bank) => {
 
   const handleAddLiquidity = useCallback(
     (Token: string, amount: string, ftmAmount: string, lpAmount: string) => {
-      console.log("debug use WrapperRouter " + bank.depositTokenName);
       handleTransactionReceipt(
         tombFinance.addLiquidity(Token, amount, ftmAmount),
         `Adding Liquidity ${lpAmount} in ${bank.depositTokenName.replace('USDC', 'USDC')}.`,
@@ -17,7 +16,7 @@ const useWrapperRouter = (bank: Bank) => {
     },
     [bank, tombFinance, handleTransactionReceipt],
   );
-  return { onAddTombLiquidity: handleAddLiquidity,onAddTshareLiquidity: handleAddLiquidity };
+  return { onAddTombLiquidity: handleAddLiquidity, onAddTshareLiquidity: handleAddLiquidity };
 };
 
 export default useWrapperRouter;
