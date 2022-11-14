@@ -1220,7 +1220,7 @@ export class TombFinance {
     if (ethereum && ethereum.networkVersion === config.chainId.toString()) {
       if (assetName === 'SNOW') {
         asset = this.TOMB;
-        assetUrl = 'https://i.ibb.co/ryh8ZmN/SNOW-Icon-01.png';
+        assetUrl = 'https://i.ibb.co/dGjKH8Q/SNOW-Icon-01.png';
       } else if (assetName === 'GLCR') {
         asset = this.TSHARE;
         assetUrl = 'https://i.ibb.co/LrwQXzQ/GLCR-Icon-01.png';
